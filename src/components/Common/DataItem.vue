@@ -48,7 +48,7 @@
             :duration="6000"
             separator=""
             suffix="%"
-            decimals="1"
+            :decimals="1"
             style="font-size: 16px; color: #fff"
           ></countTo>
           <img src="../../assets/imgs/icon_rise@2x.png" class="up" alt="" />
@@ -61,7 +61,7 @@
             :duration="6000"
             separator=""
             suffix="%"
-            decimals="1"
+            :decimals="1"
             style="font-size: 16px; color: #fff"
           ></countTo>
           <img src="../../assets/imgs/icon_rise@2x.png" class="up" alt="" />

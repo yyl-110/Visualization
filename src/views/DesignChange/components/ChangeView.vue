@@ -1,34 +1,33 @@
 <template>
-  <div class="productChart">
+  <div class="changeView">
     <dv-border-box-7 ref="borderBox">
       <div class="chartWrap">
-        <div class="chartsdom" id="ProductChart" ref="ProductChart"></div>
+        <div class="chartTitle">
+          <Title :text="'变更单量数量视图'" />
+        </div>
+        <div class="chartsdom" id="ChangeView" ref="ChangeView"></div>
       </div>
     </dv-border-box-7>
   </div>
 </template>
 
 <script>
-import { resizeOb } from '@/utils/tool';
-import resizeChartMixin from '@/utils/resizeChartMixin';
-
+import Title from '../../../components/Common/Title.vue';
+import resizeChartMixin from '../../../utils/resizeChartMixin';
+import { resizeOb } from '../../../utils/tool';
 export default {
-  name: 'ProductChart',
-  data() {
-    return {
-      option: {},
-      myChart: null,
-    };
-  },
+  name: 'VueDataVChangeView',
   mixins: [resizeChartMixin],
+  data() {
+    return {};
+  },
   mounted() {
     this.initChart();
-    resizeOb(document.getElementById('ProductChart'));
+    resizeOb(document.getElementById('ChangeView'));
   },
-
   methods: {
     initChart() {
-      let myChart = echarts.init(document.getElementById('ProductChart'));
+      let myChart = echarts.init(document.getElementById('ChangeView'));
       this.option = {
         tooltip: {
           trigger: 'axis',
@@ -120,10 +119,10 @@ export default {
         ],
         grid: {
           // 让图表占满容器
-          top: '40px',
+          top: '110px',
           left: '42px',
-          right: '70px',
-          bottom: '45px',
+          right: '80px',
+          bottom: '70px',
         },
       };
       myChart.setOption(this.option, true);
@@ -133,24 +132,30 @@ export default {
       });
     },
   },
+  components: { Title },
 };
 </script>
 
 <style lang="scss" scoped>
-.productChart {
-  height: 340px;
+.changeView {
+  width: 100%;
+  height: 100%;
   background: #050a4e;
   box-shadow: inset -8px -8px 40px 0px rgba(0, 227, 255, 0.3),
     inset 8px 8px 40px 0px rgba(0, 227, 255, 0.3);
   border-radius: 4px;
-
+  .chartTitle {
+    position: absolute;
+    left: 20px;
+    top: 18px;
+  }
   .chartWrap {
-    padding: 20px;
     width: 100%;
     height: 100%;
+    padding-top: 15px;
     .chartsdom {
-      height: 100%;
       width: 100%;
+      height: 100%;
     }
   }
 }

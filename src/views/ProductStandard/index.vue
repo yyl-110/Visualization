@@ -1,9 +1,13 @@
 <template>
-  <div>产品标准化率统计</div>
+  <div class="ProductStandard">
+    <standard-rate />
+  </div>
 </template>
 
 <script>
+import StandardRate from './components/StandardRate.vue';
 export default {
+  components: { StandardRate },
   name: 'ProductStandard',
 
   data() {
@@ -17,4 +21,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.ProductStandard {
+  width: 100%;
+  height: 100%;
+}
 </style>

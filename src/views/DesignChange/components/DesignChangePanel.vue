@@ -2,9 +2,9 @@
   <div class="changePanel">
     <dv-border-box-7 ref="borderBox">
       <div class="panelList">
-        <panel-item />
-        <panel-item />
-        <panel-item />
+        <panel-item class="panItme" />
+        <panel-item class="panItme" />
+        <panel-item class="panItme" :type="0" />
       </div>
     </dv-border-box-7>
   </div>
@@ -35,14 +35,17 @@ export default {
   background: #050a4e;
   box-shadow: inset -8px -8px 40px 0px rgba(0, 227, 255, 0.3),
     inset 8px 8px 40px 0px rgba(0, 227, 255, 0.3);
-  border-radius: 4px;
   .panelList {
     width: 100%;
     height: 100%;
-    display: flex;
     justify-content: space-between;
+    display: flex;
     align-items: center;
-    padding-right: 27px;
+    padding: 0 26px;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 }
 </style>

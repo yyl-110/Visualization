@@ -1,44 +1,50 @@
 <template>
   <div class="rankContainer">
-    <Title :text="'发布率排行榜'" />
-    <div class="content">
-      <div class="row rowTitle">
-        <span class="text rankText">排名</span>
-        <span class="text name">项目类型</span>
-        <div class="progressWrap">
-          <div class="progress"></div>
-        </div>
-        <span class="text rate">零件发布率</span>
-      </div>
-      <div class="row rowContent" v-for="item in rankData" :key="item.id">
-        <div class="rankNum rankText">
-          <span>{{ item.id }}</span>
-        </div>
-        <div class="text name">{{ item.title }}</div>
-        <div class="progressWrap">
-          <div class="progress">
-            <el-progress
-              :text-inside="false"
-              :show-text="false"
-              :stroke-width="14"
-              :percentage="item.value"
-              color="#23CEFD"
-            ></el-progress>
+    <dv-border-box-7 ref="borderBox">
+      <div class="ranlWrap">
+        <Title :text="'发布率排行榜'" />
+        <div class="content">
+          <div class="row rowTitle">
+            <span class="text rankText">排名</span>
+            <span class="text name">项目类型</span>
+            <div class="progressWrap">
+              <div class="progress"></div>
+            </div>
+            <span class="text rate">零件发布率</span>
+          </div>
+          <div class="row rowContent" v-for="item in rankData" :key="item.id">
+            <div class="rankNum rankText">
+              <span>{{ item.id }}</span>
+            </div>
+            <div class="text name">{{ item.title }}</div>
+            <div class="progressWrap">
+              <div class="progress">
+                <el-progress
+                  :text-inside="false"
+                  :show-text="false"
+                  :stroke-width="14"
+                  :percentage="item.value"
+                  color="#23CEFD"
+                ></el-progress>
+              </div>
+            </div>
+            <span class="text rate">{{ item.value }}%</span>
           </div>
         </div>
-        <span class="text rate">{{ item.value }}%</span>
       </div>
-    </div>
+    </dv-border-box-7>
   </div>
 </template>
 
 <script>
+import resizeChartMixin from '../../../utils/resizeChartMixin';
 import Title from '../Title.vue';
 export default {
   name: 'Rank',
   components: {
     Title,
   },
+  mixins:[resizeChartMixin],
   data() {
     return {
       rankData: [
@@ -66,8 +72,12 @@ export default {
   box-shadow: inset -8px -8px 40px 0px rgba(0, 227, 255, 0.3),
     inset 8px 8px 40px 0px rgba(0, 227, 255, 0.3);
   border-radius: 4px;
-  padding: 18px 0 0 30px;
   overflow: hidden;
+  .ranlWrap {
+    width: 100%;
+    height: 100%;
+    padding: 18px 0 0 30px;
+  }
   /deep/.el-progress-bar__outer {
     background: #050a4e;
     box-shadow: inset -8px -8px 40px 0px rgba(0, 227, 255, 0.3),

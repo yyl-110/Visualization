@@ -22,5 +22,12 @@ module.exports = {
      'echarts': 'echarts',
      'axios' : 'axios'
     }
-  }
+  },
+  // css: {
+  //   loaderOptions: {
+  //     // 给 sass-loader 传递选项
+  //     sass: {
+  //     }
+  //   }
+  // }
 };

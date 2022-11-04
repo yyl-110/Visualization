@@ -14,6 +14,7 @@
 <script>
 import Title from '@/components/Common/Title.vue';
 import resizeChartMixin from '@/utils/resizeChartMixin';
+import { resizeOb } from '../../../utils/tool';
 
 export default {
   name: 'FutureChart',
@@ -29,6 +30,7 @@ export default {
 
   mounted() {
     this.initChart();
+    resizeOb(document.getElementById('FutureChart'));
   },
 
   methods: {
