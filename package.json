@@ -1,8 +1,8 @@
 {
-  "name": "vueDatav",
+  "name": "visualization",
   "version": "0.1.0",
   "private": true,
-  "author": "JackChen <278910933@qq.com>",
+  "author": "angle",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
