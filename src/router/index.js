@@ -1,0 +1,170 @@
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import layout from '@/layout';
+import {DATA_STATISTICE, SERVICE_MONITORING} from '../utils/enum';
+
+Vue.use(VueRouter);
+
+const routes = [
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/Login.vue'),
+    hidden: true,
+    meta: {
+      title: '登录界面',
+    },
+  },
+  {
+    path: '/index',
+    name: 'Index',
+    component: () => import('@/views/Home.vue'),
+    hidden: true,
+    meta: {
+      title: 'demo',
+    },
+  },
+  {
+    path: '/',
+    component: layout,
+    redirect: '/product-design',
+    children: [
+      {
+        path: 'product-design',
+        name: 'ProductDesign',
+        component: () => import('@/views/ProductDesign'),
+        meta: {title: '产品设计数据统计', icon: 'el-icon-s-home', mainTitle: DATA_STATISTICE},
+        noShowingChildren: true,
+        children: [
+          {
+            path: 'overdue',
+            name: 'Overdue',
+            component: () => import('@/views/ProductDesign/Overdue'),
+            meta: {title: '超期流程任务', icon: 'el-icon-s-home', mainTitle: DATA_STATISTICE},
+          },
+          {
+            path: 'product-change',
+            name: 'ProductChange',
+            component: () => import('@/views/ProductDesign/ProductChange'),
+            meta: {title: 'PDM产品变更单', icon: 'el-icon-s-home', mainTitle: DATA_STATISTICE},
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: '/base-data',
+    component: layout,
+    children: [
+      {
+        path: 'index',
+        name: 'BaseData',
+        component: () => import('@/views/BaseData'),
+        meta: {title: '基础数据统计', icon: 'el-icon-s-open', mainTitle: DATA_STATISTICE},
+      },
+    ],
+  },
+  {
+    path: '/process-data',
+    component: layout,
+    children: [
+      {
+        path: 'index',
+        name: 'ProcessData',
+        component: () => import('@/views/ProcessData'),
+        meta: {title: '流程数据统计', icon: 'el-icon-s-open', mainTitle: DATA_STATISTICE},
+      },
+    ],
+  },
+  {
+    path: '/design-change',
+    component: layout,
+    children: [
+      {
+        path: 'index',
+        name: 'DesignChange',
+        component: () => import('@/views/DesignChange'),
+        meta: {title: '设计更改统计', icon: 'el-icon-s-open', mainTitle: DATA_STATISTICE},
+      },
+    ],
+  },
+  {
+    path: '/product-standard',
+    component: layout,
+    children: [
+      {
+        path: 'index',
+        name: 'ProductStandard',
+        component: () => import('@/views/ProductStandard'),
+        meta: {title: '产品标准化率统计', icon: 'el-icon-s-open', mainTitle: DATA_STATISTICE},
+      },
+    ],
+  },
+  {
+    path: '/parts-reuse',
+    component: layout,
+    children: [
+      {
+        path: 'index',
+        name: 'PartsReuse',
+        component: () => import('@/views/PartsReuse'),
+        meta: {title: '零件重用统计', icon: 'el-icon-s-open', mainTitle: DATA_STATISTICE},
+      },
+    ],
+  },
+  {
+    path: '/data-contribution',
+    component: layout,
+    children: [
+      {
+        path: 'index',
+        name: 'DataContribution',
+        component: () => import('@/views/DataContribution'),
+        meta: {title: '数据贡献量及排行榜', icon: 'el-icon-s-open', mainTitle: SERVICE_MONITORING},
+      },
+    ],
+  },
+  {
+    path: '/process-execution',
+    component: layout,
+    children: [
+      {
+        path: 'index',
+        name: 'ProcessExecution',
+        component: () => import('@/views/ProcessExecution'),
+        meta: {title: '流程执行量统计', icon: 'el-icon-s-open', mainTitle: SERVICE_MONITORING},
+      },
+    ],
+  },
+  {
+    path: '/process-efficiency',
+    component: layout,
+    children: [
+      {
+        path: 'index',
+        name: 'ProcessEfficiency',
+        component: () => import('@/views/ProcessEfficiency'),
+        meta: {title: '流程执行效率统计', icon: 'el-icon-s-open', mainTitle: SERVICE_MONITORING},
+      },
+    ],
+  },
+
+  {
+    path: '/brand',
+    name: 'Brand',
+    hidden: true,
+    component: () => import('@/views/Brand.vue'),
+    meta: {
+      title: '公司品牌介绍',
+    },
+  },
+];
+
+const router = new VueRouter({
+  mode: 'history',
+  scrollBehavior: () => ({y: 0}),
+  base: process.env.BASE_URL,
+  routes,
+});
+
+export default router;
