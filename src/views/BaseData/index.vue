@@ -35,6 +35,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/deep/ .dv-bb7-line-width-2 {
+  stroke: #00dffb !important;
+}
+/deep/ .dv-bb7-line-width-5 {
+  display: none !important;
+}
 .chart {
   margin-top: 20px;
   width: 100%;

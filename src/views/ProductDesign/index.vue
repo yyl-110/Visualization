@@ -1,10 +1,11 @@
 <template>
   <div class="productDesign">
-    <el-radio-group v-model="typeTitle" style="margin-bottom: 22px">
-      <el-radio-button :label="1">零部件</el-radio-button>
-      <el-radio-button :label="2">产品</el-radio-button>
-    </el-radio-group>
-    <div class="parts" v-if="typeTitle === 1">
+    <btn-group
+      @handleChange="handleChange"
+      style="margin-bottom: 22px"
+      :textGroup="['零部件', '产品']"
+    />
+    <div class="parts" v-if="btnType === 1">
       <!-- 数据展示 -->
       <data-display type="parts" />
 
@@ -46,6 +47,7 @@ import DataTable from './components/DataTable.vue';
 import FutureChart from './components/FutureChart.vue';
 import Rank from '@/components/Common/Rank';
 import ProductChart from './components/ProductChart.vue';
+import BtnGroup from '../../components/Common/BtnGroup.vue';
 export default {
   name: 'ProductDesign',
   components: {
@@ -55,20 +57,31 @@ export default {
     Rank,
     FutureChart,
     ProductChart,
+    BtnGroup,
   },
   data() {
     return {
-      typeTitle: 1,
+      btnType: 1,
     };
   },
 
   mounted() {},
 
-  methods: {},
+  methods: {
+    handleChange(type) {
+      this.btnType = type;
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
+  /deep/ .dv-bb7-line-width-2 {
+    stroke: #00dffb !important;
+  }
+  /deep/ .dv-bb7-line-width-5 {
+    display: none !important;
+  }
 .productDesign {
   padding-bottom: 30px;
   .productCell {

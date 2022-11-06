@@ -6,8 +6,9 @@ import vueParticles from 'vue-particles';
 import Vcomp from './components/index';
 import Toast from './components/toast';
 import Element from 'element-ui';
-import '@/styles/index.scss'; // global css
 Vue.use(Element);
+import '@/styles/index.scss'; // global css
+
 /* datav */
 import {loading, digitalFlop, borderBox7, charts} from '@jiaminghi/data-view';
 

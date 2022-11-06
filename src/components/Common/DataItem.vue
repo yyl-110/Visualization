@@ -1,12 +1,12 @@
 <template>
-  <div class="dataItem">
+  <div :class="['dataItem', isSingle && 'singleItem']">
     <Decoration />
     <div class="content">
       <div class="title">
         <img src="../../assets/imgs/icon_file@2x.png" class="icon" alt="" />
         <span>变更单流程</span>
       </div>
-      <div class="data">
+      <div class="data" v-if="!isSingle">
         <div class="addWrap item">
           <countTo
             :startVal="0"
@@ -37,6 +37,24 @@
             "
           ></countTo>
           <span class="name">流程完成率</span>
+        </div>
+      </div>
+      <div class="singleData" v-else>
+        <div class="singleWrap">
+          <span class="name">流程完成率</span>
+          <countTo
+            :startVal="0"
+            :endVal="870"
+            :duration="6000"
+            separator=""
+            style="
+              color: #23cefd;
+              font-size: 28px;
+              font-weight: 600;
+              line-height: 40px;
+              height: 40px;
+            "
+          ></countTo>
         </div>
       </div>
       <div class="bottom">
@@ -80,6 +98,12 @@ export default {
   components: { Decoration, countTo },
   name: 'VueDataVDataItem',
 
+  props: {
+    isSingle: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {};
   },
@@ -97,9 +121,31 @@ export default {
   background: rgba(255, 255, 255, 0.04);
   display: flex;
   flex-direction: column;
+  &.singleItem {
+    height: 174px;
+    .content {
+      .title {
+        padding: 16px 0 14px;
+      }
+    }
+  }
   .content {
     flex: 1;
     padding: 0 20px;
+    .singleData {
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      .singleWrap {
+        display: flex;
+        align-items: center;
+        .name {
+          font-size: 16px;
+          font-weight: 400;
+          color: #ffffff;
+          margin-right: 14px;
+        }
+      }
+    }
     .data {
       display: flex;
       justify-content: space-between;

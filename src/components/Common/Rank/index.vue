@@ -2,7 +2,7 @@
   <div class="rankContainer">
     <dv-border-box-7 ref="borderBox">
       <div class="ranlWrap">
-        <Title :text="'发布率排行榜'" />
+        <Title :text="title" />
         <div class="content">
           <div class="row rowTitle">
             <span class="text rankText">排名</span>
@@ -13,8 +13,16 @@
             <span class="text rate">零件发布率</span>
           </div>
           <div class="row rowContent" v-for="item in rankData" :key="item.id">
-            <div class="rankNum rankText">
-              <span>{{ item.id }}</span>
+            <div :class="['rankNum', 'rankText']">
+              <span
+                :class="[
+                  item.id === 1 && 'one',
+                  item.id === 2 && 'two',
+                  item.id === 3 && 'three',
+                ]"
+              >
+                {{ item.id }}
+              </span>
             </div>
             <div class="text name">{{ item.title }}</div>
             <div class="progressWrap">
@@ -44,7 +52,13 @@ export default {
   components: {
     Title,
   },
-  mixins:[resizeChartMixin],
+  props: {
+    title: {
+      type: String,
+      default: '标题',
+    },
+  },
+  mixins: [resizeChartMixin],
   data() {
     return {
       rankData: [

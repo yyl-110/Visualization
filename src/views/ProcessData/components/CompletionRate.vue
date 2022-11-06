@@ -46,9 +46,13 @@ export default {
         },
         legend: {
           top: 0,
-          right: 0,
+          right: 10,
           y: '0',
           data: ['流程完成率', '流程数量'],
+          textStyle: {
+            color: '#fff',
+            fontSize: 14,
+          },
         },
         xAxis: [
           {

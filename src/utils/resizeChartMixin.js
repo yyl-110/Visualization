@@ -7,7 +7,7 @@ export default {
     },
   },
   mounted() {
-    this.changeColor();
+    // this.changeColor();
   },
   watch: {
     isCollapse(val) {
@@ -20,7 +20,6 @@ export default {
   },
   methods: {
     changeColor() {
-      console.log();
       Array.prototype.forEach.call(document.getElementsByClassName('dv-bb7-line-width-2'), function (element) {
         element.style.stroke = '#00DFFB';
       });

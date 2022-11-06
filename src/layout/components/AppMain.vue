@@ -1,10 +1,10 @@
 <template>
   <section class="app-main">
-    <transition name="fade-transform" mode="out-in">
-      <div class="scroll">
+    <div class="scroll">
+      <transition name="fade-transform" mode="out-in">
         <router-view :key="key" />
-      </div>
-    </transition>
+      </transition>
+    </div>
   </section>
 </template>
 

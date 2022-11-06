@@ -7,7 +7,7 @@ export const resizeOb = (dom) => {
       for (const entry of entries) {
         echarts.getInstanceByDom(entry.target).resize();
       }
-    }, 1000),
+    }, 500),
   );
   resizeOb.observe(dom);
 };
