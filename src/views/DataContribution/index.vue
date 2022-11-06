@@ -58,6 +58,7 @@ export default {
     width: 100%;
     height: 444px;
     margin-top: 20px;
+    overflow-y: hidden;
     .dataBar {
       flex: 1;
     }

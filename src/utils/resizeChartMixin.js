@@ -18,11 +18,5 @@ export default {
       }, 300);
     },
   },
-  methods: {
-    changeColor() {
-      Array.prototype.forEach.call(document.getElementsByClassName('dv-bb7-line-width-2'), function (element) {
-        element.style.stroke = '#00DFFB';
-      });
-    },
-  },
+  methods: {},
 };

@@ -30,6 +30,13 @@
             />
           </div>
         </div>
+        <div class="scale">
+          <div class="line">
+            <div class="point" v-for="i in 11" :key="i">
+              <span>{{ i * 100 }}</span>
+            </div>
+          </div>
+        </div>
       </div>
     </dv-border-box-7>
   </div>
@@ -54,7 +61,7 @@ export default {
 
 <style lang="scss" scoped>
 .DevicesBox {
-  height: 340px;
+  height: 384px;
   background: #050a4e;
   box-shadow: inset -8px -8px 40px 0px rgba(0, 227, 255, 0.3),
     inset 8px 8px 40px 0px rgba(0, 227, 255, 0.3);
@@ -64,6 +71,36 @@ export default {
     width: 100%;
     height: 100%;
     padding-top: 43px;
+    .scale {
+      width: 100%;
+      display: flex;
+      margin-top: 48px;
+      .line {
+        width: 100%;
+        height: 2px;
+        background-color: rgba(255, 255, 255, 0.5);
+        position: relative;
+        display: flex;
+        justify-content: space-around;
+        .point {
+          width: 1px;
+          height: 4px;
+          opacity: 0.92;
+          border: 1px solid #ffffff;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          span {
+            margin-top: 18px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #ffffff;
+            line-height: 22px;
+          }
+        }
+      }
+    }
     .devices {
       margin-top: 50px;
     }

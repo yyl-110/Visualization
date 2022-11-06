@@ -1,9 +1,9 @@
 <template>
-  <div class="contributionChart">
+  <div class="commonChart">
     <dv-border-box-7 ref="borderBox">
       <div class="chartContainer">
         <div class="chartTitle">
-          <Title :text="'项目数据贡献量'" />
+          <Title :text="'普通文档流程超期任务量'" />
         </div>
         <universal-chart style="flex: 1" />
       </div>
@@ -16,18 +16,21 @@ import Title from '../../../components/Common/Title.vue';
 import UniversalChart from '../../../components/Common/UniversalChart.vue';
 import resizeChartMixin from '../../../utils/resizeChartMixin';
 export default {
-  name: 'ContributionChart',
-  mixins: [resizeChartMixin],
+  components: { Title, UniversalChart },
+  name: 'VisualizationCommonChart',
+
   data() {
     return {};
   },
+  mixins: [resizeChartMixin],
   mounted() {},
-  components: { Title, UniversalChart },
+
+  methods: {},
 };
 </script>
 
 <style lang="scss" scoped>
-.contributionChart {
+.commonChart {
   width: 100%;
   height: 100%;
   background: #050a4e;
@@ -40,10 +43,13 @@ export default {
   .chartContainer {
     width: 100%;
     height: 100%;
+    padding-top: 15px;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-    padding-top: 15px;
+    .chartsdom {
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 </style>

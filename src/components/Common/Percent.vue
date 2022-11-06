@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import { resizeOb } from '../../utils/tool';
+
 export default {
   name: 'Percent',
   props: {
@@ -33,6 +35,7 @@ export default {
 
   mounted() {
     this.initChart();
+    resizeOb(this.$refs.PercentChart);
   },
 
   methods: {

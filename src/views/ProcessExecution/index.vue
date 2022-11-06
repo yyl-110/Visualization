@@ -1,18 +1,55 @@
 <template>
-  <div>流程执行量统计</div>
+  <div class="processExecution">
+    <div class="btnWrap">
+      <btn-group
+        :textGroup="['流程超期', '任务超期']"
+        @handleChange="handleChange"
+      />
+    </div>
+    <process-data-box />
+    <div class="panelCartWrap" v-if="type === 1">
+      <div class="dataBar">
+        <common-chart />
+      </div>
+      <div class="rank">
+        <Rank title="普通文档流程超期任务排行" />
+      </div>
+    </div>
+    <div class="table" v-else>
+      <task-view />
+    </div>
+  </div>
 </template>
 
 <script>
+import BtnGroup from '../../components/Common/BtnGroup.vue';
+import ProcessDataBox from './components/ProcessDataBox.vue';
+import Rank from '@/components/Common/Rank';
+import CommonChart from './components/CommonChart.vue';
+import TaskView from './components/TaskView.vue';
 export default {
+  components: {
+    BtnGroup,
+    ProcessDataBox,
+    Rank,
+    CommonChart,
+    TaskView,
+  },
   name: 'ProcessExecution',
 
   data() {
-    return {};
+    return {
+      type: 1,
+    };
   },
 
   mounted() {},
 
-  methods: {},
+  methods: {
+    handleChange(type) {
+      this.type = type;
+    },
+  },
 };
 </script>
 
@@ -22,5 +59,33 @@ export default {
 }
 /deep/ .dv-bb7-line-width-5 {
   display: none !important;
+}
+.processExecution {
+  width: 100%;
+  .btnWrap {
+    margin-bottom: 22px;
+  }
+  .panelCartWrap {
+    display: flex;
+    width: 100%;
+    height: 400px;
+    margin-top: 20px;
+    overflow-y: hidden;
+    .dataBar {
+      flex: 1;
+    }
+    .rank {
+      width: 700px;
+      flex-shrink: 0;
+      height: 100%;
+      margin-left: 20px;
+    }
+  }
+
+  .table {
+    width: 100%;
+    margin-top: 20px;
+    height: 394px;
+  }
 }
 </style>
