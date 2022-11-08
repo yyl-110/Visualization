@@ -1,21 +1,26 @@
+// 解决低版本兼容性问题
+import 'babel-polyfill';
+import Es6Promise from 'es6-promise';
+require('es6-promise').polyfill();
+Es6Promise.polyfill();
+
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
 import vueParticles from 'vue-particles';
-import Vcomp from './components/index';
+// import Vcomp from './components/index';
 import Toast from './components/toast';
 import Element from 'element-ui';
 Vue.use(Element);
 import '@/styles/index.scss'; // global css
 
 /* datav */
-import {loading, digitalFlop, borderBox7, charts} from '@jiaminghi/data-view';
+import {loading, digitalFlop, borderBox7} from '@jiaminghi/data-view';
 
 Vue.use(loading);
 Vue.use(digitalFlop);
 Vue.use(borderBox7);
-Vue.use(charts);
 
 import '@/assets/styles/base.scss';
 import '@/assets/styles/common.scss';
@@ -23,7 +28,7 @@ import '@/assets/iconfont/iconfont.css';
 import '@/styles/variables.scss';
 
 Vue.use(vueParticles);
-Vue.use(Vcomp);
+// Vue.use(Vcomp);
 
 Vue.config.productionTip = false;
 

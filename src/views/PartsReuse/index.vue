@@ -96,7 +96,9 @@ export default {
 
   mounted() {},
 
-  methods: {},
+  methods: {
+    onSubmit() {},
+  },
 };
 </script>
 

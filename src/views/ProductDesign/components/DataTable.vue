@@ -1,6 +1,6 @@
 <template>
   <div class="tableContainer">
-    <dv-border-box-7>
+    <dv-border-box-7 ref="borderBox">
       <div class="tableWrap">
         <div class="table">
           <div class="top">

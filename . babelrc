@@ -1,12 +1,14 @@
 {
-  "presets": [["es2015", { "modules": false }]],
-  "plugins": [
-    [
-      "component",
+  "presets": ["@babel/preset-env", [
+      "env",
       {
-        "libraryName": "element-ui",
-        "styleLibraryName": "theme-chalk"
+        "modules": false,
+        "useBuiltIns": "entry"
       }
-    ]
+    ],
+    "stage-3"
+  ],
+  "plugins": [
+    "@babel/plugin-transform-runtime"
   ]
 }

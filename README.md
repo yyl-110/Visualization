@@ -109,7 +109,6 @@
  * ES6
  * scss
  * css3
- * jquery
  * iconfont
  
 # 功能模块

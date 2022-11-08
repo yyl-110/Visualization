@@ -9,7 +9,7 @@
     <div class="wrap">
       <!-- <div class="top"></div> -->
 
-      <sinan />
+      <!-- <sinan />
       <seamless />
       <pyramid />
 
@@ -37,7 +37,7 @@
       <rainbow />
       <gauge />
       <waterPolo />
-      <circleNesting />
+      <circleNesting /> -->
 
       <div class="divider"></div>
     </div>

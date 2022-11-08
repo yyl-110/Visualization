@@ -6,7 +6,7 @@
 
 <template>
   <div class="brand-container">
-    <div class="wrap">
+    <!-- <div class="wrap">
       <header>
         <div class="weather">
           <img :src="imgSrc" />
@@ -106,19 +106,19 @@
           </div>
         </div>
       </section>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 import '@/assets/js/flexible';
 import '@/assets/js/china';
-import countTo from 'vue-count-to';
+// import countTo from 'vue-count-to';
 
 export default {
   name: 'Brand',
   components: {
-    countTo,
+    // countTo,
   },
   data() {
     return {
