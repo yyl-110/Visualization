@@ -1,25 +1,64 @@
 // 解决低版本兼容性问题
 import 'babel-polyfill';
-import Es6Promise from 'es6-promise';
-require('es6-promise').polyfill();
-Es6Promise.polyfill();
+import 'es6-promise/auto';
+/* ie兼容 */
+if (Number.parseInt === undefined) Number.parseInt = window.parseInt;
+if (Number.parseFloat === undefined) Number.parseFloat = window.parseFloat;
+
+import '@/utils/requestAnimationFrame';
 
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
-import vueParticles from 'vue-particles';
+import {fontSize} from './utils/tool';
+
+import '@/assets/js/flexible';
 // import Vcomp from './components/index';
-import Toast from './components/toast';
-import Element from 'element-ui';
-Vue.use(Element);
+import {
+  Button,
+  Table,
+  Select,
+  Menu,
+  Row,
+  MenuItem,
+  MenuItemGroup,
+  Form,
+  Option,
+  Breadcrumb,
+  Pagination,
+  Progress,
+  TableColumn,
+  BreadcrumbItem,
+  Submenu,
+  Col,
+  FormItem,
+} from 'element-ui';
+import ElScrollbar from 'element-ui/lib/scrollbar';
+Vue.use(Button)
+  .use(Table)
+  .use(Select)
+  .use(Menu)
+  .use(Row)
+  .use(Col)
+  .use(MenuItem)
+  .use(MenuItemGroup)
+  .use(Form)
+  .use(Option)
+  .use(Breadcrumb)
+  .use(Pagination)
+  .use(Progress)
+  .use(BreadcrumbItem)
+  .use(TableColumn)
+  .use(FormItem)
+  .use(Submenu)
+  .use(ElScrollbar);
 import '@/styles/index.scss'; // global css
 
 /* datav */
-import {loading, digitalFlop, borderBox7} from '@jiaminghi/data-view';
+import {loading, borderBox7} from '@jiaminghi/data-view';
 
 Vue.use(loading);
-Vue.use(digitalFlop);
 Vue.use(borderBox7);
 
 import '@/assets/styles/base.scss';
@@ -27,12 +66,9 @@ import '@/assets/styles/common.scss';
 import '@/assets/iconfont/iconfont.css';
 import '@/styles/variables.scss';
 
-Vue.use(vueParticles);
-// Vue.use(Vcomp);
+Vue.prototype.$fontSize = fontSize;
 
 Vue.config.productionTip = false;
-
-Vue.prototype.$Toast = Toast;
 
 router.beforeEach((to, from, next) => {
   if (to.meta.title) {

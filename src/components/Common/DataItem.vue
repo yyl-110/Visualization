@@ -9,32 +9,22 @@
       <div class="data" v-if="!isSingle">
         <div class="addWrap item">
           <countTo
+            class="countTo"
             :startVal="0"
             :endVal="856"
             :duration="6000"
             separator=""
-            style="
-              color: #23cefd;
-              line-height: 40px;
-              font-size: 28px;
-              font-weight: 600;
-            "
           ></countTo>
           <span class="name">当前新增</span>
         </div>
         <div class="preWrap item">
           <countTo
             :startVal="0"
+            class="countTo"
             :endVal="87"
             :duration="6000"
             separator=""
             suffix="%"
-            style="
-              color: #23cefd;
-              font-size: 28px;
-              font-weight: 600;
-              line-height: 40px;
-            "
           ></countTo>
           <span class="name">流程完成率</span>
         </div>
@@ -47,13 +37,7 @@
             :endVal="870"
             :duration="6000"
             separator=""
-            style="
-              color: #23cefd;
-              font-size: 28px;
-              font-weight: 600;
-              line-height: 40px;
-              height: 40px;
-            "
+            class="countTo"
           ></countTo>
         </div>
       </div>
@@ -61,26 +45,26 @@
         <div class="tb box">
           同比&nbsp;
           <countTo
+            class="countTo"
             :startVal="0"
             :endVal="3.5"
             :duration="6000"
             separator=""
             suffix="%"
             :decimals="1"
-            style="font-size: 16px; color: #fff"
           ></countTo>
           <img src="../../assets/imgs/icon_rise@2x.png" class="up" alt="" />
         </div>
         <div class="hb box">
           环比&nbsp;
           <countTo
+            class="countTo"
             :startVal="0"
             :endVal="3.1"
             :duration="6000"
             separator=""
             suffix="%"
             :decimals="1"
-            style="font-size: 16px; color: #fff"
           ></countTo>
           <img src="../../assets/imgs/icon_rise@2x.png" class="up" alt="" />
         </div>
@@ -121,6 +105,23 @@ export default {
   background: rgba(255, 255, 255, 0.04);
   display: flex;
   flex-direction: column;
+
+  .addWrap {
+    .countTo {
+      color: #23cefd;
+      line-height: 40px;
+      font-size: 28px;
+      font-weight: 600;
+    }
+  }
+  .preWrap {
+    .countTo {
+      color: #23cefd;
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 40px;
+    }
+  }
   &.singleItem {
     height: 174px;
     .content {
@@ -138,6 +139,13 @@ export default {
       .singleWrap {
         display: flex;
         align-items: center;
+        .countTo {
+          color: #23cefd;
+          font-size: 28px;
+          font-weight: 600;
+          line-height: 40px;
+          height: 40px;
+        }
         .name {
           font-size: 16px;
           font-weight: 400;
@@ -160,6 +168,9 @@ export default {
         justify-content: center;
         .name {
           margin-top: 2px;
+          font-size: 16px;
+          font-weight: 400;
+          color: #ffffff;
         }
       }
     }
@@ -188,6 +199,10 @@ export default {
       justify-content: space-between;
       align-items: center;
       padding-top: 14px;
+      .countTo {
+        font-size: 16px;
+        color: #fff;
+      }
       .box {
         display: flex;
         align-items: center;

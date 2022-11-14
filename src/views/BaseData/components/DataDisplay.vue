@@ -8,7 +8,7 @@
       :endVal="24"
       :duration="6000"
       separator=""
-      style="color: #f7ba1e; font-size: 32px; font-weight: 600"
+      class="countTo"
     ></countTo>
     个，新增
     <img src="../../../assets/imgs/parts.png" alt="" />
@@ -18,7 +18,7 @@
       :endVal="1489"
       :duration="6000"
       separator=""
-      style="color: #f7ba1e; font-size: 32px; font-weight: 600"
+      class="countTo"
     ></countTo>
     个；
   </div>
@@ -52,6 +52,11 @@ export default {
   display: flex;
   align-items: center;
   padding-left: 22px;
+  .countTo {
+    color: #f7ba1e;
+    font-size: 32px;
+    font-weight: 600;
+  }
   img {
     width: 32px;
     height: 32px;

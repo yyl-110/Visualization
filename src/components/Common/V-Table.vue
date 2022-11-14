@@ -26,9 +26,7 @@
         layout="total, prev, pager, next,sizes, slot, jumper"
         :total="400"
       >
-        <span style="color: #23cefd; font-size: 14px">
-          {{ page }}/{{ total }}
-        </span>
+        <span class="pageTotal">{{ page }}/{{ total }}</span>
       </el-pagination>
     </div>
   </div>
@@ -129,6 +127,10 @@ export default {
   display: flex;
   justify-content: flex-end;
   margin-top: 50px;
+  .pageTotal {
+    color: #23cefd;
+    font-size: 14px;
+  }
 }
 ::v-deep.el-pagination {
   .el-pagination__total {

@@ -2,17 +2,17 @@
   <div class="productDesign">
     <btn-group
       @handleChange="handleChange"
-      style="margin-bottom: 22px"
+      style="margin-bottom: 0.275rem"
       :textGroup="['零部件', '产品']"
     />
     <div class="parts" v-if="btnType === 1">
       <!-- 数据展示 -->
       <data-display type="parts" />
 
-      <count-chart style="margin-top: 20px" />
+      <count-chart style="margin-top: 0.25rem" />
 
       <!-- 表格 -->
-      <data-table style="margin-top: 20px" />
+      <data-table style="margin-top: 0.25rem" />
       <div class="cell">
         <div class="future">
           <future-chart />
@@ -25,9 +25,9 @@
     <div v-else>
       <data-display type="product" />
       <!-- chart -->
-      <product-chart style="margin-top: 20px" />
+      <product-chart style="margin-top: 0.25rem" />
       <!-- 表格 -->
-      <data-table style="margin-top: 20px" />
+      <data-table style="margin-top: 0.25rem" />
       <div class="productCell">
         <div class="rank">
           <Rank />
@@ -48,6 +48,7 @@ import FutureChart from './components/FutureChart.vue';
 import Rank from '@/components/Common/Rank';
 import ProductChart from './components/ProductChart.vue';
 import BtnGroup from '../../components/Common/BtnGroup.vue';
+import { test } from '../../api';
 export default {
   name: 'ProductDesign',
   components: {
@@ -65,7 +66,10 @@ export default {
     };
   },
 
-  mounted() {},
+  async mounted() {
+    const res = await test({});
+    console.log('res:', res);
+  },
 
   methods: {
     handleChange(type) {
@@ -76,12 +80,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  /deep/ .dv-bb7-line-width-2 {
-    stroke: #00dffb !important;
-  }
-  /deep/ .dv-bb7-line-width-5 {
-    display: none !important;
-  }
+/deep/ .dv-bb7-line-width-2 {
+  stroke: #00dffb !important;
+}
+/deep/ .dv-bb7-line-width-5 {
+  display: none !important;
+}
 .productDesign {
   padding-bottom: 30px;
   .productCell {

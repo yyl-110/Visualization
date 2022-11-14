@@ -44,7 +44,7 @@
             separator=""
             suffix="%"
             :decimals="1"
-            style="font-size: 16px; color: #fff"
+            class="countTo"
           ></CountTo>
           <img src="../../../assets/imgs/icon_rise@2x.png" class="up" alt="" />
         </div>
@@ -57,7 +57,7 @@
             separator=""
             suffix="%"
             :decimals="1"
-            style="font-size: 16px; color: #fff"
+            class="countTo"
           ></countTo>
           <img src="../../../assets/imgs/icon_rise@2x.png" class="up" alt="" />
         </div>
@@ -104,6 +104,10 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  .countTo {
+    font-size: 16px;
+    color: #fff;
+  }
   .content {
     flex: 1;
     padding: 0 20px;

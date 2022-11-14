@@ -8,6 +8,7 @@ module.exports = {
   productionSourceMap: false,
   lintOnSave: false,
   devServer: {
+    open: true,
     port: 8081,
     // proxy: {
     //   "/api": {
@@ -21,8 +22,11 @@ module.exports = {
     // }
   },
   // 在exports中添加，这里很关键，不配置不行
-  transpileDependencies: ['element-ui'],
+  transpileDependencies: ['element-ui', 'echarts', 'vue-router'],
   configureWebpack: {
+    resolve: {
+      alias: {},
+    },
     // 把原本需要写在webpack.config.js中的配置代码 写在这里 会自动合并
     externals: {
       echarts: 'echarts',
@@ -52,11 +56,18 @@ module.exports = {
         ],
       });
   },
-  // css: {
-  //   loaderOptions: {
-  //     // 给 sass-loader 传递选项
-  //     sass: {
-  //     }
-  //   }
-  // }
+  css: {
+    loaderOptions: {
+      postcss: {
+        plugins: [
+          require('postcss-pxtorem')({
+            // 把px单位换算成rem单位
+            rootValue: 80, // 换算的基数(设计图750的根字体为75)
+            // selectorBlackList: ['weui', 'mu'], // 忽略转换正则匹配项
+            propList: ['*'],
+          }),
+        ],
+      },
+    },
+  },
 };

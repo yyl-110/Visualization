@@ -9,7 +9,7 @@
       :endVal="1524"
       :duration="6000"
       separator=""
-      style="color: #f7ba1e; font-size: 32px; font-weight: 600"
+      class="countTo"
     ></countTo>
     个，发布率93%；新增
     <img src="../../../assets/imgs/icon_model@2x.png" alt="" />
@@ -19,7 +19,7 @@
       :endVal="1524"
       :duration="6000"
       separator=""
-      style="color: #f7ba1e; font-size: 32px; font-weight: 600"
+      class="countTo"
     ></countTo>
     个，发布率
     <countTo
@@ -28,7 +28,7 @@
       :duration="6000"
       separator=""
       suffix="%"
-      style="color: #f7ba1e; font-size: 32px; font-weight: 600"
+      class="countTo"
     ></countTo>
     ; 新增
     <img src="../../../assets/imgs/icon_drawing@2x.png" alt="" />
@@ -38,7 +38,7 @@
       :endVal="1524"
       :duration="6000"
       separator=""
-      style="color: #f7ba1e; font-size: 32px; font-weight: 600"
+      class="countTo"
     ></countTo>
     张， 发布率
     <countTo
@@ -47,7 +47,7 @@
       :duration="6000"
       separator=""
       suffix="%"
-      style="color: #f7ba1e; font-size: 32px; font-weight: 600"
+      class="countTo"
     ></countTo>
     ；
   </div>
@@ -64,7 +64,7 @@
       :endVal="999"
       :duration="6000"
       separator=""
-      style="color: #f7ba1e; font-size: 32px; font-weight: 600"
+      class="countTo"
     ></countTo>
     个，本月新增
     <img
@@ -78,7 +78,7 @@
       :endVal="75"
       :duration="6000"
       separator=""
-      style="color: #f7ba1e; font-size: 32px; font-weight: 600"
+      class="countTo"
     ></countTo>
     个，同比
     <countTo
@@ -87,7 +87,7 @@
       :duration="6000"
       separator=""
       suffix="%"
-      style="color: #f7ba1e; font-size: 32px; font-weight: 600"
+      class="countTo"
     ></countTo>
     <img src="../../../assets/imgs/icon_rise@2x.png" class="up" alt="" />
     环比
@@ -97,7 +97,7 @@
       :duration="6000"
       separator=""
       suffix="%"
-      style="color: #f7ba1e; font-size: 32px; font-weight: 600"
+      class="countTo"
     ></countTo>
     <img src="../../../assets/imgs/icon_rise@2x.png" class="up" alt="" />
     ；
@@ -142,6 +142,11 @@ export default {
   display: flex;
   align-items: center;
   padding-left: 22px;
+  .countTo {
+    color: #f7ba1e;
+    font-size: 32px;
+    font-weight: 600;
+  }
   img {
     width: 32px;
     height: 32px;

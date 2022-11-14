@@ -37,7 +37,7 @@
         </div>
       </div>
       <div class="innerRight">
-        <p>
+        <p class="tb">
           同比
           <countTo
             :startVal="0"
@@ -46,7 +46,7 @@
             separator=""
             :decimals="1"
             suffix="%"
-            style="color: #fff; font-size: 18px"
+            class="countTo"
           ></countTo>
           <img src="../../../assets/imgs/icon_rise@2x.png" alt="" />
         </p>
@@ -59,7 +59,7 @@
             separator=""
             suffix="%"
             :decimals="1"
-            style="color: #fff; font-size: 18px"
+            class="countTo"
           ></countTo>
           <img src="../../../assets/imgs/icon_rise@2x.png" alt="" />
         </p>
@@ -87,12 +87,7 @@
             :duration="6000"
             separator=""
             suffix="个"
-            style="
-              color: #fff;
-              font-size: 20px;
-              font-weight: bold;
-              margin-left: 10px;
-            "
+            class="countTo"
           ></countTo>
         </div>
         <div class="row">
@@ -111,12 +106,7 @@
             :duration="6000"
             separator=""
             suffix="个"
-            style="
-              color: #fff;
-              font-size: 20px;
-              font-weight: bold;
-              margin-left: 10px;
-            "
+            class="countTo"
           ></countTo>
         </div>
       </div>
@@ -184,6 +174,12 @@ export default {
     .dataBox {
       width: 100%;
       padding-left: 4px;
+      .countTo {
+        color: #fff;
+        font-size: 20px;
+        font-weight: bold;
+        margin-left: 10px;
+      }
       .row {
         display: flex;
         justify-content: space-between;
@@ -257,6 +253,10 @@ export default {
       color: #ffffff;
       line-height: 25px;
       padding-left: 28px;
+      .countTo {
+        color: #fff;
+        font-size: 18px;
+      }
       p {
         display: flex;
         align-items: center;

@@ -6,24 +6,15 @@ import {DATA_STATISTICE, SERVICE_MONITORING} from '../utils/enum';
 Vue.use(VueRouter);
 
 const routes = [
-  {
-    path: '/login',
-    name: 'Login',
-    component: () => import('@/views/Login.vue'),
-    hidden: true,
-    meta: {
-      title: '登录界面',
-    },
-  },
-  {
-    path: '/index',
-    name: 'Index',
-    component: () => import('@/views/Home.vue'),
-    hidden: true,
-    meta: {
-      title: 'demo',
-    },
-  },
+  // {
+  //   path: '/index',
+  //   name: 'Index',
+  //   component: () => import('@/views/Home.vue'),
+  //   hidden: true,
+  //   meta: {
+  //     title: 'demo',
+  //   },
+  // },
   {
     path: '/',
     component: layout,
@@ -46,7 +37,7 @@ const routes = [
             path: 'change',
             name: 'ProductChange',
             component: () => import('@/views/ProductDesign/ProductChange'),
-            meta: {title: 'PDM产品变更单',mainTitle: DATA_STATISTICE},
+            meta: {title: 'PDM产品变更单', mainTitle: DATA_STATISTICE},
           },
         ],
       },
@@ -149,15 +140,15 @@ const routes = [
     ],
   },
 
-  {
-    path: '/brand',
-    name: 'Brand',
-    hidden: true,
-    component: () => import('@/views/Brand.vue'),
-    meta: {
-      title: '公司品牌介绍',
-    },
-  },
+  // {
+  //   path: '/brand',
+  //   name: 'Brand',
+  //   hidden: true,
+  //   component: () => import('@/views/Brand.vue'),
+  //   meta: {
+  //     title: '公司品牌介绍',
+  //   },
+  // },
 ];
 
 const router = new VueRouter({

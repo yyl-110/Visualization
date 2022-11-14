@@ -11,18 +11,26 @@
 <script>
 import { resizeOb } from '../../../utils/tool';
 import resizeChartMixin from '@/utils/resizeChartMixin';
+import elementResizeDetectorMaker from 'element-resize-detector';
 export default {
   name: 'CountChart',
 
   data() {
     return {
       option: {},
+      myChart: null,
     };
   },
   mixins: [resizeChartMixin],
   mounted() {
     this.initCharts();
-    resizeOb(document.getElementById('CountChart'));
+    let erd = elementResizeDetectorMaker();
+    let that = this;
+    erd.listenTo(document.getElementById('CountChart'), () => {
+      // debounce(that.initCharts);
+      that.myChart.resize();
+    });
+    // resizeOb(document.getElementById('CountChart'));
   },
 
   methods: {
@@ -30,14 +38,14 @@ export default {
       let myChart = echarts.init(document.getElementById('CountChart'));
       this.option = {
         legend: {
-          top: '-6',
+          top: -this.$fontSize(6),
           right: 0,
           y: '0',
-          itemWidth: 10,
-          itemHeight: 10,
+          itemWidth: this.$fontSize(10),
+          itemHeight: this.$fontSize(10),
           icon: 'circle',
           textStyle: {
-            fontSize: 14, //字体大小
+            fontSize: this.$fontSize(14), //字体大小
             color: 'rgba(255,255,255,0.5)', //字体颜色
           },
         },
@@ -61,15 +69,20 @@ export default {
         xAxis: {
           type: 'category',
           name: '项目类型',
+          nameTextStyle: {
+            // x轴name的样式调整
+            color: '#fff',
+            fontSize: this.$fontSize(14),
+          },
           axisPointer: {
             type: 'shadow',
           },
           axisLabel: {
-            padding: [8, 0, 0, 0], //文字左右定位
+            padding: [this.$fontSize(8), 0, 0, 0], //文字左右定位
             textStyle: {
               color: '#fff', //文字颜色
-              fontSize: '12', //文字大小
-              lineHeight: '22',
+              fontSize: this.$fontSize(12), //文字大小
+              lineHeight: this.$fontSize(22),
             },
           },
           axisLine: {
@@ -85,7 +98,7 @@ export default {
           nameTextStyle: {
             // x轴name的样式调整
             color: '#fff',
-            fontSize: 14,
+            fontSize: this.$fontSize(14),
           },
           nameGap: 10, // x轴name与横坐标轴线的间距
           name: '数量',
@@ -102,7 +115,7 @@ export default {
         series: [
           {
             type: 'bar',
-            barWidth: '30',
+            barWidth: this.$fontSize(30),
             tooltip: {
               valueFormatter: function (value) {
                 return value;
@@ -120,12 +133,12 @@ export default {
               show: true,
               color: '#FFFFFF',
               position: 'top',
-              fontSize: '12px',
+              fontSize: this.$fontSize(12),
             },
           },
           {
             type: 'bar',
-            barWidth: '30',
+            barWidth: this.$fontSize(30),
             itemStyle: {
               normal: {
                 color: '#23CEFD',
@@ -138,12 +151,12 @@ export default {
               show: true,
               color: '#FFFFFF',
               position: 'top',
-              fontSize: '12px',
+              fontSize: this.$fontSize(12),
             },
           },
           {
             type: 'bar',
-            barWidth: '30',
+            barWidth: this.$fontSize(30),
             itemStyle: {
               normal: {
                 color: '#F7BA1E',
@@ -156,16 +169,16 @@ export default {
               show: true,
               color: '#FFFFFF',
               position: 'top',
-              fontSize: '12px',
+              fontSize: this.$fontSize(12),
             },
           },
         ],
         grid: {
           // 让图表占满容器
-          top: '31px',
-          left: '42px',
-          right: '70px',
-          bottom: '45px',
+          top: this.$fontSize(31),
+          left: this.$fontSize(12),
+          right: this.$fontSize(80),
+          bottom: this.$fontSize(45),
         },
       };
       myChart.setOption(this.option, true);
@@ -185,6 +198,7 @@ export default {
       window.addEventListener('resize', () => {
         myChart.resize();
       });
+      this.myChart = myChart;
     },
   },
 };
