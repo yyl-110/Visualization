@@ -1,5 +1,5 @@
 <template>
-  <div class="title">
+  <div class="title clearfix">
     <div class="line"></div>
     <span>{{ text }}</span>
   </div>
@@ -27,12 +27,11 @@ export default {
 
 <style lang="scss" scoped>
 .title {
-  display: flex;
-  align-items: center;
   .line {
     width: 4px;
     height: 18px;
     background: #00dffb;
+    float: left;
   }
   span {
     margin-left: 8px;
@@ -40,6 +39,8 @@ export default {
     font-weight: 500;
     color: #00dffb;
     line-height: 24px;
+    float: left;
+    line-height: 18px;
   }
 }
 </style>

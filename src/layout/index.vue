@@ -1,11 +1,11 @@
 <template>
-  <div :class="classObj" class="app-wrapper">
-    <div
+  <div :class="[classObj, 'app-wrapper']">
+    <!-- <div
       v-if="device === 'mobile' && sidebar.opened"
       class="drawer-bg"
       @click="handleClickOutside"
-    />
-    <div :class="{ 'fixed-header': fixedHeader }">
+    /> -->
+    <div class="fixedHeader">
       <navbar />
     </div>
     <sidebar class="sidebar-container" />
@@ -79,19 +79,6 @@ export default {
   height: 100%;
   position: absolute;
   z-index: 999;
-}
-
-.fixed-header {
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 9;
-  width: 100%;
-  transition: width 0.28s;
-  border: none;
-  overflow: hidden;
-  height: 80px;
-  padding-top: 16px;
 }
 
 .hideSidebar .fixed-header {

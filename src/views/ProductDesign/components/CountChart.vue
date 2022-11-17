@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import { resizeOb } from '../../../utils/tool';
 import resizeChartMixin from '@/utils/resizeChartMixin';
 import elementResizeDetectorMaker from 'element-resize-detector';
+import { debounce } from '../../../utils/tool';
 export default {
   name: 'CountChart',
 
@@ -27,10 +27,8 @@ export default {
     let erd = elementResizeDetectorMaker();
     let that = this;
     erd.listenTo(document.getElementById('CountChart'), () => {
-      // debounce(that.initCharts);
-      that.myChart.resize();
+      debounce(that.myChart.resize(), 200);
     });
-    // resizeOb(document.getElementById('CountChart'));
   },
 
   methods: {
@@ -176,7 +174,7 @@ export default {
         grid: {
           // 让图表占满容器
           top: this.$fontSize(31),
-          left: this.$fontSize(12),
+          left: this.$fontSize(48),
           right: this.$fontSize(80),
           bottom: this.$fontSize(45),
         },

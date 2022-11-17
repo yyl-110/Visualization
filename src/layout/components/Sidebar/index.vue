@@ -1,6 +1,6 @@
 <template>
   <div class="SliderBar" ref="SliderBar">
-    <el-scrollbar wrap-class="scrollbar-wrapper">
+    <!-- <el-scrollbar wrap-class="scrollbar-wrapper"> -->
       <el-menu
         :default-active="activeMenu"
         :collapse="isCollapse"
@@ -25,7 +25,7 @@
           />
         </el-menu-item-group>
       </el-menu>
-    </el-scrollbar>
+    <!-- </el-scrollbar> -->
     <div class="options" @click="$store.dispatch('app/toggleSideBar')">
       <img src="../../../assets/imgs/slideIcon.png" v-if="!isCollapse" alt="" />
       <img src="../../../assets/imgs/slideIcon2.png" v-else alt="" />
@@ -83,8 +83,7 @@ export default {
 <style lang="scss" scoped>
 .titleGroup {
   height: 46px;
-  display: flex;
-  align-items: center;
+  line-height: 46px;
   font-size: 16px;
   font-weight: 400;
   color: #ffffff;

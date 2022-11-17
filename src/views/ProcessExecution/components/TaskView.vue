@@ -5,7 +5,7 @@
         <div class="titleWrap">
           <Title text="PDM中超期流程任务查看(普通文档)" />
         </div>
-        <v-table style="margin-top: 20px" :column="column" :tableData="tableData" />
+        <v-table style="margin-top: 0.25rem" :column="column" :tableData="tableData" />
       </div>
     </dv-border-box-7>
   </div>

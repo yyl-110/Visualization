@@ -88,7 +88,7 @@ html {
 .clearfix:before,
 .clearfix:after {
   content: " ";
-  display: table;
+  display: inline-block;
   height: 0;
   clear: both;
   visibility: hidden;

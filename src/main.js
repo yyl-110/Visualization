@@ -1,9 +1,15 @@
 // 解决低版本兼容性问题
 import 'babel-polyfill';
-import 'es6-promise/auto';
+
 /* ie兼容 */
 if (Number.parseInt === undefined) Number.parseInt = window.parseInt;
 if (Number.parseFloat === undefined) Number.parseFloat = window.parseFloat;
+
+if (!window.Promise) {
+  document.writeln(
+    '<script src="./es6-promise.js"' + '>' + '<' + '/' + 'script>',
+  );
+}
 
 import '@/utils/requestAnimationFrame';
 
@@ -13,8 +19,6 @@ import router from './router';
 import store from './store';
 import {fontSize} from './utils/tool';
 
-import '@/assets/js/flexible';
-// import Vcomp from './components/index';
 import {
   Button,
   Table,
@@ -33,6 +37,7 @@ import {
   Submenu,
   Col,
   FormItem,
+  Input,
 } from 'element-ui';
 import ElScrollbar from 'element-ui/lib/scrollbar';
 Vue.use(Button)
@@ -52,19 +57,15 @@ Vue.use(Button)
   .use(TableColumn)
   .use(FormItem)
   .use(Submenu)
+  .use(Input)
   .use(ElScrollbar);
-import '@/styles/index.scss'; // global css
+import '@/assets/js/flexible';
 
 /* datav */
 import {loading, borderBox7} from '@jiaminghi/data-view';
 
 Vue.use(loading);
 Vue.use(borderBox7);
-
-import '@/assets/styles/base.scss';
-import '@/assets/styles/common.scss';
-import '@/assets/iconfont/iconfont.css';
-import '@/styles/variables.scss';
 
 Vue.prototype.$fontSize = fontSize;
 

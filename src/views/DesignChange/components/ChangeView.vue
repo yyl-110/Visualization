@@ -14,16 +14,23 @@
 <script>
 import Title from '../../../components/Common/Title.vue';
 import resizeChartMixin from '../../../utils/resizeChartMixin';
-import { resizeOb } from '../../../utils/tool';
+import elementResizeDetectorMaker from 'element-resize-detector';
+import { debounce } from '../../../utils/tool';
 export default {
   name: 'VueDataVChangeView',
   mixins: [resizeChartMixin],
   data() {
-    return {};
+    return {
+      myChart: null,
+    };
   },
   mounted() {
     this.initChart();
-    resizeOb(document.getElementById('ChangeView'));
+    let erd = elementResizeDetectorMaker();
+    let that = this;
+    erd.listenTo(document.getElementById('ChangeView'), () => {
+      debounce(that.myChart.resize(), 200);
+    });
   },
   methods: {
     initChart() {
@@ -52,12 +59,14 @@ export default {
         xAxis: {
           name: '项目类型',
           axisLabel: {
-            padding: [8, 0, 0, 0], //文字左右定位
-            textStyle: {
-              color: '#fff', //文字颜色
-              fontSize: '12', //文字大小
-              lineHeight: '22',
-            },
+            padding: [this.$fontSize(8), 0, 0, 0], //文字左右定位
+            color: '#fff', //文字颜色
+            fontSize: this.$fontSize(12), //文字大小
+          },
+          nameTextStyle: {
+            // x轴name的样式调整
+            color: '#fff',
+            fontSize: this.$fontSize(14),
           },
           axisLine: {
             show: true,
@@ -71,17 +80,14 @@ export default {
         yAxis: {
           type: 'value',
           axisLabel: {
-            textStyle: {
-              color: '#fff', //文字颜色
-              fontSize: '12', //文字大小
-              lineHeight: '22',
-            },
+            color: '#fff', //文字颜色
+            fontSize: this.$fontSize(12), //文字大小
           },
           nameTextStyle: {
             // x轴name的样式调整
             color: '#fff',
-            fontSize: 14,
-            padding: [0, 30, 16, 0],
+            fontSize: this.$fontSize(14),
+            padding: [0, this.$fontSize(30), this.$fontSize(16), 0],
           },
           nameGap: 10, // x轴name与横坐标轴线的间距
           name: '数量',
@@ -96,7 +102,7 @@ export default {
         series: [
           {
             type: 'bar',
-            barWidth: '30',
+            barWidth: this.$fontSize(30),
             showBackground: true,
             backgroundStyle: {
               color: 'rgba(180, 180, 180, 0.2)',
@@ -106,23 +112,23 @@ export default {
               show: true,
               color: '#FFFFFF',
               position: 'top',
-              fontSize: '12px',
+              fontSize: this.$fontSize(12),
             },
             itemStyle: {
               normal: {
                 color: '#009AFF',
                 //这里设置柱形图圆角 [左上角，右上角，右下角，左下角]
-                barBorderRadius: [4, 4, 0, 0],
+                barBorderRadius: [this.$fontSize(4), this.$fontSize(4), 0, 0],
               },
             },
           },
         ],
         grid: {
           // 让图表占满容器
-          top: '110px',
-          left: '42px',
-          right: '80px',
-          bottom: '70px',
+          top: this.$fontSize(110),
+          left: this.$fontSize(42),
+          right: this.$fontSize(90),
+          bottom: this.$fontSize(70),
         },
       };
       myChart.setOption(this.option, true);

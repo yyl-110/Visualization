@@ -5,7 +5,8 @@
 </template>
 
 <script>
-import { resizeOb } from '../../utils/tool';
+import elementResizeDetectorMaker from 'element-resize-detector';
+import { debounce } from '../../utils/tool';
 
 export default {
   name: 'Percent',
@@ -30,12 +31,17 @@ export default {
   data() {
     return {
       option: {},
+      myChart: null,
     };
   },
 
   mounted() {
     this.initChart();
-    resizeOb(this.$refs.PercentChart);
+    let erd = elementResizeDetectorMaker();
+    let that = this;
+    erd.listenTo(that.$refs.PercentChart, () => {
+      debounce(that.myChart.resize(), 200);
+    });
   },
 
   methods: {
@@ -139,6 +145,7 @@ export default {
 
       myChart.setOption(this.option, true);
 
+      this.myChart = myChart;
       window.addEventListener('resize', () => {
         myChart.resize();
       });

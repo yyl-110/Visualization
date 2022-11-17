@@ -1,7 +1,7 @@
 <template>
   <div class="designChange">
     <design-change-panel />
-    <div class="panelCartWrap">
+    <div class="panelCartWrap clearfix">
       <div class="dataBar">
         <change-view />
       </div>
@@ -38,16 +38,18 @@ export default {
   display: none !important;
 }
 .panelCartWrap {
-  display: flex;
   width: 100%;
   height: 444px;
   margin-top: 20px;
   .dataBar {
-    flex: 1;
+    height: 444px;
+    float: left;
+    width: calc(100% - 720px);
   }
   .rank {
+    height: 444px;
+    float: right;
     width: 700px;
-    flex-shrink: 0;
     margin-left: 20px;
   }
 }

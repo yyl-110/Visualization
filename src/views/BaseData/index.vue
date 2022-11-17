@@ -5,7 +5,7 @@
     <devices-box style="margin-top: 20px" />
 
     <!-- 器件图标 -->
-    <div class="chart">
+    <div class="chart clearfix">
       <div class="standard">
         <base-chart title="标准件统计图" color="#00DFFB" />
       </div>
@@ -45,15 +45,15 @@ export default {
   margin-top: 20px;
   width: 100%;
   height: 500px;
-  display: flex;
   .standard {
-    flex: 1;
-    flex-shrink: 0;
+    height: 500px;
+    width: calc(50% - 10px);
+    float: left;
   }
   .devices {
-    flex: 1;
-    flex-shrink: 0;
-    margin-left: 20px;
+    height: 500px;
+    float: right;
+    width: calc(50% - 10px);
   }
 }
 </style>

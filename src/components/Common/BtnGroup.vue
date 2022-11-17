@@ -1,17 +1,19 @@
 <template>
-  <div class="btnGroup">
-    <el-button
-      :class="['btn', selectBtn === 1 && 'active']"
-      @click="handleChange(1)"
-    >
-      {{ textGroup[0] }}
-    </el-button>
-    <el-button
-      :class="['btn', selectBtn === 2 && 'active']"
-      @click="handleChange(2)"
-    >
-      {{ textGroup[1] }}
-    </el-button>
+  <div class="wrap">
+    <div class="btnGroup clearfix">
+      <el-button
+        :class="['btn', 'btn1', selectBtn === 1 && 'active']"
+        @click="handleChange(1)"
+      >
+        {{ textGroup[0] }}
+      </el-button>
+      <el-button
+        :class="['btn', 'btn2', selectBtn === 2 && 'active']"
+        @click="handleChange(2)"
+      >
+        {{ textGroup[1] }}
+      </el-button>
+    </div>
   </div>
 </template>
 
@@ -44,13 +46,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.wrap {
+  width: 150px;
+}
 .btnGroup {
   background-color: rgba(255, 255, 255, 0.1);
-  width: max-content;
   border-radius: 4px;
   overflow: hidden;
+  width: 150px;
+  .btn1 {
+    float: left;
+  }
+  .btn2 {
+    float: right;
+  }
   .btn {
-    width: 72px;
+    width: 50%;
     margin: 0;
     padding: 0px;
     height: 34px;

@@ -2,11 +2,11 @@
   <div :class="['dataItem', isSingle && 'singleItem']">
     <Decoration />
     <div class="content">
-      <div class="title">
+      <div class="title clearfix">
         <img src="../../assets/imgs/icon_file@2x.png" class="icon" alt="" />
         <span>变更单流程</span>
       </div>
-      <div class="data" v-if="!isSingle">
+      <div class="data clearfix" v-if="!isSingle">
         <div class="addWrap item">
           <countTo
             class="countTo"
@@ -15,7 +15,7 @@
             :duration="6000"
             separator=""
           ></countTo>
-          <span class="name">当前新增</span>
+          <div class="name">当前新增</div>
         </div>
         <div class="preWrap item">
           <countTo
@@ -26,7 +26,7 @@
             separator=""
             suffix="%"
           ></countTo>
-          <span class="name">流程完成率</span>
+          <div class="name">流程完成率</div>
         </div>
       </div>
       <div class="singleData" v-else>
@@ -41,9 +41,9 @@
           ></countTo>
         </div>
       </div>
-      <div class="bottom">
+      <div class="bottom clearfix">
         <div class="tb box">
-          同比&nbsp;
+          同比
           <countTo
             class="countTo"
             :startVal="0"
@@ -56,7 +56,7 @@
           <img src="../../assets/imgs/icon_rise@2x.png" class="up" alt="" />
         </div>
         <div class="hb box">
-          环比&nbsp;
+          环比
           <countTo
             class="countTo"
             :startVal="0"
@@ -70,7 +70,7 @@
         </div>
       </div>
     </div>
-    <Decoration />
+    <Decoration class="bottomDec" />
   </div>
 </template>
 
@@ -103,9 +103,12 @@ export default {
   width: 300px;
   height: 200px;
   background: rgba(255, 255, 255, 0.04);
-  display: flex;
-  flex-direction: column;
-
+  position: relative;
+  .bottomDec {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
   .addWrap {
     .countTo {
       color: #23cefd;
@@ -131,41 +134,40 @@ export default {
     }
   }
   .content {
-    flex: 1;
     padding: 0 20px;
     .singleData {
       padding: 11px 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.3);
       .singleWrap {
-        display: flex;
-        align-items: center;
         .countTo {
           color: #23cefd;
           font-size: 28px;
           font-weight: 600;
           line-height: 40px;
-          height: 40px;
+          // height: 40px;
         }
         .name {
           font-size: 16px;
           font-weight: 400;
           color: #ffffff;
           margin-right: 14px;
+          line-height: 40px;
         }
       }
     }
     .data {
-      display: flex;
-      justify-content: space-between;
       border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-      align-items: center;
       padding-top: 12px;
       padding-bottom: 12px;
+      overflow: hidden;
+      .addWrap {
+        float: left;
+      }
+      .preWrap {
+        float: right;
+      }
       .item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        text-align: center;
         .name {
           margin-top: 2px;
           font-size: 16px;
@@ -175,8 +177,6 @@ export default {
       }
     }
     .title {
-      display: flex;
-      align-content: center;
       border-bottom: 1px solid rgba(255, 255, 255, 0.3);
       padding-bottom: 11px;
       padding-top: 20px;
@@ -184,28 +184,31 @@ export default {
         font-size: 16px;
         font-weight: 400;
         color: #ffffff;
-        line-height: 22px;
+        line-height: 24px;
         margin-left: 4px;
+        float: left;
       }
       img {
         width: 24px;
         height: 24px;
-        flex-shrink: 0;
+        float: left;
       }
     }
 
     .bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       padding-top: 14px;
+      overflow: hidden;
       .countTo {
         font-size: 16px;
         color: #fff;
       }
+      .tb {
+        float: left;
+      }
+      .hb {
+        float: right;
+      }
       .box {
-        display: flex;
-        align-items: center;
         font-size: 16px;
         font-weight: 400;
         color: #ffffff;
@@ -214,7 +217,6 @@ export default {
           width: 12px;
           height: 12px;
           margin-left: 7px;
-          flex-shrink: 0;
         }
       }
     }

@@ -15,7 +15,7 @@
         :key="item.value"
       ></el-table-column>
     </el-table>
-    <div class="pageWrap">
+    <div class="pageWrap clearfix">
       <el-pagination
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
@@ -124,8 +124,6 @@ export default {
 <style lang="scss" scoped>
 .pageWrap {
   width: 100%;
-  display: flex;
-  justify-content: flex-end;
   margin-top: 50px;
   .pageTotal {
     color: #23cefd;
@@ -133,6 +131,7 @@ export default {
   }
 }
 ::v-deep.el-pagination {
+  float: right;
   .el-pagination__total {
     font-size: 12px;
     font-weight: 500;
@@ -195,10 +194,12 @@ export default {
   background: transparent !important;
   thead {
     tr {
+      background: rgb(43, 99, 149);
+      filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='rgb(17, 45, 104)',endColorStr='rgb(43, 99, 149)',gradientType='0');
       background: linear-gradient(
         360deg,
-        rgba(0, 223, 251, 0.08) 0%,
-        rgba(0, 223, 251, 0.5) 100%
+        rgb(17, 45, 104) 0%,
+        rgb(43, 99, 149) 100%
       );
       border-radius: 4px 4px 0px 0px;
       border: 1px solid rgba(0, 223, 251, 0.5);

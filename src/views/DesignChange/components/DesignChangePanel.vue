@@ -2,9 +2,17 @@
   <div class="changePanel">
     <dv-border-box-7 ref="borderBox">
       <div class="panelList">
-        <panel-item class="panItme" />
-        <panel-item class="panItme" />
-        <panel-item class="panItme" :type="0" />
+        <el-row :gutter="60">
+          <el-col :span="8">
+            <panel-item class="panItme" />
+          </el-col>
+          <el-col :span="8">
+            <panel-item class="panItme" />
+          </el-col>
+          <el-col :span="8">
+            <panel-item class="panItme" :type="0" />
+          </el-col>
+        </el-row>
       </div>
     </dv-border-box-7>
   </div>
@@ -38,10 +46,8 @@ export default {
   .panelList {
     width: 100%;
     height: 100%;
-    justify-content: space-between;
-    display: flex;
-    align-items: center;
     padding: 0 26px;
+    padding-top: 30px;
     overflow-y: scroll;
     &::-webkit-scrollbar {
       display: none;

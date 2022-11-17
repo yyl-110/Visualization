@@ -3,7 +3,7 @@
     <data-box />
 
     <!-- 数据 -->
-    <div class="preData">
+    <div class="preData clearfix">
       <div class="leftChart">
         <completion-rate />
       </div>
@@ -43,18 +43,20 @@ export default {
   width: 100%;
   padding-bottom: 30px;
   .preData {
-    display: flex;
     width: 100%;
     height: 438px;
     margin-top: 20px;
     overflow-y: hidden;
     .leftChart {
-      width: 100%;
+      float: left;
+      width: calc(100% - 720px);
+      height: 100%;
     }
     .rank {
+      height: 100%;
       width: 700px;
       margin-left: 20px;
-      flex-shrink: 0;
+      float: right;
     }
   }
 }

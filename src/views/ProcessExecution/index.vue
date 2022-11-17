@@ -7,7 +7,7 @@
       />
     </div>
     <process-data-box />
-    <div class="panelCartWrap" v-if="type === 1">
+    <div class="panelCartWrap clearfix" v-if="type === 1">
       <div class="dataBar">
         <common-chart />
       </div>
@@ -66,17 +66,18 @@ export default {
     margin-bottom: 22px;
   }
   .panelCartWrap {
-    display: flex;
     width: 100%;
     height: 400px;
-    margin-top: 20px;
     overflow-y: hidden;
+    margin-top: 20px;
     .dataBar {
-      flex: 1;
+      height: 100%;
+      width: calc(100% - 720px);
+      float: left;
     }
     .rank {
+      float: right;
       width: 700px;
-      flex-shrink: 0;
       height: 100%;
       margin-left: 20px;
     }

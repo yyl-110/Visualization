@@ -1,5 +1,5 @@
 <template>
-  <div class="selectSearch">
+  <div class="selectSearch clearfix">
     <div class="year selectWrap">
       <el-select v-model="year" placeholder="请选择" size="mini">
         <el-option
@@ -156,12 +156,12 @@ export default {
 .selectSearch {
   height: 100%;
   color: #fff;
-  display: flex;
-  align-items: flex-end;
+  margin-top: 28px;
   .selectWrap {
     width: 100px;
     border-radius: 4px;
     margin-left: 20px;
+    float: left;
     /deep/ .el-select {
       input {
         background: #050a4e;

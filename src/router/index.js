@@ -21,7 +21,7 @@ const routes = [
     redirect: '/product-design',
     children: [
       {
-        path: 'product-design',
+        path: '/product-design',
         name: 'ProductDesign',
         component: () => import('@/views/ProductDesign'),
         meta: {title: '产品设计数据统计', icon: 'icon_product.png', mainTitle: DATA_STATISTICE},
@@ -30,11 +30,13 @@ const routes = [
           {
             path: 'overdue',
             name: 'Overdue',
+            hidden: true,
             component: () => import('@/views/ProductDesign/Overdue'),
             meta: {title: '超期流程任务', mainTitle: DATA_STATISTICE},
           },
           {
             path: 'change',
+            hidden: true,
             name: 'ProductChange',
             component: () => import('@/views/ProductDesign/ProductChange'),
             meta: {title: 'PDM产品变更单', mainTitle: DATA_STATISTICE},

@@ -13,7 +13,7 @@
 
       <!-- 表格 -->
       <data-table style="margin-top: 0.25rem" />
-      <div class="cell">
+      <div class="cell clearfix">
         <div class="future">
           <future-chart />
         </div>
@@ -28,11 +28,11 @@
       <product-chart style="margin-top: 0.25rem" />
       <!-- 表格 -->
       <data-table style="margin-top: 0.25rem" />
-      <div class="productCell">
-        <div class="rank">
+      <div class="productCell clearfix">
+        <div class="rank1">
           <Rank />
         </div>
-        <div class="rank">
+        <div class="rank2">
           <Rank />
         </div>
       </div>
@@ -48,7 +48,6 @@ import FutureChart from './components/FutureChart.vue';
 import Rank from '@/components/Common/Rank';
 import ProductChart from './components/ProductChart.vue';
 import BtnGroup from '../../components/Common/BtnGroup.vue';
-import { test } from '../../api';
 export default {
   name: 'ProductDesign',
   components: {
@@ -66,10 +65,7 @@ export default {
     };
   },
 
-  async mounted() {
-    const res = await test({});
-    console.log('res:', res);
-  },
+  mounted() {},
 
   methods: {
     handleChange(type) {
@@ -91,29 +87,33 @@ export default {
   .productCell {
     width: 100%;
     height: 360px;
-    display: flex;
     margin-top: 20px;
-    .rank {
-      flex: 1;
-      flex-shrink: 0;
-      &:last-child {
-        margin-left: 22px;
-      }
+    overflow: hidden;
+    .rank1 {
+      float: left;
+      width: calc(50% - 10px);
+      height: 360px;
+    }
+    .rank2 {
+      width: calc(50% - 10px);
+      float: right;
+      height: 360px;
     }
   }
   .cell {
     width: 100%;
     height: 360px;
-    display: flex;
     margin-top: 20px;
     .future {
       height: 100%;
-      flex: 1;
+      width: calc(100% - 722px);
+      float: left;
     }
     .rank {
       height: 100%;
       width: 700px;
       margin-left: 22px;
+      float: right;
     }
   }
 }

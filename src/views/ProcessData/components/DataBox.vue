@@ -4,10 +4,18 @@
       <div class="dataContainer">
         <el-scrollbar wrap-class="scrollbar-wrapper">
           <div class="dataWrap">
-            <data-item v-for="i in 5" :key="i" class="item" />
-          </div>
-          <div class="dataWrap">
-            <data-item v-for="i in 4" :key="i" class="item" />
+            <el-row>
+              <el-col
+                :lg="{ span: '4-8' }"
+                :md="{ span: '4-8' }"
+                :sm="{ span: '4-8' }"
+                :xs="{ span: '4-8' }"
+                v-for="i in 9"
+                :key="i"
+              >
+                <data-item class="item" />
+              </el-col>
+            </el-row>
           </div>
         </el-scrollbar>
       </div>
@@ -53,18 +61,78 @@ export default {
       height: 100%;
     }
     .dataWrap {
-      display: flex;
-      width: 100%;
-      align-content: flex-start;
-      flex-wrap: no-wrap;
-      flex: 1;
-    }
-    .item {
-      flex-shrink: 0;
-      &:not(:last-child) {
-        margin-right: 70px;
+      .item {
+        margin-top: 30px;
       }
-      margin-top: 30px;
+      width: 100%;
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    .el-col-sm-4-8 {
+      width: 20%;
+    }
+    .el-col-sm-offset-4-8 {
+      margin-left: 20%;
+    }
+    .el-col-sm-pull-4-8 {
+      position: relative;
+      right: 20%;
+    }
+    .el-col-sm-push-4-8 {
+      position: relative;
+      left: 20%;
+    }
+  }
+
+  @media only screen and (min-width: 992px) {
+    .el-col-md-4-8 {
+      width: 20%;
+    }
+    .el-col-md-offset-4-8 {
+      margin-left: 20%;
+    }
+    .el-col-md-pull-4-8 {
+      position: relative;
+      right: 20%;
+    }
+    .el-col-md-push-4-8 {
+      position: relative;
+      left: 20%;
+    }
+  }
+
+  @media only screen and (min-width: 1200px) {
+    .el-col-lg-4-8 {
+      width: 20%;
+    }
+    .el-col-lg-offset-4-8 {
+      margin-left: 20%;
+    }
+    .el-col-lg-pull-4-8 {
+      position: relative;
+      right: 20%;
+    }
+    .el-col-lg-push-4-8 {
+      position: relative;
+      left: 20%;
+    }
+  }
+
+  @media only screen and (min-width: 1920px) {
+    .el-col-xl-4-8 {
+      width: 20%;
+    }
+    .el-col-xl-offset-4-8 {
+      margin-left: 20%;
+    }
+    .el-col-xl-pull-4-8 {
+      position: relative;
+      right: 20%;
+    }
+    .el-col-xl-push-4-8 {
+      position: relative;
+      left: 20%;
     }
   }
 }

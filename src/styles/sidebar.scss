@@ -19,13 +19,28 @@
       margin-top: -96px;
       z-index: 999;
       img {
-        width: 100%;
+        width: 14px;
+        height: 192px;
       }
     }
   }
 
   .router-link-active {
     background: $menuActiveBg;
+  }
+
+  .fixedHeader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    transition: width 0.28s;
+    border: none;
+    overflow: hidden;
+    height: 80px;
+    padding-top: 16px;
+    background-color: #050A4E;
   }
 
   .sidebar-container {
@@ -92,14 +107,6 @@
         padding-left: 32px!important;
         height: 46px;
         line-height: 46px;
-      }
-    }
-
-    // menu hover
-    .submenu-title-noDropdown,
-    .el-submenu__title {
-      &:hover {
-        background: $menuHover !important;
       }
     }
 
@@ -255,10 +262,11 @@
 
   .nest-menu .el-submenu>.el-submenu__title,
   .el-menu-item {
-    &:hover {
-      // you can use $subMenuHover
-      background-color:red !important;
-    }
+    font-size: 14px!important;
+    // &:hover {
+    //   // you can use $subMenuHover
+    //   background-color:red !important;
+    // }
   }
 
   // the scroll bar appears when the subMenu is too long
@@ -280,3 +288,38 @@
     }
   }
 }
+
+// .noIE {
+  .router-link-active {
+    background: #23CEFD;
+    background: $menuActiveBg;
+  }
+   // menu hover
+   .sidebar-container {
+     .submenu-title-noDropdown,
+     .el-submenu__title {
+       &:hover {
+        background: #23CEFD;
+         background: $menuHover !important;
+       }
+     }
+   }
+// }
+// .IE {
+//   .router-link-active {
+//     background: $menuActiveBg;
+//     -webkit-filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#00D2FF',endColorStr='#23CEFD',gradientType='1');
+//         filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#00D2FF',endColorStr='#23CEFD',gradientType='1');
+//   }
+//    // menu hover
+//    .sidebar-container {
+//      .submenu-title-noDropdown,
+//      .el-submenu__title {
+//        &:hover {
+//         background: $menuHover !important;
+//         -webkit-filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#00D2FF',endColorStr='#23CEFD',gradientType='1');
+//         filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#00D2FF',endColorStr='#23CEFD',gradientType='1');
+//        }
+//      }
+//    }
+// }

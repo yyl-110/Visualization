@@ -8,25 +8,18 @@
 
 <script>
 import { screenSize } from '@/assets/js/utils';
+import { IEVersion } from './utils/tool';
 export default {
   name: 'App',
   data() {
     return {};
   },
   created() {
-    const userAgent = navigator.userAgent; // 获取浏览器信息
-    const IEReg = new RegExp('MSIE \\d+\\.\\d+;'); // 正则校验IE标识符
-    const IEMsg = IEReg.exec(userAgent); // 获取字符串
-    const IEVersionNum = new RegExp('\\d+\\.\\d'); // 正则获取版本
-
     // 是IE9，引入js文件
-    if (IEMsg && parseFloat(IEVersionNum.exec(IEMsg)) == 9) {
-      import('@/utils/flex.native.min.js');
-      console.log('IE9引入');
-      alert(1)
+    if (IEVersion() !== -1) {
+      // document.body.classList.add('IE');
     } else {
-      console.log('非IE9不引入');
-      import('@/utils/flex.native.min.js');
+      // document.body.classList.add('noIE');
     }
   },
   mounted() {
@@ -36,6 +29,13 @@ export default {
 </script>
 
 <style lang="scss">
+@import './styles/variables.scss';
+@import './styles/mixin.scss';
+@import './styles/index.scss';
+@import './styles/base.scss';
+@import './styles/transition.scss';
+@import './styles/element-ui.scss';
+@import './styles/sidebar.scss';
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -56,7 +56,7 @@ export default {
     // width: 1920px;
     min-height: auto;
     // height: 1080px;
-    overflow: auto;
+    overflow: hidden;
     transform-origin: 0 0 0;
   }
 }

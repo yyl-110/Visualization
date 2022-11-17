@@ -5,7 +5,7 @@
         <div class="chartTitle">
           <Title :text="'普通文档流程超期任务量'" />
         </div>
-        <universal-chart style="flex: 1" />
+        <universal-chart />
       </div>
     </dv-border-box-7>
   </div>
@@ -44,8 +44,6 @@ export default {
     width: 100%;
     height: 100%;
     padding-top: 15px;
-    display: flex;
-    flex-direction: column;
     .chartsdom {
       width: 100%;
       height: 100%;

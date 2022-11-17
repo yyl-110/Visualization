@@ -6,7 +6,7 @@
     零部件数量
     <countTo
       :startVal="0"
-      :endVal="1524"
+      :endVal="152"
       :duration="6000"
       separator=""
       class="countTo"
@@ -16,7 +16,7 @@
     模型数量
     <countTo
       :startVal="0"
-      :endVal="1524"
+      :endVal="152"
       :duration="6000"
       separator=""
       class="countTo"
@@ -35,7 +35,7 @@
     图纸数量
     <countTo
       :startVal="0"
-      :endVal="1524"
+      :endVal="154"
       :duration="6000"
       separator=""
       class="countTo"
@@ -138,9 +138,7 @@ export default {
   font-size: 24px;
   font-weight: 400;
   color: #ffffff;
-  line-height: 33px;
-  display: flex;
-  align-items: center;
+  line-height: 60px;
   padding-left: 22px;
   .countTo {
     color: #f7ba1e;
@@ -150,7 +148,7 @@ export default {
   img {
     width: 32px;
     height: 32px;
-    flex-shrink: 0;
+    vertical-align: middle;
     &.productIcon {
       margin: 0 4px;
     }

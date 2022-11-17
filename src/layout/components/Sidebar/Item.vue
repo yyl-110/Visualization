@@ -20,12 +20,16 @@ export default {
         vnodes.push(<i class={[icon, 'sub-el-icon']} />);
       } else {
         const imgSrc = require('../../../assets/imgs/' + icon);
-        vnodes.push(<img class="sliderImg" src={imgSrc} />);
+        vnodes.push(<img class='sliderImg' src={imgSrc} />);
       }
     }
 
     if (title) {
-      vnodes.push(<span slot='title'>{title}</span>);
+      vnodes.push(
+        <span slot='title' class='sliderTitle'>
+          {title}
+        </span>,
+      );
     }
     return vnodes;
   },
@@ -37,5 +41,8 @@ export default {
   color: currentColor;
   width: 1em;
   height: 1em;
+}
+.sliderTitle {
+  font-size: 14px;
 }
 </style>

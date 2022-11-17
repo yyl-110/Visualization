@@ -3,9 +3,9 @@
     <dv-border-box-7 ref="borderBox">
       <div class="chartWrap">
         <div class="stader">
-          <div class="topInfo">
+          <div class="topInfo clearfix">
             <span>标准件</span>
-            <span>1058</span>
+            <span style="float: right">1058</span>
           </div>
           <div class="percentContainer">
             <Percent
@@ -17,9 +17,9 @@
           </div>
         </div>
         <div class="devices">
-          <div class="topInfo">
+          <div class="topInfo clearfix">
             <span>元器件</span>
-            <span>1000</span>
+            <span style="float: right">1000</span>
           </div>
           <div class="percentContainer">
             <Percent
@@ -32,10 +32,20 @@
         </div>
         <div class="scale">
           <div class="line">
-            <div class="point" v-for="i in 11" :key="i">
-              <span>{{ i * 100 }}</span>
-            </div>
+            <el-row>
+              <el-col span="2">
+                <div class="point">
+                  <span>0</span>
+                </div>
+              </el-col>
+              <el-col span="2" v-for="i in 11" :key="i">
+                <div class="point">
+                  <span>{{ i * 100 }}</span>
+                </div>
+              </el-col>
+            </el-row>
           </div>
+          <span class="label">数量</span>
         </div>
       </div>
     </dv-border-box-7>
@@ -71,17 +81,25 @@ export default {
     width: 100%;
     height: 100%;
     padding-top: 43px;
+    padding-right: 60px;
+
     .scale {
       width: 100%;
-      display: flex;
       margin-top: 48px;
+      position: relative;
+      .label {
+        position: absolute;
+        right: -45px;
+        font-size: 12px;
+        font-weight: 500;
+        color: #ffffff;
+        line-height: 22px;
+      }
       .line {
         width: 100%;
         height: 2px;
         background-color: rgba(255, 255, 255, 0.5);
         position: relative;
-        display: flex;
-        justify-content: space-around;
         .point {
           width: 1px;
           height: 4px;
@@ -106,9 +124,6 @@ export default {
     }
     .topInfo {
       width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       font-size: 20px;
       font-weight: bold;
       color: #ffffff;

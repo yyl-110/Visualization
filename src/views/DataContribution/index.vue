@@ -3,7 +3,7 @@
     <div class="btnWrap"><btn-group @handleChange="handleChange" /></div>
     <data-view />
     <el-scrollbar style="width: 100%" class="sidebar-wrapper">
-      <div class="panelCartWrap">
+      <div class="panelCartWrap clearfix">
         <div class="dataBar">
           <contribution-chart :key="type" />
         </div>
@@ -54,22 +54,23 @@ export default {
 .dataContribution {
   width: 100%;
   .panelCartWrap {
-    display: flex;
     width: 100%;
     height: 444px;
     margin-top: 20px;
     overflow-y: hidden;
     .dataBar {
-      flex: 1;
+      float: left;
+      height: 100%;
+      width: calc(100% - 720px);
     }
     .rank {
+      height: 100%;
+      float: right;
       width: 700px;
-      flex-shrink: 0;
       margin-left: 20px;
     }
   }
   .btnWrap {
-    width: max-content;
     margin-bottom: 20px;
   }
 }

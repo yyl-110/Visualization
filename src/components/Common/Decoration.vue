@@ -1,8 +1,8 @@
 <template>
   <div class="decoration">
+    <div class="is"></div>
     <div class="it"></div>
     <div class="line"></div>
-    <div class="it"></div>
   </div>
 </template>
 
@@ -23,20 +23,27 @@ export default {
 <style lang="scss" scoped>
 .decoration {
   width: 100%;
-  display: flex;
-  align-items: center;
+  line-height: 3px;
+  .is {
+    width: 24px;
+    height: 3px;
+    background: #153389;
+    border-radius: 1px;
+    float: left;
+  }
   .line {
     height: 1px;
     background: #153389;
     border-radius: 1px;
-    flex: 1;
+    padding: 0 24px;
+    margin-top: 1px;
   }
   .it {
     width: 24px;
     height: 3px;
     background: #153389;
     border-radius: 1px;
-    flex-shrink: 0;
+    float: right;
   }
 }
 </style>

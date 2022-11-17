@@ -48,9 +48,7 @@ export default {
   font-size: 24px;
   font-weight: 400;
   color: #ffffff;
-  line-height: 33px;
-  display: flex;
-  align-items: center;
+  line-height: 60px;
   padding-left: 22px;
   .countTo {
     color: #f7ba1e;

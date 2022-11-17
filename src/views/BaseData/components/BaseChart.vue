@@ -5,7 +5,7 @@
         <Title :text="title" />
       </div>
       <div class="chartWrap">
-        <div class="chartsdom" ref="BaseChart"></div>
+        <div class="chartsdom" ref="BaseChart" id="BaseChart"></div>
       </div>
     </dv-border-box-7>
   </div>
@@ -14,6 +14,8 @@
 <script>
 import Title from '../../../components/Common/Title.vue';
 import resizeChartMixin from '../../../utils/resizeChartMixin';
+import elementResizeDetectorMaker from 'element-resize-detector';
+import { debounce } from '../../../utils/tool';
 export default {
   name: 'StandardChart',
   props: {
@@ -29,11 +31,17 @@ export default {
   data() {
     return {
       option: {},
+      myChart: null,
     };
   },
   mixins: [resizeChartMixin],
   mounted() {
     this.initChart();
+    let erd = elementResizeDetectorMaker();
+    let that = this;
+    erd.listenTo(document.getElementById('BaseChart'), () => {
+      debounce(that.myChart.resize(), 300);
+    });
   },
   methods: {
     initChart() {
@@ -50,12 +58,12 @@ export default {
           top: '0',
           right: 0,
           y: '0',
-          itemWidth: 10,
-          itemHeight: 10,
+          itemWidth: this.$fontSize(10),
+          itemHeight: this.$fontSize(10),
           icon: 'circle',
           data: ['集团项目'],
           textStyle: {
-            fontSize: 14, //字体大小
+            fontSize: this.$fontSize(14), //字体大小
             color: 'rgba(255,255,255,0.5)', //字体颜色
           },
         },
@@ -77,13 +85,15 @@ export default {
           name: '分类',
           axisLabel: {
             padding: [0, 0, 0, 0],
-            margin: 16,
+            margin: this.$fontSize(16),
             rotate: 45, // 调整数值改变倾斜的幅度（范围-90到90）
-            textStyle: {
-              color: '#fff',
-              fontSize: '12',
-              lineHeight: '22',
-            },
+            fontSize: this.$fontSize(12),
+            color: '#fff',
+          },
+          nameTextStyle: {
+            // x轴name的样式调整
+            color: '#fff',
+            fontSize: this.$fontSize(14),
           },
           axisLine: {
             show: true,
@@ -99,11 +109,14 @@ export default {
           nameTextStyle: {
             // x轴name的样式调整
             color: '#fff',
-            fontSize: 14,
-            padding: [0, 30, 16, 0],
+            fontSize: this.$fontSize(14),
+            padding: [0, this.$fontSize(30), this.$fontSize(16), 0],
           },
           nameGap: 10,
           name: '数量',
+          axisLabel: {
+            color: '#fff',
+          },
           splitLine: {
             lineStyle: {
               type: 'dashed',
@@ -115,7 +128,7 @@ export default {
         series: [
           {
             type: 'bar',
-            barWidth: '30',
+            barWidth: this.$fontSize(30),
             showBackground: true,
             backgroundStyle: {
               color: 'rgba(180, 180, 180, 0.2)',
@@ -125,26 +138,28 @@ export default {
               show: true,
               color: '#FFFFFF',
               position: 'top',
-              fontSize: '12px',
+              fontSize: this.$fontSize(12),
             },
             itemStyle: {
               normal: {
                 color: this.color,
                 //这里设置柱形图圆角 [左上角，右上角，右下角，左下角]
-                barBorderRadius: [4, 4, 0, 0],
+                barBorderRadius: [this.$fontSize(4), this.$fontSize(4), 0, 0],
               },
             },
           },
         ],
         grid: {
           // 让图表占满容器
-          top: '80px',
-          left: '42px',
-          right: '70px',
-          bottom: '150px',
+          top: this.$fontSize(80),
+          left: this.$fontSize(42),
+          right: this.$fontSize(70),
+          bottom: this.$fontSize(150),
         },
       };
       myChart.setOption(this.option, true);
+
+      this.myChart = myChart;
       window.addEventListener('resize', () => {
         myChart.resize();
       });

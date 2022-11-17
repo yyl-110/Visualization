@@ -16,6 +16,9 @@ export default {
       return this.$route.path;
     },
   },
+  created(){
+    console.log(this.$route)
+  }
 };
 </script>
 

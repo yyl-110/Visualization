@@ -7,9 +7,9 @@
             <el-row>
               <el-col
                 :lg="{ span: '4-8' }"
-                :md="8"
-                :sm="12"
-                :xs="24"
+                :md="{ span: '4-8' }"
+                :sm="{ span: '4-8' }"
+                :xs="{ span: '4-8' }"
                 v-for="i in 9"
                 :key="i"
               >
@@ -53,8 +53,6 @@ export default {
   .dataContainer {
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
     padding: 0 0;
     overflow-y: hidden;
     /deep/ .el-scrollbar {

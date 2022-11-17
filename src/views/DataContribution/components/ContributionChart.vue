@@ -5,7 +5,7 @@
         <div class="chartTitle">
           <Title :text="'项目数据贡献量'" />
         </div>
-        <universal-chart style="flex: 1" />
+        <universal-chart style="width:'100%" />
       </div>
     </dv-border-box-7>
   </div>

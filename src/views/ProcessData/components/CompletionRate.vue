@@ -14,6 +14,8 @@
 <script>
 import Title from '@/components/Common/Title';
 import resizeChartMixin from '../../../utils/resizeChartMixin';
+import elementResizeDetectorMaker from 'element-resize-detector';
+import { debounce } from '../../../utils/tool';
 export default {
   name: 'CompletionRate',
   components: {
@@ -23,11 +25,17 @@ export default {
   data() {
     return {
       option: {},
+      myChart: null,
     };
   },
 
   mounted() {
     this.initChart();
+    let erd = elementResizeDetectorMaker();
+    let that = this;
+    erd.listenTo(document.getElementById('RateChart'), () => {
+      debounce(that.myChart.resize(), 200);
+    });
   },
 
   methods: {
@@ -45,25 +53,24 @@ export default {
           },
         },
         legend: {
+          itemWidth: this.$fontSize(20),
+          itemHeight: this.$fontSize(10),
           top: 0,
-          right: 10,
+          right: this.$fontSize(10),
           y: '0',
           data: ['流程完成率', '流程数量'],
           textStyle: {
             color: '#fff',
-            fontSize: 14,
+            fontSize: this.$fontSize(14),
           },
         },
         xAxis: [
           {
             type: 'category',
             axisLabel: {
-              padding: [8, 0, 0, 0], //文字左右定位
-              textStyle: {
-                color: '#fff', //文字颜色
-                fontSize: '12', //文字大小
-                lineHeight: '22',
-              },
+              padding: [this.$fontSize(8), 0, 0, 0], //文字左右定位
+              color: '#fff', //文字颜色
+              fontSize: this.$fontSize(12), //文字大小
             },
             data: [
               '集团项目',
@@ -84,17 +91,15 @@ export default {
             type: 'value',
             name: '数量',
             nameTextStyle: {
-              padding: [0, 36, 0, 0],
+              padding: [0, this.$fontSize(36), this.$fontSize(10), 0],
               color: '#fff',
+              fontSize: this.$fontSize(14),
             },
             interval: 50,
             axisLabel: {
               formatter: '{value}',
-              textStyle: {
-                color: '#fff', //文字颜色
-                fontSize: '12', //文字大小
-                lineHeight: '22',
-              },
+              color: '#fff', //文字颜色
+              fontSize: this.$fontSize(12), //文字大小
             },
             splitLine: {
               lineStyle: {
@@ -109,6 +114,7 @@ export default {
             name: '流程完成率%',
             nameTextStyle: {
               color: '#fff',
+              fontSize: this.$fontSize(14),
             },
             splitLine: {
               show: false,
@@ -116,11 +122,8 @@ export default {
             interval: 10,
             axisLabel: {
               formatter: '{value}',
-              textStyle: {
-                color: '#fff', //文字颜色
-                fontSize: '12', //文字大小
-                lineHeight: '22',
-              },
+              color: '#fff', //文字颜色
+              fontSize: this.$fontSize(12), //文字大小
             },
           },
         ],
@@ -128,7 +131,7 @@ export default {
           {
             name: '流程数量',
             type: 'bar',
-            barWidth: '30',
+            barWidth: this.$fontSize(30),
             showBackground: true,
             backgroundStyle: {
               color: 'rgba(180, 180, 180, 0.2)',
@@ -137,7 +140,7 @@ export default {
               normal: {
                 color: '#009AFF',
                 //这里设置柱形图圆角 [左上角，右上角，右下角，左下角]
-                barBorderRadius: [4, 4, 0, 0],
+                barBorderRadius: [this.$fontSize(4), this.$fontSize(4), 0, 0],
               },
             },
             tooltip: {
@@ -151,7 +154,7 @@ export default {
             name: '流程完成率',
             type: 'line',
             yAxisIndex: 1,
-            symbolSize: 14,
+            symbolSize: this.$fontSize(14),
             itemStyle: {
               normal: {
                 color: '#23CEFD',
@@ -162,7 +165,7 @@ export default {
               show: true,
               color: '#FFFFFF',
               position: 'bottom',
-              fontSize: '12px',
+              fontSize: this.$fontSize(12),
             },
             tooltip: {
               valueFormatter: function (value) {
@@ -174,15 +177,16 @@ export default {
         ],
         grid: {
           // 让图表占满容器
-          top: '66px',
-          left: '42px',
-          right: '70px',
-          bottom: '80px',
+          top: this.$fontSize(101),
+          left: this.$fontSize(42),
+          right: this.$fontSize(70),
+          bottom: this.$fontSize(80),
         },
       };
 
       myChart.setOption(this.option, true);
 
+      this.myChart = myChart;
       window.addEventListener('resize', () => {
         myChart.resize();
       });
