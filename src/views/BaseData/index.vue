@@ -32,7 +32,7 @@ import DevicesBox from './components/DevicesBox.vue';
 import BaseChart from './components/BaseChart.vue';
 import { mapGetters } from 'vuex';
 import dataJson from './data.json';
-import { getBaseData } from '../../api';
+// import { getBaseData } from '../../api';
 export default {
   components: { DataDisplay, DevicesBox, BaseChart },
   name: 'VueDataVIndex',

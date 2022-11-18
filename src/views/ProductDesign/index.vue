@@ -63,7 +63,7 @@ import { mapGetters } from 'vuex';
 import jsonData from './data.json';
 import statistics from './statistics.json';
 import tableJson from './table.json';
-import { getProductDesign } from '../../api';
+// import { getProductDesign } from '../../api';
 export default {
   name: 'ProductDesign',
   components: {

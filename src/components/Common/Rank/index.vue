@@ -41,7 +41,7 @@
                       :text-inside="false"
                       :show-text="false"
                       :stroke-width="10"
-                      :percentage="parseFloat(item.partReleasedRate.toString())"
+                      :percentage="parseFloat(item.partReleasedRate)"
                       color="#23CEFD"
                     ></el-progress>
                   </div>
@@ -109,7 +109,7 @@ export default {
       }
       rankNumArr.sort();
       _rankData = rankNumArr.map((item) => {
-        return { ...rankArr[item.toString()] };
+        return { ...rankArr[item] };
       });
       this.newRankData = [..._rankData];
     },
