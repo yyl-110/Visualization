@@ -1,7 +1,12 @@
 <template>
   <div class="selectSearch clearfix">
     <div class="year selectWrap">
-      <el-select v-model="year" placeholder="请选择" size="mini">
+      <el-select
+        v-model="year"
+        placeholder="请选择"
+        size="mini"
+        @change="handleChangeYear"
+      >
         <el-option
           v-for="item in yearOptions"
           :key="item.value"
@@ -16,6 +21,7 @@
         placeholder="请选择"
         size="mini"
         :disabled="selectType === 4"
+        @click="handleChangeTime"
       >
         <el-option
           v-for="item in monthOptions[selectType]"
@@ -128,6 +134,8 @@ export default {
     };
   },
 
+  watch: {},
+
   computed: {
     ...mapGetters(['queryYear', 'queryTime', 'queryType']),
   },
@@ -137,16 +145,35 @@ export default {
     this.selectType = this.queryType;
   },
   async mounted() {
-    await this.$store.dispatch('product/changeTime', { queryType: 2 });
+    await this.$store.dispatch('product/changeTime', {
+      key: 'queryType',
+      value: 2,
+    });
   },
 
   methods: {
     handleChangeType() {
+      this.$store.dispatch('product/changeTime', {
+        key: 'queryType',
+        value: this.selectType,
+      });
       try {
         this.middleData = this.monthOptions[this.selectType][0]?.value;
       } catch (error) {
         console.log('error:', error);
       }
+    },
+    async handleChangeYear() {
+      this.$store.dispatch('product/changeTime', {
+        key: 'queryYear',
+        value: this.year,
+      });
+    },
+    handleChangeTime() {
+      this.$store.dispatch('product/changeTime', {
+        key: 'queryYear',
+        value: this.middleData,
+      });
     },
   },
 };

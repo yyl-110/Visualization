@@ -14,7 +14,12 @@ import elementResizeDetectorMaker from 'element-resize-detector';
 import { debounce } from '../../../utils/tool';
 export default {
   name: 'CountChart',
-
+  props: {
+    chartData: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data() {
     return {
       option: {},
@@ -34,6 +39,11 @@ export default {
   methods: {
     initCharts() {
       let myChart = echarts.init(document.getElementById('CountChart'));
+      /* 组装数据 */
+      const source = this.chartData.map((i) => {
+        return [i.prjType, i.addPartCount, i.addModelCount, i.addDrawingCount];
+      });
+
       this.option = {
         legend: {
           top: -this.$fontSize(6),
@@ -51,18 +61,7 @@ export default {
           trigger: 'axis',
         },
         dataset: {
-          source: [
-            ['', '零部件数量', '模型数量', '图纸数量'],
-            ['集团项目', 100, 200, 300],
-            ['公安武警项目', 83.1, 73.4, 55.1],
-            ['基础科研项目', 86.4, 65.2, 82.5],
-            ['实验基础项目', 72.4, 53.9, 39.1],
-            ['技术基础类', 72.4, 53.9, 39.1],
-            ['其他项目', 72.4, 53.9, 39.1],
-            ['技术基础类1', 72.4, 53.9, 39.1],
-            ['技术基础类2', 72.4, 53.9, 39.1],
-            ['技术基础类3', 72.4, 53.9, 39.1],
-          ],
+          source: [['', '零部件数量', '模型数量', '图纸数量'], ...source],
         },
         xAxis: {
           type: 'category',
@@ -77,11 +76,9 @@ export default {
           },
           axisLabel: {
             padding: [this.$fontSize(8), 0, 0, 0], //文字左右定位
-            textStyle: {
-              color: '#fff', //文字颜色
-              fontSize: this.$fontSize(12), //文字大小
-              lineHeight: this.$fontSize(22),
-            },
+            color: '#fff', //文字颜色
+            fontSize: this.$fontSize(12), //文字大小
+            lineHeight: this.$fontSize(22),
           },
           axisLine: {
             show: true,
@@ -97,6 +94,10 @@ export default {
             // x轴name的样式调整
             color: '#fff',
             fontSize: this.$fontSize(14),
+          },
+          axisLabel: {
+            color: '#fff', //文字颜色
+            fontSize: this.$fontSize(12), //文字大小
           },
           nameGap: 10, // x轴name与横坐标轴线的间距
           name: '数量',

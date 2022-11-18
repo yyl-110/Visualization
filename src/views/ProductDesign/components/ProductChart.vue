@@ -14,6 +14,12 @@ import resizeChartMixin from '@/utils/resizeChartMixin';
 
 export default {
   name: 'ProductChart',
+  props: {
+    productData: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data() {
     return {
       option: {},
@@ -29,6 +35,10 @@ export default {
   methods: {
     initChart() {
       let myChart = echarts.init(document.getElementById('ProductChart'));
+      /* 组装数据 */
+      const source = this.productData.map((i) => {
+        return [i.prjType, i.addCount];
+      });
       this.option = {
         tooltip: {
           trigger: 'axis',
@@ -38,17 +48,7 @@ export default {
           },
         },
         dataset: {
-          source: [
-            ['集团项目', 0],
-            ['公安武警项目', 83.1],
-            ['基础科研项目', 86.4],
-            ['实验基础项目', 72.4],
-            ['技术基础类', 0],
-            ['其他项目', 72.4],
-            ['技术基础类1', 72.4],
-            ['技术基础类2', 72.4],
-            ['技术基础类3', 72.4],
-          ],
+          source: source,
         },
         xAxis: {
           name: '项目类型',

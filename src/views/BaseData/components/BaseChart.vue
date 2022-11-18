@@ -27,6 +27,14 @@ export default {
       type: String,
       default: '#00DFFB',
     },
+    chartTitle: {
+      type: String,
+      default: '标题',
+    },
+    chartData: {
+      type: Object,
+      default: () => {},
+    },
   },
   data() {
     return {
@@ -46,6 +54,10 @@ export default {
   methods: {
     initChart() {
       let myChart = echarts.init(this.$refs.BaseChart);
+      /* 组装数据 */
+      const source = Object.keys(this.chartData).map((i) => {
+        return [i, this.chartData[i]];
+      });
       this.option = {
         tooltip: {
           trigger: 'axis',
@@ -61,25 +73,14 @@ export default {
           itemWidth: this.$fontSize(10),
           itemHeight: this.$fontSize(10),
           icon: 'circle',
-          data: ['集团项目'],
+          data: [this.chartTitle],
           textStyle: {
             fontSize: this.$fontSize(14), //字体大小
             color: 'rgba(255,255,255,0.5)', //字体颜色
           },
         },
         dataset: {
-          source: [
-            ['', '集团项目'],
-            ['集团项目', 0],
-            ['公安武警项目', 83.1],
-            ['基础科研项目', 86.4],
-            ['实验基础项目', 72.4],
-            ['技术基础类', 0],
-            ['其他项目', 72.4],
-            ['技术基础类1', 72.4],
-            ['技术基础类2', 72.4],
-            ['技术基础类3', 72.4],
-          ],
+          source: [['', this.chartTitle], ...source],
         },
         xAxis: {
           name: '分类',

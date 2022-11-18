@@ -5,12 +5,12 @@
         <div class="stader">
           <div class="topInfo clearfix">
             <span>标准件</span>
-            <span style="float: right">1058</span>
+            <span style="float: right">{{ devicesData.AddStandardParts }}</span>
           </div>
           <div class="percentContainer">
             <Percent
-              :maxData="1000"
-              :value="[400]"
+              :maxData="12"
+              :value="[devicesData.AddStandardParts]"
               :color="'#00DFFB'"
               :bgColor="'rgba(0, 223, 251, 0.3)'"
             />
@@ -19,12 +19,14 @@
         <div class="devices">
           <div class="topInfo clearfix">
             <span>元器件</span>
-            <span style="float: right">1000</span>
+            <span style="float: right">
+              {{ devicesData.AddComponentsParts }}
+            </span>
           </div>
           <div class="percentContainer">
             <Percent
-              :maxData="2000"
-              :value="[400]"
+              :maxData="12"
+              :value="[devicesData.AddComponentsParts]"
               :color="'#009AFF'"
               :bgColor="'rgba(0, 154, 255, 0.3)'"
             />
@@ -33,14 +35,14 @@
         <div class="scale">
           <div class="line">
             <el-row>
-              <el-col span="2">
+              <el-col :span="2">
                 <div class="point">
                   <span>0</span>
                 </div>
               </el-col>
-              <el-col span="2" v-for="i in 11" :key="i">
+              <el-col :span="2" v-for="i in 11" :key="i">
                 <div class="point">
-                  <span>{{ i * 100 }}</span>
+                  <span>{{ i * 1 }}</span>
                 </div>
               </el-col>
             </el-row>
@@ -58,7 +60,12 @@ import resizeChartMixin from '../../../utils/resizeChartMixin';
 export default {
   components: { Percent },
   name: 'DevicesBox',
-
+  props: {
+    devicesData: {
+      type: Object,
+      default: () => {},
+    },
+  },
   data() {
     return {};
   },

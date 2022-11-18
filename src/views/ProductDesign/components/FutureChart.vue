@@ -22,6 +22,12 @@ export default {
   components: {
     Title,
   },
+  props: {
+    chartData: {
+      type: Object,
+      default: () => {},
+    },
+  },
   mixins: [resizeChartMixin],
   data() {
     return {
@@ -42,6 +48,15 @@ export default {
   methods: {
     initChart() {
       let myChart = echarts.init(document.getElementById('FutureChart'));
+      const xData = Object.keys(this.chartData);
+      let drawing = [];
+      let parts = [];
+      let model = [];
+      for (let key in this.chartData) {
+        drawing.push(this.chartData[key]['addDrawingCount']);
+        model.push(this.chartData[key]['addModelCount']);
+        parts.push(this.chartData[key]['addPartCount']);
+      }
       this.option = {
         tooltip: {
           trigger: 'axis',
@@ -61,7 +76,7 @@ export default {
         },
         xAxis: {
           name: '月份',
-          data: ['1月', '2月', '3月', '4月', '5月', '6月'],
+          data: xData,
           splitLine: {
             show: false,
           },
@@ -99,7 +114,7 @@ export default {
             type: 'bar',
             barWidth: this.$fontSize(30),
             stack: '使用情况',
-            data: [5, 20, 36, 10, 10, 20],
+            data: parts,
 
             itemStyle: {
               normal: { color: '#165DFF' },
@@ -111,7 +126,7 @@ export default {
             type: 'bar',
             barWidth: this.$fontSize(30),
             stack: '使用情况',
-            data: [40, 22, 18, 35, 42, 40],
+            data: drawing,
             itemStyle: {
               normal: { color: '#F7BA1E' },
               barBorderRadius: [this.$fontSize(4), this.$fontSize(4), 0, 0],
@@ -122,7 +137,7 @@ export default {
             type: 'bar',
             barWidth: '30',
             stack: '使用情况',
-            data: [40, 22, 18, 35, 42, 40],
+            data: model,
             itemStyle: {
               normal: { color: '#23CEFD' },
               barBorderRadius: [this.$fontSize(4), this.$fontSize(4), 0, 0],

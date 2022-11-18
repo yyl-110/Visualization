@@ -2,39 +2,71 @@
   <div class="tableContainer">
     <dv-border-box-7 ref="borderBox">
       <div class="tableWrap">
-        <table align="center" border="1px" bordercolor="#00DFFB">
-          <!-- align设置表格位置在网页中间，border设置表格的边框线 -->
+        <table
+          align="center"
+          border="1px"
+          bordercolor="#00DFFB"
+          v-if="type === 'parts'"
+        >
           <thead>
             <tr>
-              <!-- 第一行 -->
               <th class="border_r">项目类型</th>
               <th class="border_l">排名</th>
               <th class="border_r">零部件数量</th>
               <th class="border_n">发布零件数</th>
               <th class="border_l">零部件发布率</th>
-              <th class="border_r">零部件数量</th>
-              <th class="border_n">发布零件数</th>
-              <th class="border_l">零部件发布率</th>
-              <th class="border_r">零部件数量</th>
-              <th class="border_n">发布零件数</th>
-              <th class="border_l">零部件发布率</th>
+              <th class="border_r">模型数量</th>
+              <th class="border_n">发布模型数</th>
+              <th class="border_l">模型发布率</th>
+              <th class="border_r">图纸数量</th>
+              <th class="border_n">发布图纸数</th>
+              <th class="border_l">图纸发布率</th>
             </tr>
           </thead>
-          <!-- colspan合并第一行四列的格子 -->
           <tbody>
             <tr align="center">
-              <!-- 第二行居中 -->
               <td class="border_r">项目集团</td>
-              <td class="border_l">4</td>
-              <td class="border_r">85</td>
-              <td class="border_n">80</td>
-              <td class="border_l">94.1%</td>
-              <td class="border_r">85</td>
-              <td class="border_n">80</td>
-              <td class="border_l">94.1%</td>
-              <td class="border_r">85</td>
-              <td class="border_n">80</td>
-              <td class="border_l">94.1%</td>
+              <td class="border_l">{{ tableData.ranking }}</td>
+              <td class="border_r">{{ tableData.addPartCount }}</td>
+              <td class="border_n">{{ tableData.releasedPartCount }}</td>
+              <td class="border_l">{{ tableData.partReleasedRate }}</td>
+              <td class="border_r">{{ tableData.addModelCount }}</td>
+              <td class="border_n">{{ tableData.releasedModelCount }}</td>
+              <td class="border_l">{{ tableData.modelReleasedRate }}</td>
+              <td class="border_r">{{ tableData.addDrawingCount }}</td>
+              <td class="border_n">{{ tableData.releasedDrawingCount }}</td>
+              <td class="border_l">
+                {{ tableData.drawingReleasedRate || '-' }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table
+          border="0"
+          bordercolor="#00DFFB"
+          class="table2"
+          v-if="type === 'product'"
+        >
+          <thead>
+            <tr>
+              <td>项目类型</td>
+              <td>总数量排行</td>
+              <td>产品库总数</td>
+              <td>总项目立项数</td>
+              <td>总项目在研数</td>
+              <td>总项目验中数</td>
+              <td>总项目验收数</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ tableData.prjType }}</td>
+              <td>5</td>
+              <td>{{ tableData.productCount }}</td>
+              <td>{{ tableData.projectInitiation }}</td>
+              <td>{{ tableData.projectInResearch }}</td>
+              <td>{{ tableData.projectUnderAcceptance }}</td>
+              <td>{{ tableData.projectAccepted }}</td>
             </tr>
           </tbody>
         </table>
@@ -49,11 +81,24 @@ import resizeChartMixin from '../../../utils/resizeChartMixin';
 export default {
   name: 'DataTable',
 
+  props: {
+    tableData: {
+      type: Object,
+      default: () => {},
+    },
+    type: {
+      type: String,
+      default: '',
+    },
+  },
+
   data() {
     return {};
   },
   mixins: [resizeChartMixin],
-  mounted() {},
+  mounted() {
+    console.log(this.tableData, 111);
+  },
 
   methods: {},
 };
@@ -71,17 +116,42 @@ export default {
     padding: 21px 20px 0 20px;
     height: 100%;
     display: table;
+    .table2 {
+      border-collapse: separate;
+      border-spacing: 0;
+      border-bottom: 1px solid #fff;
+      border-radius: 4px 4px 0 0;
+      thead tr td:first-child {
+        border-top-left-radius: 4px;
+      }
+      thead tr td:last-child {
+        border-top-right-radius: 4px;
+      }
+      thead {
+        border: 1px solid rgba(0, 223, 251, 0.5);
+        border-radius: 4px 4px 0px 0px;
+        overflow: hidden;
+      }
+      td {
+        height: 34px;
+        padding-left: 32px;
+      }
+    }
     table {
       width: 100%;
       font-size: 16px;
       font-weight: 400;
-      color: #ffffff;
-      height: 68px;
       border-collapse: collapse;
       border-spacing: 0;
+      color: #ffffff;
+      height: 68px;
+
       th,
       td {
         border-color: rgba(255, 255, 255, 0.5);
+        font-size: 16px;
+        font-weight: 500;
+        color: #ffffff;
       }
       .border_r {
         border-right: 0;
@@ -96,12 +166,12 @@ export default {
       thead {
         height: 34px;
         width: 100%;
+        background: rgb(43, 99, 149);
         background: linear-gradient(
           360deg,
           rgba(0, 223, 251, 0.08) 0%,
           rgba(0, 223, 251, 0.5) 100%
         );
-        border-radius: 4px 4px 0px 0px;
       }
       tbody {
         height: 34px;

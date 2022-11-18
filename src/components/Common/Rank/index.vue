@@ -8,7 +8,7 @@
             <tr>
               <th width="50"><div class="text rankText">排名</div></th>
               <th width="106"><div class="text name">项目类型</div></th>
-              <th width="300">
+              <th width="260">
                 <div class="progressWrap">
                   <div class="progress"></div>
                 </div>
@@ -17,82 +17,42 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="item in rankData" :key="item.id">
+            <tr v-for="(item, index) in newRankData" :key="index">
               <td width="50">
                 <div :class="['rankNum', 'rankText']">
                   <div
                     :class="[
-                      item.id === 1 && 'one',
-                      item.id === 2 && 'two',
-                      item.id === 3 && 'three',
+                      index === 0 && 'one',
+                      index === 1 && 'two',
+                      index === 2 && 'three',
                     ]"
                   >
-                    {{ item.id }}
+                    {{ index + 1 }}
                   </div>
                 </div>
               </td>
               <td width="106">
-                <div class="text name">{{ item.title }}</div>
+                <div class="text name">{{ item.prjType }}</div>
               </td>
-              <td width="300">
+              <td width="260">
                 <div class="progressWrap">
                   <div class="progress">
                     <el-progress
                       :text-inside="false"
                       :show-text="false"
                       :stroke-width="10"
-                      :percentage="item.value"
+                      :percentage="parseFloat(item.partReleasedRate.toString())"
                       color="#23CEFD"
                     ></el-progress>
                   </div>
                 </div>
               </td>
               <td width="80">
-                <div class="text rate">{{ item.value }}%</div>
+                <div class="text rate">{{ item.partReleasedRate }}</div>
               </td>
             </tr>
           </tbody>
         </table>
-        <!-- <div class="content">
-          <div class="row rowTitle clearfix">
-            <span class="text rankText">排名</span>
-            <span class="text name">项目类型</span>
-            <div class="progressWrap">
-              <div class="progress"></div>
-            </div>
-            <span class="text rate">零件发布率</span>
-          </div>
-          <div
-            class="row rowContent clearfix"
-            v-for="item in rankData"
-            :key="item.id"
-          >
-            <div :class="['rankNum', 'rankText']">
-              <span
-                :class="[
-                  item.id === 1 && 'one',
-                  item.id === 2 && 'two',
-                  item.id === 3 && 'three',
-                ]"
-              >
-                {{ item.id }}
-              </span>
-            </div>
-            <div class="text name">{{ item.title }}</div>
-            <div class="progressWrap">
-              <div class="progress">
-                <el-progress
-                  :text-inside="false"
-                  :show-text="false"
-                  :stroke-width="14"
-                  :percentage="item.value"
-                  color="#23CEFD"
-                ></el-progress>
-              </div>
-            </div>
-            <span class="text rate">{{ item.value }}%</span>
-          </div>
-        </div> -->
       </div>
     </dv-border-box-7>
   </div>
@@ -111,24 +71,49 @@ export default {
       type: String,
       default: '标题',
     },
+    rankData: {
+      type: Object,
+      default: () => {},
+    },
   },
   mixins: [resizeChartMixin],
   data() {
     return {
-      rankData: [
-        { title: '集团项目', id: 1, value: 50 },
-        { title: '公安武警项目', id: 2, value: 90 },
-        { title: '基础科研项目', id: 3, value: 10 },
-        { title: '实验基础项目', id: 4, value: 30 },
-        { title: '技术基础类', id: 5, value: 40 },
-        { title: '其他项目', id: 6, value: 70 },
-      ],
+      newRankData: [],
+      // rankData: [
+      //   { title: '集团项目', id: 1, value: 50 },
+      //   { title: '公安武警项目', id: 2, value: 90 },
+      //   { title: '基础科研项目', id: 3, value: 10 },
+      //   { title: '实验基础项目', id: 4, value: 30 },
+      //   { title: '技术基础类', id: 5, value: 40 },
+      //   { title: '其他项目', id: 6, value: 70 },
+      // ],
     };
+  },
+  created() {
+    this.newRankData = [];
+    this.formateData();
   },
 
   mounted() {},
 
-  methods: {},
+  methods: {
+    formateData() {
+      let _rankData = [];
+      let rankNumArr = [];
+      let rankArr = {};
+
+      for (let i in this.rankData) {
+        rankNumArr.push(Number(Object.keys(this.rankData[i])[0]));
+        rankArr = { ...rankArr, ...this.rankData[i] };
+      }
+      rankNumArr.sort();
+      _rankData = rankNumArr.map((item) => {
+        return { ...rankArr[item.toString()] };
+      });
+      this.newRankData = [..._rankData];
+    },
+  },
 };
 </script>
 
@@ -141,6 +126,15 @@ export default {
     inset 8px 8px 40px 0px rgba(0, 227, 255, 0.3);
   border-radius: 4px;
   overflow: hidden;
+  .progressWrap {
+    height: 40px;
+  }
+  .rate {
+    height: 40px;
+  }
+  .rankText {
+    height: 40px;
+  }
   .ranlWrap {
     width: 100%;
     height: 100%;
@@ -152,19 +146,21 @@ export default {
   }
   .name {
     padding-left: 20px;
+    height: 40px;
   }
 
   table {
     width: 100%;
     height: 100%;
     margin-top: 8px;
+    table-layout: fixed;
+    border-collapse: collapse;
     thead {
       width: 100%;
     }
     tr {
-      height: 42px;
-      line-height: 42px;
       .rankNum {
+        height: 40px;
         width: 24px;
         margin: 0 auto;
         div {

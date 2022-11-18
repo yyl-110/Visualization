@@ -1,0 +1,21 @@
+{
+  "区域十八": {
+    "垫圈": 3,
+    "挡圈": 2
+  },
+  "区域十九": {
+    "半导体分立器件": 1,
+    "电容器": 1,
+    "开关": 1,
+    "电阻器、变阻器、电位器": 1,
+    "电源": 1
+  },
+  "区域十七": {
+    "AddComponentsParts": 5,
+    "AddStandardParts": 5
+  },
+  "区域十六": {
+    "AddComponentsParts": 5,
+    "AddStandardParts": 5
+  }
+}

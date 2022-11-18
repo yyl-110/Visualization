@@ -5,7 +5,7 @@
     标准件数量
     <countTo
       :startVal="0"
-      :endVal="24"
+      :endVal="disData.AddStandardParts"
       :duration="6000"
       separator=""
       class="countTo"
@@ -15,7 +15,7 @@
     元器件数量
     <countTo
       :startVal="0"
-      :endVal="1489"
+      :endVal="disData.AddComponentsParts"
       :duration="6000"
       separator=""
       class="countTo"
@@ -30,6 +30,9 @@ import countTo from 'vue-count-to';
 export default {
   components: { countTo },
   name: 'BaseDataDisplay',
+  props: {
+    disData: { type: Object, default: () => {} },
+  },
   data() {
     return {};
   },

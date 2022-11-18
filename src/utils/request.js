@@ -46,11 +46,11 @@ service.interceptors.response.use(
 
     // if the custom code is not 20000, it is judged as an error.
     if (res.code !== 20000) {
-      Message({
-        message: res.message || 'Error',
-        type: 'error',
-        duration: 5 * 1000,
-      });
+      // Message({
+      //   message: res.message || 'Error',
+      //   type: 'error',
+      //   duration: 5 * 1000,
+      // });
       return Promise.reject(new Error(res.message || 'Error'));
     } else {
       return res;
@@ -74,7 +74,7 @@ service.interceptors.response.use(
  */
 export function get(url, params) {
   return new Promise((resolve, reject) => {
-    axios
+    service
       .get(url, {
         params: params,
       })
@@ -93,7 +93,7 @@ export function get(url, params) {
  */
 export function post(url, params) {
   return new Promise((resolve, reject) => {
-    axios
+    service
       .post(url, params)
       .then((res) => {
         resolve(res.data);

@@ -6,17 +6,7 @@
     零部件数量
     <countTo
       :startVal="0"
-      :endVal="152"
-      :duration="6000"
-      separator=""
-      class="countTo"
-    ></countTo>
-    个，发布率93%；新增
-    <img src="../../../assets/imgs/icon_model@2x.png" alt="" />
-    模型数量
-    <countTo
-      :startVal="0"
-      :endVal="152"
+      :endVal="disData.addPartCount"
       :duration="6000"
       separator=""
       class="countTo"
@@ -24,10 +14,31 @@
     个，发布率
     <countTo
       :startVal="0"
-      :endVal="92"
+      :endVal="parseFloat(disData.partReleasedRate)"
       :duration="6000"
       separator=""
       suffix="%"
+      :decimals="1"
+      class="countTo"
+    ></countTo>
+    ；新增
+    <img src="../../../assets/imgs/icon_model@2x.png" alt="" />
+    模型数量
+    <countTo
+      :startVal="0"
+      :endVal="disData.addModelCount"
+      :duration="6000"
+      separator=""
+      class="countTo"
+    ></countTo>
+    个，发布率
+    <countTo
+      :startVal="0"
+      :endVal="parseFloat(disData.modelReleasedRate)"
+      :duration="6000"
+      separator=""
+      suffix="%"
+      :decimals="1"
       class="countTo"
     ></countTo>
     ; 新增
@@ -35,7 +46,7 @@
     图纸数量
     <countTo
       :startVal="0"
-      :endVal="154"
+      :endVal="disData.addDrawingCount"
       :duration="6000"
       separator=""
       class="countTo"
@@ -43,10 +54,11 @@
     张， 发布率
     <countTo
       :startVal="0"
-      :endVal="92"
+      :endVal="parseFloat(disData.drawingReleasedRate)"
       :duration="6000"
       separator=""
       suffix="%"
+      :decimals="1"
       class="countTo"
     ></countTo>
     ；
@@ -113,6 +125,10 @@ export default {
     type: {
       type: String,
       default: 'parts',
+    },
+    disData: {
+      type: Object,
+      default: () => {},
     },
   },
   components: {
