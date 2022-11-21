@@ -1,14 +1,21 @@
 <template>
   <div class="dataContribution">
     <div class="btnWrap"><btn-group @handleChange="handleChange" /></div>
-    <data-view />
+    <data-view :cardData="cardData" />
     <el-scrollbar style="width: 100%" class="sidebar-wrapper">
       <div class="panelCartWrap clearfix">
         <div class="dataBar">
-          <contribution-chart :key="type" />
+          <contribution-chart :key="type" :chartData="chartData" :type="type" />
         </div>
         <div class="rank">
-          <Rank title="普通文档贡献量排行榜" />
+          <Rank
+            :key="type"
+            :rankData="rankData"
+            title="普通文档贡献量排行榜"
+            label="数量"
+            progressLabel="addCount"
+            :type="type === 1 ? '' : 'peopleRank'"
+          />
         </div>
       </div>
     </el-scrollbar>
@@ -20,6 +27,8 @@ import BtnGroup from '../../components/Common/BtnGroup.vue';
 import ContributionChart from './components/ContributionChart.vue';
 import DataView from './components/DataView.vue';
 import Rank from '@/components/Common/Rank';
+import dataJson from './data.json';
+import dataJson2 from './data2.json';
 export default {
   components: { BtnGroup, DataView, ContributionChart, Rank },
   name: 'DataContribution',
@@ -27,7 +36,16 @@ export default {
   data() {
     return {
       type: 1,
+      cardData: [],
+      rankData: {},
+      chartData: [],
     };
+  },
+
+  created() {
+    this.cardData = dataJson['区域三十五'];
+    this.rankData = dataJson2[0]['区域三十七'];
+    this.chartData = dataJson2[0]['区域三十六'];
   },
 
   mounted() {},
@@ -35,6 +53,14 @@ export default {
   methods: {
     handleChange(type) {
       this.type = type;
+      if (type === 1) {
+        this.rankData = dataJson2[type - 1]['区域三十七'];
+        this.chartData = dataJson2[type - 1]['区域三十六'];
+      } else {
+        this.chartData = dataJson2[type - 1]['区域三十八'];
+        this.rankData = dataJson2[type - 1]['区域三十九'];
+      }
+      console.log(this.chartData, 'hhhhhh');
     },
   },
 };

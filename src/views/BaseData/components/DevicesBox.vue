@@ -1,64 +1,63 @@
 <template>
   <div class="DevicesBox">
-    <dv-border-box-7 ref="borderBox">
-      <div class="chartWrap">
-        <div class="stader">
-          <div class="topInfo clearfix">
-            <span>标准件</span>
-            <span style="float: right">{{ devicesData.AddStandardParts }}</span>
-          </div>
-          <div class="percentContainer">
-            <Percent
-              :maxData="12"
-              :value="[devicesData.AddStandardParts]"
-              :color="'#00DFFB'"
-              :bgColor="'rgba(0, 223, 251, 0.3)'"
-            />
-          </div>
+    <dv-border />
+    <div class="chartWrap">
+      <div class="stader">
+        <div class="topInfo clearfix">
+          <span>标准件</span>
+          <span style="float: right">{{ devicesData.AddStandardParts }}</span>
         </div>
-        <div class="devices">
-          <div class="topInfo clearfix">
-            <span>元器件</span>
-            <span style="float: right">
-              {{ devicesData.AddComponentsParts }}
-            </span>
-          </div>
-          <div class="percentContainer">
-            <Percent
-              :maxData="12"
-              :value="[devicesData.AddComponentsParts]"
-              :color="'#009AFF'"
-              :bgColor="'rgba(0, 154, 255, 0.3)'"
-            />
-          </div>
-        </div>
-        <div class="scale">
-          <div class="line">
-            <el-row>
-              <el-col :span="2">
-                <div class="point">
-                  <span>0</span>
-                </div>
-              </el-col>
-              <el-col :span="2" v-for="i in 11" :key="i">
-                <div class="point">
-                  <span>{{ i * 1 }}</span>
-                </div>
-              </el-col>
-            </el-row>
-          </div>
-          <span class="label">数量</span>
+        <div class="percentContainer">
+          <Percent
+            :maxData="12"
+            :value="[devicesData.AddStandardParts]"
+            :color="'#00DFFB'"
+            :bgColor="'rgba(0, 223, 251, 0.3)'"
+          />
         </div>
       </div>
-    </dv-border-box-7>
+      <div class="devices">
+        <div class="topInfo clearfix">
+          <span>元器件</span>
+          <span style="float: right">
+            {{ devicesData.AddComponentsParts }}
+          </span>
+        </div>
+        <div class="percentContainer">
+          <Percent
+            :maxData="12"
+            :value="[devicesData.AddComponentsParts]"
+            :color="'#009AFF'"
+            :bgColor="'rgba(0, 154, 255, 0.3)'"
+          />
+        </div>
+      </div>
+      <div class="scale">
+        <div class="line">
+          <el-row>
+            <el-col :span="2">
+              <div class="point">
+                <span>0</span>
+              </div>
+            </el-col>
+            <el-col :span="2" v-for="i in 11" :key="i">
+              <div class="point">
+                <span>{{ i * 1 }}</span>
+              </div>
+            </el-col>
+          </el-row>
+        </div>
+        <span class="label">数量</span>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import Percent from '@/components/Common/Percent.vue';
-import resizeChartMixin from '../../../utils/resizeChartMixin';
+import DvBorder from '../../../components/Common/DvBorder.vue';
 export default {
-  components: { Percent },
+  components: { Percent, DvBorder },
   name: 'DevicesBox',
   props: {
     devicesData: {
@@ -69,7 +68,6 @@ export default {
   data() {
     return {};
   },
-  mixins: [resizeChartMixin],
   mounted() {},
 
   methods: {},
@@ -82,7 +80,7 @@ export default {
   background: #050a4e;
   box-shadow: inset -8px -8px 40px 0px rgba(0, 227, 255, 0.3),
     inset 8px 8px 40px 0px rgba(0, 227, 255, 0.3);
-  border-radius: 4px;
+  position: relative;
   .chartWrap {
     padding: 20px;
     width: 100%;

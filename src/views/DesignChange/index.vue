@@ -1,12 +1,18 @@
 <template>
   <div class="designChange">
-    <design-change-panel />
+    <design-change-panel :panelData="panelData" />
     <div class="panelCartWrap clearfix">
       <div class="dataBar">
-        <change-view />
+        <change-view :changeViewData="changeViewData" />
       </div>
       <div class="rank">
-        <Rank />
+        <Rank
+          :rankData="rankData"
+          title="变更单量完成率排行榜"
+          label="平均完成率"
+          progressLabel="ecnFinishedRate"
+          isRate="true"
+        />
       </div>
     </div>
   </div>
@@ -16,12 +22,26 @@
 import DesignChangePanel from './components/DesignChangePanel.vue';
 import Rank from '@/components/Common/Rank';
 import ChangeView from './components/ChangeView.vue';
+import dataJson from './data.json';
 export default {
   components: { DesignChangePanel, Rank, ChangeView },
   name: 'DesignChange',
 
   data() {
-    return {};
+    return {
+      panelData: {},
+      changeViewData: [],
+      rankData: {},
+    };
+  },
+
+  created() {
+    this.panelData['区域二十三'] = dataJson['区域二十三'];
+    this.panelData['区域二十四'] = dataJson['区域二十四'];
+    this.panelData['区域二十五'] = dataJson['区域二十五'];
+    this.changeViewData = dataJson['区域二十六'];
+    this.rankData = dataJson['区域二十七'];
+    console.log(this.changeViewData);
   },
 
   mounted() {},

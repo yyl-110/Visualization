@@ -1,72 +1,84 @@
 <template>
   <div class="rankContainer">
-    <dv-border-box-7 ref="borderBox">
-      <div class="ranlWrap">
-        <Title :text="title" />
-        <table border="0" align="left">
-          <thead>
-            <tr>
-              <th width="50"><div class="text rankText">排名</div></th>
-              <th width="106"><div class="text name">项目类型</div></th>
-              <th width="260">
-                <div class="progressWrap">
-                  <div class="progress"></div>
+    <dv-border />
+    <div class="ranlWrap">
+      <Title :text="title" />
+      <table border="0" align="left">
+        <thead>
+          <tr>
+            <th width="50"><div class="text rankText">排名</div></th>
+            <th width="106"><div class="text name">项目类型</div></th>
+            <th width="260">
+              <div class="progressWrap">
+                <div class="progress"></div>
+              </div>
+            </th>
+            <th width="80">
+              <div class="text rate">{{ label }}</div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item, index) in newRankData" :key="index">
+            <td width="50">
+              <div :class="['rankNum', 'rankText']">
+                <div
+                  :class="[
+                    index === 0 && 'one',
+                    index === 1 && 'two',
+                    index === 2 && 'three',
+                  ]"
+                >
+                  {{ index + 1 }}
                 </div>
-              </th>
-              <th width="80"><div class="text rate">零件发布率</div></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(item, index) in newRankData" :key="index">
-              <td width="50">
-                <div :class="['rankNum', 'rankText']">
-                  <div
-                    :class="[
-                      index === 0 && 'one',
-                      index === 1 && 'two',
-                      index === 2 && 'three',
-                    ]"
-                  >
-                    {{ index + 1 }}
-                  </div>
+              </div>
+            </td>
+            <td width="106">
+              <div class="text name">{{ item.prjType }}</div>
+            </td>
+            <td width="260">
+              <div class="progressWrap">
+                <div class="progress">
+                  <el-progress
+                    :text-inside="false"
+                    :show-text="false"
+                    :stroke-width="10"
+                    :percentage="parseFloat(item[progressLabel])"
+                    color="#23CEFD"
+                  ></el-progress>
                 </div>
-              </td>
-              <td width="106">
-                <div class="text name">{{ item.prjType }}</div>
-              </td>
-              <td width="260">
-                <div class="progressWrap">
-                  <div class="progress">
-                    <el-progress
-                      :text-inside="false"
-                      :show-text="false"
-                      :stroke-width="10"
-                      :percentage="parseFloat(item.partReleasedRate)"
-                      color="#23CEFD"
-                    ></el-progress>
-                  </div>
-                </div>
-              </td>
-              <td width="80">
-                <div class="text rate">{{ item.partReleasedRate }}</div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </dv-border-box-7>
+              </div>
+            </td>
+            <td width="80">
+              <div class="text rate">
+                {{ item[progressLabel] }}{{ isRate ? '%' : '' }}
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
 <script>
-import resizeChartMixin from '../../../utils/resizeChartMixin';
+import DvBorder from '../DvBorder.vue';
 import Title from '../Title.vue';
 export default {
   name: 'Rank',
   components: {
     Title,
+    DvBorder,
   },
   props: {
+    progressLabel: {
+      type: String,
+      default: '',
+    },
+    label: {
+      type: String,
+      default: '',
+    },
     title: {
       type: String,
       default: '标题',
@@ -75,8 +87,15 @@ export default {
       type: Object,
       default: () => {},
     },
+    isRate: {
+      type: Boolean,
+      default: false,
+    },
+    type: {
+      type: String,
+      default: '',
+    },
   },
-  mixins: [resizeChartMixin],
   data() {
     return {
       newRankData: [],
@@ -92,6 +111,10 @@ export default {
   },
   created() {
     this.newRankData = [];
+    if (this.type === 'peopleRank') {
+      this.formateCommon();
+      return;
+    }
     this.formateData();
   },
 
@@ -113,6 +136,18 @@ export default {
       });
       this.newRankData = [..._rankData];
     },
+    /* 普通文档贡献量排行榜 */
+    formateCommon() {
+      const keys = Object.keys(this.rankData);
+      const arr = keys.map((i) => {
+        const item = {
+          prjType: i,
+        };
+        item[this.progressLabel] = this.rankData[i];
+        return item;
+      });
+      this.newRankData = arr;
+    },
   },
 };
 </script>
@@ -124,8 +159,8 @@ export default {
   background: #050a4e;
   box-shadow: inset -8px -8px 40px 0px rgba(0, 227, 255, 0.3),
     inset 8px 8px 40px 0px rgba(0, 227, 255, 0.3);
-  border-radius: 4px;
   overflow: hidden;
+  position: relative;
   .progressWrap {
     height: 40px;
   }

@@ -1,35 +1,33 @@
 <template>
   <div class="processDataBox">
-    <dv-border-box-7 ref="borderBox">
-      <div class="dataContainer">
-        <el-scrollbar wrap-class="scrollbar-wrapper">
-          <div class="dataWrap">
-            <el-row>
-              <el-col
-                :lg="{ span: '4-8' }"
-                :md="{ span: '4-8' }"
-                :sm="{ span: '4-8' }"
-                :xs="{ span: '4-8' }"
-                v-for="i in 9"
-                :key="i"
-              >
-                <data-item class="item" />
-              </el-col>
-            </el-row>
-          </div>
-        </el-scrollbar>
-      </div>
-    </dv-border-box-7>
+    <dv-border />
+    <div class="dataContainer">
+      <el-scrollbar wrap-class="scrollbar-wrapper">
+        <div class="dataWrap">
+          <el-row>
+            <el-col
+              :lg="{ span: '4-8' }"
+              :md="{ span: '4-8' }"
+              :sm="{ span: '4-8' }"
+              :xs="{ span: '4-8' }"
+              v-for="i in 9"
+              :key="i"
+            >
+              <data-item class="item" />
+            </el-col>
+          </el-row>
+        </div>
+      </el-scrollbar>
+    </div>
   </div>
 </template>
 
 <script>
 import DataItem from '@/components/Common/DataItem.vue';
-import resizeChartMixin from '../../../utils/resizeChartMixin';
+import DvBorder from '../../../components/Common/DvBorder.vue';
 export default {
-  components: { DataItem },
+  components: { DataItem, DvBorder },
   name: 'ProcessDataBox',
-  mixins: [resizeChartMixin],
   data() {
     return {
       dataList: [{ id: 1, title: '普通文档单流程' }],
@@ -49,7 +47,7 @@ export default {
   background: #050a4e;
   box-shadow: inset -8px -8px 40px 0px rgba(0, 227, 255, 0.3),
     inset 8px 8px 40px 0px rgba(0, 227, 255, 0.3);
-  border-radius: 4px;
+    position: relative;
   .dataContainer {
     width: 100%;
     height: 100%;

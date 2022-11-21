@@ -1,31 +1,29 @@
 <template>
   <div class="ProcessEfficiency">
-    <dv-border-box-7 ref="borderBox">
-      <div class="processWrap">
-        <el-row justify="space-around">
-          <el-col
-            :span="isCollapse ? 6 : 8"
-            v-for="i in 10"
-            :key="i"
-            style="margin-top: 30px"
-          >
-            <process-item style="margin: 0 auto" />
-          </el-col>
-        </el-row>
-      </div>
-    </dv-border-box-7>
+    <dv-border />
+    <div class="processWrap">
+      <el-row justify="space-around">
+        <el-col
+          :span="isCollapse ? 6 : 8"
+          v-for="i in 10"
+          :key="i"
+          style="margin-top: 30px"
+        >
+          <process-item style="margin: 0 auto" />
+        </el-col>
+      </el-row>
+    </div>
   </div>
 </template>
 
 <script>
-import resizeChartMixin from '../../utils/resizeChartMixin';
 import ProcessItem from './components/ProcessItem.vue';
 import { mapGetters } from 'vuex';
+import DvBorder from '../../components/Common/DvBorder.vue';
 export default {
-  components: { ProcessItem },
+  components: { ProcessItem, DvBorder },
   name: 'ProcessEfficiency',
 
-  mixins: [resizeChartMixin],
   data() {
     return {};
   },
@@ -66,8 +64,8 @@ export default {
   background: #050a4e;
   box-shadow: inset -8px -8px 40px 0px rgba(0, 227, 255, 0.3),
     inset 8px 8px 40px 0px rgba(0, 227, 255, 0.3);
-  border-radius: 4px;
   margin-bottom: 20px;
+  position: relative;
   .processWrap {
     padding: 0 30px 20px;
   }

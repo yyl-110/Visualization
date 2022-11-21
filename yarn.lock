@@ -1150,7 +1150,7 @@
     "@babel/types" "^7.4.4"
     esutils "^2.0.2"
 
-"@babel/runtime@^7.11.0", "@babel/runtime@^7.5.5", "@babel/runtime@^7.8.4":
+"@babel/runtime@^7.11.0", "@babel/runtime@^7.8.4":
   version "7.20.0"
   resolved "https://registry.npmmirror.com/@babel/runtime/-/runtime-7.20.0.tgz#824a9ef325ffde6f78056059db3168c08785e24a"
   integrity sha512-NDYdls71fTXoU8TZHfbBWg7DiZfNzClcKui/+kyi6ppD2L1qnWW3VV6CjtaBXSUGGhiTWJ6ereOIkUvenif66Q==
@@ -1272,53 +1272,6 @@
     cssnano "^4.0.0"
     cssnano-preset-default "^4.0.0"
     postcss "^7.0.0"
-
-"@jiaminghi/bezier-curve@*":
-  version "0.0.9"
-  resolved "https://registry.npmmirror.com/@jiaminghi/bezier-curve/-/bezier-curve-0.0.9.tgz#5196aca93c8b061a612b4c3eabcedf9490cef6ee"
-  integrity sha512-u9xJPOEl6Dri2E9FfmJoGxYQY7vYJkURNX04Vj64tdi535tPrpkuf9Sm0lNr3QTKdHQh0DdNRsaa62FLQNQEEw==
-  dependencies:
-    "@babel/runtime" "^7.5.5"
-
-"@jiaminghi/c-render@^0.4.3":
-  version "0.4.3"
-  resolved "https://registry.npmmirror.com/@jiaminghi/c-render/-/c-render-0.4.3.tgz#982ebd8f71b443bb9507834227834973ebd9b6d8"
-  integrity sha512-FJfzj5hGj7MLqqqI2D7vEzHKbQ1Ynnn7PJKgzsjXaZpJzTqs2Yw5OSeZnm6l7Qj7jyPAP53lFvEQNH4o4j6s+Q==
-  dependencies:
-    "@babel/runtime" "^7.5.5"
-    "@jiaminghi/bezier-curve" "*"
-    "@jiaminghi/color" "*"
-    "@jiaminghi/transition" "*"
-
-"@jiaminghi/charts@*":
-  version "0.2.18"
-  resolved "https://registry.npmmirror.com/@jiaminghi/charts/-/charts-0.2.18.tgz#63ded95200789fc1a1fd04b7fd9e56f58d22d90f"
-  integrity sha512-K+HXaOOeWG9OOY1VG6M4mBreeeIAPhb9X+khG651AbnwEwL6G2UtcAQ8GWCq6GzhczcLwwhIhuaHqRygwHC0sA==
-  dependencies:
-    "@babel/runtime" "^7.5.5"
-    "@jiaminghi/c-render" "^0.4.3"
-
-"@jiaminghi/color@*":
-  version "0.1.1"
-  resolved "https://registry.npmmirror.com/@jiaminghi/color/-/color-0.1.1.tgz#bddf9012dfce6982d3829a983ffeb91ee9dda7b6"
-  integrity sha512-M09+Sb5HGqVim0zo+nG5gU1v+6gXT8ptr0BZR6dMGt83XmCJgnZtO8s7llTW4hLFFFM5co6geZvTekqLpSPAAQ==
-  dependencies:
-    "@babel/runtime" "^7.5.5"
-
-"@jiaminghi/data-view@^2.10.0":
-  version "2.10.0"
-  resolved "https://registry.npmmirror.com/@jiaminghi/data-view/-/data-view-2.10.0.tgz#2146d8fc71b9f24be808238ca050ddb7a4c8949f"
-  integrity sha512-Cud2MTiMcqc5k2KWabR/svuVQmXHANqURo+yj40370/LdI/gyUJ6LG203hWXEnT1nMCeiv/SLVmxv3PXLScCeA==
-  dependencies:
-    "@babel/runtime" "^7.5.5"
-    "@jiaminghi/charts" "*"
-
-"@jiaminghi/transition@*":
-  version "1.1.11"
-  resolved "https://registry.npmmirror.com/@jiaminghi/transition/-/transition-1.1.11.tgz#576d8af092434b34201eba5eaecc79dd33c8ad8c"
-  integrity sha512-owBggipoHMikDHHDW5Gc7RZYlVuvxHADiU4bxfjBVkHDAmmck+fCkm46n2JzC3j33hWvP9nSCAeh37t6stgWeg==
-  dependencies:
-    "@babel/runtime" "^7.5.5"
 
 "@jridgewell/gen-mapping@^0.1.0":
   version "0.1.1"
@@ -1825,15 +1778,6 @@
   version "2.7.13"
   resolved "https://registry.npmmirror.com/@vue/compiler-sfc/-/compiler-sfc-2.7.13.tgz#818944f4a9616b752d48dac6a56bffe2db88bdff"
   integrity sha512-zzu2rLRZlgIU+OT3Atbr7Y6PG+LW4wVQpPfNRrGDH3dM9PsrcVfa+1pKb8bW467bGM3aDOvAnsYLWVpYIv3GRg==
-  dependencies:
-    "@babel/parser" "^7.18.4"
-    postcss "^8.4.14"
-    source-map "^0.6.1"
-
-"@vue/compiler-sfc@2.7.14":
-  version "2.7.14"
-  resolved "https://registry.npmmirror.com/@vue/compiler-sfc/-/compiler-sfc-2.7.14.tgz#3446fd2fbb670d709277fc3ffa88efc5e10284fd"
-  integrity sha512-aNmNHyLPsw+sVvlQFQ2/8sjNuLtK54TC6cuKnVzAY93ks4ZBrvwQSnkkIh7bsbNhum5hJBS00wSDipQ937f5DA==
   dependencies:
     "@babel/parser" "^7.18.4"
     postcss "^8.4.14"
@@ -5359,7 +5303,7 @@ hash.js@^1.0.0, hash.js@^1.0.3:
     inherits "^2.0.3"
     minimalistic-assert "^1.0.1"
 
-he@1.2.x, he@^1.2.0:
+he@1.2.x, he@^1.1.0:
   version "1.2.0"
   resolved "https://registry.npmmirror.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
   integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
@@ -9719,18 +9663,23 @@ vue-style-loader@^4.1.0, vue-style-loader@^4.1.2:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"
 
-vue-template-compiler@^2.6.11:
-  version "2.7.13"
-  resolved "https://registry.npmmirror.com/vue-template-compiler/-/vue-template-compiler-2.7.13.tgz#1520a5aa6d1af51dd0622824e79814f6e8cb7058"
-  integrity sha512-jYM6TClwDS9YqP48gYrtAtaOhRKkbYmbzE+Q51gX5YDr777n7tNI/IZk4QV4l/PjQPNh/FVa/E92sh/RqKMrog==
+vue-template-compiler@2.5.15:
+  version "2.5.15"
+  resolved "https://registry.npmmirror.com/vue-template-compiler/-/vue-template-compiler-2.5.15.tgz#cc004097e37167be8b85ea22ab2840d8e8cca1c0"
+  integrity sha512-v3GRVovW8fWO01SAJ+1MbdzbCN+hVBusoqUOBE5FR9dVMGo3p/WDO2gRS/+gEgAALtL7i5pxi+V2l6EauM3XDA==
   dependencies:
     de-indent "^1.0.2"
-    he "^1.2.0"
+    he "^1.1.0"
 
 vue-template-es2015-compiler@^1.9.0:
   version "1.9.1"
   resolved "https://registry.npmmirror.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
+
+vue@2.5.15:
+  version "2.5.15"
+  resolved "https://registry.npmmirror.com/vue/-/vue-2.5.15.tgz#fdb67861dde967cd8d1b53116380f2f269b45202"
+  integrity sha512-uUcDI147VCQYA/9AqoEECddWdTQgrhnwAd6KDsl0pF1hiLpxqaYqIgArhnegU+QZ18DQrKvZNcR3x2QM1iaroQ==
 
 vue@^2.2.6:
   version "2.7.13"
@@ -9738,14 +9687,6 @@ vue@^2.2.6:
   integrity sha512-QnM6ULTNnPmn71eUO+4hdjfBIA3H0GLsBnchnI/kS678tjI45GOUZhXd0oP/gX9isikXz1PAzSnkPspp9EUNfQ==
   dependencies:
     "@vue/compiler-sfc" "2.7.13"
-    csstype "^3.1.0"
-
-vue@^2.6.11:
-  version "2.7.14"
-  resolved "https://registry.npmmirror.com/vue/-/vue-2.7.14.tgz#3743dcd248fd3a34d421ae456b864a0246bafb17"
-  integrity sha512-b2qkFyOM0kwqWFuQmgd4o+uHGU7T+2z3T+WQp8UBjADfEv2n4FEMffzBmCKNP0IGzOEEfYjvtcC62xaSKeQDrQ==
-  dependencies:
-    "@vue/compiler-sfc" "2.7.14"
     csstype "^3.1.0"
 
 vuex@^3.2.0:

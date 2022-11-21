@@ -1,23 +1,26 @@
 <template>
   <div class="container">
-    <dv-border-box-7 ref="borderBox">
-      <div class="inner">
-        <div class="titleWrap">
-          <Title text="PDM中超期流程任务查看(普通文档)" />
-        </div>
-        <v-table style="margin-top: 0.25rem" :column="column" :tableData="tableData" />
+    <dv-border />
+    <div class="inner">
+      <div class="titleWrap">
+        <Title text="PDM中超期流程任务查看(普通文档)" />
       </div>
-    </dv-border-box-7>
+      <v-table
+        style="margin-top: 0.25rem"
+        :column="column"
+        :tableData="tableData"
+      />
+    </div>
   </div>
 </template>
 
 <script>
 import Title from '../../../components/Common/Title.vue';
-import resizeChartMixin from '../../../utils/resizeChartMixin';
 import VTable from '@/components/Common/V-Table.vue';
+import DvBorder from '../../../components/Common/DvBorder.vue';
 
 export default {
-  components: { Title, VTable },
+  components: { Title, VTable, DvBorder },
   name: 'VisualizationTaskView',
 
   data() {
@@ -62,7 +65,6 @@ export default {
       ],
     };
   },
-  mixins: [resizeChartMixin],
   mounted() {},
 
   methods: {},
@@ -73,6 +75,7 @@ export default {
 .container {
   width: 100%;
   height: 100%;
+  position: relative;
   .inner {
     padding: 20px;
     padding-bottom: 0;

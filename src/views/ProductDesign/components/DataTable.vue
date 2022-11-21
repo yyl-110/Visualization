@@ -1,84 +1,84 @@
 <template>
   <div class="tableContainer">
-    <dv-border-box-7 ref="borderBox">
-      <div class="tableWrap">
-        <table
-          align="center"
-          border="1px"
-          bordercolor="#00DFFB"
-          v-if="type === 'parts'"
-        >
-          <thead>
-            <tr>
-              <th class="border_r">项目类型</th>
-              <th class="border_l">排名</th>
-              <th class="border_r">零部件数量</th>
-              <th class="border_n">发布零件数</th>
-              <th class="border_l">零部件发布率</th>
-              <th class="border_r">模型数量</th>
-              <th class="border_n">发布模型数</th>
-              <th class="border_l">模型发布率</th>
-              <th class="border_r">图纸数量</th>
-              <th class="border_n">发布图纸数</th>
-              <th class="border_l">图纸发布率</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr align="center">
-              <td class="border_r">项目集团</td>
-              <td class="border_l">{{ tableData.ranking }}</td>
-              <td class="border_r">{{ tableData.addPartCount }}</td>
-              <td class="border_n">{{ tableData.releasedPartCount }}</td>
-              <td class="border_l">{{ tableData.partReleasedRate }}</td>
-              <td class="border_r">{{ tableData.addModelCount }}</td>
-              <td class="border_n">{{ tableData.releasedModelCount }}</td>
-              <td class="border_l">{{ tableData.modelReleasedRate }}</td>
-              <td class="border_r">{{ tableData.addDrawingCount }}</td>
-              <td class="border_n">{{ tableData.releasedDrawingCount }}</td>
-              <td class="border_l">
-                {{ tableData.drawingReleasedRate || '-' }}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <table
-          border="0"
-          bordercolor="#00DFFB"
-          class="table2"
-          v-if="type === 'product'"
-        >
-          <thead>
-            <tr>
-              <td>项目类型</td>
-              <td>总数量排行</td>
-              <td>产品库总数</td>
-              <td>总项目立项数</td>
-              <td>总项目在研数</td>
-              <td>总项目验中数</td>
-              <td>总项目验收数</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{{ tableData.prjType }}</td>
-              <td>5</td>
-              <td>{{ tableData.productCount }}</td>
-              <td>{{ tableData.projectInitiation }}</td>
-              <td>{{ tableData.projectInResearch }}</td>
-              <td>{{ tableData.projectUnderAcceptance }}</td>
-              <td>{{ tableData.projectAccepted }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </dv-border-box-7>
+    <dv-border />
+    <div class="tableWrap">
+      <table
+        align="center"
+        border="1px"
+        bordercolor="#00DFFB"
+        v-if="type === 'parts'"
+      >
+        <thead>
+          <tr>
+            <th class="border_r">项目类型</th>
+            <th class="border_l">排名</th>
+            <th class="border_r">零部件数量</th>
+            <th class="border_n">发布零件数</th>
+            <th class="border_l">零部件发布率</th>
+            <th class="border_r">模型数量</th>
+            <th class="border_n">发布模型数</th>
+            <th class="border_l">模型发布率</th>
+            <th class="border_r">图纸数量</th>
+            <th class="border_n">发布图纸数</th>
+            <th class="border_l">图纸发布率</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr align="center">
+            <td class="border_r">项目集团</td>
+            <td class="border_l">{{ tableData.ranking }}</td>
+            <td class="border_r">{{ tableData.addPartCount }}</td>
+            <td class="border_n">{{ tableData.releasedPartCount }}</td>
+            <td class="border_l">{{ tableData.partReleasedRate }}</td>
+            <td class="border_r">{{ tableData.addModelCount }}</td>
+            <td class="border_n">{{ tableData.releasedModelCount }}</td>
+            <td class="border_l">{{ tableData.modelReleasedRate }}</td>
+            <td class="border_r">{{ tableData.addDrawingCount }}</td>
+            <td class="border_n">{{ tableData.releasedDrawingCount }}</td>
+            <td class="border_l">
+              {{ tableData.drawingReleasedRate || '-' }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table
+        border="0"
+        bordercolor="#00DFFB"
+        class="table2"
+        v-if="type === 'product'"
+      >
+        <thead>
+          <tr>
+            <td>项目类型</td>
+            <td>总数量排行</td>
+            <td>产品库总数</td>
+            <td>总项目立项数</td>
+            <td>总项目在研数</td>
+            <td>总项目验中数</td>
+            <td>总项目验收数</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ tableData.prjType }}</td>
+            <td>5</td>
+            <td>{{ tableData.productCount }}</td>
+            <td>{{ tableData.projectInitiation }}</td>
+            <td>{{ tableData.projectInResearch }}</td>
+            <td>{{ tableData.projectUnderAcceptance }}</td>
+            <td>{{ tableData.projectAccepted }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
 <script>
-import resizeChartMixin from '../../../utils/resizeChartMixin';
+import DvBorder from '../../../components/Common/DvBorder.vue';
 
 export default {
+  components: { DvBorder },
   name: 'DataTable',
 
   props: {
@@ -95,7 +95,6 @@ export default {
   data() {
     return {};
   },
-  mixins: [resizeChartMixin],
   mounted() {
     console.log(this.tableData, 111);
   },
@@ -110,7 +109,7 @@ export default {
   background: #050a4e;
   box-shadow: inset -8px -8px 40px 0px rgba(0, 227, 255, 0.3),
     inset 8px 8px 40px 0px rgba(0, 227, 255, 0.3);
-  border-radius: 4px;
+  position: relative;
   .tableWrap {
     width: 100%;
     padding: 21px 20px 0 20px;

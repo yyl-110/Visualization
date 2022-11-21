@@ -1,0 +1,63 @@
+{
+  "区域二十五": {
+    "二类": 0,
+    "三类": 1,
+    "一类": 0
+  },
+  "区域二十四": {
+    "huanBi": "-90.91%",
+    "changePartSum": 1,
+    "tongBi": "100%"
+  },
+  "区域二十六": [{
+      "addECNCount": 1,
+      "prjType": "集团项目",
+      "finishedECNCount": 1,
+      "ecnFinishedRate": 1
+    },
+    {
+      "addECNCount": 0,
+      "prjType": "公安武警项目",
+      "finishedECNCount": 0,
+      "ecnFinishedRate": 1
+    },
+    {
+      "addECNCount": 0,
+      "prjType": "预研项目",
+      "finishedECNCount": 0,
+      "ecnFinishedRate": 1
+    }
+  ],
+  "区域二十三": {
+    "addChangeCount": 1,
+    "huanBi": "-90.91%",
+    "tongBi": "100%",
+    "completeRate": "100.00%"
+  },
+  "区域二十七": {
+    "公安武警项目": {
+      "2": {
+        "addECNCount": 0,
+        "ecnFinishedRate": 1,
+        "finishedECNCount": 0,
+        "prjType": "公安武警项目"
+      }
+    },
+    "集团项目": {
+      "1": {
+        "addECNCount": 1,
+        "ecnFinishedRate": 1,
+        "finishedECNCount": 1,
+        "prjType": "集团项目"
+      }
+    },
+    "预研项目": {
+      "3": {
+        "addECNCount": 0,
+        "ecnFinishedRate": 1,
+        "finishedECNCount": 0,
+        "prjType": "预研项目"
+      }
+    }
+  }
+}

@@ -1,14 +1,19 @@
 <template>
   <div class="processData">
-    <data-box />
+    <data-box :cardData="cardData" />
 
     <!-- 数据 -->
     <div class="preData clearfix">
       <div class="leftChart">
-        <completion-rate />
+        <completion-rate :completionData="completionData" />
       </div>
       <div class="rank">
-        <Rank />
+        <Rank
+          title="流程完成率排行榜"
+          :rankData="rankData"
+          label="平均完成率"
+          progressLabel="workflowFinishRate"
+        />
       </div>
     </div>
   </div>
@@ -18,17 +23,35 @@
 import DataBox from './components/DataBox.vue';
 import Rank from '@/components/Common/Rank';
 import CompletionRate from './components/CompletionRate.vue';
+import { getProcessDataByCard } from '@/api';
+import dataJson from './data.json';
 export default {
   components: { DataBox, Rank, CompletionRate },
   name: 'VueDataVIndex',
 
   data() {
-    return {};
+    return {
+      completionData: [],
+      rankData: {},
+      cardData: [],
+    };
+  },
+
+  created() {
+    this.getProcessData();
   },
 
   mounted() {},
 
-  methods: {},
+  methods: {
+    getProcessData() {
+      this.completionData = dataJson['区域二十一'];
+      this.rankData = dataJson['区域二十二'];
+      this.cardData = dataJson['区域二十'];
+      console.log('this.cardData:', this.cardData, 322);
+      // getProcessDataByCard
+    },
+  },
 };
 </script>
 

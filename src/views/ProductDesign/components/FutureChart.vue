@@ -1,26 +1,26 @@
 <template>
   <div class="futureChart">
-    <dv-border-box-7 ref="borderBox">
-      <div class="chartTitle">
-        <Title :text="'近六期的趋势图'" />
-      </div>
-      <div class="chartWrap">
-        <div class="chartsdom" id="FutureChart"></div>
-      </div>
-    </dv-border-box-7>
+    <dv-border />
+    <div class="chartTitle">
+      <Title :text="'近六期的趋势图'" />
+    </div>
+    <div class="chartWrap">
+      <div class="chartsdom" id="FutureChart"></div>
+    </div>
   </div>
 </template>
 
 <script>
 import Title from '@/components/Common/Title.vue';
-import resizeChartMixin from '@/utils/resizeChartMixin';
 import elementResizeDetectorMaker from 'element-resize-detector';
 import { debounce } from '../../../utils/tool';
+import DvBorder from '../../../components/Common/DvBorder.vue';
 
 export default {
   name: 'FutureChart',
   components: {
     Title,
+    DvBorder,
   },
   props: {
     chartData: {
@@ -28,7 +28,6 @@ export default {
       default: () => {},
     },
   },
-  mixins: [resizeChartMixin],
   data() {
     return {
       option: {},
@@ -170,7 +169,6 @@ export default {
   background: #050a4e;
   box-shadow: inset -8px -8px 40px 0px rgba(0, 227, 255, 0.3),
     inset 8px 8px 40px 0px rgba(0, 227, 255, 0.3);
-  border-radius: 4px;
   position: relative;
   .chartTitle {
     position: absolute;

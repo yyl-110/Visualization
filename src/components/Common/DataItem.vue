@@ -1,17 +1,17 @@
 <template>
   <div :class="['dataItem', isSingle && 'singleItem']">
     <Decoration />
-    <div class="content">
+    <div class="content" v-if="!isSingle">
       <div class="title clearfix">
         <img src="../../assets/imgs/icon_file@2x.png" class="icon" alt="" />
-        <span>变更单流程</span>
+        <span>{{ cardData.workflowType }}</span>
       </div>
-      <div class="data clearfix" v-if="!isSingle">
+      <div class="data clearfix">
         <div class="addWrap item">
           <countTo
             class="countTo"
             :startVal="0"
-            :endVal="856"
+            :endVal="cardData.workflowAddCount"
             :duration="6000"
             separator=""
           ></countTo>
@@ -21,24 +21,12 @@
           <countTo
             :startVal="0"
             class="countTo"
-            :endVal="87"
+            :endVal="parseFloat(cardData.workflowFinishRate)"
             :duration="6000"
             separator=""
             suffix="%"
           ></countTo>
           <div class="name">流程完成率</div>
-        </div>
-      </div>
-      <div class="singleData" v-else>
-        <div class="singleWrap">
-          <span class="name">流程完成率</span>
-          <countTo
-            :startVal="0"
-            :endVal="870"
-            :duration="6000"
-            separator=""
-            class="countTo"
-          ></countTo>
         </div>
       </div>
       <div class="bottom clearfix">
@@ -47,7 +35,7 @@
           <countTo
             class="countTo"
             :startVal="0"
-            :endVal="3.5"
+            :endVal="parseFloat(cardData.tongBiAddRate)"
             :duration="6000"
             separator=""
             suffix="%"
@@ -60,7 +48,53 @@
           <countTo
             class="countTo"
             :startVal="0"
-            :endVal="3.1"
+            :endVal="parseFloat(cardData.huanBiAddRate)"
+            :duration="6000"
+            separator=""
+            suffix="%"
+            :decimals="1"
+          ></countTo>
+          <img src="../../assets/imgs/icon_rise@2x.png" class="up" alt="" />
+        </div>
+      </div>
+    </div>
+    <div class="content" v-else>
+      <div class="title clearfix">
+        <img src="../../assets/imgs/icon_file@2x.png" class="icon" alt="" />
+        <span>{{ cardData.objType }}</span>
+      </div>
+      <div class="singleData">
+        <div class="singleWrap">
+          <span class="name">当前新增</span>
+          <countTo
+            :startVal="0"
+            :endVal="cardData.addCount"
+            :duration="6000"
+            separator=""
+            class="countTo"
+          ></countTo>
+        </div>
+      </div>
+      <div class="bottom clearfix">
+        <div class="tb box">
+          同比
+          <countTo
+            class="countTo"
+            :startVal="0"
+            :endVal="parseFloat(cardData.tongBiAddRate)"
+            :duration="6000"
+            separator=""
+            suffix="%"
+            :decimals="1"
+          ></countTo>
+          <img src="../../assets/imgs/icon_rise@2x.png" class="up" alt="" />
+        </div>
+        <div class="hb box">
+          环比
+          <countTo
+            class="countTo"
+            :startVal="0"
+            :endVal="parseFloat(cardData.huanBiAddRate)"
             :duration="6000"
             separator=""
             suffix="%"
@@ -87,12 +121,18 @@ export default {
       type: Boolean,
       default: false,
     },
+    cardData: {
+      type: Array,
+      default: () => {},
+    },
   },
   data() {
     return {};
   },
 
-  mounted() {},
+  mounted() {
+    console.log(this.cardData, '2223030030');
+  },
 
   methods: {},
 };

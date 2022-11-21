@@ -1,18 +1,18 @@
 <template>
   <div class="productChart">
-    <dv-border-box-7 ref="borderBox">
+    <dv-border />
       <div class="chartWrap">
         <div class="chartsdom" id="ProductChart" ref="ProductChart"></div>
       </div>
-    </dv-border-box-7>
   </div>
 </template>
 
 <script>
 import { resizeOb } from '@/utils/tool';
-import resizeChartMixin from '@/utils/resizeChartMixin';
+import DvBorder from '../../../components/Common/DvBorder.vue';
 
 export default {
+  components: { DvBorder },
   name: 'ProductChart',
   props: {
     productData: {
@@ -26,7 +26,6 @@ export default {
       myChart: null,
     };
   },
-  mixins: [resizeChartMixin],
   mounted() {
     this.initChart();
     resizeOb(document.getElementById('ProductChart'));
@@ -142,7 +141,7 @@ export default {
   background: #050a4e;
   box-shadow: inset -8px -8px 40px 0px rgba(0, 227, 255, 0.3),
     inset 8px 8px 40px 0px rgba(0, 227, 255, 0.3);
-  border-radius: 4px;
+  position: relative;
 
   .chartWrap {
     padding: 20px;

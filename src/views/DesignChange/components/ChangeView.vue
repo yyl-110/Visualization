@@ -1,24 +1,28 @@
 <template>
   <div class="changeView">
-    <dv-border-box-7 ref="borderBox">
-      <div class="chartWrap">
-        <div class="chartTitle">
-          <Title :text="'变更单量数量视图'" />
-        </div>
-        <div class="chartsdom" id="ChangeView" ref="ChangeView"></div>
+    <dv-border />
+    <div class="chartWrap">
+      <div class="chartTitle">
+        <Title :text="'变更单量数量视图'" />
       </div>
-    </dv-border-box-7>
+      <div class="chartsdom" id="ChangeView" ref="ChangeView"></div>
+    </div>
   </div>
 </template>
 
 <script>
 import Title from '../../../components/Common/Title.vue';
-import resizeChartMixin from '../../../utils/resizeChartMixin';
 import elementResizeDetectorMaker from 'element-resize-detector';
 import { debounce } from '../../../utils/tool';
+import DvBorder from '../../../components/Common/DvBorder.vue';
 export default {
   name: 'VueDataVChangeView',
-  mixins: [resizeChartMixin],
+  props: {
+    changeViewData: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data() {
     return {
       myChart: null,
@@ -35,6 +39,10 @@ export default {
   methods: {
     initChart() {
       let myChart = echarts.init(document.getElementById('ChangeView'));
+      const source = this.changeViewData.map((i) => {
+        return [i.prjType, i.addECNCount];
+      });
+      console.log('source:', this.changeViewData)
       this.option = {
         tooltip: {
           trigger: 'axis',
@@ -44,17 +52,7 @@ export default {
           },
         },
         dataset: {
-          source: [
-            ['集团项目', 0],
-            ['公安武警项目', 83.1],
-            ['基础科研项目', 86.4],
-            ['实验基础项目', 72.4],
-            ['技术基础类', 0],
-            ['其他项目', 72.4],
-            ['技术基础类1', 72.4],
-            ['技术基础类2', 72.4],
-            ['技术基础类3', 72.4],
-          ],
+          source: [...source],
         },
         xAxis: {
           name: '项目类型',
@@ -138,7 +136,7 @@ export default {
       });
     },
   },
-  components: { Title },
+  components: { Title, DvBorder },
 };
 </script>
 
@@ -149,7 +147,7 @@ export default {
   background: #050a4e;
   box-shadow: inset -8px -8px 40px 0px rgba(0, 227, 255, 0.3),
     inset 8px 8px 40px 0px rgba(0, 227, 255, 0.3);
-  border-radius: 4px;
+  position: relative;
   .chartTitle {
     position: absolute;
     left: 20px;

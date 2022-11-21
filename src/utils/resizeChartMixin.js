@@ -10,13 +10,13 @@ export default {
     // this.changeColor();
   },
   watch: {
-    isCollapse(val) {
-      setTimeout(() => {
-        if (this.$refs.borderBox) {
-          this.$refs.borderBox.initWH();
-        }
-      }, 300);
-    },
+    // isCollapse(val) {
+    //   setTimeout(() => {
+    //     if (this.$refs.borderBox) {
+    //       this.$refs.borderBox.initWH();
+    //     }
+    //   }, 300);
+    // },
   },
   methods: {},
 };

@@ -1,29 +1,27 @@
 <template>
   <div class="productChange">
-    <dv-border-box-7 ref="borderBox">
-      <div class="partsWrap">
-        <div class="titleWrap">
-          <Title text="PDM中超期流程任务查看" />
-          <el-button type="primary" class="back">
-            <img src="../../../assets/imgs/icon_return@2x.png" alt="" />
-            返回
-          </el-button>
-        </div>
-        <v-table />
+    <dv-border />
+    <div class="partsWrap">
+      <div class="titleWrap">
+        <Title text="PDM中超期流程任务查看" />
+        <el-button type="primary" class="back">
+          <img src="../../../assets/imgs/icon_return@2x.png" alt="" />
+          返回
+        </el-button>
       </div>
-    </dv-border-box-7>
+      <v-table />
+    </div>
   </div>
 </template>
 
 <script>
 import Title from '../../../components/Common/Title.vue';
-import resizeChartMixin from '../../../utils/resizeChartMixin';
 import VTable from '@/components/Common/V-Table.vue';
+import DvBorder from '../../../components/Common/DvBorder.vue';
 export default {
-  components: { Title, VTable },
+  components: { Title, VTable, DvBorder },
   name: 'ProductChange',
 
-  mixins: [resizeChartMixin],
   data() {
     return {};
   },
@@ -40,8 +38,8 @@ export default {
   background: #050a4e;
   box-shadow: inset -8px -8px 40px 0px rgba(0, 227, 255, 0.3),
     inset 8px 8px 40px 0px rgba(0, 227, 255, 0.3);
-  border-radius: 4px;
   height: 98%;
+  position: relative;
   .partsWrap {
     width: 100%;
     padding: 0 20px 30px;

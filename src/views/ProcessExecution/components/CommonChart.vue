@@ -1,28 +1,26 @@
 <template>
   <div class="commonChart">
-    <dv-border-box-7 ref="borderBox">
+    <dv-border />
       <div class="chartContainer">
         <div class="chartTitle">
           <Title :text="'普通文档流程超期任务量'" />
         </div>
         <universal-chart />
       </div>
-    </dv-border-box-7>
   </div>
 </template>
 
 <script>
+import DvBorder from '../../../components/Common/DvBorder.vue';
 import Title from '../../../components/Common/Title.vue';
 import UniversalChart from '../../../components/Common/UniversalChart.vue';
-import resizeChartMixin from '../../../utils/resizeChartMixin';
 export default {
-  components: { Title, UniversalChart },
+  components: { Title, UniversalChart, DvBorder },
   name: 'VisualizationCommonChart',
 
   data() {
     return {};
   },
-  mixins: [resizeChartMixin],
   mounted() {},
 
   methods: {},
@@ -36,7 +34,7 @@ export default {
   background: #050a4e;
   box-shadow: inset -8px -8px 40px 0px rgba(0, 227, 255, 0.3),
     inset 8px 8px 40px 0px rgba(0, 227, 255, 0.3);
-  border-radius: 4px;
+    position: relative;
   .chartTitle {
     padding-left: 20px;
   }

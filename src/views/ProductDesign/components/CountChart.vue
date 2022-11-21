@@ -1,18 +1,18 @@
 <template>
   <div class="countContainer">
-    <dv-border-box-7 ref="borderBox">
-      <div class="chartWrap">
-        <div class="chartsdom" id="CountChart"></div>
-      </div>
-    </dv-border-box-7>
+    <dv-border />
+    <div class="chartWrap">
+      <div class="chartsdom" id="CountChart"></div>
+    </div>
   </div>
 </template>
 
 <script>
-import resizeChartMixin from '@/utils/resizeChartMixin';
 import elementResizeDetectorMaker from 'element-resize-detector';
 import { debounce } from '../../../utils/tool';
+import DvBorder from '../../../components/Common/DvBorder.vue';
 export default {
+  components: { DvBorder },
   name: 'CountChart',
   props: {
     chartData: {
@@ -26,7 +26,6 @@ export default {
       myChart: null,
     };
   },
-  mixins: [resizeChartMixin],
   mounted() {
     this.initCharts();
     let erd = elementResizeDetectorMaker();
@@ -209,7 +208,7 @@ export default {
   background: #050a4e;
   box-shadow: inset -8px -8px 40px 0px rgba(0, 227, 255, 0.3),
     inset 8px 8px 40px 0px rgba(0, 227, 255, 0.3);
-  border-radius: 4px;
+  position: relative;
   .chartWrap {
     padding: 20px;
     width: 100%;

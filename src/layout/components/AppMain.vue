@@ -16,9 +16,9 @@ export default {
       return this.$route.path;
     },
   },
-  created(){
-    console.log(this.$route)
-  }
+  created() {
+    console.log(this.$route);
+  },
 };
 </script>
 
@@ -28,16 +28,13 @@ export default {
   height: 100%;
   width: 100%;
   position: relative;
-  overflow: hidden;
   padding-top: 102px;
   color: #fff;
   padding-left: 34px;
   .scroll {
     width: 100%;
     height: 100%;
-    overflow-y: auto;
     padding-right: 20px;
-    overflow-x: hidden;
   }
 }
 .fixed-header + .app-main {

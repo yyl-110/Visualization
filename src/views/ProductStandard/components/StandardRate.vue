@@ -1,21 +1,20 @@
 <template>
   <div class="standeredContainer">
-    <dv-border-box-7 ref="borderBox">
-      <div class="chartWrap">
-        <div class="chartTitle">
-          <Title :text="'标准化率用统计图'" />
-        </div>
-        <div class="chartsdom" id="StandardChart"></div>
+    <dv-border />
+    <div class="chartWrap">
+      <div class="chartTitle">
+        <Title :text="'标准化率用统计图'" />
       </div>
-    </dv-border-box-7>
+      <div class="chartsdom" id="StandardChart"></div>
+    </div>
   </div>
 </template>
 
 <script>
-import resizeChartMixin from '@/utils/resizeChartMixin';
 import Title from '../../../components/Common/Title.vue';
 import elementResizeDetectorMaker from 'element-resize-detector';
 import { debounce } from '../../../utils/tool';
+import DvBorder from '../../../components/Common/DvBorder.vue';
 export default {
   name: 'StandardChart',
   data() {
@@ -24,7 +23,6 @@ export default {
       myChart: null,
     };
   },
-  mixins: [resizeChartMixin],
   mounted() {
     this.initCharts();
     let erd = elementResizeDetectorMaker();
@@ -183,7 +181,7 @@ export default {
       });
     },
   },
-  components: { Title },
+  components: { Title, DvBorder },
 };
 </script>
 
@@ -193,7 +191,7 @@ export default {
   background: #050a4e;
   box-shadow: inset -8px -8px 40px 0px rgba(0, 227, 255, 0.3),
     inset 8px 8px 40px 0px rgba(0, 227, 255, 0.3);
-  border-radius: 4px;
+    position: relative;
   .chartWrap {
     padding: 20px;
     width: 100%;

@@ -54,6 +54,7 @@ export default {
   border-radius: 4px;
   overflow: hidden;
   width: 150px;
+  height: 34px;
   .btn1 {
     float: left;
   }

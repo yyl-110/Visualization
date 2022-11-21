@@ -1,6 +1,6 @@
 <template>
   <div class="overdue">
-    <dv-border-box-7 ref="borderBox">
+    <dv-border />
       <div class="partsWrap">
         <div class="titleWrap">
           <Title text="PDM产品查看列表" />
@@ -11,19 +11,17 @@
         </div>
         <v-table />
       </div>
-    </dv-border-box-7>
   </div>
 </template>
 
 <script>
 import Title from '../../../components/Common/Title.vue';
-import resizeChartMixin from '../../../utils/resizeChartMixin';
 import VTable from '@/components/Common/V-Table.vue';
+import DvBorder from '../../../components/Common/DvBorder.vue';
 export default {
-  components: { Title, VTable },
+  components: { Title, VTable, DvBorder },
   name: 'Overdue',
 
-  mixins: [resizeChartMixin],
   data() {
     return {};
   },
@@ -41,8 +39,8 @@ export default {
   background: #050a4e;
   box-shadow: inset -8px -8px 40px 0px rgba(0, 227, 255, 0.3),
     inset 8px 8px 40px 0px rgba(0, 227, 255, 0.3);
-  border-radius: 4px;
   height: 98%;
+  position: relative;
   .partsWrap {
     width: 100%;
     padding: 0 20px 30px;

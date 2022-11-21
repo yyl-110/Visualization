@@ -1,7 +1,7 @@
 <template>
   <div class="panelItem">
     <Decoration />
-    <div class="content" v-if="type === 1">
+    <div class="content" v-if="type === 1 || type === 2">
       <div class="innerLeft">
         <div class="title">
           <img src="../../../assets/imgs/icon_file@2x.png" alt="" />
@@ -10,26 +10,32 @@
         <div class="chartItem">
           <div class="chartTop">
             <span>当前新增</span>
-            <span>880</span>
+            <span>
+              {{
+                type === 1 ? itemData.addChangeCount : itemData.changePartSum
+              }}
+            </span>
           </div>
           <div class="percentContainer">
             <Percent
-              :maxData="1000"
-              :value="[880]"
+              :maxData="10"
+              :value="[
+                type === 1 ? itemData.addChangeCount : itemData.changePartSum,
+              ]"
               color="#23CEFD"
               bgColor="rgba(35, 206, 253, 0.1)"
             />
           </div>
         </div>
-        <div class="chartItem">
+        <div class="chartItem" v-if="type === 1">
           <div class="chartTop">
             <span>当前新增</span>
-            <span>880</span>
+            <span>{{ itemData.completeRate }}</span>
           </div>
           <div class="percentContainer">
             <Percent
               :maxData="100"
-              :value="[51]"
+              :value="[parseFloat(itemData.completeRate)]"
               color="#009AFF"
               bgColor="rgba(0, 154, 255, .1)"
             />
@@ -41,7 +47,7 @@
           同比
           <countTo
             :startVal="0"
-            :endVal="5.9"
+            :endVal="parseFloat(itemData.tongBi)"
             :duration="6000"
             separator=""
             :decimals="1"
@@ -54,7 +60,7 @@
           环比
           <countTo
             :startVal="0"
-            :endVal="2.1"
+            :endVal="parseFloat(itemData.huanBi)"
             :duration="6000"
             separator=""
             suffix="%"
@@ -75,15 +81,15 @@
           <span class="name">一类变更</span>
           <div class="percentContainer">
             <Percent
-              :maxData="1000"
-              :value="[880]"
+              :maxData="100"
+              :value="[parseInt(itemData['一类'])]"
               color="#23CEFD"
               bgColor="rgba(35, 206, 253, 0.1)"
             />
           </div>
           <countTo
             :startVal="0"
-            :endVal="800"
+            :endVal="itemData['一类']"
             :duration="6000"
             separator=""
             suffix="个"
@@ -91,18 +97,37 @@
           ></countTo>
         </div>
         <div class="row">
-          <span class="name">一类变更</span>
+          <span class="name">二类变更</span>
           <div class="percentContainer">
             <Percent
               :maxData="1000"
-              :value="[880]"
+              :value="[parseInt(itemData['二类'])]"
               color="#9FDB1D"
               bgColor="rgba(159, 219, 29, .1)"
             />
           </div>
           <countTo
             :startVal="0"
-            :endVal="100"
+            :endVal="itemData['二类']"
+            :duration="6000"
+            separator=""
+            suffix="个"
+            class="countTo"
+          ></countTo>
+        </div>
+        <div class="row">
+          <span class="name">三类变更</span>
+          <div class="percentContainer">
+            <Percent
+              :maxData="1000"
+              :value="[parseInt(itemData['三类'])]"
+              color="#9FDB1D"
+              bgColor="rgba(159, 219, 29, .1)"
+            />
+          </div>
+          <countTo
+            :startVal="0"
+            :endVal="itemData['三类']"
             :duration="6000"
             separator=""
             suffix="个"
@@ -130,6 +155,10 @@ export default {
     type: {
       type: Number,
       default: 1,
+    },
+    itemData: {
+      type: Object,
+      default: () => {},
     },
   },
   data() {

@@ -22,7 +22,7 @@
           <future-chart :chartData="futureChartData" />
         </div>
         <div class="rank">
-          <Rank :rankData="rankData1" title="发布率排行榜" />
+          <Rank :rankData="rankData1" title="发布率排行榜" label="零件发布率" progressLabel="partReleasedRate" />
         </div>
       </div>
     </div>
@@ -41,10 +41,10 @@
       />
       <div class="productCell clearfix">
         <div class="rank1">
-          <Rank :rankData="rankData2" title="项目总数量排行榜" />
+          <Rank :rankData="rankData2" title="项目总数量排行榜" label="产品库数量" progressLabel="productCount" />
         </div>
         <div class="rank2">
-          <Rank :rankData="rankData3" title="项目验收数量排行榜" />
+          <Rank :rankData="rankData3" title="项目验收数量排行榜" label="产品验收数量" progressLabel="projectAccepted" />
         </div>
       </div>
     </div>

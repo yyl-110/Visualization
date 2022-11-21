@@ -1,8 +1,6 @@
 <template>
   <div id="app" v-cloak>
-    <div class="innerWrap" ref="appContainer">
-      <router-view />
-    </div>
+    <router-view />
   </div>
 </template>
 
@@ -43,21 +41,20 @@ export default {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  background-color: #050a4e;
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  .innerWrap {
-    min-width: auto;
-    width: 100%;
-    height: 100%;
-    // width: 1920px;
-    min-height: auto;
-    // height: 1080px;
-    overflow: hidden;
-    transform-origin: 0 0 0;
-  }
+  // .innerWrap {
+  //   min-width: auto;
+  //   width: 100%;
+  //   height: 100%;
+  //   // width: 1920px;
+  //   min-height: auto;
+  //   // height: 1080px;
+  //   overflow: hidden;
+  //   transform-origin: 0 0 0;
+  // }
 }
 </style>

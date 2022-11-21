@@ -1,27 +1,32 @@
 <template>
   <div class="CompletionRate">
-    <dv-border-box-7 ref="borderBox">
-      <div class="chartTitle">
-        <Title :text="'项目类型流程数量及完成率'" />
-      </div>
-      <div class="chartWrap">
-        <div class="chartsdom" id="RateChart"></div>
-      </div>
-    </dv-border-box-7>
+    <dv-border />
+    <div class="chartTitle">
+      <Title :text="'项目类型流程数量及完成率'" />
+    </div>
+    <div class="chartWrap">
+      <div class="chartsdom" id="RateChart"></div>
+    </div>
   </div>
 </template>
 
 <script>
 import Title from '@/components/Common/Title';
-import resizeChartMixin from '../../../utils/resizeChartMixin';
 import elementResizeDetectorMaker from 'element-resize-detector';
 import { debounce } from '../../../utils/tool';
+import DvBorder from '../../../components/Common/DvBorder.vue';
 export default {
   name: 'CompletionRate',
   components: {
     Title,
+    DvBorder,
   },
-  mixins: [resizeChartMixin],
+  props: {
+    completionData: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data() {
     return {
       option: {},
@@ -41,7 +46,11 @@ export default {
   methods: {
     initChart() {
       let myChart = echarts.init(document.getElementById('RateChart'));
-
+      const xLabel = this.completionData.map((i) => i.prjType);
+      const data1 = this.completionData.map((i) => i.workflowFinishCount);
+      const data2 = this.completionData.map((i) =>
+        parseInt(i.workflowFinishRate),
+      );
       this.option = {
         tooltip: {
           trigger: 'axis',
@@ -72,15 +81,7 @@ export default {
               color: '#fff', //文字颜色
               fontSize: this.$fontSize(12), //文字大小
             },
-            data: [
-              '集团项目',
-              '公安武警项目',
-              '基础科研项目',
-              '实验基础项目',
-              '技术基础类',
-              '其他项目',
-              '军贸项目',
-            ],
+            data: xLabel,
             axisPointer: {
               type: 'shadow',
             },
@@ -148,7 +149,7 @@ export default {
                 return value;
               },
             },
-            data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6],
+            data: data1,
           },
           {
             name: '流程完成率',
@@ -172,7 +173,7 @@ export default {
                 return value + '%';
               },
             },
-            data: [2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3],
+            data: data2,
           },
         ],
         grid: {
@@ -202,7 +203,6 @@ export default {
   background: #050a4e;
   box-shadow: inset -8px -8px 40px 0px rgba(0, 227, 255, 0.3),
     inset 8px 8px 40px 0px rgba(0, 227, 255, 0.3);
-  border-radius: 4px;
   position: relative;
   .chartTitle {
     position: absolute;

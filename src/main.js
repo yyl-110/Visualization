@@ -1,15 +1,17 @@
 // 解决低版本兼容性问题
 import 'babel-polyfill';
+import Es6Promise from 'es6-promise'
+Es6Promise.polyfill()
 
 /* ie兼容 */
 if (Number.parseInt === undefined) Number.parseInt = window.parseInt;
 if (Number.parseFloat === undefined) Number.parseFloat = window.parseFloat;
 
-if (!window.Promise) {
-  document.writeln(
-    '<script src="./es6-promise.js"' + '>' + '<' + '/' + 'script>',
-  );
-}
+// if (!window.Promise) {
+//   document.writeln(
+//     '<script src="./es6-promise.js"' + '>' + '<' + '/' + 'script>',
+//   );
+// }
 
 import '@/utils/requestAnimationFrame';
 
@@ -60,12 +62,8 @@ Vue.use(Button)
   .use(Input)
   .use(ElScrollbar);
 import '@/assets/js/flexible';
-
 /* datav */
-import {loading, borderBox7} from '@jiaminghi/data-view';
 
-Vue.use(loading);
-Vue.use(borderBox7);
 
 Vue.prototype.$fontSize = fontSize;
 
