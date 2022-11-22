@@ -6,27 +6,25 @@ import {DATA_STATISTICE, SERVICE_MONITORING} from '../utils/enum';
 Vue.use(VueRouter);
 
 const routes = [
-  // {
-  //   path: '/index',
-  //   name: 'Index',
-  //   component: () => import('@/views/Home.vue'),
-  //   hidden: true,
-  //   meta: {
-  //     title: 'demo',
-  //   },
-  // },
   {
     path: '/',
     component: layout,
-    redirect: '/product-design',
+    redirect: '/product-design/home',
     children: [
       {
-        path: '/product-design',
+        path: 'product-design',
         name: 'ProductDesign',
+        redirect: '/product-design/home',
         component: () => import('@/views/ProductDesign'),
         meta: {title: '产品设计数据统计', icon: 'icon_product.png', mainTitle: DATA_STATISTICE},
         noShowingChildren: true,
         children: [
+          {
+            path: 'home',
+            name: 'ProductDesign',
+            component: () => import('@/views/ProductDesign/Home'),
+            meta: {mainTitle: DATA_STATISTICE},
+          },
           {
             path: 'overdue',
             name: 'Overdue',
@@ -36,8 +34,8 @@ const routes = [
           },
           {
             path: 'change',
-            hidden: true,
             name: 'ProductChange',
+            hidden: true,
             component: () => import('@/views/ProductDesign/ProductChange'),
             meta: {title: 'PDM产品变更单', mainTitle: DATA_STATISTICE},
           },
@@ -152,7 +150,7 @@ const routes = [
   //   },
   // },
 ];
-
+console.log(routes);
 const router = new VueRouter({
   mode: 'history',
   scrollBehavior: () => ({y: 0}),

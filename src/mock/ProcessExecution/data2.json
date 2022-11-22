@@ -1,0 +1,35 @@
+{
+  "区域四十三": {
+    "公安武警项目": {
+      "1": {
+        "prjType": "公安武警项目",
+        "workflowOverdueCount": 0
+      }
+    },
+    "集团项目": {
+      "3": {
+        "prjType": "集团项目",
+        "workflowOverdueCount": 2
+      }
+    },
+    "预研项目": {
+      "2": {
+        "prjType": "预研项目",
+        "workflowOverdueCount": 0
+      }
+    }
+  },
+  "区域四十二": [{
+      "workflowOverdueCount": 2,
+      "prjType": "集团项目"
+    },
+    {
+      "workflowOverdueCount": 0,
+      "prjType": "公安武警项目"
+    },
+    {
+      "workflowOverdueCount": 0,
+      "prjType": "预研项目"
+    }
+  ]
+}

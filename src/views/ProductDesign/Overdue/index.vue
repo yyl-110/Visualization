@@ -1,16 +1,16 @@
 <template>
   <div class="overdue">
     <dv-border />
-      <div class="partsWrap">
-        <div class="titleWrap">
-          <Title text="PDM产品查看列表" />
-          <el-button type="primary" class="back">
-            <img src="../../../assets/imgs/icon_return@2x.png" alt="" />
-            返回
-          </el-button>
-        </div>
-        <v-table />
+    <div class="partsWrap">
+      <div class="titleWrap">
+        <Title text="PDM产品查看列表" />
+        <el-button type="primary" class="back">
+          <img src="../../../assets/imgs/icon_return@2x.png" alt="" />
+          返回
+        </el-button>
       </div>
+      <v-table />
+    </div>
   </div>
 </template>
 
@@ -26,8 +26,7 @@ export default {
     return {};
   },
 
-  mounted() {
-  },
+  mounted() {},
 
   methods: {},
 };

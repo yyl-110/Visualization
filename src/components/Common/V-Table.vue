@@ -24,7 +24,7 @@
         :page-sizes="[100, 200, 300, 400]"
         :page-size="100"
         layout="total, prev, pager, next,sizes, slot, jumper"
-        :total="400"
+        :total="total"
       >
         <span class="pageTotal">{{ page }}/{{ total }}</span>
       </el-pagination>

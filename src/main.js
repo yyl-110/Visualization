@@ -1,7 +1,7 @@
 // 解决低版本兼容性问题
 import 'babel-polyfill';
-import Es6Promise from 'es6-promise'
-Es6Promise.polyfill()
+import Es6Promise from 'es6-promise';
+Es6Promise.polyfill();
 
 /* ie兼容 */
 if (Number.parseInt === undefined) Number.parseInt = window.parseInt;
@@ -20,6 +20,8 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import {fontSize} from './utils/tool';
+
+require('./mock/mockService');
 
 import {
   Button,
@@ -63,7 +65,6 @@ Vue.use(Button)
   .use(ElScrollbar);
 import '@/assets/js/flexible';
 /* datav */
-
 
 Vue.prototype.$fontSize = fontSize;
 

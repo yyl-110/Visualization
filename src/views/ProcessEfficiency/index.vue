@@ -5,11 +5,11 @@
       <el-row justify="space-around">
         <el-col
           :span="isCollapse ? 6 : 8"
-          v-for="i in 10"
-          :key="i"
+          v-for="(item, index) in cardData"
+          :key="index"
           style="margin-top: 30px"
         >
-          <process-item style="margin: 0 auto" />
+          <process-item style="margin: 0 auto" :cardData="item" />
         </el-col>
       </el-row>
     </div>
@@ -20,12 +20,15 @@
 import ProcessItem from './components/ProcessItem.vue';
 import { mapGetters } from 'vuex';
 import DvBorder from '../../components/Common/DvBorder.vue';
+import dataJson from './data.json';
 export default {
   components: { ProcessItem, DvBorder },
   name: 'ProcessEfficiency',
 
   data() {
-    return {};
+    return {
+      cardData: [],
+    };
   },
 
   computed: {
@@ -33,6 +36,9 @@ export default {
     isCollapse() {
       return !this.sidebar.opened;
     },
+  },
+  created() {
+    this.getData();
   },
   mounted() {
     // this.changeColor();
@@ -48,7 +54,12 @@ export default {
     },
   },
 
-  methods: {},
+  methods: {
+    getData() {
+      this.cardData = dataJson['区域四十七'];
+      console.log('this.cardData:1', this.cardData);
+    },
+  },
 };
 </script>
 

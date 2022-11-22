@@ -1,12 +1,12 @@
 <template>
   <div class="commonChart">
     <dv-border />
-      <div class="chartContainer">
-        <div class="chartTitle">
-          <Title :text="'普通文档流程超期任务量'" />
-        </div>
-        <universal-chart />
+    <div class="chartContainer">
+      <div class="chartTitle">
+        <Title :text="'普通文档流程超期任务量'" />
       </div>
+      <universal-chart :chartData="chartData" />
+    </div>
   </div>
 </template>
 
@@ -17,7 +17,12 @@ import UniversalChart from '../../../components/Common/UniversalChart.vue';
 export default {
   components: { Title, UniversalChart, DvBorder },
   name: 'VisualizationCommonChart',
-
+  props: {
+    chartData: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data() {
     return {};
   },
@@ -34,7 +39,7 @@ export default {
   background: #050a4e;
   box-shadow: inset -8px -8px 40px 0px rgba(0, 227, 255, 0.3),
     inset 8px 8px 40px 0px rgba(0, 227, 255, 0.3);
-    position: relative;
+  position: relative;
   .chartTitle {
     padding-left: 20px;
   }

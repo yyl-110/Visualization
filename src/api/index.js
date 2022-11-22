@@ -128,7 +128,7 @@ export const getProcessExecutionByChart = (params) =>
  * @return {*}
  */
 export const getProcessExecutionByExe = (params) =>
-  post('/Windchill/app/process-execution/overdueWfListStatistics', params);
+  post('/Windchill/app/process-execution/overdueWfList', params);
 
 /**
  * 流程执行效率统计

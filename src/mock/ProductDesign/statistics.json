@@ -1,0 +1,46 @@
+{
+  "区域七": {
+    "modelReleasedRate": "0.00%",
+    "releasedDrawingCount": "0.00%",
+    "releasedModelCount": 0,
+    "addModelCount": 25,
+    "partReleasedRate": "0.00%",
+    "releasedPartCount": 0,
+    "addPartCount": 14,
+    "prjType": "集团项目",
+    "addDrawingCount": 23,
+    "ranking": "1"
+  },
+  "区域八": {
+    "前4期": {
+      "addModelCount": 0,
+      "addPartCount": 0,
+      "addDrawingCount": 0
+    },
+    "前5期": {
+      "addModelCount": 0,
+      "addPartCount": 8,
+      "addDrawingCount": 0
+    },
+    "前3期": {
+      "addModelCount": 0,
+      "addPartCount": 0,
+      "addDrawingCount": 0
+    },
+    "前6期": {
+      "addModelCount": 0,
+      "addPartCount": 0,
+      "addDrawingCount": 0
+    },
+    "前1期": {
+      "addModelCount": 0,
+      "addPartCount": 0,
+      "addDrawingCount": 0
+    },
+    "前2期": {
+      "addModelCount": 6,
+      "addPartCount": 6,
+      "addDrawingCount": 1
+    }
+  }
+}

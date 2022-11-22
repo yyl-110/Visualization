@@ -3,8 +3,9 @@ import axios from 'axios';
 // post请求头
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 // create an axios instance
+// process.env.VUE_APP_BASE_API
 const service = axios.create({
-  baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
+  baseURL: '', // url = base url + request url
   // withCredentials: true, // send cookies when cross-domain requests
   timeout: 10000, // request timeout
 });
@@ -12,6 +13,7 @@ const service = axios.create({
 // request interceptor
 service.interceptors.request.use(
   (config) => {
+    console.log('config:', config.data);
     // do something before request is sent
     // if (store.getters.token) {
     //   // let each request carry token

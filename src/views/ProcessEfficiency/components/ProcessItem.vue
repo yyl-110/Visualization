@@ -4,17 +4,17 @@
     <div class="content">
       <div class="title">
         <img src="../../../assets/imgs/icon_file@2x.png" class="icon" alt="" />
-        变更单流程
+        {{ cardData.workflowType }}
       </div>
       <div class="chartItem">
         <div class="chartTop clearfix">
           <span class="float_l">当前新增</span>
-          <span class="float_r">880</span>
+          <span class="float_r">{{ cardData.wfAddCount }}</span>
         </div>
         <div class="percentContainer">
           <Percent
             :maxData="1000"
-            :value="[880]"
+            :value="[cardData.wfAddCount]"
             color="#23CEFD"
             bgColor="rgba(35, 206, 253, 0.1)"
           />
@@ -23,12 +23,12 @@
       <div class="chartItem">
         <div class="chartTop clearfix">
           <span class="float_l">当前新增</span>
-          <span class="float_r">80%</span>
+          <span class="float_r">{{ cardData.wfFinishRate }}</span>
         </div>
         <div class="percentContainer">
           <Percent
             :maxData="100"
-            :value="[80]"
+            :value="[parseFloat(cardData.wfFinishRate)]"
             color="#9FDB1D"
             bgColor="rgba(159, 219, 29, .1)"
           />
@@ -39,7 +39,7 @@
           同比&nbsp;
           <countTo
             :startVal="0"
-            :endVal="3.5"
+            :endVal="parseFloat(cardData.huanBiAddRate)"
             :duration="6000"
             separator=""
             suffix="%"
@@ -52,7 +52,7 @@
           环比&nbsp;
           <countTo
             :startVal="0"
-            :endVal="3.1"
+            :endVal="parseFloat(cardData.tongBiAddRate)"
             :duration="6000"
             separator=""
             suffix="%"
@@ -63,14 +63,14 @@
         </div>
       </div>
       <div class="cell">
-        <p class="r1">流程平均耗时：3h</p>
+        <p class="r1">流程平均耗时：{{ cardData.wfAvgHours }}</p>
         <p class="r2 clearfix">
-          <span class="float_l">耗时最短任务完成者：张三</span>
-          <span class="time1 float_r">耗时：400min</span>
+          <span class="float_l">耗时最短任务完成者：{{ p1 }}</span>
+          <span class="time1 float_r">耗时：{{ t1 }}</span>
         </p>
         <p class="r3 clearfix">
-          <span class="float_l">耗时最长任务完成者：李四</span>
-          <span class="time2 float_r">耗时：46h</span>
+          <span class="float_l">耗时最长任务完成者：{{ p2 }}</span>
+          <span class="time2 float_r">耗时：{{ t2 }}</span>
         </p>
       </div>
     </div>
@@ -86,8 +86,30 @@ export default {
   components: { Decoration, Percent, countTo },
   name: 'VisualizationProcessItem',
 
+  props: {
+    cardData: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data() {
-    return {};
+    return {
+      p1: '',
+      p2: '',
+      t1: '',
+      t2: '',
+    };
+  },
+  created() {
+    try {
+      const t1_key = Object.keys(this.cardData.wfConsumeShortest)[0];
+      const t2_key = Object.keys(this.cardData.wfConsumeLongest)[0];
+      this.p1 = t1_key;
+      this.p2 = t2_key;
+      this.t1 = this.cardData.wfConsumeLongest[t1_key];
+      this.t2 = this.cardData.wfConsumeLongest[t2_key];
+      // this.t1 =
+    } catch (error) {}
   },
 
   mounted() {},

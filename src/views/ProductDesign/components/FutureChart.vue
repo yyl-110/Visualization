@@ -1,5 +1,5 @@
 <template>
-  <div class="futureChart">
+  <div class="futureChart" v-if="chartData">
     <dv-border />
     <div class="chartTitle">
       <Title :text="'近六期的趋势图'" />
@@ -34,6 +34,8 @@ export default {
       myChart: null,
     };
   },
+
+  watch: {},
 
   mounted() {
     this.initChart();

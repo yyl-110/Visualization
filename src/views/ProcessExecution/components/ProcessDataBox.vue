@@ -2,41 +2,123 @@
   <div class="processDataBox">
     <dv-border />
     <div class="dataContainer">
-      <el-scrollbar wrap-class="scrollbar-wrapper">
-        <div class="dataWrap">
-          <el-row>
-            <el-col
-              :lg="{ span: '4-8' }"
-              :md="{ span: '4-8' }"
-              :sm="{ span: '4-8' }"
-              :xs="{ span: '4-8' }"
-              v-for="i in 9"
-              :key="i"
-            >
-              <data-item class="item" />
-            </el-col>
-          </el-row>
-        </div>
-      </el-scrollbar>
+      <div class="dataWrap">
+        <el-row>
+          <el-col
+            :lg="{ span: '4-8' }"
+            :md="{ span: '4-8' }"
+            :sm="{ span: '4-8' }"
+            :xs="{ span: '4-8' }"
+            v-for="(item, index) in cardData"
+            :key="index"
+          >
+            <div :class="['dataItem']" @click="handleClick(item)">
+              <Decoration />
+              <div class="content">
+                <div class="title clearfix">
+                  <img
+                    src="../../../assets/imgs/icon_file@2x.png"
+                    class="icon"
+                    alt=""
+                  />
+                  <span>{{ item.workflowType || item.taskType }}</span>
+                </div>
+                <div class="data clearfix">
+                  <div class="addWrap item">
+                    <countTo
+                      class="countTo"
+                      :startVal="0"
+                      :endVal="item.workflowAddCount"
+                      :duration="6000"
+                      separator=""
+                    ></countTo>
+                    <div class="name">当前新增流程数量</div>
+                  </div>
+                  <div class="preWrap item">
+                    <countTo
+                      :startVal="0"
+                      class="countTo"
+                      :endVal="item.workflowOverdueCount"
+                      :duration="6000"
+                      separator=""
+                    ></countTo>
+                    <div class="name">超期数量</div>
+                  </div>
+                </div>
+                <div class="bottom clearfix">
+                  <div class="tb box">
+                    同比
+                    <countTo
+                      class="countTo"
+                      :startVal="0"
+                      :endVal="parseFloat(item.tongBiAddRate)"
+                      :duration="6000"
+                      separator=""
+                      suffix="%"
+                      :decimals="1"
+                    ></countTo>
+                    <img
+                      src="../../../assets/imgs/icon_rise@2x.png"
+                      class="up"
+                      alt=""
+                    />
+                  </div>
+                  <div class="hb box">
+                    环比
+                    <countTo
+                      class="countTo"
+                      :startVal="0"
+                      :endVal="parseFloat(item.huanBiAddRate)"
+                      :duration="6000"
+                      separator=""
+                      suffix="%"
+                      :decimals="1"
+                    ></countTo>
+                    <img
+                      src="../../../assets/imgs/icon_rise@2x.png"
+                      class="up"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+              <Decoration class="bottomDec" />
+            </div>
+          </el-col>
+        </el-row>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import DataItem from '@/components/Common/DataItem.vue';
+import countTo from 'vue-count-to';
+import Decoration from '../../../components/Common/Decoration.vue';
 import DvBorder from '../../../components/Common/DvBorder.vue';
 export default {
-  components: { DataItem, DvBorder },
+  components: { DvBorder, Decoration, countTo },
   name: 'ProcessDataBox',
+  props: {
+    cardData: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data() {
     return {
       dataList: [{ id: 1, title: '普通文档单流程' }],
     };
   },
 
-  mounted() {},
+  mounted() {
+    console.log(this.cardData, 9090);
+  },
 
-  methods: {},
+  methods: {
+    handleClick(item) {
+      this.$emit('handleClick', item.workflowType || item.taskType);
+    },
+  },
 };
 </script>
 
@@ -47,7 +129,7 @@ export default {
   background: #050a4e;
   box-shadow: inset -8px -8px 40px 0px rgba(0, 227, 255, 0.3),
     inset 8px 8px 40px 0px rgba(0, 227, 255, 0.3);
-    position: relative;
+  position: relative;
   .dataContainer {
     width: 100%;
     height: 100%;
@@ -64,9 +146,103 @@ export default {
         justify-content: center;
       }
     }
-    .item {
-      flex-shrink: 0;
-      margin-top: 30px;
+  }
+
+  .dataItem {
+    margin-top: 30px;
+    width: 300px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.04);
+    position: relative;
+    .bottomDec {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+    .addWrap {
+      .countTo {
+        color: #23cefd;
+        line-height: 40px;
+        font-size: 28px;
+        font-weight: 600;
+      }
+    }
+    .preWrap {
+      .countTo {
+        color: #23cefd;
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 40px;
+      }
+    }
+    .content {
+      padding: 0 20px;
+      .data {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        padding-top: 12px;
+        padding-bottom: 12px;
+        overflow: hidden;
+        .addWrap {
+          float: left;
+        }
+        .preWrap {
+          float: right;
+        }
+        .item {
+          text-align: center;
+          .name {
+            margin-top: 2px;
+            font-size: 16px;
+            font-weight: 400;
+            color: #ffffff;
+            white-space: nowrap;
+          }
+        }
+      }
+      .title {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        padding-bottom: 11px;
+        padding-top: 20px;
+        span {
+          font-size: 16px;
+          font-weight: 400;
+          color: #ffffff;
+          line-height: 24px;
+          margin-left: 4px;
+          float: left;
+        }
+        img {
+          width: 24px;
+          height: 24px;
+          float: left;
+        }
+      }
+
+      .bottom {
+        padding-top: 14px;
+        overflow: hidden;
+        .countTo {
+          font-size: 16px;
+          color: #fff;
+        }
+        .tb {
+          float: left;
+        }
+        .hb {
+          float: right;
+        }
+        .box {
+          font-size: 16px;
+          font-weight: 400;
+          color: #ffffff;
+          line-height: 22px;
+          .up {
+            width: 12px;
+            height: 12px;
+            margin-left: 7px;
+          }
+        }
+      }
     }
   }
 }

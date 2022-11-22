@@ -3,60 +3,62 @@
     <dv-border />
     <div class="ranlWrap">
       <Title :text="title" />
-      <table border="0" align="left">
-        <thead>
-          <tr>
-            <th width="50"><div class="text rankText">排名</div></th>
-            <th width="106"><div class="text name">项目类型</div></th>
-            <th width="260">
-              <div class="progressWrap">
-                <div class="progress"></div>
-              </div>
-            </th>
-            <th width="80">
-              <div class="text rate">{{ label }}</div>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(item, index) in newRankData" :key="index">
-            <td width="50">
-              <div :class="['rankNum', 'rankText']">
-                <div
-                  :class="[
-                    index === 0 && 'one',
-                    index === 1 && 'two',
-                    index === 2 && 'three',
-                  ]"
-                >
-                  {{ index + 1 }}
+      <div class="tableWrapper">
+        <table border="0" align="left">
+          <thead>
+            <tr>
+              <th width="50"><div class="text rankText">排名</div></th>
+              <th width="106"><div class="text name">项目类型</div></th>
+              <th width="260">
+                <div class="progressWrap">
+                  <div class="progress"></div>
                 </div>
-              </div>
-            </td>
-            <td width="106">
-              <div class="text name">{{ item.prjType }}</div>
-            </td>
-            <td width="260">
-              <div class="progressWrap">
-                <div class="progress">
-                  <el-progress
-                    :text-inside="false"
-                    :show-text="false"
-                    :stroke-width="10"
-                    :percentage="parseFloat(item[progressLabel])"
-                    color="#23CEFD"
-                  ></el-progress>
+              </th>
+              <th width="80">
+                <div class="text rate">{{ label }}</div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(item, index) in newRankData" :key="index">
+              <td width="50">
+                <div :class="['rankNum', 'rankText']">
+                  <div
+                    :class="[
+                      index === 0 && 'one',
+                      index === 1 && 'two',
+                      index === 2 && 'three',
+                    ]"
+                  >
+                    {{ index + 1 }}
+                  </div>
                 </div>
-              </div>
-            </td>
-            <td width="80">
-              <div class="text rate">
-                {{ item[progressLabel] }}{{ isRate ? '%' : '' }}
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              </td>
+              <td width="106">
+                <div class="text name">{{ item.prjType }}</div>
+              </td>
+              <td width="260">
+                <div class="progressWrap">
+                  <div class="progress">
+                    <el-progress
+                      :text-inside="false"
+                      :show-text="false"
+                      :stroke-width="10"
+                      :percentage="parseFloat(item[progressLabel])"
+                      color="#23CEFD"
+                    ></el-progress>
+                  </div>
+                </div>
+              </td>
+              <td width="80">
+                <div class="text rate">
+                  {{ item[progressLabel] }}{{ isRate ? '%' : '' }}
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </template>
@@ -161,6 +163,10 @@ export default {
     inset 8px 8px 40px 0px rgba(0, 227, 255, 0.3);
   overflow: hidden;
   position: relative;
+  .tableWrapper {
+    width: 100%;
+    overflow: auto;
+  }
   .progressWrap {
     height: 40px;
   }
