@@ -28,21 +28,28 @@ export default {
       myChart: null,
     };
   },
+  watch: {
+    changeViewData: {
+      deep: true,
+      handler() {
+        this.initOption();
+        if (this.myChart) {
+          this.myChart.setOption(this.option, true);
+        } else {
+          this.initChart();
+        }
+      },
+    },
+  },
   mounted() {
-    this.initChart();
-    let erd = elementResizeDetectorMaker();
-    let that = this;
-    erd.listenTo(document.getElementById('ChangeView'), () => {
-      debounce(that.myChart.resize(), 200);
-    });
+    this.initOption();
+    this.initChart;
   },
   methods: {
-    initChart() {
-      let myChart = echarts.init(document.getElementById('ChangeView'));
+    initOption() {
       const source = this.changeViewData.map((i) => {
         return [i.prjType, i.addECNCount];
       });
-      console.log('source:', this.changeViewData)
       this.option = {
         tooltip: {
           trigger: 'axis',
@@ -129,7 +136,27 @@ export default {
           bottom: this.$fontSize(70),
         },
       };
+    },
+    initChart() {
+      let myChart = echarts.init(document.getElementById('ChangeView'));
       myChart.setOption(this.option, true);
+      let erd = elementResizeDetectorMaker();
+      erd.listenTo(document.getElementById('ChangeView'), () => {
+        debounce(myChart.resize(), 200);
+      });
+      /* 点击柱形图 */
+      myChart.getZr().on('click', (params) => {
+        let pointInPixel = [params.offsetX, params.offsetY];
+        if (myChart.containPixel('grid', pointInPixel)) {
+          let xIndex = myChart.convertFromPixel({ seriesIndex: 0 }, [
+            params.offsetX,
+            params.offsetY,
+          ])[0];
+          /* 点击柱形图 */
+          this.$emit('chartClick', xIndex);
+          console.log(xIndex);
+        }
+      });
       this.myChart = myChart;
       window.addEventListener('resize', () => {
         myChart.resize();

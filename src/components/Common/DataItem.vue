@@ -1,7 +1,11 @@
 <template>
   <div :class="['dataItem', isSingle && 'singleItem']">
     <Decoration />
-    <div class="content" v-if="!isSingle">
+    <div
+      class="content"
+      v-if="!isSingle"
+      @click="handleDataItem(cardData.workflowType)"
+    >
       <div class="title clearfix">
         <img src="../../assets/imgs/icon_file@2x.png" class="icon" alt="" />
         <span>{{ cardData.workflowType }}</span>
@@ -58,7 +62,7 @@
         </div>
       </div>
     </div>
-    <div class="content" v-else>
+    <div class="content" v-else @click="handleDataItem(cardData.objType)">
       <div class="title clearfix">
         <img src="../../assets/imgs/icon_file@2x.png" class="icon" alt="" />
         <span>{{ cardData.objType }}</span>
@@ -122,7 +126,7 @@ export default {
       default: false,
     },
     cardData: {
-      type: Array,
+      type: Object,
       default: () => {},
     },
   },
@@ -130,11 +134,16 @@ export default {
     return {};
   },
 
-  mounted() {
-    console.log(this.cardData, '2223030030');
-  },
+  mounted() {},
 
-  methods: {},
+  methods: {
+    handleDataItem(val) {
+      this.$store.dispatch('page/changeProcessType', {
+        key: 'processType',
+        value: val,
+      });
+    },
+  },
 };
 </script>
 

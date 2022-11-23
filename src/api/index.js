@@ -48,6 +48,13 @@ export const getBaseData = (params) => post('/Windchill/app/base-data/addStatist
 export const getProcessDataByCard = (params) => post('/Windchill/app/process-data/addStatisticsByWfType', params);
 
 /**
+ * 流程统计
+ * @param {*} params
+ * @return {*} 区域二十 区域二十二
+ */
+export const getProcessData = (params) => post('/Windchill/app/process-data/addStatistics', params);
+
+/**
  * 设计更改统计
  * @return {*}
  */
@@ -127,14 +134,12 @@ export const getProcessExecutionByChart = (params) =>
  * 点击区域四十五中某个流程类型区域触发
  * @return {*}
  */
-export const getProcessExecutionByExe = (params) =>
-  post('/Windchill/app/process-execution/overdueWfList', params);
+export const getProcessExecutionByExe = (params) => post('/Windchill/app/process-execution/overdueWfList', params);
 
 /**
  * 流程执行效率统计
  * @return {*} prarams
  */
 export const getProcessEfficiency = (params) => post('/Windchill/app/process-efficiency/efficiencyStatistics', params);
-
 
 export const test = (params) => get('http://123.56.163.203:7001/getlist', params);

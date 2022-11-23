@@ -34,19 +34,27 @@ export default {
       myChart: null,
     };
   },
+  watch: {
+    value: {
+      handler() {
+        this.initOption();
+        if (this.myChart) {
+          this.myChart.setOption(this.option, true);
+        } else {
+          this.initChart();
+        }
+      },
+      deep: true,
+    },
+  },
 
   mounted() {
+    this.initOption();
     this.initChart();
-    let erd = elementResizeDetectorMaker();
-    let that = this;
-    erd.listenTo(that.$refs.PercentChart, () => {
-      debounce(that.myChart.resize(), 200);
-    });
   },
 
   methods: {
-    initChart() {
-      let myChart = echarts.init(this.$refs.PercentChart);
+    initOption() {
       let maxData = this.maxData;
       let greenBar = this.value;
       let symbolMargin = '6'; // 间隙
@@ -142,9 +150,15 @@ export default {
           },
         ],
       };
+    },
+    initChart() {
+      let myChart = echarts.init(this.$refs.PercentChart);
 
       myChart.setOption(this.option, true);
-
+      let erd = elementResizeDetectorMaker();
+      erd.listenTo(this.$refs.PercentChart, () => {
+        debounce(myChart.resize(), 200);
+      });
       this.myChart = myChart;
       window.addEventListener('resize', () => {
         myChart.resize();

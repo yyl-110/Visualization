@@ -28,6 +28,21 @@ export default {
       default: () => {},
     },
   },
+  watch: {
+    chartData: {
+      handler() {
+        this.initOption();
+        if (this.myChart) {
+          this.myChart.setOption(this.option, true);
+        } else {
+          this.$nextTick(() => {
+            this.initChart();
+          });
+        }
+      },
+      deep: true,
+    },
+  },
   data() {
     return {
       option: {},
@@ -35,20 +50,13 @@ export default {
     };
   },
 
-  watch: {},
-
   mounted() {
+    this.initOption();
     this.initChart();
-    let erd = elementResizeDetectorMaker();
-    let that = this;
-    erd.listenTo(document.getElementById('FutureChart'), () => {
-      debounce(that.myChart.resize());
-    });
   },
 
   methods: {
-    initChart() {
-      let myChart = echarts.init(document.getElementById('FutureChart'));
+    initOption() {
       const xData = Object.keys(this.chartData);
       let drawing = [];
       let parts = [];
@@ -58,6 +66,7 @@ export default {
         model.push(this.chartData[key]['addModelCount']);
         parts.push(this.chartData[key]['addPartCount']);
       }
+
       this.option = {
         tooltip: {
           trigger: 'axis',
@@ -153,9 +162,17 @@ export default {
           bottom: this.$fontSize(45),
         },
       };
+    },
+    initChart() {
+      let myChart = echarts.init(document.getElementById('FutureChart'));
       myChart.setOption(this.option, true);
 
       this.myChart = myChart;
+      /* 窗口变化监听 */
+      let erd = elementResizeDetectorMaker();
+      erd.listenTo(document.getElementById('FutureChart'), () => {
+        debounce(myChart.resize());
+      });
       window.addEventListener('resize', () => {
         myChart.resize();
       });

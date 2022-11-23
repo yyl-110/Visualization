@@ -3,7 +3,10 @@
     <design-change-panel :panelData="panelData" />
     <div class="panelCartWrap clearfix">
       <div class="dataBar">
-        <change-view :changeViewData="changeViewData" />
+        <change-view
+          :changeViewData="changeViewData"
+          @chartClick="chartClick"
+        />
       </div>
       <div class="rank">
         <Rank
@@ -11,7 +14,8 @@
           title="变更单量完成率排行榜"
           label="平均完成率"
           progressLabel="ecnFinishedRate"
-          isRate="true"
+          :isRate="true"
+          v-if="rankData"
         />
       </div>
     </div>
@@ -22,7 +26,8 @@
 import DesignChangePanel from './components/DesignChangePanel.vue';
 import Rank from '@/components/Common/Rank';
 import ChangeView from './components/ChangeView.vue';
-import dataJson from './data.json';
+import { getDesignChange } from '../../api';
+import { mapGetters } from 'vuex';
 export default {
   components: { DesignChangePanel, Rank, ChangeView },
   name: 'DesignChange',
@@ -31,22 +36,60 @@ export default {
     return {
       panelData: {},
       changeViewData: [],
-      rankData: {},
+      rankData: null,
     };
+  },
+  computed: {
+    ...mapGetters(['queryYear', 'queryTime', 'queryType']),
+  },
+
+  watch: {
+    queryYear() {
+      this.getDesignChange();
+    },
+    queryTime() {
+      this.getDesignChange();
+    },
   },
 
   created() {
-    this.panelData['区域二十三'] = dataJson['区域二十三'];
-    this.panelData['区域二十四'] = dataJson['区域二十四'];
-    this.panelData['区域二十五'] = dataJson['区域二十五'];
-    this.changeViewData = dataJson['区域二十六'];
-    this.rankData = dataJson['区域二十七'];
-    console.log(this.changeViewData);
+    this.getDesignChange();
   },
 
   mounted() {},
 
-  methods: {},
+  methods: {
+    getDesignChange() {
+      getDesignChange({ queryYear: this.queryYear, queryTime: this.queryTime })
+        .then((res) => {
+          if (res.success) {
+            const _panelData = {};
+            _panelData['区域二十三'] = res.data['区域二十三'];
+            _panelData['区域二十四'] = res.data['区域二十四'];
+            _panelData['区域二十五'] = res.data['区域二十五'];
+            this.panelData = { ..._panelData };
+            this.changeViewData = res.data['区域二十六'];
+            this.rankData = res.data['区域二十七'];
+          }
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+    /**
+     * 区域二十六点击
+     * @return {*}
+     */
+    chartClick(index) {
+      const prjType = this.changeViewData[index].prjType;
+      this.$router.push({
+        path: '/product-design/change',
+        query: {
+          prjType,
+        },
+      });
+    },
+  },
 };
 </script>
 

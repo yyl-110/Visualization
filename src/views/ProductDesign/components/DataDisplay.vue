@@ -73,7 +73,7 @@
     产品库数量
     <countTo
       :startVal="0"
-      :endVal="999"
+      :endVal="disData.allCount"
       :duration="6000"
       separator=""
       class="countTo"
@@ -87,7 +87,7 @@
     产品数量
     <countTo
       :startVal="0"
-      :endVal="75"
+      :endVal="disData.addCount"
       :duration="6000"
       separator=""
       class="countTo"
@@ -95,7 +95,7 @@
     个，同比
     <countTo
       :startVal="0"
-      :endVal="4.2"
+      :endVal="parseFloat(disData.tongBiAdd)"
       :duration="6000"
       separator=""
       suffix="%"
@@ -105,7 +105,7 @@
     环比
     <countTo
       :startVal="0"
-      :endVal="1.5"
+      :endVal="parseFloat(disData.huanBiAdd)"
       :duration="6000"
       separator=""
       suffix="%"

@@ -2,7 +2,11 @@
   <div class="baseData">
     <data-display :disData="disData" />
     <!-- 元件数量统计 -->
-    <devices-box style="margin-top: 20px" :devicesData="devicesBoxData" />
+    <devices-box
+      style="margin-top: 20px"
+      :devicesData="devicesBoxData"
+      v-if="devicesBoxData"
+    />
 
     <!-- 器件图标 -->
     <div class="chart clearfix">
@@ -12,6 +16,7 @@
           color="#00DFFB"
           :chartData="chartData1"
           chartTitle="标准件数量"
+          v-if="chartData1"
         />
       </div>
       <div class="devices">
@@ -20,6 +25,7 @@
           color="#009AFF"
           :chartData="chartData2"
           chartTitle="元器件数量"
+          v-if="chartData2"
         />
       </div>
     </div>
@@ -31,8 +37,7 @@ import DataDisplay from './components/DataDisplay.vue';
 import DevicesBox from './components/DevicesBox.vue';
 import BaseChart from './components/BaseChart.vue';
 import { mapGetters } from 'vuex';
-import dataJson from './data.json';
-// import { getBaseData } from '../../api';
+import { getBaseData } from '../../api';
 export default {
   components: { DataDisplay, DevicesBox, BaseChart },
   name: 'VueDataVIndex',
@@ -41,14 +46,19 @@ export default {
     ...mapGetters(['queryYear', 'queryTime', 'queryType']),
   },
   watch: {
-    queryYear(val) {},
+    queryYear() {
+      this.getData();
+    },
+    queryTime() {
+      this.getData();
+    },
   },
   data() {
     return {
       disData: {},
-      devicesBoxData: {},
-      chartData1: {},
-      chartData2: {},
+      devicesBoxData: null,
+      chartData1: null,
+      chartData2: null,
     };
   },
 
@@ -60,14 +70,18 @@ export default {
 
   methods: {
     getData() {
-      this.disData = dataJson['区域十六'];
-      this.devicesBoxData = dataJson['区域十七'];
-      this.chartData1 = dataJson['区域十八'];
-      this.chartData2 = dataJson['区域十九'];
-      console.log('this.disData:', this.disData);
-      // getBaseData({ queryYear: '2022', queryTime: '1月' }).then((res) => {
-      //   console.log(res, 9090);
-      // });
+      getBaseData({
+        queryYear: this.queryYear,
+        queryTime: this.queryTime,
+      }).then((res) => {
+        console.log(res, 9090);
+        if (res.success) {
+          this.disData = res.data['区域十六'];
+          this.devicesBoxData = res.data['区域十七'];
+          this.chartData1 = res.data['区域十八'];
+          this.chartData2 = res.data['区域十九'];
+        }
+      });
     },
   },
 };

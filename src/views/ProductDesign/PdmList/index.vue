@@ -1,15 +1,15 @@
 <template>
-  <div class="productChange">
+  <div class="overdue">
     <dv-border />
     <div class="partsWrap">
       <div class="titleWrap">
-        <Title text="PDM中超期流程任务查看" />
+        <Title text="PDM产品查看列表" />
         <el-button type="primary" class="back" @click="$router.go(-1)">
           <img src="../../../assets/imgs/icon_return@2x.png" alt="" />
           返回
         </el-button>
       </div>
-      <v-table :column="column" :tableData="tableData" />
+      <v-table :tableData="tableData" :column="column" />
     </div>
   </div>
 </template>
@@ -18,48 +18,47 @@
 import Title from '../../../components/Common/Title.vue';
 import VTable from '@/components/Common/V-Table.vue';
 import DvBorder from '../../../components/Common/DvBorder.vue';
-import { getDesignChangeByChart } from '../../../api';
+import { getProcessExecutionByChart } from '../../../api';
 import { mapGetters } from 'vuex';
 export default {
   components: { Title, VTable, DvBorder },
-  name: 'ProductChange',
+  name: 'Overdue',
 
+  computed: {
+    ...mapGetters(['queryYear', 'queryTime', 'queryType']),
+  },
   data() {
     return {
       tableData: [],
       column: [
         { label: '序号', value: 'id' },
-        { label: '变更单编号', value: 'number' },
-        { label: '变更单名称', value: 'name' },
-        // { label: '所属科室', value: 'createtime' },
-        { label: '创建者', value: 'creator' },
+        { label: '流程名称', value: 'workflowName' },
         { label: '执行时长', value: 'hours' },
-        { label: '创建时间', value: 'createtime' },
-        { label: '是否完成', value: 'isFinish' },
+        // { label: '所属科室', value: 'createtime' },
+        { label: '流程状态', value: 'workflowStatus' },
+        { label: '流程承担者', value: 'wfCreator' },
       ],
     };
   },
-  computed: {
-    ...mapGetters(['queryTime', 'queryYear']),
-  },
 
   created() {
-    this.getDesignChangeByChart();
+    this.getProcessExecutionByChart();
   },
 
   mounted() {},
 
   methods: {
-    getDesignChangeByChart() {
-      const { prjType } = this.$route.query;
-      getDesignChangeByChart({
-        queryTime: this.queryTime,
-        queryYear: this.queryYear,
+    getProcessExecutionByChart() {
+      const { wfType, prjType } = this.$route.query;
+      getProcessExecutionByChart({
+        wfType,
         prjType,
+        queryYear: this.queryYear,
+        queryTime: this.queryTime,
       })
         .then((res) => {
           if (res.success) {
-            this.tableData = res.data['区域二十八'].map((item, index) => {
+            this.tableData = res.data['区域四十四'].map((item, index) => {
               return { id: index + 1, ...item };
             });
           }
@@ -73,7 +72,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.productChange {
+.overdue {
   width: 100%;
   background: #050a4e;
   box-shadow: inset -8px -8px 40px 0px rgba(0, 227, 255, 0.3),

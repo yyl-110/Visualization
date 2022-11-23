@@ -27,6 +27,19 @@ export default {
       default: () => [],
     },
   },
+  watch: {
+    completionData: {
+      deep: true,
+      handler() {
+        this.initOption();
+        if (this.myChart) {
+          this.myChart.setOption(this.option, true);
+        } else {
+          this.initChart();
+        }
+      },
+    },
+  },
   data() {
     return {
       option: {},
@@ -35,17 +48,12 @@ export default {
   },
 
   mounted() {
+    this.initOption();
     this.initChart();
-    let erd = elementResizeDetectorMaker();
-    let that = this;
-    erd.listenTo(document.getElementById('RateChart'), () => {
-      debounce(that.myChart.resize(), 200);
-    });
   },
 
   methods: {
-    initChart() {
-      let myChart = echarts.init(document.getElementById('RateChart'));
+    initOption() {
       const xLabel = this.completionData.map((i) => i.prjType);
       const data1 = this.completionData.map((i) => i.workflowFinishCount);
       const data2 = this.completionData.map((i) =>
@@ -184,9 +192,15 @@ export default {
           bottom: this.$fontSize(80),
         },
       };
+    },
+    initChart() {
+      let myChart = echarts.init(document.getElementById('RateChart'));
 
       myChart.setOption(this.option, true);
-
+      let erd = elementResizeDetectorMaker();
+      erd.listenTo(document.getElementById('RateChart'), () => {
+        debounce(myChart.resize(), 200);
+      });
       this.myChart = myChart;
       window.addEventListener('resize', () => {
         myChart.resize();

@@ -42,9 +42,7 @@ export default {
 
   mounted() {},
 
-  created() {
-    console.log(this.cardData, 9393939);
-  },
+  created() {},
 
   methods: {},
 };

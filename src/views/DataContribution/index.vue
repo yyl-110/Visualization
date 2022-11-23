@@ -27,8 +27,9 @@ import BtnGroup from '../../components/Common/BtnGroup.vue';
 import ContributionChart from './components/ContributionChart.vue';
 import DataView from './components/DataView.vue';
 import Rank from '@/components/Common/Rank';
-import dataJson from './data.json';
 import dataJson2 from './data2.json';
+import { getContribution, getContributionByCard } from '../../api';
+import { mapGetters } from 'vuex';
 export default {
   components: { BtnGroup, DataView, ContributionChart, Rank },
   name: 'DataContribution',
@@ -37,15 +38,30 @@ export default {
     return {
       type: 1,
       cardData: [],
-      rankData: {},
+      rankData: null,
       chartData: [],
     };
   },
 
+  computed: {
+    ...mapGetters(['queryTime', 'queryYear', 'processType']),
+  },
+
+  watch: {
+    queryTime() {
+      this.getContribution();
+    },
+    queryYear() {
+      this.getContribution();
+    },
+    processType(val) {
+      this.getContributionByCard();
+      console.log('val:', val);
+    },
+  },
+
   created() {
-    this.cardData = dataJson['区域三十五'];
-    this.rankData = dataJson2[0]['区域三十七'];
-    this.chartData = dataJson2[0]['区域三十六'];
+    this.getContribution();
   },
 
   mounted() {},
@@ -53,14 +69,52 @@ export default {
   methods: {
     handleChange(type) {
       this.type = type;
-      if (type === 1) {
-        this.rankData = dataJson2[type - 1]['区域三十七'];
-        this.chartData = dataJson2[type - 1]['区域三十六'];
-      } else {
-        this.chartData = dataJson2[type - 1]['区域三十八'];
-        this.rankData = dataJson2[type - 1]['区域三十九'];
-      }
-      console.log(this.chartData, 'hhhhhh');
+      this.getContributionByCard();
+    },
+
+    /* 获取数据 */
+    getContribution() {
+      getContribution({ queryTime: this.queryTime, queryYear: this.queryYear })
+        .then((res) => {
+          if (res.success) {
+            this.cardData = res.data['区域三十五'];
+            /* 设置初始默认值 */
+            this.$store.dispatch('page/changeProcessType', {
+              key: 'processType',
+              value: this.cardData[0].objType,
+            });
+            this.getContributionByCard();
+            console.log('res.data:', res.data);
+          }
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+
+    /* 获取三十六、三十七、三十八、三十九 */
+    getContributionByCard() {
+      getContributionByCard({
+        queryTime: this.queryTime,
+        queryYear: this.queryYear,
+        dataType: this.processType,
+        statisticsType: this.type === 1 ? '项目类型' : '人员',
+      })
+        .then((res) => {
+          if (res.success) {
+            if (this.type === 1) {
+              this.rankData = res.data['区域三十七'];
+              this.chartData = res.data['区域三十六'];
+            } else {
+              this.chartData = res.data['区域三十八'];
+              this.rankData = res.data['区域三十九'];
+              console.log(this.rankData, 9);
+            }
+          }
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     },
   },
 };

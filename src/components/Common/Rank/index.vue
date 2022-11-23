@@ -111,6 +111,19 @@ export default {
       // ],
     };
   },
+  watch: {
+    rankData: {
+      deep: true,
+      handler() {
+        this.newRankData = [];
+        if (this.type === 'peopleRank') {
+          this.formateCommon();
+          return;
+        }
+        this.formateData();
+      },
+    },
+  },
   created() {
     this.newRankData = [];
     if (this.type === 'peopleRank') {
@@ -140,6 +153,7 @@ export default {
     },
     /* 普通文档贡献量排行榜 */
     formateCommon() {
+      console.log(this.rankData, 'zzz');
       const keys = Object.keys(this.rankData);
       const arr = keys.map((i) => {
         const item = {

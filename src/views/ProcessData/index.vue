@@ -1,11 +1,14 @@
 <template>
   <div class="processData">
-    <data-box :cardData="cardData" />
+    <data-box :cardData="cardData" v-if="cardData.length" />
 
     <!-- 数据 -->
     <div class="preData clearfix">
       <div class="leftChart">
-        <completion-rate :completionData="completionData" />
+        <completion-rate
+          :completionData="completionData"
+          v-if="completionData.length"
+        />
       </div>
       <div class="rank">
         <Rank
@@ -13,6 +16,7 @@
           :rankData="rankData"
           label="平均完成率"
           progressLabel="workflowFinishRate"
+          v-if="rankData"
         />
       </div>
     </div>
@@ -23,16 +27,31 @@
 import DataBox from './components/DataBox.vue';
 import Rank from '@/components/Common/Rank';
 import CompletionRate from './components/CompletionRate.vue';
-import { getProcessDataByCard } from '@/api';
-import dataJson from './data.json';
+import { getProcessData, getProcessDataByCard } from '@/api';
+import { mapGetters } from 'vuex';
 export default {
   components: { DataBox, Rank, CompletionRate },
   name: 'VueDataVIndex',
 
+  computed: {
+    ...mapGetters(['queryYear', 'queryTime', 'queryType', 'processType']),
+  },
+
+  watch: {
+    queryYear() {
+      this.getProcessData();
+    },
+    queryTime() {
+      this.getProcessData();
+    },
+    processType() {
+      this.getProcessDataByCard();
+    },
+  },
   data() {
     return {
       completionData: [],
-      rankData: {},
+      rankData: null,
       cardData: [],
     };
   },
@@ -45,11 +64,36 @@ export default {
 
   methods: {
     getProcessData() {
-      this.completionData = dataJson['区域二十一'];
-      this.rankData = dataJson['区域二十二'];
-      this.cardData = dataJson['区域二十'];
-      console.log('this.cardData:', this.cardData, 322);
-      // getProcessDataByCard
+      getProcessData({
+        queryYear: this.queryYear,
+        queryTime: this.queryTime,
+      }).then((res) => {
+        if (res.success) {
+          console.log(res.data);
+          // this.completionData = res.data['区域二十一'];
+          this.rankData = res.data['区域二十二'];
+          this.cardData = res.data['区域二十'];
+          this.$store.dispatch('page/changeProcessType', {
+            key: 'processType',
+            value: this.cardData[0].workflowType,
+          });
+        }
+      });
+    },
+    getProcessDataByCard() {
+      getProcessDataByCard({
+        queryYear: this.queryYear,
+        queryTime: this.queryTime,
+        workflowType: this.processType,
+      })
+        .then((res) => {
+          if (res.success) {
+            this.completionData = res.data['区域二十一'];
+          }
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     },
   },
 };

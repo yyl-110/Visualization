@@ -7,12 +7,12 @@
     />
     <div class="parts" v-if="btnType === 1">
       <!-- 数据展示 -->
-      <data-display type="parts" :disData="display" />
+      <data-display type="parts" :disData="display1" />
 
       <count-chart
         style="margin-top: 0.25rem"
         :chartData="countChartData"
-        v-if="countChartData.length"
+        @chartClick="chartClick"
       />
 
       <!-- 表格 -->
@@ -23,7 +23,7 @@
       />
       <div class="cell clearfix">
         <div class="future">
-          <future-chart :chartData="futureChartData" v-if="futureChartData" />
+          <future-chart :chartData="futureChartData" />
         </div>
         <div class="rank">
           <Rank
@@ -37,17 +37,19 @@
       </div>
     </div>
     <div v-else>
-      <data-display type="product" disData="display" />
+      <data-display type="product" :disData="display2" v-if="display2" />
       <!-- chart -->
       <product-chart
         style="margin-top: 0.25rem"
         :productData="productChartData"
+        @chartClick="chartClick"
       />
       <!-- 表格 -->
       <data-table
         style="margin-top: 0.25rem"
         :tableData="tableData2"
         type="product"
+        @handelClickTable="handelClickTable"
       />
       <div class="productCell clearfix">
         <div class="rank1">
@@ -105,22 +107,40 @@ export default {
   data() {
     return {
       btnType: 1,
-      display: {},
+      display1: {},
+      display2: null,
       tableData1: {},
-      futureChartData: null,
+      futureChartData: {},
       rankData1: null,
       productChartData: [],
       countChartData: [],
       rankData2: null,
       rankData3: null,
       tableData2: {},
+      prjType1: '', //点击区域六选择
+      prjType2: '', // 点击区域十二选择
+      pageData: {},
     };
+  },
+  watch: {
+    queryYear() {
+      this.handelGetProductDesign();
+    },
+    queryTime() {
+      this.handelGetProductDesign();
+    },
+    prjType1() {
+      this.handelGetData();
+    },
+    prjType2() {
+      this.handelGetTableData();
+    },
   },
 
   created() {
     this.handelGetProductDesign();
-    this.handelGetData();
-    this.handelGetTableData();
+    // this.handelGetData();
+    // this.handelGetTableData();
   },
 
   mounted() {},
@@ -128,6 +148,11 @@ export default {
   methods: {
     handleChange(type) {
       this.btnType = type;
+      if (type === 1) {
+        this.prjType1 = this.countChartData[0].prjType;
+      } else {
+        this.prjType2 = this.productChartData[0].prjType;
+      }
     },
     /**
      * 获取页面数据
@@ -139,12 +164,19 @@ export default {
         queryTime: this.queryTime,
       }).then((res) => {
         if (res.success) {
-          this.display = res.data['区域五'];
+          this.pageData = res.data;
+          this.display1 = res.data['区域五'];
+          this.display2 = res.data['区域十'];
           this.rankData1 = res.data['区域九'];
           this.productChartData = res.data['区域十一'];
           this.rankData2 = res.data['区域十三'];
           this.rankData3 = res.data['区域十四'];
           this.countChartData = res.data['区域六'];
+          if (this.btnType === 1) {
+            this.prjType1 = this.countChartData[0].prjType;
+          } else {
+            this.prjType2 = this.productChartData[0].prjType;
+          }
         }
       });
     },
@@ -154,6 +186,7 @@ export default {
       getPartsStatistics({
         queryYear: this.queryYear,
         queryTime: this.queryTime,
+        prjType: this.prjType1,
       }).then((res) => {
         if (res.success) {
           this.tableData1 = res.data['区域七'];
@@ -167,10 +200,37 @@ export default {
       getProductStatistics({
         queryYear: this.queryYear,
         queryTime: this.queryTime,
+        prjType: this.prjType2,
       }).then((res) => {
         if (res.success) {
           this.tableData2 = res.data['区域十二'];
         }
+      });
+    },
+
+    /**
+     * 柱形图点击
+     * @return {*}
+     */
+    chartClick(index) {
+      if (this.btnType === 1) {
+        this.prjType1 = this.countChartData[index]?.prjType;
+      } else {
+        this.prjType2 = this.productChartData[index]?.prjType;
+      }
+    },
+
+    /**
+     * 点击table
+     * @return {*}
+     */
+    handelClickTable(prjStatus) {
+      this.$router.push({
+        path: '/product-design/overdue',
+        query: {
+          prjStatus,
+          prjType: this.prjType2,
+        },
       });
     },
   },

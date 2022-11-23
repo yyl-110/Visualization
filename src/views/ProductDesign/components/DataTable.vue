@@ -62,11 +62,21 @@
           <tr>
             <td>{{ tableData.prjType }}</td>
             <td>5</td>
-            <td>{{ tableData.productCount }}</td>
-            <td>{{ tableData.projectInitiation }}</td>
-            <td>{{ tableData.projectInResearch }}</td>
-            <td>{{ tableData.projectUnderAcceptance }}</td>
-            <td>{{ tableData.projectAccepted }}</td>
+            <td @click="handelClickTable('产品库总数')">
+              {{ tableData.productCount }}
+            </td>
+            <td @click="handelClickTable('总项目立项数')">
+              {{ tableData.projectInitiation }}
+            </td>
+            <td @click="handelClickTable('总项目在研数')">
+              {{ tableData.projectInResearch }}
+            </td>
+            <td @click="handelClickTable('总项目验中数')">
+              {{ tableData.projectUnderAcceptance }}
+            </td>
+            <td @click="handelClickTable('总项目验收数')">
+              {{ tableData.projectAccepted }}
+            </td>
           </tr>
         </tbody>
       </table>
@@ -99,7 +109,11 @@ export default {
     console.log(this.tableData, 111);
   },
 
-  methods: {},
+  methods: {
+    handelClickTable(val) {
+      this.$emit('handelClickTable', val);
+    },
+  },
 };
 </script>
 

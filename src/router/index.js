@@ -26,6 +26,13 @@ const routes = [
             meta: {mainTitle: DATA_STATISTICE},
           },
           {
+            path: 'pdmlist',
+            name: 'PdmList',
+            hidden: true,
+            component: () => import('@/views/ProductDesign/PdmList'),
+            meta: {title: 'PDM查看列表', mainTitle: DATA_STATISTICE},
+          },
+          {
             path: 'overdue',
             name: 'Overdue',
             hidden: true,

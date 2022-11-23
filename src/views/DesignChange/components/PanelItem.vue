@@ -12,7 +12,7 @@
             <span>当前新增</span>
             <span>
               {{
-                type === 1 ? itemData.addChangeCount : itemData.changePartSum
+                type === 1 ? cardData.addChangeCount : cardData.changePartSum
               }}
             </span>
           </div>
@@ -20,7 +20,7 @@
             <Percent
               :maxData="10"
               :value="[
-                type === 1 ? itemData.addChangeCount : itemData.changePartSum,
+                type === 1 ? cardData.addChangeCount : cardData.changePartSum,
               ]"
               color="#23CEFD"
               bgColor="rgba(35, 206, 253, 0.1)"
@@ -30,12 +30,12 @@
         <div class="chartItem" v-if="type === 1">
           <div class="chartTop">
             <span>当前新增</span>
-            <span>{{ itemData.completeRate }}</span>
+            <span>{{ cardData.completeRate }}</span>
           </div>
           <div class="percentContainer">
             <Percent
               :maxData="100"
-              :value="[parseFloat(itemData.completeRate)]"
+              :value="[parseFloat(cardData.completeRate)]"
               color="#009AFF"
               bgColor="rgba(0, 154, 255, .1)"
             />
@@ -47,7 +47,7 @@
           同比
           <countTo
             :startVal="0"
-            :endVal="parseFloat(itemData.tongBi)"
+            :endVal="parseFloat(cardData.tongBi)"
             :duration="6000"
             separator=""
             :decimals="1"
@@ -60,7 +60,7 @@
           环比
           <countTo
             :startVal="0"
-            :endVal="parseFloat(itemData.huanBi)"
+            :endVal="parseFloat(cardData.huanBi)"
             :duration="6000"
             separator=""
             suffix="%"
@@ -82,14 +82,14 @@
           <div class="percentContainer">
             <Percent
               :maxData="100"
-              :value="[parseInt(itemData['一类'])]"
+              :value="[parseInt(cardData['一类'])]"
               color="#23CEFD"
               bgColor="rgba(35, 206, 253, 0.1)"
             />
           </div>
           <countTo
             :startVal="0"
-            :endVal="itemData['一类']"
+            :endVal="cardData['一类']"
             :duration="6000"
             separator=""
             suffix="个"
@@ -101,14 +101,14 @@
           <div class="percentContainer">
             <Percent
               :maxData="1000"
-              :value="[parseInt(itemData['二类'])]"
+              :value="[parseInt(cardData['二类'])]"
               color="#9FDB1D"
               bgColor="rgba(159, 219, 29, .1)"
             />
           </div>
           <countTo
             :startVal="0"
-            :endVal="itemData['二类']"
+            :endVal="cardData['二类']"
             :duration="6000"
             separator=""
             suffix="个"
@@ -120,14 +120,14 @@
           <div class="percentContainer">
             <Percent
               :maxData="1000"
-              :value="[parseInt(itemData['三类'])]"
+              :value="[parseInt(cardData['三类'])]"
               color="#9FDB1D"
               bgColor="rgba(159, 219, 29, .1)"
             />
           </div>
           <countTo
             :startVal="0"
-            :endVal="itemData['三类']"
+            :endVal="cardData['三类']"
             :duration="6000"
             separator=""
             suffix="个"
@@ -161,8 +161,15 @@ export default {
       default: () => {},
     },
   },
+  watch: {
+    itemData(val) {
+      this.cardData = { ...val };
+    },
+  },
   data() {
-    return {};
+    return {
+      cardData: {},
+    };
   },
 
   mounted() {},

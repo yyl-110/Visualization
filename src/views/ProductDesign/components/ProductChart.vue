@@ -1,15 +1,16 @@
 <template>
   <div class="productChart">
     <dv-border />
-      <div class="chartWrap">
-        <div class="chartsdom" id="ProductChart" ref="ProductChart"></div>
-      </div>
+    <div class="chartWrap">
+      <div class="chartsdom" id="ProductChart" ref="ProductChart"></div>
+    </div>
   </div>
 </template>
 
 <script>
-import { resizeOb } from '@/utils/tool';
 import DvBorder from '../../../components/Common/DvBorder.vue';
+import elementResizeDetectorMaker from 'element-resize-detector';
+import { debounce } from '../../../utils/tool';
 
 export default {
   components: { DvBorder },
@@ -26,14 +27,28 @@ export default {
       myChart: null,
     };
   },
+  watch: {
+    productData: {
+      handler() {
+        this.initOption();
+        if (this.myChart) {
+          this.myChart.setOption(this.option, true);
+        } else {
+          this.$nextTick(() => {
+            this.initChart();
+          });
+        }
+      },
+      deep: true,
+    },
+  },
   mounted() {
+    this.initOption();
     this.initChart();
-    resizeOb(document.getElementById('ProductChart'));
   },
 
   methods: {
-    initChart() {
-      let myChart = echarts.init(document.getElementById('ProductChart'));
+    initOption() {
       /* 组装数据 */
       const source = this.productData.map((i) => {
         return [i.prjType, i.addCount];
@@ -125,8 +140,31 @@ export default {
           bottom: '45px',
         },
       };
+    },
+    initChart() {
+      let myChart = echarts.init(document.getElementById('ProductChart'));
       myChart.setOption(this.option, true);
+      /* 点击柱形图 */
+      myChart.getZr().on('click', (params) => {
+
+        let pointInPixel = [params.offsetX, params.offsetY];
+        if (myChart.containPixel('grid', pointInPixel)) {
+          let xIndex = myChart.convertFromPixel({ seriesIndex: 0 }, [
+            params.offsetX,
+            params.offsetY,
+          ])[0];
+          /* 点击柱形图 */
+          this.$emit('chartClick', xIndex);
+          console.log(xIndex);
+        }
+      });
+
       this.myChart = myChart;
+      /* 窗口变化监听 */
+      let erd = elementResizeDetectorMaker();
+      erd.listenTo(document.getElementById('ProductChart'), () => {
+        debounce(myChart.resize());
+      });
       window.addEventListener('resize', () => {
         myChart.resize();
       });

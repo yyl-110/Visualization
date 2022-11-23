@@ -4,12 +4,12 @@
     <div class="partsWrap">
       <div class="titleWrap">
         <Title text="PDM产品查看列表" />
-        <el-button type="primary" class="back">
+        <el-button type="primary" class="back" @click="$router.go(-1)">
           <img src="../../../assets/imgs/icon_return@2x.png" alt="" />
           返回
         </el-button>
       </div>
-      <v-table />
+      <v-table :tableData="tableData" :column="column" />
     </div>
   </div>
 </template>
@@ -18,17 +18,50 @@
 import Title from '../../../components/Common/Title.vue';
 import VTable from '@/components/Common/V-Table.vue';
 import DvBorder from '../../../components/Common/DvBorder.vue';
+import { getPdmList } from '../../../api';
+import { mapGetters } from 'vuex';
 export default {
   components: { Title, VTable, DvBorder },
   name: 'Overdue',
 
+  computed: {
+    ...mapGetters(['queryYear', 'queryTime', 'queryType']),
+  },
   data() {
-    return {};
+    return {
+      tableData: [],
+      column: [
+        { label: '序号', value: 'id' },
+        { label: '产品库名称', value: 'productName' },
+        { label: '所属科室', value: 'keShi' },
+        { label: '创建时间', value: 'createtime' },
+        { label: '项目状态', value: 'productStatus' },
+      ],
+    };
+  },
+
+  created() {
+    this.getPdmList();
   },
 
   mounted() {},
 
-  methods: {},
+  methods: {
+    getPdmList() {
+      const { prjStatus, prjType } = this.$route.query;
+      getPdmList({ prjStatus, prjType })
+        .then((res) => {
+          if (res.success) {
+            this.tableData = res.data['区域十五'].map((item, index) => {
+              return { id: index + 1, ...item };
+            });
+          }
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+  },
 };
 </script>
 

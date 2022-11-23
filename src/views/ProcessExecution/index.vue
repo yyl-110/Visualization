@@ -9,14 +9,15 @@
     <process-data-box
       :key="type"
       :cardData="cardData"
-      v-if="cardData.length"
+      v-if="cardData && cardData.length"
       @handleClick="handleClick"
     />
     <div class="panelCartWrap clearfix" v-if="type === 1">
       <div class="dataBar">
         <common-chart
-          v-if="commonChartData.length"
+          v-if="commonChartData && commonChartData.length"
           :chartData="commonChartData"
+          @chartClick="chartClick"
         />
       </div>
       <div class="rank">
@@ -82,6 +83,12 @@ export default {
     wfType2() {
       this.getProcessExecutionByExe();
     },
+    queryYear() {
+      this.getProcessExecution();
+    },
+    queryTime() {
+      this.getProcessExecution();
+    },
   },
 
   created() {
@@ -96,13 +103,14 @@ export default {
       this.type = type;
       if (type === 1) {
         this.cardData = this.dataJson['区域四十一'];
-        this.wfType1 = this.dataJson['区域四十一'].workflowType;
+        this.wfType1 = this.dataJson['区域四十一'][0].workflowType;
       } else {
         this.cardData = this.dataJson['区域四十五'];
         /* 默认展示第一个项的table数据 */
         this.wfType2 = this.dataJson['区域四十五'][0].taskType;
       }
     },
+    /* 四十一 */
     getProcessExecution() {
       getProcessExecution({
         queryYear: this.queryYear,
@@ -111,7 +119,15 @@ export default {
         .then((res) => {
           if (res.success) {
             this.dataJson = res.data;
-            this.cardData = res.data['区域四十一'];
+            console.log('res.data:', res.data);
+            if (this.type === 1) {
+              this.cardData = this.dataJson['区域四十一'];
+              this.wfType1 = this.dataJson['区域四十一'][0].workflowType;
+            } else {
+              this.cardData = this.dataJson['区域四十五'];
+              /* 默认展示第一个项的table数据 */
+              this.wfType2 = this.dataJson['区域四十五'][0].taskType;
+            }
           }
         })
         .catch((e) => {
@@ -158,6 +174,7 @@ export default {
           console.log(e);
         });
     },
+    /* 卡片点击 */
     handleClick(val) {
       if (this.type === 1) {
         console.log('val:', val);
@@ -165,6 +182,16 @@ export default {
       } else {
         this.wfType2 = val;
       }
+    },
+    /* 柱状图点击 */
+    chartClick(index) {
+      this.$router.push({
+        path: '/product-design/pdmlist',
+        query: {
+          wfType: this.type === 1 ? this.wfType1 : this.wfType2,
+          prjType: this.commonChartData[index].prjType,
+        },
+      });
     },
   },
 };

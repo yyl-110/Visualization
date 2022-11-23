@@ -37,11 +37,18 @@ export default {
       panel3: {},
     };
   },
-  created() {
-    this.panel1 = this.panelData['区域二十三'];
-    this.panel2 = this.panelData['区域二十四'];
-    this.panel3 = this.panelData['区域二十五'];
+  watch: {
+    panelData: {
+      handler(newValue, oldValue) {
+        this.panel1 = this.panelData['区域二十三'];
+        this.panel2 = this.panelData['区域二十四'];
+        this.panel3 = this.panelData['区域二十五'];
+      },
+      immediate: false,
+      deep: true,
+    },
   },
+  created() {},
   mounted() {},
 
   methods: {},

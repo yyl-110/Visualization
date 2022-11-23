@@ -23,31 +23,43 @@ export default {
   data() {
     return {
       myChart: null,
+      option: {},
     };
   },
+  watch: {
+    chartData: {
+      handler() {
+        this.initOption();
+        if (this.myChart) {
+          this.myChart.setOption(this.option, true);
+        } else {
+          this.initChart();
+        }
+      },
+      deep: true,
+    },
+  },
   mounted() {
-    console.log(this.chartData, '😂');
-    this.initChart();
-    let erd = elementResizeDetectorMaker();
-    let that = this;
-    erd.listenTo(that.$refs.universalChart, () => {
-      debounce(that.myChart.resize(), 200);
-    });
+    // this.initOption();
+    // this.initChart();
   },
   components: { Title, DvBorder },
   methods: {
-    initChart() {
-      let myChart = echarts.init(this.$refs.universalChart);
+    initOption() {
       let source = [];
-      if (this.type === 1) {
-        source = this.chartData.map((i) => {
-          return [i.prjType, i.addCount];
-        });
-      } else {
-        const keys = Object.keys(this.chartData);
-        source = keys.map((i) => {
-          return [i, this.chartData[i]];
-        });
+      try {
+        if (this.type === 1) {
+          source = this.chartData.map((i) => {
+            return [i.prjType, i.addCount];
+          });
+        } else {
+          const keys = Object.keys(this.chartData);
+          source = keys.map((i) => {
+            return [i, this.chartData[i]];
+          });
+        }
+      } catch (error) {
+        console.log('error:', error);
       }
       this.option = {
         tooltip: {
@@ -135,7 +147,15 @@ export default {
           bottom: this.$fontSize(70),
         },
       };
+    },
+    initChart() {
+      let myChart = echarts.init(this.$refs.universalChart);
+
       myChart.setOption(this.option, true);
+      let erd = elementResizeDetectorMaker();
+      erd.listenTo(this.$refs.universalChart, () => {
+        debounce(myChart.resize(), 200);
+      });
       this.myChart = myChart;
       window.addEventListener('resize', () => {
         myChart.resize();

@@ -20,6 +20,19 @@ export default {
       default: () => [],
     },
   },
+  watch: {
+    chartData: {
+      handler() {
+        this.initOption();
+        if (this.myChart) {
+          this.myChart.setOption(this.option, true);
+        } else {
+          this.initCharts();
+        }
+      },
+      deep: true,
+    },
+  },
   data() {
     return {
       option: {},
@@ -27,22 +40,16 @@ export default {
     };
   },
   mounted() {
+    this.initOption();
     this.initCharts();
-    let erd = elementResizeDetectorMaker();
-    let that = this;
-    erd.listenTo(document.getElementById('CountChart'), () => {
-      debounce(that.myChart.resize(), 200);
-    });
   },
 
   methods: {
-    initCharts() {
-      let myChart = echarts.init(document.getElementById('CountChart'));
+    initOption() {
       /* 组装数据 */
       const source = this.chartData.map((i) => {
         return [i.prjType, i.addPartCount, i.addModelCount, i.addDrawingCount];
       });
-
       this.option = {
         legend: {
           top: -this.$fontSize(6),
@@ -179,10 +186,13 @@ export default {
           bottom: this.$fontSize(45),
         },
       };
+    },
+    initCharts() {
+      let myChart = echarts.init(document.getElementById('CountChart'));
       myChart.setOption(this.option, true);
 
+      /* 点击柱形图 */
       myChart.getZr().on('click', (params) => {
-        console.log('params:', this.option.series);
 
         let pointInPixel = [params.offsetX, params.offsetY];
         if (myChart.containPixel('grid', pointInPixel)) {
@@ -190,8 +200,14 @@ export default {
             params.offsetX,
             params.offsetY,
           ])[0];
+          /* 点击柱形图 */
+          this.$emit('chartClick', xIndex);
           console.log(xIndex);
         }
+      });
+      let erd = elementResizeDetectorMaker();
+      erd.listenTo(document.getElementById('CountChart'), () => {
+        debounce(myChart.resize(), 200);
       });
       window.addEventListener('resize', () => {
         myChart.resize();

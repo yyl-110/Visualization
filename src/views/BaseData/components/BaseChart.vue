@@ -35,6 +35,19 @@ export default {
       default: () => {},
     },
   },
+  watch: {
+    chartData: {
+      handler() {
+        this.initOption();
+        if (this.myChart) {
+          this.myChart.setOption(this.option, true);
+        } else {
+          this.initChart();
+        }
+      },
+      deep: true,
+    },
+  },
   data() {
     return {
       option: {},
@@ -42,16 +55,11 @@ export default {
     };
   },
   mounted() {
+    this.initOption();
     this.initChart();
-    let erd = elementResizeDetectorMaker();
-    let that = this;
-    erd.listenTo(document.getElementById('BaseChart'), () => {
-      debounce(that.myChart.resize(), 300);
-    });
   },
   methods: {
-    initChart() {
-      let myChart = echarts.init(this.$refs.BaseChart);
+    initOption() {
       /* 组装数据 */
       const source = Object.keys(this.chartData).map((i) => {
         return [i, this.chartData[i]];
@@ -156,8 +164,14 @@ export default {
           bottom: this.$fontSize(150),
         },
       };
+    },
+    initChart() {
+      let myChart = echarts.init(this.$refs.BaseChart);
       myChart.setOption(this.option, true);
-
+      let erd = elementResizeDetectorMaker();
+      erd.listenTo(document.getElementById('BaseChart'), () => {
+        debounce(myChart.resize(), 300);
+      });
       this.myChart = myChart;
       window.addEventListener('resize', () => {
         myChart.resize();

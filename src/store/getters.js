@@ -7,5 +7,6 @@ const getters = {
   queryYear: (state) => state.product.queryYear,
   queryTime: (state) => state.product.queryTime,
   queryType: (state) => state.product.queryType,
+  processType: (state) => state.page.processType,
 };
 export default getters;
