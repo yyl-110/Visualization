@@ -130,7 +130,7 @@ export default {
     font-size: 14px;
   }
 }
-::v-deep.el-pagination {
+/deep/.el-pagination {
   float: right;
   .el-pagination__total {
     font-size: 12px;
@@ -147,7 +147,7 @@ export default {
   }
   .el-pager {
     .number {
-      background: rgba(247, 248, 250, 0);
+      background: #050a4e !important;
       border-radius: 4px;
       border: 1px solid #00dffb;
       font-size: 14px;
@@ -165,13 +165,13 @@ export default {
   .el-pagination__sizes {
     .el-input {
       border-radius: 4px;
-      border: 1px solid #00d2ff;
+      border: none;
       .el-input__inner {
-        background: linear-gradient(
-          360deg,
-          rgba(0, 223, 251, 0.5) 0%,
-          rgba(0, 223, 251, 0.08) 100%
-        ) !important;
+        background: #050a4e !important;
+        box-shadow: inset 2px 5px 10px 0px rgba(11, 219, 247, 0.3),
+          inset -2px -5px 10px 0px rgba(11, 219, 247, 0.3),
+          inset 2px 5px 10px 0px rgba(35, 206, 253, 0.3),
+          inset -2px -5px 10px 0px rgba(35, 206, 253, 0.2) !important;
         color: #00dffb;
       }
     }

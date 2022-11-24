@@ -16,7 +16,7 @@ import elementResizeDetectorMaker from 'element-resize-detector';
 import { debounce } from '../../../utils/tool';
 import DvBorder from '../../../components/Common/DvBorder.vue';
 export default {
-  name: 'StandardChart',
+  name: 'BaseChart',
   props: {
     title: {
       type: String,
@@ -55,8 +55,8 @@ export default {
     };
   },
   mounted() {
-    this.initOption();
-    this.initChart();
+    // this.initOption();
+    // this.initChart();
   },
   methods: {
     initOption() {
@@ -166,7 +166,7 @@ export default {
       };
     },
     initChart() {
-      let myChart = echarts.init(this.$refs.BaseChart);
+      let myChart = this.$echarts.init(this.$refs.BaseChart);
       myChart.setOption(this.option, true);
       let erd = elementResizeDetectorMaker();
       erd.listenTo(document.getElementById('BaseChart'), () => {

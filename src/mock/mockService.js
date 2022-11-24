@@ -13,6 +13,7 @@ import _processData from './ProcessData/data.json';
 import designChange from './DesignChange/data.json';
 import data35 from './DataContribution/35.json';
 import click35 from './DataContribution/click35.json';
+import processEfficiency from './ProcessEfficiency/data.json'
 
 /* product-design */
 Mock.mock('/Windchill/app/product-design/addStatistics', 'post', {success: true, data: productDesignData});
@@ -64,3 +65,6 @@ Mock.mock('/Windchill/app/process-execution/overdueStatistics', 'post', {success
 Mock.mock('/Windchill/app/process-execution/overdueStatisticsByWfType', 'post', {success: true, data: processData});
 Mock.mock('/Windchill/app/process-execution/overdueWfList', 'post', {success: true, data: tableData});
 Mock.mock('/Windchill/app/process-execution/overdueWfListStatistics', 'post', {success: true, data: pdm});
+
+
+Mock.mock('/Windchill/app/process-efficiency/efficiencyStatistics', 'post', {success: true, data: processEfficiency});

@@ -1,7 +1,7 @@
 <template>
   <div class="DevicesBox">
     <dv-border />
-    <div class="chartWrap">
+    <div class="chartWrap" v-if="devicesData">
       <div class="stader">
         <div class="topInfo clearfix">
           <span>标准件</span>
@@ -10,7 +10,7 @@
         <div class="percentContainer">
           <Percent
             :maxData="12"
-            :value="[devicesData.AddStandardParts]"
+            :value="[devicesData.AddStandardParts || 0]"
             :color="'#00DFFB'"
             :bgColor="'rgba(0, 223, 251, 0.3)'"
           />
@@ -26,7 +26,7 @@
         <div class="percentContainer">
           <Percent
             :maxData="12"
-            :value="[devicesData.AddComponentsParts]"
+            :value="[devicesData.AddComponentsParts || 0]"
             :color="'#009AFF'"
             :bgColor="'rgba(0, 154, 255, 0.3)'"
           />

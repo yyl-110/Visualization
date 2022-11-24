@@ -161,7 +161,7 @@ console.log(routes);
 const router = new VueRouter({
   mode: 'history',
   scrollBehavior: () => ({y: 0}),
-  base: process.env.BASE_URL,
+  base: '/statistics/',
   routes,
 });
 

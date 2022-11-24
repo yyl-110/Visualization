@@ -3,7 +3,7 @@
     <dv-border />
     <div class="partsWrap">
       <div class="titleWrap">
-        <Title text="PDM中超期流程任务查看" />
+        <Title text="PDM中超期流程任务查看" class="title" />
         <el-button type="primary" class="back" @click="$router.go(-1)">
           <img src="../../../assets/imgs/icon_return@2x.png" alt="" />
           返回
@@ -85,19 +85,22 @@ export default {
     padding: 0 20px 30px;
     height: 100%;
     .titleWrap {
-      display: flex;
-      justify-content: space-between;
       padding: 13px 0 20px;
-      align-items: center;
+      overflow: hidden;
+      .title {
+        float: left;
+        margin-top: 15px;
+      }
       .back {
         font-size: 14px;
         font-weight: bold;
         color: #050a4e;
-        display: flex;
-        align-items: center;
+        float: right;
+        display: block;
         img {
           width: 16px;
           height: 16px;
+          vertical-align: middle;
         }
       }
     }

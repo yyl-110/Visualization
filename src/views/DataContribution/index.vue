@@ -27,7 +27,6 @@ import BtnGroup from '../../components/Common/BtnGroup.vue';
 import ContributionChart from './components/ContributionChart.vue';
 import DataView from './components/DataView.vue';
 import Rank from '@/components/Common/Rank';
-import dataJson2 from './data2.json';
 import { getContribution, getContributionByCard } from '../../api';
 import { mapGetters } from 'vuex';
 export default {
@@ -108,7 +107,6 @@ export default {
             } else {
               this.chartData = res.data['区域三十八'];
               this.rankData = res.data['区域三十九'];
-              console.log(this.rankData, 9);
             }
           }
         })

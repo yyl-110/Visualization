@@ -106,7 +106,6 @@ export default {
     return {};
   },
   mounted() {
-    console.log(this.tableData, 111);
   },
 
   methods: {

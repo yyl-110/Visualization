@@ -4,7 +4,7 @@ function resolve(dir) {
   return path.join(__dirname, '.', dir);
 }
 module.exports = {
-  publicPath: '/',
+  publicPath: process.env.NODE_ENV === 'production' ? '/statistics' : '/',
   productionSourceMap: false,
   lintOnSave: false,
   devServer: {
@@ -29,8 +29,7 @@ module.exports = {
     },
     // 把原本需要写在webpack.config.js中的配置代码 写在这里 会自动合并
     externals: {
-      echarts: 'echarts',
-      axios: 'axios',
+      // echarts: 'echarts',
     },
   },
   chainWebpack: (config) => {

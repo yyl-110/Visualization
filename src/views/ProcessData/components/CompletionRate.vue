@@ -194,7 +194,7 @@ export default {
       };
     },
     initChart() {
-      let myChart = echarts.init(document.getElementById('RateChart'));
+      let myChart = this.$echarts.init(document.getElementById('RateChart'));
 
       myChart.setOption(this.option, true);
       let erd = elementResizeDetectorMaker();

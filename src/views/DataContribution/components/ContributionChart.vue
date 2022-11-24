@@ -149,7 +149,7 @@ export default {
       };
     },
     initChart() {
-      let myChart = echarts.init(this.$refs.universalChart);
+      let myChart = this.$echarts.init(this.$refs.universalChart);
 
       myChart.setOption(this.option, true);
       let erd = elementResizeDetectorMaker();

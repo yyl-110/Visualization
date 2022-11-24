@@ -27,8 +27,8 @@
       </el-menu>
     <!-- </el-scrollbar> -->
     <div class="options" @click="$store.dispatch('app/toggleSideBar')">
-      <img src="../../../assets/imgs/slideIcon.png" v-if="!isCollapse" alt="" />
-      <img src="../../../assets/imgs/slideIcon2.png" v-else alt="" />
+      <img src="../../../assets/imgs/slideIcon2.png" v-if="!isCollapse" alt="" />
+      <img src="../../../assets/imgs/slideIcon.png" v-else alt="" />
     </div>
   </div>
 </template>

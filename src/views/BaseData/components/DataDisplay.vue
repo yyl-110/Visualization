@@ -5,7 +5,7 @@
     标准件数量
     <countTo
       :startVal="0"
-      :endVal="disData.AddStandardParts"
+      :endVal="disData.AddStandardParts || 0"
       :duration="6000"
       separator=""
       class="countTo"
@@ -15,7 +15,7 @@
     元器件数量
     <countTo
       :startVal="0"
-      :endVal="disData.AddComponentsParts"
+      :endVal="disData.AddComponentsParts || 0"
       :duration="6000"
       separator=""
       class="countTo"

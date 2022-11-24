@@ -37,7 +37,6 @@ export default {
       let matched = this.$route.matched.filter(
         (item) => item.meta && item.meta.title,
       );
-      console.log('matched:', matched);
       const first = matched[0];
 
       // if (!this.isDashboard(first)) {

@@ -20,8 +20,10 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import {fontSize} from './utils/tool';
+import echarts from 'echarts';
+Vue.prototype.$echarts = echarts;
 
-require('./mock/mockService');
+// require('./mock/mockService');
 
 import {
   Button,

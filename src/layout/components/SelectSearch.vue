@@ -21,7 +21,7 @@
         placeholder="请选择"
         size="mini"
         :disabled="selectType === 4"
-        @click="handleChangeTime"
+        @change="handleChangeTime"
       >
         <el-option
           v-for="item in monthOptions[selectType]"
@@ -61,10 +61,6 @@ export default {
       selectType: 0,
       typeOptions: [
         {
-          value: 0,
-          label: '全部',
-        },
-        {
           value: 1,
           label: '月度',
         },
@@ -81,54 +77,33 @@ export default {
           label: '全年',
         },
       ],
-      yearOptions: [
-        {
-          value: '2000',
-          label: '2000年',
-        },
-        {
-          value: '2001',
-          label: '2001年',
-        },
-        {
-          value: '2002',
-          label: '2002年',
-        },
-        {
-          value: '2003',
-          label: '2003年',
-        },
-        {
-          value: '2004',
-          label: '2004年',
-        },
-      ],
+      yearOptions: [],
       monthOptions: {
         0: [],
-        4: [{ value: 'allYear', label: '全年度' }],
+        4: [{ value: '', label: '全年度' }],
         2: [
-          { value: 'firstQuarter', label: '第一季度' },
-          { value: 'secendQuarter', label: '第二季度' },
-          { value: 'thirdQuarter', label: '第三季度' },
-          { value: 'fourthQuarter', label: '第四季度' },
+          { value: '一季度', label: '第一季度' },
+          { value: '二季度', label: '第二季度' },
+          { value: '三季度', label: '第三季度' },
+          { value: '四季度', label: '第四季度' },
         ],
         3: [
-          { value: 'upHalfYear', label: '上半年' },
-          { value: 'downHalfYear', label: '下半年' },
+          { value: '上半年', label: '上半年' },
+          { value: '下半年', label: '下半年' },
         ],
         1: [
-          { value: 1, label: '一月' },
-          { value: 2, label: '二月' },
-          { value: 3, label: '三月' },
-          { value: 4, label: '四月' },
-          { value: 5, label: '五月' },
-          { value: 6, label: '六月' },
-          { value: 7, label: '七月' },
-          { value: 8, label: '八月' },
-          { value: 9, label: '九月' },
-          { value: 10, label: '十月' },
-          { value: 11, label: '十一月' },
-          { value: 12, label: '十二月' },
+          { value: '1月', label: '一月' },
+          { value: '2月', label: '二月' },
+          { value: '3月', label: '三月' },
+          { value: '4月', label: '四月' },
+          { value: '5月', label: '五月' },
+          { value: '6月', label: '六月' },
+          { value: '7月', label: '七月' },
+          { value: '8月', label: '八月' },
+          { value: '9月', label: '九月' },
+          { value: '10月', label: '十月' },
+          { value: '11月', label: '十一月' },
+          { value: '12月', label: '十二月' },
         ],
       },
     };
@@ -140,15 +115,18 @@ export default {
     ...mapGetters(['queryYear', 'queryTime', 'queryType']),
   },
   created() {
+    /* year */
+    let _yearOptions = [];
+    for (let i = 2000; i < 2050; i++) {
+      _yearOptions.push({
+        value: i,
+        label: `${i}年`,
+      });
+    }
+    this.yearOptions = [..._yearOptions];
     this.year = this.queryYear;
     this.middleData = this.queryTime;
     this.selectType = this.queryType;
-  },
-  async mounted() {
-    await this.$store.dispatch('product/changeTime', {
-      key: 'queryType',
-      value: 2,
-    });
   },
 
   methods: {
@@ -159,6 +137,10 @@ export default {
       });
       try {
         this.middleData = this.monthOptions[this.selectType][0]?.value;
+        this.$store.dispatch('product/changeTime', {
+          key: 'queryTime',
+          value: this.middleData,
+        });
       } catch (error) {
         console.log('error:', error);
       }
@@ -171,7 +153,7 @@ export default {
     },
     handleChangeTime() {
       this.$store.dispatch('product/changeTime', {
-        key: 'queryYear',
+        key: 'queryTime',
         value: this.middleData,
       });
     },

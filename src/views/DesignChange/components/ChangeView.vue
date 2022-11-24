@@ -138,7 +138,7 @@ export default {
       };
     },
     initChart() {
-      let myChart = echarts.init(document.getElementById('ChangeView'));
+      let myChart = this.$echarts.init(document.getElementById('ChangeView'));
       myChart.setOption(this.option, true);
       let erd = elementResizeDetectorMaker();
       erd.listenTo(document.getElementById('ChangeView'), () => {

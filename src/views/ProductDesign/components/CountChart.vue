@@ -188,7 +188,7 @@ export default {
       };
     },
     initCharts() {
-      let myChart = echarts.init(document.getElementById('CountChart'));
+      let myChart = this.$echarts.init(document.getElementById('CountChart'));
       myChart.setOption(this.option, true);
 
       /* 点击柱形图 */

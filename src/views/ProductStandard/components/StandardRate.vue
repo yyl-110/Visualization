@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     initCharts() {
-      let myChart = echarts.init(document.getElementById('StandardChart'));
+      let myChart = this.$echarts.init(document.getElementById('StandardChart'));
       this.option = {
         legend: {
           top: '-6',

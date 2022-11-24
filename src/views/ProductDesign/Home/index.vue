@@ -30,7 +30,6 @@
             :rankData="rankData1"
             title="发布率排行榜"
             label="零件发布率"
-            v-if="rankData1"
             progressLabel="partReleasedRate"
           />
         </div>

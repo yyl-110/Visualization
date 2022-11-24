@@ -20,7 +20,7 @@
 import ProcessItem from './components/ProcessItem.vue';
 import { mapGetters } from 'vuex';
 import DvBorder from '../../components/Common/DvBorder.vue';
-import dataJson from './data.json';
+import { getProcessEfficiency } from '../../api';
 export default {
   components: { ProcessItem, DvBorder },
   name: 'ProcessEfficiency',
@@ -32,17 +32,15 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['sidebar']),
+    ...mapGetters(['sidebar', 'queryYear', 'queryTime']),
     isCollapse() {
       return !this.sidebar.opened;
     },
   },
   created() {
-    this.getData();
+    this.getProcessEfficiency();
   },
-  mounted() {
-    // this.changeColor();
-  },
+  mounted() {},
   watch: {
     isCollapse(val) {
       console.log(val);
@@ -52,12 +50,31 @@ export default {
         }
       }, 300);
     },
+    queryTime() {
+      this.getProcessEfficiency();
+    },
+    queryYear() {
+      this.getProcessEfficiency();
+    },
   },
 
   methods: {
-    getData() {
-      this.cardData = dataJson['区域四十七'];
-      console.log('this.cardData:1', this.cardData);
+    // getData() {
+    //   this.cardData = dataJson['区域四十七'];
+    // },
+    getProcessEfficiency() {
+      getProcessEfficiency({
+        queryYear: this.queryYear,
+        queryTime: this.queryTime,
+      })
+        .then((res) => {
+          if (res.success) {
+            this.cardData = res.data['区域四十七'];
+          }
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     },
   },
 };

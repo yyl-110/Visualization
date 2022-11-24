@@ -164,7 +164,7 @@ export default {
       };
     },
     initChart() {
-      let myChart = echarts.init(document.getElementById('FutureChart'));
+      let myChart = this.$echarts.init(document.getElementById('FutureChart'));
       myChart.setOption(this.option, true);
 
       this.myChart = myChart;

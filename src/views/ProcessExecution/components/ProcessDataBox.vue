@@ -111,7 +111,6 @@ export default {
   },
 
   mounted() {
-    console.log(this.cardData, 9090);
   },
 
   methods: {

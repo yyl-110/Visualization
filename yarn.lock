@@ -2289,6 +2289,14 @@ aws4@^1.8.0:
   resolved "https://registry.npmmirror.com/aws4/-/aws4-1.11.0.tgz#d61f46d83b2519250e2784daf5b09479a8b41c59"
   integrity sha512-xh1Rl34h6Fi1DC2WWKfxUTVqRsNnr6LsKz2+hfwDxQJWmrx8+c7ylaqBMcHfl1U1r2dsifOvKX3LQuLNZ+XSvA==
 
+axios@0.17.0:
+  version "0.17.0"
+  resolved "https://registry.npmmirror.com/axios/-/axios-0.17.0.tgz#7da747916db803f761651d6091d708789b953c6a"
+  integrity sha512-n3PCq2tdo7y4/zEj7JkxoBWopOSIR/m6hjKaaXAgbZhCK1HcbEPkYlbtyyA1hfry/neSHAo7LRrXSystUGrXXg==
+  dependencies:
+    follow-redirects "^1.2.3"
+    is-buffer "^1.1.5"
+
 babel-code-frame@^6.26.0:
   version "6.26.0"
   resolved "https://registry.npmmirror.com/babel-code-frame/-/babel-code-frame-6.26.0.tgz#63fd43f7dc1e3bb7ce35947db8fe369a3f58c74b"
@@ -4186,6 +4194,13 @@ ecc-jsbn@~0.1.1:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
 
+echarts@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.npmmirror.com/echarts/-/echarts-4.0.0.tgz#74340ff3fc88b67aee9839a80b1cb72faacd911a"
+  integrity sha512-7MsZs2Bxx21kgUV0o8ELBK7QRdwdn4rHPCMdjR1yBZ+tllU7P7k3lY1Jx7PaW75RFL83nUuHK5P0xLfQnPohag==
+  dependencies:
+    zrender "4.0.0"
+
 ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.npmmirror.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
@@ -4849,7 +4864,7 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
 
-follow-redirects@^1.0.0:
+follow-redirects@^1.0.0, follow-redirects@^1.2.3:
   version "1.15.2"
   resolved "https://registry.npmmirror.com/follow-redirects/-/follow-redirects-1.15.2.tgz#b460864144ba63f2681096f274c4e57026da2c13"
   integrity sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==
@@ -10102,3 +10117,8 @@ yorkie@^2.0.0:
     is-ci "^1.0.10"
     normalize-path "^1.0.0"
     strip-indent "^2.0.0"
+
+zrender@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.npmmirror.com/zrender/-/zrender-4.0.0.tgz#908935151329fa95145a333d186edd4011cf86c5"
+  integrity sha512-yb9gbnjg7BoMn5D01fX1hj788/CQgyIt+byUYdbgTZTz9TOpBy/b3m0Rx+TDT1kjfQIWWhE+HOkaAwJxbcCt1A==

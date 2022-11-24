@@ -6,7 +6,7 @@
     零部件数量
     <countTo
       :startVal="0"
-      :endVal="disData.addPartCount"
+      :endVal="disData.addPartCount || 0"
       :duration="6000"
       separator=""
       class="countTo"
@@ -14,7 +14,7 @@
     个，发布率
     <countTo
       :startVal="0"
-      :endVal="parseFloat(disData.partReleasedRate)"
+      :endVal="parseFloat(disData.partReleasedRate || 0)"
       :duration="6000"
       separator=""
       suffix="%"
@@ -26,7 +26,7 @@
     模型数量
     <countTo
       :startVal="0"
-      :endVal="disData.addModelCount"
+      :endVal="disData.addModelCount || 0"
       :duration="6000"
       separator=""
       class="countTo"
@@ -34,7 +34,7 @@
     个，发布率
     <countTo
       :startVal="0"
-      :endVal="parseFloat(disData.modelReleasedRate)"
+      :endVal="parseFloat(disData.modelReleasedRate) || 0"
       :duration="6000"
       separator=""
       suffix="%"
@@ -46,7 +46,7 @@
     图纸数量
     <countTo
       :startVal="0"
-      :endVal="disData.addDrawingCount"
+      :endVal="disData.addDrawingCount || 0"
       :duration="6000"
       separator=""
       class="countTo"
@@ -54,7 +54,7 @@
     张， 发布率
     <countTo
       :startVal="0"
-      :endVal="parseFloat(disData.drawingReleasedRate)"
+      :endVal="parseFloat(disData.drawingReleasedRate) || 0"
       :duration="6000"
       separator=""
       suffix="%"
@@ -73,7 +73,7 @@
     产品库数量
     <countTo
       :startVal="0"
-      :endVal="disData.allCount"
+      :endVal="disData.allCount || 0"
       :duration="6000"
       separator=""
       class="countTo"
@@ -87,7 +87,7 @@
     产品数量
     <countTo
       :startVal="0"
-      :endVal="disData.addCount"
+      :endVal="disData.addCount || 0"
       :duration="6000"
       separator=""
       class="countTo"
@@ -95,7 +95,7 @@
     个，同比
     <countTo
       :startVal="0"
-      :endVal="parseFloat(disData.tongBiAdd)"
+      :endVal="parseFloat(disData.tongBiAdd) || 0"
       :duration="6000"
       separator=""
       suffix="%"
@@ -105,7 +105,7 @@
     环比
     <countTo
       :startVal="0"
-      :endVal="parseFloat(disData.huanBiAdd)"
+      :endVal="parseFloat(disData.huanBiAdd) || 0"
       :duration="6000"
       separator=""
       suffix="%"

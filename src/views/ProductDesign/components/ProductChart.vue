@@ -142,7 +142,7 @@ export default {
       };
     },
     initChart() {
-      let myChart = echarts.init(document.getElementById('ProductChart'));
+      let myChart = this.$echarts.init(document.getElementById('ProductChart'));
       myChart.setOption(this.option, true);
       /* 点击柱形图 */
       myChart.getZr().on('click', (params) => {

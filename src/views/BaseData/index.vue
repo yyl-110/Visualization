@@ -2,11 +2,7 @@
   <div class="baseData">
     <data-display :disData="disData" />
     <!-- 元件数量统计 -->
-    <devices-box
-      style="margin-top: 20px"
-      :devicesData="devicesBoxData"
-      v-if="devicesBoxData"
-    />
+    <devices-box style="margin-top: 20px" :devicesData="devicesBoxData" />
 
     <!-- 器件图标 -->
     <div class="chart clearfix">
@@ -16,7 +12,6 @@
           color="#00DFFB"
           :chartData="chartData1"
           chartTitle="标准件数量"
-          v-if="chartData1"
         />
       </div>
       <div class="devices">
@@ -25,7 +20,6 @@
           color="#009AFF"
           :chartData="chartData2"
           chartTitle="元器件数量"
-          v-if="chartData2"
         />
       </div>
     </div>
@@ -74,7 +68,6 @@ export default {
         queryYear: this.queryYear,
         queryTime: this.queryTime,
       }).then((res) => {
-        console.log(res, 9090);
         if (res.success) {
           this.disData = res.data['区域十六'];
           this.devicesBoxData = res.data['区域十七'];

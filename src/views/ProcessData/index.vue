@@ -7,7 +7,7 @@
       <div class="leftChart">
         <completion-rate
           :completionData="completionData"
-          v-if="completionData.length"
+          v-if="completionData && completionData.length"
         />
       </div>
       <div class="rank">
@@ -69,7 +69,6 @@ export default {
         queryTime: this.queryTime,
       }).then((res) => {
         if (res.success) {
-          console.log(res.data);
           // this.completionData = res.data['区域二十一'];
           this.rankData = res.data['区域二十二'];
           this.cardData = res.data['区域二十'];
@@ -95,6 +94,12 @@ export default {
           console.log(e);
         });
     },
+  },
+  destroyed() {
+    this.$store.dispatch('page/changeProcessType', {
+      key: 'processType',
+      value: '',
+    });
   },
 };
 </script>

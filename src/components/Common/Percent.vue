@@ -152,7 +152,7 @@ export default {
       };
     },
     initChart() {
-      let myChart = echarts.init(this.$refs.PercentChart);
+      let myChart = this.$echarts.init(this.$refs.PercentChart);
 
       myChart.setOption(this.option, true);
       let erd = elementResizeDetectorMaker();

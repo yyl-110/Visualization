@@ -10,7 +10,7 @@
         :column="column"
         :tableData="tableData"
         :page="5"
-        :total="tableData.length"
+        :total="tableData ? tableData.length : 0"
       />
     </div>
   </div>
@@ -48,9 +48,7 @@ export default {
       ],
     };
   },
-  mounted() {
-    console.log('this.table', this.tableData.length);
-  },
+  mounted() {},
 
   methods: {},
 };

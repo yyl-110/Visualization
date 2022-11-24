@@ -44,7 +44,7 @@
                       :text-inside="false"
                       :show-text="false"
                       :stroke-width="10"
-                      :percentage="parseFloat(item[progressLabel])"
+                      :percentage="parseFloat(item[progressLabel] || 0)"
                       color="#23CEFD"
                     ></el-progress>
                   </div>
@@ -153,7 +153,6 @@ export default {
     },
     /* 普通文档贡献量排行榜 */
     formateCommon() {
-      console.log(this.rankData, 'zzz');
       const keys = Object.keys(this.rankData);
       const arr = keys.map((i) => {
         const item = {
