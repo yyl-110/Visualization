@@ -67,14 +67,18 @@ export default {
       getBaseData({
         queryYear: this.queryYear,
         queryTime: this.queryTime,
-      }).then((res) => {
-        if (res.success) {
-          this.disData = res.data['区域十六'];
-          this.devicesBoxData = res.data['区域十七'];
-          this.chartData1 = res.data['区域十八'];
-          this.chartData2 = res.data['区域十九'];
-        }
-      });
+      })
+        .then((res) => {
+          if (res.success) {
+            this.disData = res['区域十六'];
+            this.devicesBoxData = res['区域十七'];
+            this.chartData1 = res['区域十八'];
+            this.chartData2 = res['区域十九'];
+          }
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     },
   },
 };

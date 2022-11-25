@@ -22,8 +22,10 @@ import store from './store';
 import {fontSize} from './utils/tool';
 import echarts from 'echarts';
 Vue.prototype.$echarts = echarts;
+// import Toast from './components/toast'
 
-// require('./mock/mockService');
+// Vue.prototype.$Toast = Toast
+if(process.env.NODE_ENV !== 'production') require('./mock/mockService');
 
 import {
   Button,
@@ -66,7 +68,6 @@ Vue.use(Button)
   .use(Input)
   .use(ElScrollbar);
 import '@/assets/js/flexible';
-/* datav */
 
 Vue.prototype.$fontSize = fontSize;
 

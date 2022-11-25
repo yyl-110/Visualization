@@ -52,7 +52,7 @@ export default {
       getPdmList({ prjStatus, prjType })
         .then((res) => {
           if (res.success) {
-            this.tableData = res.data['区域十五'].map((item, index) => {
+            this.tableData = res['区域十五'].map((item, index) => {
               return { id: index + 1, ...item };
             });
           }

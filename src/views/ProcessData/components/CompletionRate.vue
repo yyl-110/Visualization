@@ -15,6 +15,9 @@ import Title from '@/components/Common/Title';
 import elementResizeDetectorMaker from 'element-resize-detector';
 import { debounce } from '../../../utils/tool';
 import DvBorder from '../../../components/Common/DvBorder.vue';
+import { getProcessDataByCard } from '@/api';
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'CompletionRate',
   components: {
@@ -22,12 +25,15 @@ export default {
     DvBorder,
   },
   props: {
-    completionData: {
-      type: Array,
-      default: () => [],
+    processType: {
+      type: String,
+      default: '',
     },
   },
   watch: {
+    processType(val) {
+      this.getProcessDataByCard();
+    },
     completionData: {
       deep: true,
       handler() {
@@ -40,16 +46,20 @@ export default {
       },
     },
   },
+  computed: {
+    ...mapGetters(['queryYear', 'queryTime']),
+  },
   data() {
     return {
       option: {},
       myChart: null,
+      completionData: [],
     };
   },
 
   mounted() {
-    this.initOption();
-    this.initChart();
+    // this.initOption();
+    // this.initChart();
   },
 
   methods: {
@@ -205,6 +215,22 @@ export default {
       window.addEventListener('resize', () => {
         myChart.resize();
       });
+    },
+    getProcessDataByCard() {
+      getProcessDataByCard({
+        queryYear: this.queryYear,
+        queryTime: this.queryTime,
+        workflowType: this.processType,
+      })
+        .then((res) => {
+          console.log('res:', res);
+          if (res.success) {
+            this.completionData = res['区域二十一'];
+          }
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     },
   },
 };

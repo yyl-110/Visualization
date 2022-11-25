@@ -64,12 +64,12 @@ export default {
         .then((res) => {
           if (res.success) {
             const _panelData = {};
-            _panelData['区域二十三'] = res.data['区域二十三'];
-            _panelData['区域二十四'] = res.data['区域二十四'];
-            _panelData['区域二十五'] = res.data['区域二十五'];
+            _panelData['区域二十三'] = res['区域二十三'];
+            _panelData['区域二十四'] = res['区域二十四'];
+            _panelData['区域二十五'] = res['区域二十五'];
             this.panelData = { ..._panelData };
-            this.changeViewData = res.data['区域二十六'];
-            this.rankData = res.data['区域二十七'];
+            this.changeViewData = res['区域二十六'];
+            this.rankData = res['区域二十七'];
           }
         })
         .catch((e) => {

@@ -76,14 +76,14 @@ export default {
       getContribution({ queryTime: this.queryTime, queryYear: this.queryYear })
         .then((res) => {
           if (res.success) {
-            this.cardData = res.data['区域三十五'];
+            this.cardData = res['区域三十五'];
             /* 设置初始默认值 */
             this.$store.dispatch('page/changeProcessType', {
               key: 'processType',
               value: this.cardData[0].objType,
             });
             this.getContributionByCard();
-            console.log('res.data:', res.data);
+            console.log('res:', res);
           }
         })
         .catch((e) => {
@@ -102,11 +102,11 @@ export default {
         .then((res) => {
           if (res.success) {
             if (this.type === 1) {
-              this.rankData = res.data['区域三十七'];
-              this.chartData = res.data['区域三十六'];
+              this.rankData = res['区域三十七'];
+              this.chartData = res['区域三十六'];
             } else {
-              this.chartData = res.data['区域三十八'];
-              this.rankData = res.data['区域三十九'];
+              this.chartData = res['区域三十八'];
+              this.rankData = res['区域三十九'];
             }
           }
         })

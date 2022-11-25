@@ -118,8 +118,7 @@ export default {
       })
         .then((res) => {
           if (res.success) {
-            this.dataJson = res.data;
-            console.log('res.data:', res.data);
+            this.dataJson = res;
             if (this.type === 1) {
               this.cardData = this.dataJson['区域四十一'];
               this.wfType1 = this.dataJson['区域四十一'][0].workflowType;
@@ -143,8 +142,8 @@ export default {
       })
         .then((res) => {
           if (res.success) {
-            this.commonChartData = res.data['区域四十二'];
-            this.rankData = res.data['区域四十三'];
+            this.commonChartData = res['区域四十二'];
+            this.rankData = res['区域四十三'];
           }
         })
         .catch((e) => {
@@ -162,7 +161,7 @@ export default {
           console.log(res);
           if (res.success) {
             try {
-              this.tableData = res.data['区域四十六'].map((item, index) => {
+              this.tableData = res['区域四十六'].map((item, index) => {
                 return { id: index + 1, ...item };
               });
             } catch (error) {

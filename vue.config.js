@@ -11,15 +11,13 @@ module.exports = {
     open: true,
     port: 8081,
     // proxy: {
-    //   "/api": {
-    //     target: "https://api.github.com",
-    //     changeOrigin: true,
-    //     ws: false,
+    //   '/api': {
+    //     target: 'http://localhost:8081',
     //     pathRewrite: {
-    //       "^/api": ""
-    //     }
-    //   }
-    // }
+    //       '^/api': '',
+    //     },
+    //   },
+    // },
   },
   // 在exports中添加，这里很关键，不配置不行
   transpileDependencies: ['element-ui', 'echarts', 'vue-router'],

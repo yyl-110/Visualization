@@ -1,13 +1,12 @@
 <template>
   <div class="processData">
-    <data-box :cardData="cardData" v-if="cardData.length" />
+    <data-box :cardData="cardData" />
 
     <!-- 数据 -->
     <div class="preData clearfix">
       <div class="leftChart">
         <completion-rate
-          :completionData="completionData"
-          v-if="completionData && completionData.length"
+          :processType="processType"
         />
       </div>
       <div class="rank">
@@ -16,7 +15,6 @@
           :rankData="rankData"
           label="平均完成率"
           progressLabel="workflowFinishRate"
-          v-if="rankData"
         />
       </div>
     </div>
@@ -27,7 +25,7 @@
 import DataBox from './components/DataBox.vue';
 import Rank from '@/components/Common/Rank';
 import CompletionRate from './components/CompletionRate.vue';
-import { getProcessData, getProcessDataByCard } from '@/api';
+import { getProcessData } from '@/api';
 import { mapGetters } from 'vuex';
 export default {
   components: { DataBox, Rank, CompletionRate },
@@ -45,7 +43,7 @@ export default {
       this.getProcessData();
     },
     processType() {
-      this.getProcessDataByCard();
+      // this.getProcessDataByCard();
     },
   },
   data() {
@@ -60,40 +58,45 @@ export default {
     this.getProcessData();
   },
 
-  mounted() {},
+  mounted() {
+    console.log(123123)
+  },
 
   methods: {
     getProcessData() {
       getProcessData({
         queryYear: this.queryYear,
         queryTime: this.queryTime,
-      }).then((res) => {
-        if (res.success) {
-          // this.completionData = res.data['区域二十一'];
-          this.rankData = res.data['区域二十二'];
-          this.cardData = res.data['区域二十'];
-          this.$store.dispatch('page/changeProcessType', {
-            key: 'processType',
-            value: this.cardData[0].workflowType,
-          });
-        }
-      });
-    },
-    getProcessDataByCard() {
-      getProcessDataByCard({
-        queryYear: this.queryYear,
-        queryTime: this.queryTime,
-        workflowType: this.processType,
       })
         .then((res) => {
           if (res.success) {
-            this.completionData = res.data['区域二十一'];
+            this.rankData = res['区域二十二'];
+            this.cardData = res['区域二十'];
+            this.$store.dispatch('page/changeProcessType', {
+              key: 'processType',
+              value: this.cardData[0].workflowType,
+            });
           }
         })
         .catch((e) => {
-          console.log(e);
+          throw new Error(e);
         });
     },
+    // getProcessDataByCard() {
+    //   getProcessDataByCard({
+    //     queryYear: this.queryYear,
+    //     queryTime: this.queryTime,
+    //     workflowType: this.processType,
+    //   })
+    //     .then((res) => {
+    //       if (res.success) {
+    //         this.completionData = res['区域二十一'];
+    //       }
+    //     })
+    //     .catch((e) => {
+    //       console.log(e);
+    //     });
+    // },
   },
   destroyed() {
     this.$store.dispatch('page/changeProcessType', {

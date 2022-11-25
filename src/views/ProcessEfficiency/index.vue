@@ -69,7 +69,7 @@ export default {
       })
         .then((res) => {
           if (res.success) {
-            this.cardData = res.data['区域四十七'];
+            this.cardData = res['区域四十七'];
           }
         })
         .catch((e) => {

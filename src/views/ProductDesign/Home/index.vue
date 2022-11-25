@@ -71,6 +71,9 @@
         </div>
       </div>
     </div>
+    <div style="display: flex; margin-top: 40px">
+      <div v-for="item in typelist" :key="item.id">{{ item.tag_name }}</div>
+    </div>
   </div>
 </template>
 
@@ -119,6 +122,7 @@ export default {
       prjType1: '', //点击区域六选择
       prjType2: '', // 点击区域十二选择
       pageData: {},
+      typelist: [],
     };
   },
   watch: {
@@ -140,6 +144,14 @@ export default {
     this.handelGetProductDesign();
     // this.handelGetData();
     // this.handelGetTableData();
+    // test()
+    //   .then((res) => {
+    //     console.log(res, 9090);
+    //     this.typelist = res.data;
+    //   })
+    //   .catch((e) => {
+    //     console.log(e);
+    //   });
   },
 
   mounted() {},
@@ -161,23 +173,27 @@ export default {
       getProductDesign({
         queryYear: this.queryYear,
         queryTime: this.queryTime,
-      }).then((res) => {
-        if (res.success) {
-          this.pageData = res.data;
-          this.display1 = res.data['区域五'];
-          this.display2 = res.data['区域十'];
-          this.rankData1 = res.data['区域九'];
-          this.productChartData = res.data['区域十一'];
-          this.rankData2 = res.data['区域十三'];
-          this.rankData3 = res.data['区域十四'];
-          this.countChartData = res.data['区域六'];
-          if (this.btnType === 1) {
-            this.prjType1 = this.countChartData[0].prjType;
-          } else {
-            this.prjType2 = this.productChartData[0].prjType;
+      })
+        .then((res) => {
+          if (res.success) {
+            this.pageData = res;
+            this.display1 = res['区域五'];
+            this.display2 = res['区域十'];
+            this.rankData1 = res['区域九'];
+            this.productChartData = res['区域十一'];
+            this.rankData2 = res['区域十三'];
+            this.rankData3 = res['区域十四'];
+            this.countChartData = res['区域六'];
+            if (this.btnType === 1) {
+              this.prjType1 = this.countChartData[0].prjType;
+            } else {
+              this.prjType2 = this.productChartData[0].prjType;
+            }
           }
-        }
-      });
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     },
 
     /* 1.1.2区域七、八数据统计 */
@@ -186,12 +202,16 @@ export default {
         queryYear: this.queryYear,
         queryTime: this.queryTime,
         prjType: this.prjType1,
-      }).then((res) => {
-        if (res.success) {
-          this.tableData1 = res.data['区域七'];
-          this.futureChartData = res.data['区域八'];
-        }
-      });
+      })
+        .then((res) => {
+          if (res.success) {
+            this.tableData1 = res['区域七'];
+            this.futureChartData = res['区域八'];
+          }
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     },
 
     /* 获取区域12数据 */
@@ -200,11 +220,15 @@ export default {
         queryYear: this.queryYear,
         queryTime: this.queryTime,
         prjType: this.prjType2,
-      }).then((res) => {
-        if (res.success) {
-          this.tableData2 = res.data['区域十二'];
-        }
-      });
+      })
+        .then((res) => {
+          if (res.success) {
+            this.tableData2 = res['区域十二'];
+          }
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     },
 
     /**

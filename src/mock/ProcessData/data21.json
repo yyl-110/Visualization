@@ -1,0 +1,21 @@
+{
+  "区域二十一": [{
+      "workflowAddCount": 7,
+      "prjType": "集团项目",
+      "workflowFinishRate": "85.71%",
+      "workflowFinishCount": 6
+    },
+    {
+      "workflowAddCount": 0,
+      "prjType": "公安武警项目",
+      "workflowFinishRate": "0%",
+      "workflowFinishCount": 0
+    },
+    {
+      "workflowAddCount": 0,
+      "prjType": "预研项目",
+      "workflowFinishRate": "0%",
+      "workflowFinishCount": 0
+    }
+  ]
+}

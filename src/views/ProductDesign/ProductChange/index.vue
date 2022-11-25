@@ -59,7 +59,7 @@ export default {
       })
         .then((res) => {
           if (res.success) {
-            this.tableData = res.data['区域二十八'].map((item, index) => {
+            this.tableData = res['区域二十八'].map((item, index) => {
               return { id: index + 1, ...item };
             });
           }

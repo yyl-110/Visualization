@@ -1,11 +1,11 @@
 import axios from 'axios';
-
+import {Message} from 'element-ui';
 // post请求头
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 // create an axios instance
 // process.env.VUE_APP_BASE_API
 const service = axios.create({
-  baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
+  baseURL: process.env.NODE_ENV === 'production' ? process.env.VUE_APP_BASE_API : '', // url = base url + request url
   // withCredentials: true, // send cookies when cross-domain requests
   timeout: 10000, // request timeout
 });
@@ -30,7 +30,9 @@ service.interceptors.request.use(
   },
 );
 
-axios.interceptors.response.use((response) => {
+service.interceptors.response.use((response) => {
+  console.log('response:', response);
+
   // IE 8-9
   if (response.data == null && response.config.responseType === 'json' && response.request.responseText != null) {
     try {
@@ -72,6 +74,10 @@ export function post(url, params) {
     service
       .post(url, params)
       .then((res) => {
+        const {success, msg} = res.data || {};
+        if (!success) {
+          Message.error(msg);
+        }
         resolve(res.data);
       })
       .catch((err) => {
