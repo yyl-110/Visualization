@@ -10,7 +10,7 @@
 <script>
 import DvBorder from '../../../components/Common/DvBorder.vue';
 import elementResizeDetectorMaker from 'element-resize-detector';
-import { debounce } from '../../../utils/tool';
+import { debounce, fontSize } from '../../../utils/tool';
 
 export default {
   components: { DvBorder },
@@ -66,13 +66,14 @@ export default {
         },
         xAxis: {
           name: '项目类型',
+          nameTextStyle: {
+            color: '#fff',
+            fontSize: this.$fontSize(14),
+          },
           axisLabel: {
-            padding: [8, 0, 0, 0], //文字左右定位
-            textStyle: {
-              color: '#fff', //文字颜色
-              fontSize: '12', //文字大小
-              lineHeight: '22',
-            },
+            padding: [this.$fontSize(8), 0, 0, 0], //文字左右定位
+            color: '#fff', //文字颜色
+            fontSize: this.$fontSize(12), //文字大小
           },
           axisLine: {
             show: true,
@@ -86,17 +87,17 @@ export default {
         yAxis: {
           type: 'value',
           axisLabel: {
-            textStyle: {
-              color: '#fff', //文字颜色
-              fontSize: '12', //文字大小
-              lineHeight: '22',
-            },
+            color: '#fff', //文字颜色
+            fontSize: this.$fontSize(12), //文字大小
+          },
+          axisLine: {
+            show: false, //隐藏y轴
           },
           nameTextStyle: {
             // x轴name的样式调整
             color: '#fff',
-            fontSize: 14,
-            padding: [0, 30, 16, 0],
+            fontSize: this.$fontSize(14),
+            padding: [0, this.$fontSize(30), this.$fontSize(16), 0],
           },
           nameGap: 10, // x轴name与横坐标轴线的间距
           name: '数量',
@@ -111,33 +112,33 @@ export default {
         series: [
           {
             type: 'bar',
-            barWidth: '30',
+            barWidth: this.$fontSize(40),
             showBackground: true,
             backgroundStyle: {
-              color: 'rgba(180, 180, 180, 0.2)',
+              color: 'rgba(255, 255, 255, .3)',
             },
             label: {
               // 柱图头部显示值
               show: true,
               color: '#FFFFFF',
               position: 'top',
-              fontSize: '12px',
+              fontSize: this.$fontSize(12),
             },
             itemStyle: {
               normal: {
                 color: '#009AFF',
                 //这里设置柱形图圆角 [左上角，右上角，右下角，左下角]
-                barBorderRadius: [4, 4, 0, 0],
+                barBorderRadius: [this.$fontSize(4), this.$fontSize(4), 0, 0],
               },
             },
           },
         ],
         grid: {
           // 让图表占满容器
-          top: '40px',
-          left: '42px',
-          right: '70px',
-          bottom: '45px',
+          top: this.$fontSize(50),
+          left: this.$fontSize(42),
+          right: this.$fontSize(120),
+          bottom: this.$fontSize(40),
         },
       };
     },
@@ -146,7 +147,6 @@ export default {
       myChart.setOption(this.option, true);
       /* 点击柱形图 */
       myChart.getZr().on('click', (params) => {
-
         let pointInPixel = [params.offsetX, params.offsetY];
         if (myChart.containPixel('grid', pointInPixel)) {
           let xIndex = myChart.convertFromPixel({ seriesIndex: 0 }, [

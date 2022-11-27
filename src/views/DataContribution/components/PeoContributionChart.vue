@@ -1,40 +1,32 @@
 <template>
-  <div class="BaseChart">
+  <div class="contributionChart">
     <dv-border />
-    <div class="chartTitle">
-      <Title :text="title" />
-    </div>
-    <div class="chartWrap">
-      <div class="chartsdom" ref="BaseChart" id="BaseChart"></div>
+    <div class="chartContainer">
+      <div class="chartTitle">
+        <Title :text="'前二十名人员数据贡献量'" />
+      </div>
+      <div class="chartWrap">
+        <div class="chartsdom" ref="propleChart" id="propleChart"></div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import DvBorder from '../../../components/Common/DvBorder.vue';
 import Title from '../../../components/Common/Title.vue';
 import elementResizeDetectorMaker from 'element-resize-detector';
-import { debounce, isEmptyObject } from '../../../utils/tool';
-import DvBorder from '../../../components/Common/DvBorder.vue';
+import { debounce } from '@/utils/tool';
 export default {
-  name: 'BaseChart',
+  name: 'ProContributionChart',
   props: {
-    title: {
-      type: String,
-      default: '标题',
-    },
-    color: {
-      type: String,
-      default: '#00DFFB',
-    },
-    chartTitle: {
-      type: String,
-      default: '标题',
-    },
     chartData: {
+      // eslint-disable-next-line vue/require-prop-type-constructor
       type: Object,
       default: () => {},
     },
   },
+  components: { Title, DvBorder },
   watch: {
     chartData: {
       handler() {
@@ -50,8 +42,8 @@ export default {
   },
   data() {
     return {
-      option: {},
       myChart: null,
+      option: {},
     };
   },
   mounted() {
@@ -60,42 +52,29 @@ export default {
   },
   methods: {
     initOption() {
-      /* 组装数据 */
-      const source = Object.keys(this.chartData).map((i) => {
+      let source = [];
+      const keys = Object.keys(this.chartData);
+      source = keys.map((i) => {
         return [i, this.chartData[i]];
       });
       this.option = {
         tooltip: {
           trigger: 'axis',
-          showDelay: 0,
+          showDelay: 0, // 显示延迟，添加显示延迟可以避免频繁切换，单位ms
           axisPointer: {
             type: 'shadow',
           },
         },
-        legend: {
-          top: '0',
-          right: 0,
-          y: '0',
-          itemWidth: this.$fontSize(10),
-          itemHeight: this.$fontSize(10),
-          icon: 'circle',
-          data: [this.chartTitle],
-          textStyle: {
-            fontSize: this.$fontSize(14), //字体大小
-            color: 'rgba(255,255,255,0.5)', //字体颜色
-          },
-        },
         dataset: {
-          source: [['', this.chartTitle], ...source],
+          source: [...source],
         },
         xAxis: {
-          name: '分类',
+          name: '项目类型',
           axisLabel: {
-            padding: [0, 0, 0, 0],
-            margin: this.$fontSize(16),
-            rotate: 45, // 调整数值改变倾斜的幅度（范围-90到90）
-            fontSize: this.$fontSize(12),
-            color: '#fff',
+            padding: [this.$fontSize(8), 0, 0, 0], //文字左右定位
+            color: '#fff', //文字颜色
+            fontSize: this.$fontSize(12), //文字大小
+            interval: 0, //使x轴文字显示全
           },
           nameTextStyle: {
             // x轴name的样式调整
@@ -113,23 +92,24 @@ export default {
         },
         yAxis: {
           type: 'value',
+          axisLabel: {
+            color: '#fff', //文字颜色
+            fontSize: this.$fontSize(12), //文字大小
+          },
+          axisLine: {
+            show: false, //隐藏y轴
+          },
           nameTextStyle: {
             // x轴name的样式调整
             color: '#fff',
             fontSize: this.$fontSize(14),
             padding: [0, this.$fontSize(30), this.$fontSize(16), 0],
           },
-          nameGap: 10,
+          nameGap: 10, // x轴name与横坐标轴线的间距
           name: '数量',
-          axisLabel: {
-            color: '#fff',
-          },
-          axisLine: {
-            show: false, //隐藏y轴
-          },
           splitLine: {
             lineStyle: {
-              type: 'dashed',
+              type: 'dashed', //虚线
               color: 'rgba(255, 255, 255, 0.5)',
             },
             show: true, //隐藏
@@ -138,7 +118,7 @@ export default {
         series: [
           {
             type: 'bar',
-            barWidth: this.$fontSize(30),
+            barWidth: this.$fontSize(24),
             showBackground: true,
             backgroundStyle: {
               color: 'rgba(180, 180, 180, 0.2)',
@@ -152,7 +132,7 @@ export default {
             },
             itemStyle: {
               normal: {
-                color: this.color,
+                color: '#009AFF',
                 //这里设置柱形图圆角 [左上角，右上角，右下角，左下角]
                 barBorderRadius: [this.$fontSize(4), this.$fontSize(4), 0, 0],
               },
@@ -161,51 +141,56 @@ export default {
         ],
         grid: {
           // 让图表占满容器
-          top: this.$fontSize(80),
-          left: this.$fontSize(50),
-          right: this.$fontSize(70),
-          bottom: this.$fontSize(150),
+          top: this.$fontSize(70),
+          left: this.$fontSize(52),
+          right: this.$fontSize(90),
+          bottom: this.$fontSize(70),
         },
       };
     },
     initChart() {
-      if (isEmptyObject(this.chartData)) return;
-      let myChart = this.$echarts.init(this.$refs.BaseChart);
+      let myChart = this.$echarts.init(document.getElementById('propleChart'));
+
       myChart.setOption(this.option, true);
       let erd = elementResizeDetectorMaker();
-      erd.listenTo(document.getElementById('BaseChart'), () => {
-        debounce(myChart.resize(), 300);
+      erd.listenTo(document.getElementById('propleChart'), () => {
+        debounce(myChart.resize(), 200);
       });
-      this.myChart = myChart;
       window.addEventListener('resize', () => {
         myChart.resize();
       });
+      this.myChart = myChart;
     },
   },
-  components: { Title, DvBorder },
 };
 </script>
 
 <style lang="scss" scoped>
-.BaseChart {
+.contributionChart {
+  width: 100%;
   height: 100%;
   background: #050a4e;
   box-shadow: inset -8px -8px 40px 0px rgba(0, 227, 255, 0.3),
     inset 8px 8px 40px 0px rgba(0, 227, 255, 0.3);
   position: relative;
-  .chartTitle {
-    position: absolute;
-    left: 20px;
-    top: 18px;
-  }
   .chartWrap {
-    padding: 20px;
     width: 100%;
     height: 100%;
     .chartsdom {
       height: 100%;
       width: 100%;
     }
+  }
+  .chartTitle {
+    padding-left: 20px;
+  }
+  .chartContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding-top: 15px;
   }
 }
 </style>

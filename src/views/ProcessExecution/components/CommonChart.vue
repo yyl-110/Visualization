@@ -3,7 +3,7 @@
     <dv-border />
     <div class="chartContainer">
       <div class="chartTitle">
-        <Title :text="'普通文档流程超期任务量'" />
+        <Title :text="title" />
       </div>
       <div class="chartWrap">
         <div class="chartsdom" ref="universalChart"></div>
@@ -24,6 +24,10 @@ export default {
     chartData: {
       type: Array,
       default: () => [],
+    },
+    title: {
+      type: String,
+      default: '超期任务量',
     },
   },
   data() {
@@ -71,6 +75,7 @@ export default {
             padding: [this.$fontSize(8), 0, 0, 0], //文字左右定位
             color: '#fff', //文字颜色
             fontSize: this.$fontSize(12), //文字大小
+            interval: 0, //使x轴文字显示全
           },
           nameTextStyle: {
             // x轴name的样式调整
@@ -91,6 +96,9 @@ export default {
           axisLabel: {
             color: '#fff', //文字颜色
             fontSize: this.$fontSize(12), //文字大小
+          },
+          axisLine: {
+            show: false, //隐藏y轴
           },
           nameTextStyle: {
             // x轴name的样式调整
@@ -136,8 +144,8 @@ export default {
           // 让图表占满容器
           top: this.$fontSize(70),
           left: this.$fontSize(52),
-          right: this.$fontSize(90),
-          bottom: this.$fontSize(70),
+          right: this.$fontSize(100),
+          bottom: this.$fontSize(90),
         },
       };
     },

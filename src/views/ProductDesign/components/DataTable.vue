@@ -25,7 +25,7 @@
         </thead>
         <tbody>
           <tr align="center">
-            <td class="border_r">项目集团</td>
+            <td class="border_r">{{tableData.prjType}}</td>
             <td class="border_l">{{ tableData.ranking }}</td>
             <td class="border_r">{{ tableData.addPartCount }}</td>
             <td class="border_n">{{ tableData.releasedPartCount }}</td>

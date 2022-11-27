@@ -88,8 +88,8 @@ export default {
 
   props: {
     cardData: {
-      type: Array,
-      default: () => [],
+      type: Object,
+      default: () => {},
     },
   },
   data() {
@@ -106,10 +106,12 @@ export default {
       const t2_key = Object.keys(this.cardData.wfConsumeLongest)[0];
       this.p1 = t1_key;
       this.p2 = t2_key;
-      this.t1 = this.cardData.wfConsumeLongest[t1_key];
+      this.t1 = this.cardData.wfConsumeShortest[t1_key];
       this.t2 = this.cardData.wfConsumeLongest[t2_key];
       // this.t1 =
-    } catch (error) {}
+    } catch (error) {
+      throw new Error(error);
+    }
   },
 
   mounted() {},

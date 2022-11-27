@@ -70,6 +70,9 @@ export default {
       this.option = {
         tooltip: {
           trigger: 'axis',
+          axisPointer: {
+            type: 'shadow',
+          },
         },
         legend: {
           top: '0',
@@ -107,6 +110,9 @@ export default {
               color: 'rgba(255, 255, 255, 0.5)',
             },
             show: true, //隐藏
+          },
+          axisLine: {
+              show: false, //隐藏y轴
           },
           axisLabel: {
             color: '#fff', //文字颜色

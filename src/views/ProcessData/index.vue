@@ -5,9 +5,7 @@
     <!-- 数据 -->
     <div class="preData clearfix">
       <div class="leftChart">
-        <completion-rate
-          :processType="processType"
-        />
+        <completion-rate :processType="processType" />
       </div>
       <div class="rank">
         <Rank
@@ -15,6 +13,7 @@
           :rankData="rankData"
           label="平均完成率"
           progressLabel="workflowFinishRate"
+          widthType="small"
         />
       </div>
     </div>
@@ -42,9 +41,6 @@ export default {
     queryTime() {
       this.getProcessData();
     },
-    processType() {
-      // this.getProcessDataByCard();
-    },
   },
   data() {
     return {
@@ -59,7 +55,7 @@ export default {
   },
 
   mounted() {
-    console.log(123123)
+    console.log(123123);
   },
 
   methods: {

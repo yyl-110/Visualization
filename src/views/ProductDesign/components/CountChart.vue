@@ -9,7 +9,7 @@
 
 <script>
 import elementResizeDetectorMaker from 'element-resize-detector';
-import { debounce } from '../../../utils/tool';
+import { debounce, fontSize } from '../../../utils/tool';
 import DvBorder from '../../../components/Common/DvBorder.vue';
 export default {
   components: { DvBorder },
@@ -101,11 +101,14 @@ export default {
             color: '#fff',
             fontSize: this.$fontSize(14),
           },
+          axisLine: {
+              show: false, //隐藏y轴
+          },
           axisLabel: {
             color: '#fff', //文字颜色
             fontSize: this.$fontSize(12), //文字大小
           },
-          nameGap: 10, // x轴name与横坐标轴线的间距
+          nameGap: this.$fontSize(10), // x轴name与横坐标轴线的间距
           name: '数量',
           splitLine: {
             lineStyle: {
@@ -130,7 +133,7 @@ export default {
               normal: {
                 color: '#165DFF',
                 //这里设置柱形图圆角 [左上角，右上角，右下角，左下角]
-                barBorderRadius: [4, 4, 0, 0],
+                barBorderRadius: [this.$fontSize(4), this.$fontSize(4), 0, 0],
               },
             },
             label: {
@@ -148,7 +151,7 @@ export default {
               normal: {
                 color: '#23CEFD',
                 //这里设置柱形图圆角 [左上角，右上角，右下角，左下角]
-                barBorderRadius: [4, 4, 0, 0],
+                barBorderRadius: [this.$fontSize(4), this.$fontSize(4), 0, 0],
               },
             },
             label: {
@@ -166,7 +169,7 @@ export default {
               normal: {
                 color: '#F7BA1E',
                 //这里设置柱形图圆角 [左上角，右上角，右下角，左下角]
-                barBorderRadius: [4, 4, 0, 0],
+                barBorderRadius: [this.$fontSize(4), this.$fontSize(4), 0, 0],
               },
             },
             label: {

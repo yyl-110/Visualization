@@ -12,7 +12,7 @@
     "axios": "0.17.0",
     "babel-polyfill": "^6.26.0",
     "core-js": "^3.6.4",
-    "echarts": "4.0.0",
+    "echarts": "4.7.0",
     "element-resize-detector": "^1.2.4",
     "element-ui": "^2.15.10",
     "js-cookie": "^3.0.1",

@@ -32,6 +32,7 @@ export default {
   },
   watch: {
     processType(val) {
+      if (!val) return;
       this.getProcessDataByCard();
     },
     completionData: {
@@ -56,10 +57,13 @@ export default {
       completionData: [],
     };
   },
+  created() {
+    if (this.processType) this.getProcessDataByCard();
+  },
 
   mounted() {
-    // this.initOption();
-    // this.initChart();
+    this.initOption();
+    this.initChart();
   },
 
   methods: {
@@ -98,6 +102,7 @@ export default {
               padding: [this.$fontSize(8), 0, 0, 0], //文字左右定位
               color: '#fff', //文字颜色
               fontSize: this.$fontSize(12), //文字大小
+              interval: 0, //使x轴文字显示全
             },
             data: xLabel,
             axisPointer: {
@@ -113,6 +118,9 @@ export default {
               padding: [0, this.$fontSize(36), this.$fontSize(10), 0],
               color: '#fff',
               fontSize: this.$fontSize(14),
+            },
+            axisLine: {
+              show: false, //隐藏y轴
             },
             interval: 50,
             axisLabel: {
@@ -131,14 +139,20 @@ export default {
           {
             type: 'value',
             name: '流程完成率%',
+            axisLine: {
+              show: false, //隐藏y轴
+            },
             nameTextStyle: {
               color: '#fff',
               fontSize: this.$fontSize(14),
             },
             splitLine: {
-              show: false,
+              lineStyle: {
+                type: 'dashed', //虚线
+                color: 'rgba(255, 255, 255, 0.5)',
+              },
+              show: true, //隐藏
             },
-            interval: 10,
             axisLabel: {
               formatter: '{value}',
               color: '#fff', //文字颜色
@@ -183,7 +197,7 @@ export default {
               // 柱图头部显示值
               show: true,
               color: '#FFFFFF',
-              position: 'bottom',
+              position: 'top',
               fontSize: this.$fontSize(12),
             },
             tooltip: {

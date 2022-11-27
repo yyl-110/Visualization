@@ -2,35 +2,42 @@
   <div class="dataContribution">
     <div class="btnWrap"><btn-group @handleChange="handleChange" /></div>
     <data-view :cardData="cardData" />
-    <el-scrollbar style="width: 100%" class="sidebar-wrapper">
-      <div class="panelCartWrap clearfix">
-        <div class="dataBar">
-          <contribution-chart :key="type" :chartData="chartData" :type="type" />
-        </div>
-        <div class="rank">
-          <Rank
-            :key="type"
-            :rankData="rankData"
-            title="普通文档贡献量排行榜"
-            label="数量"
-            progressLabel="addCount"
-            :type="type === 1 ? '' : 'peopleRank'"
-          />
-        </div>
+    <div class="panelCartWrap clearfix">
+      <div class="dataBar">
+        <pro-contribution-chart :chartData="chartData1" v-if="type === 1" />
+        <peo-contribution-chart-vue :chartData="chartData2" v-if="type === 2" />
       </div>
-    </el-scrollbar>
+      <div class="rank">
+        <Rank
+          :key="type"
+          :rankData="rankData"
+          title="普通文档贡献量排行榜"
+          label="数量"
+          progressLabel="addCount"
+          :type="type === 1 ? '' : 'peopleRank'"
+          widthType="small"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import BtnGroup from '../../components/Common/BtnGroup.vue';
-import ContributionChart from './components/ContributionChart.vue';
+import ProContributionChart from './components/ProContributionChart.vue';
+import PeoContributionChartVue from './components/PeoContributionChart.vue';
 import DataView from './components/DataView.vue';
 import Rank from '@/components/Common/Rank';
 import { getContribution, getContributionByCard } from '../../api';
 import { mapGetters } from 'vuex';
 export default {
-  components: { BtnGroup, DataView, ContributionChart, Rank },
+  components: {
+    BtnGroup,
+    DataView,
+    ProContributionChart,
+    PeoContributionChartVue,
+    Rank,
+  },
   name: 'DataContribution',
 
   data() {
@@ -38,7 +45,8 @@ export default {
       type: 1,
       cardData: [],
       rankData: null,
-      chartData: [],
+      chartData1: [],
+      chartData2: {},
     };
   },
 
@@ -53,9 +61,9 @@ export default {
     queryYear() {
       this.getContribution();
     },
-    processType(val) {
+    processType(val, oldVal) {
+      if (!oldVal) return;
       this.getContributionByCard();
-      console.log('val:', val);
     },
   },
 
@@ -83,7 +91,6 @@ export default {
               value: this.cardData[0].objType,
             });
             this.getContributionByCard();
-            console.log('res:', res);
           }
         })
         .catch((e) => {
@@ -103,9 +110,9 @@ export default {
           if (res.success) {
             if (this.type === 1) {
               this.rankData = res['区域三十七'];
-              this.chartData = res['区域三十六'];
+              this.chartData1 = res['区域三十六'];
             } else {
-              this.chartData = res['区域三十八'];
+              this.chartData2 = res['区域三十八'];
               this.rankData = res['区域三十九'];
             }
           }

@@ -51,8 +51,8 @@ export default {
     return {
       disData: {},
       devicesBoxData: null,
-      chartData1: null,
-      chartData2: null,
+      chartData1: {},
+      chartData2: {},
     };
   },
 

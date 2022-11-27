@@ -6,10 +6,10 @@
       <div class="tableWrapper">
         <table border="0" align="left">
           <thead>
-            <tr>
+            <tr height="35">
               <th width="50"><div class="text rankText">排名</div></th>
               <th width="106"><div class="text name">项目类型</div></th>
-              <th width="260">
+              <th :width="widthType === 'lang' ? 380 : 260">
                 <div class="progressWrap">
                   <div class="progress"></div>
                 </div>
@@ -19,45 +19,49 @@
               </th>
             </tr>
           </thead>
-          <tbody>
-            <tr v-for="(item, index) in newRankData" :key="index">
-              <td width="50">
-                <div :class="['rankNum', 'rankText']">
-                  <div
-                    :class="[
-                      index === 0 && 'one',
-                      index === 1 && 'two',
-                      index === 2 && 'three',
-                    ]"
-                  >
-                    {{ index + 1 }}
-                  </div>
-                </div>
-              </td>
-              <td width="106">
-                <div class="text name">{{ item.prjType }}</div>
-              </td>
-              <td width="260">
-                <div class="progressWrap">
-                  <div class="progress">
-                    <el-progress
-                      :text-inside="false"
-                      :show-text="false"
-                      :stroke-width="10"
-                      :percentage="parseFloat(item[progressLabel] || 0)"
-                      color="#23CEFD"
-                    ></el-progress>
-                  </div>
-                </div>
-              </td>
-              <td width="80">
-                <div class="text rate">
-                  {{ item[progressLabel] }}{{ isRate ? '%' : '' }}
-                </div>
-              </td>
-            </tr>
-          </tbody>
         </table>
+        <div class="innerWrap">
+          <table border="0" align="left">
+            <tbody>
+              <tr v-for="(item, index) in newRankData" :key="index" height="35">
+                <td width="50">
+                  <div :class="['rankNum', 'rankText']">
+                    <div
+                      :class="[
+                        index === 0 && 'one',
+                        index === 1 && 'two',
+                        index === 2 && 'three',
+                      ]"
+                    >
+                      {{ index + 1 }}
+                    </div>
+                  </div>
+                </td>
+                <td width="106">
+                  <div class="text name">{{ item.prjType }}</div>
+                </td>
+                <td :width="widthType === 'lang' ? 380 : 260">
+                  <div class="progressWrap">
+                    <div class="progress">
+                      <el-progress
+                        :text-inside="false"
+                        :show-text="false"
+                        :stroke-width="10"
+                        :percentage="parseFloat(item[progressLabel] || 0) || 0"
+                        color="#23CEFD"
+                      ></el-progress>
+                    </div>
+                  </div>
+                </td>
+                <td width="80" valign="middle">
+                  <div class="text rate">
+                    {{ item[progressLabel] }}{{ isRate ? '%' : '' }}
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
@@ -96,6 +100,11 @@ export default {
     type: {
       type: String,
       default: '',
+    },
+    /* 控制进度条宽度 */
+    widthType: {
+      type: String,
+      default: 'lang',
     },
   },
   data() {
@@ -145,7 +154,6 @@ export default {
         rankNumArr.push(Number(Object.keys(this.rankData[i])[0]));
         rankArr = { ...rankArr, ...this.rankData[i] };
       }
-      rankNumArr.sort();
       _rankData = rankNumArr.map((item) => {
         return { ...rankArr[item] };
       });
@@ -178,17 +186,22 @@ export default {
   position: relative;
   .tableWrapper {
     width: 100%;
-    overflow: auto;
+    height: calc(100% - 36px);
+    .innerWrap {
+      width: 100%;
+      height: 100%;
+      overflow: scroll;
+    }
   }
-  .progressWrap {
-    height: 40px;
-  }
-  .rate {
-    height: 40px;
-  }
-  .rankText {
-    height: 40px;
-  }
+  // .progressWrap {
+  //   height: 40px;
+  // }
+  // .rate {
+  //   height: 40px;
+  // }
+  // .rankText {
+  //   height: 40px;
+  // }
   .ranlWrap {
     width: 100%;
     height: 100%;
@@ -200,21 +213,41 @@ export default {
   }
   .name {
     padding-left: 20px;
-    height: 40px;
+    // height: 40px;
   }
 
   table {
     width: 100%;
-    height: 100%;
-    margin-top: 8px;
-    table-layout: fixed;
+    // height: 100%;
+    // margin-top: 8px;
     border-collapse: collapse;
     thead {
       width: 100%;
     }
+    tbody {
+      width: 100%;
+      height: 100%;
+      // overflow: auto;
+      display: block;
+      // .progressWrap {
+      //   height: 50px;
+      // }
+      // .rate {
+      //   height: 50px;
+      // }
+      // .rankText {
+      //   height: 50px;
+      // }
+      // .name {
+      //   height: 50px;
+      // }
+    }
     tr {
+      table-layout: fixed;
+
+      display: table;
       .rankNum {
-        height: 40px;
+        // height: 50px;
         width: 24px;
         margin: 0 auto;
         div {

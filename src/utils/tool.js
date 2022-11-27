@@ -62,3 +62,32 @@ export const IEVersion = () => {
     return -1; //不是ie浏览器
   }
 };
+
+/**
+ * 是否是空对象
+ * @param {*} obj
+ * @return {*}
+ */
+export const isEmptyObject = (obj) => {
+  for (let key in obj) {
+    return false; //若不为空，可遍历，返回false
+  }
+  return true;
+};
+
+/**
+ * 获取当前数字的最大位数 1 =》10 10=》100
+ * @return {*}
+ */
+export const getMaxNumber = (number) => {
+  const isNumber = /^[0-9]+.?[0-9]*$/.test(number);
+  if (!isNumber) return 100;
+  if (Math.floor(number / 10) <= 1) return 10;
+  if (Math.floor(number / 10) > 1 && Math.floor(number / 10) <= 10) return 100;
+  if (Math.floor(number / 10) > 10 && Math.floor(number / 10) <= 100) return 1000;
+  if (Math.floor(number / 10) > 100 && Math.floor(number / 10) <= 1000) return 10000;
+  if (Math.floor(number / 10) > 1000 && Math.floor(number / 10) <= 10000) return 100000;
+  if (Math.floor(number / 10) > 10000 && Math.floor(number / 10) <= 100000) return 1000000;
+  if (Math.floor(number / 10) > 100000 && Math.floor(number / 10) <= 1000000) return 10000000;
+  if (Math.floor(number / 10) > 1000000 && Math.floor(number / 10) <= 10000000) return 100000000;
+};

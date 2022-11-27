@@ -6,16 +6,46 @@
       "workflowFinishCount": 6
     },
     {
-      "workflowAddCount": 0,
+      "workflowAddCount": 30,
       "prjType": "公安武警项目",
-      "workflowFinishRate": "0%",
+      "workflowFinishRate": "8%",
       "workflowFinishCount": 0
     },
     {
-      "workflowAddCount": 0,
+      "workflowAddCount": 30,
+      "prjType": "公安武警项目1",
+      "workflowFinishRate": "8%",
+      "workflowFinishCount": 0
+    },
+    {
+      "workflowAddCount": 30,
+      "prjType": "公安武警项目2",
+      "workflowFinishRate": "8%",
+      "workflowFinishCount": 0
+    },
+    {
+      "workflowAddCount": 30,
+      "prjType": "公安武警项目3哈哈哈哈哈哈",
+      "workflowFinishRate": "8%",
+      "workflowFinishCount": 0
+    },
+    {
+      "workflowAddCount": 30,
+      "prjType": "公安武警项目4",
+      "workflowFinishRate": "8%",
+      "workflowFinishCount": 0
+    },
+    {
+      "workflowAddCount": 30,
+      "prjType": "公安武警项目5",
+      "workflowFinishRate": "8%",
+      "workflowFinishCount": 0
+    },
+    {
+      "workflowAddCount": 18,
       "prjType": "预研项目",
       "workflowFinishRate": "0%",
-      "workflowFinishCount": 0
+      "workflowFinishCount": 20
     }
   ]
 }

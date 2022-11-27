@@ -4,13 +4,13 @@
     <div class="panelList">
       <el-row :gutter="60">
         <el-col :span="8">
-          <panel-item class="panItme" :type="1" :itemData="panel1" />
+          <panel-item class="panItme" :type="1" :itemData="panel1" title="设计变更单" />
         </el-col>
         <el-col :span="8">
-          <panel-item class="panItme" :type="2" :itemData="panel2" />
+          <panel-item class="panItme" :type="2" :itemData="panel2" title="变更零件数" />
         </el-col>
         <el-col :span="8">
-          <panel-item class="panItme" :type="3" :itemData="panel3" />
+          <panel-item class="panItme" :type="3" :itemData="panel3" title="变更类型" />
         </el-col>
       </el-row>
     </div>

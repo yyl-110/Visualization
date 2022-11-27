@@ -38,7 +38,6 @@ export default {
     font-size: 16px;
     font-weight: 500;
     color: #00dffb;
-    line-height: 24px;
     float: left;
     line-height: 18px;
   }

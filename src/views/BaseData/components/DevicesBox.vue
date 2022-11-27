@@ -9,7 +9,7 @@
         </div>
         <div class="percentContainer">
           <Percent
-            :maxData="12"
+            :maxData="1200"
             :value="[devicesData.AddStandardParts || 0]"
             :color="'#00DFFB'"
             :bgColor="'rgba(0, 223, 251, 0.3)'"
@@ -25,7 +25,7 @@
         </div>
         <div class="percentContainer">
           <Percent
-            :maxData="12"
+            :maxData="1200"
             :value="[devicesData.AddComponentsParts || 0]"
             :color="'#009AFF'"
             :bgColor="'rgba(0, 154, 255, 0.3)'"
@@ -42,7 +42,7 @@
             </el-col>
             <el-col :span="2" v-for="i in 11" :key="i">
               <div class="point">
-                <span>{{ i * 1 }}</span>
+                <span>{{ i * 100 }}</span>
               </div>
             </el-col>
           </el-row>

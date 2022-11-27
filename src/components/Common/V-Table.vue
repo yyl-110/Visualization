@@ -21,8 +21,8 @@
         @current-change="handleCurrentChange"
         background
         :current-page="page"
-        :page-sizes="[100, 200, 300, 400]"
-        :page-size="100"
+        :page-sizes="[5, 10, 20, 30, 40]"
+        :page-size="count"
         layout="total, prev, pager, next,sizes, slot, jumper"
         :total="total"
       >
@@ -96,11 +96,15 @@ export default {
     },
     page: {
       type: Number,
+      default: 1,
+    },
+    count: {
+      type: Number,
       default: 10,
     },
     total: {
       type: Number,
-      default: 400,
+      default: 100,
     },
   },
 
@@ -113,8 +117,10 @@ export default {
   methods: {
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
+      this.$emit('handleSizeChange', val);
     },
     handleCurrentChange(val) {
+      this.$emit('handleCurrentChange', val);
       console.log(`当前页: ${val}`);
     },
   },
@@ -146,6 +152,10 @@ export default {
     color: rgba(0, 223, 251, 1);
   }
   .el-pager {
+    .more {
+      background: #050a4e !important;
+      border: 1px solid #00dffb;
+    }
     .number {
       background: #050a4e !important;
       border-radius: 4px;
@@ -154,6 +164,7 @@ export default {
       font-weight: 400;
       color: #00dffb;
       &.active {
+        background: rgb(41, 96, 146) !important;
         background: linear-gradient(
           180deg,
           rgba(0, 223, 251, 0.08) 0%,

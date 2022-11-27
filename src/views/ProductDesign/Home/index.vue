@@ -31,6 +31,7 @@
             title="发布率排行榜"
             label="零件发布率"
             progressLabel="partReleasedRate"
+            widthType="small"
           />
         </div>
       </div>
@@ -58,6 +59,7 @@
             label="产品库数量"
             progressLabel="productCount"
             v-if="rankData2"
+            widthType="lang"
           />
         </div>
         <div class="rank2">
@@ -67,6 +69,7 @@
             label="产品验收数量"
             progressLabel="projectAccepted"
             v-if="rankData3"
+            widthType="lang"
           />
         </div>
       </div>
@@ -132,10 +135,14 @@ export default {
     queryTime() {
       this.handelGetProductDesign();
     },
-    prjType1() {
+    prjType1(newVal, old) {
+      if (!old) return;
+      if (!newVal) return;
       this.handelGetData();
     },
-    prjType2() {
+    prjType2(newVal, old) {
+      if (!old) return;
+      if (!newVal) return;
       this.handelGetTableData();
     },
   },
@@ -184,11 +191,11 @@ export default {
             this.rankData2 = res['区域十三'];
             this.rankData3 = res['区域十四'];
             this.countChartData = res['区域六'];
-            if (this.btnType === 1) {
-              this.prjType1 = this.countChartData[0].prjType;
-            } else {
-              this.prjType2 = this.productChartData[0].prjType;
-            }
+            /*  */
+            this.prjType1 = this.countChartData[0].prjType;
+            this.handelGetData();
+            this.prjType2 = this.productChartData[0].prjType;
+            this.handelGetTableData();
           }
         })
         .catch((e) => {
@@ -204,6 +211,7 @@ export default {
         prjType: this.prjType1,
       })
         .then((res) => {
+          console.log('res:', res);
           if (res.success) {
             this.tableData1 = res['区域七'];
             this.futureChartData = res['区域八'];
@@ -249,7 +257,7 @@ export default {
      */
     handelClickTable(prjStatus) {
       this.$router.push({
-        path: '/product-design/overdue',
+        path: '/product-design/pdmlist',
         query: {
           prjStatus,
           prjType: this.prjType2,

@@ -1,16 +1,16 @@
 <template>
   <div class="panelItem">
     <Decoration />
-    <div class="content" v-if="type === 1 || type === 2">
-      <div class="innerLeft">
+    <div class="content clearfix" v-if="type === 1 || type === 2">
+      <div class="innerLeft floatL">
         <div class="title">
           <img src="../../../assets/imgs/icon_file@2x.png" alt="" />
           <span>{{ title }}</span>
         </div>
         <div class="chartItem">
-          <div class="chartTop">
-            <span>当前新增</span>
-            <span>
+          <div class="chartTop clearfix">
+            <span class="floatL">当前新增</span>
+            <span class="floatR">
               {{
                 type === 1 ? cardData.addChangeCount : cardData.changePartSum
               }}
@@ -18,7 +18,11 @@
           </div>
           <div class="percentContainer">
             <Percent
-              :maxData="10"
+              :maxData="
+                getNumber(
+                  type === 1 ? cardData.addChangeCount : cardData.changePartSum,
+                )
+              "
               :value="[
                 type === 1 ? cardData.addChangeCount : cardData.changePartSum,
               ]"
@@ -28,13 +32,13 @@
           </div>
         </div>
         <div class="chartItem" v-if="type === 1">
-          <div class="chartTop">
-            <span>当前新增</span>
-            <span>{{ cardData.completeRate }}</span>
+          <div class="chartTop clearfix">
+            <span class="floatL">当前新增</span>
+            <span class="floatR">{{ cardData.completeRate }}</span>
           </div>
           <div class="percentContainer">
             <Percent
-              :maxData="100"
+              :maxData="getNumber(parseFloat(cardData.completeRate || 0))"
               :value="[parseFloat(cardData.completeRate)]"
               color="#009AFF"
               bgColor="rgba(0, 154, 255, .1)"
@@ -42,12 +46,12 @@
           </div>
         </div>
       </div>
-      <div class="innerRight">
+      <div class="innerRight floatR">
         <p class="tb">
           同比
           <countTo
             :startVal="0"
-            :endVal="parseFloat(cardData.tongBi)"
+            :endVal="parseFloat(cardData.tongBi || 0)"
             :duration="6000"
             separator=""
             :decimals="1"
@@ -60,7 +64,7 @@
           环比
           <countTo
             :startVal="0"
-            :endVal="parseFloat(cardData.huanBi)"
+            :endVal="parseFloat(cardData.huanBi || 0)"
             :duration="6000"
             separator=""
             suffix="%"
@@ -77,66 +81,69 @@
         <span>{{ title }}</span>
       </div>
       <div class="dataBox">
-        <div class="row">
-          <span class="name">一类变更</span>
-          <div class="percentContainer">
+        <div class="row clearfix">
+          <span class="name floatL">一类变更</span>
+          <div class="percentContainer floatR clearfix">
             <Percent
-              :maxData="100"
-              :value="[parseInt(cardData['一类'])]"
+              :maxData="getNumber(parseInt(cardData['一类'] || 0))"
+              :value="[parseInt(cardData['一类'] || 0)]"
               color="#23CEFD"
               bgColor="rgba(35, 206, 253, 0.1)"
+              class="floatL percent"
             />
+            <countTo
+              :startVal="0"
+              :endVal="cardData['一类'] || 0"
+              :duration="6000"
+              separator=""
+              suffix="个"
+              class="countTo floatR"
+            ></countTo>
           </div>
-          <countTo
-            :startVal="0"
-            :endVal="cardData['一类']"
-            :duration="6000"
-            separator=""
-            suffix="个"
-            class="countTo"
-          ></countTo>
         </div>
-        <div class="row">
-          <span class="name">二类变更</span>
-          <div class="percentContainer">
+        <div class="row clearfix">
+          <span class="name floatL">二类变更</span>
+          <div class="percentContainer floatR clearfix">
             <Percent
-              :maxData="1000"
-              :value="[parseInt(cardData['二类'])]"
+              :maxData="getNumber(parseInt(cardData['二类'] || 0))"
+              :value="[parseInt(cardData['二类'] || 0)]"
               color="#9FDB1D"
               bgColor="rgba(159, 219, 29, .1)"
+              class="floatL percent"
             />
+            <countTo
+              :startVal="0"
+              :endVal="cardData['二类'] || 0"
+              :duration="6000"
+              separator=""
+              suffix="个"
+              class="countTo floatR"
+            ></countTo>
           </div>
-          <countTo
-            :startVal="0"
-            :endVal="cardData['二类']"
-            :duration="6000"
-            separator=""
-            suffix="个"
-            class="countTo"
-          ></countTo>
         </div>
-        <div class="row">
-          <span class="name">三类变更</span>
-          <div class="percentContainer">
+        <div class="row clearfix">
+          <span class="name floatL">三类变更</span>
+          <div class="percentContainer floatR clearfix">
             <Percent
-              :maxData="1000"
-              :value="[parseInt(cardData['三类'])]"
+              :maxData="getNumber(parseInt(cardData['三类'] || 0))"
+              :value="[parseInt(cardData['三类'] || 0)]"
               color="#9FDB1D"
               bgColor="rgba(159, 219, 29, .1)"
+              class="floatL percent"
             />
+            <countTo
+              :startVal="0"
+              :endVal="cardData['三类'] || 0"
+              :duration="6000"
+              separator=""
+              suffix="个"
+              class="countTo floatR"
+            ></countTo>
           </div>
-          <countTo
-            :startVal="0"
-            :endVal="cardData['三类']"
-            :duration="6000"
-            separator=""
-            suffix="个"
-            class="countTo"
-          ></countTo>
         </div>
       </div>
     </div>
-    <Decoration />
+    <Decoration class="bottomDec" />
   </div>
 </template>
 
@@ -144,6 +151,7 @@
 import Decoration from '../../../components/Common/Decoration.vue';
 import Percent from '../../../components/Common/Percent.vue';
 import countTo from 'vue-count-to';
+import { getMaxNumber } from '../../../utils/tool';
 export default {
   components: { Decoration, Percent, countTo },
   name: 'VueDataVPanelItem',
@@ -174,37 +182,47 @@ export default {
 
   mounted() {},
 
-  methods: {},
+  methods: {
+    getNumber(number) {
+      return getMaxNumber(number);
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .panelItem {
   width: 560px;
-  display: flex;
-  flex-direction: column;
   height: 240px;
   background: rgba(255, 255, 255, 0.05);
-  flex-shrink: 0;
+  position: relative;
+  .bottomDec {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  .floatL {
+    float: left;
+  }
+  .floatR {
+    float: right;
+  }
   .content2 {
-    flex: 1;
     padding: 20px;
     .title2 {
-      display: flex;
-      align-items: center;
       padding-bottom: 18px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      border-bottom: 1px solid rgb(73, 77, 123);
       img {
         width: 24px;
         height: 24px;
-        flex-shrink: 0;
+        vertical-align: middle;
       }
       span {
         margin-left: 4px;
         font-size: 16px;
         font-weight: 400;
         color: #ffffff;
-        line-height: 22px;
+        line-height: 24px;
       }
     }
     .dataBox {
@@ -217,13 +235,16 @@ export default {
         margin-left: 10px;
       }
       .row {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 25px;
-        align-items: center;
+        // margin-top: 25px;
+        &:first-child {
+          margin-top: 25px;
+        }
         .percentContainer {
-          width: 100%;
           height: 16px;
+          width: 80%;
+          .percent {
+            width: 70%;
+          }
         }
         span {
           flex-shrink: 0;
@@ -234,36 +255,33 @@ export default {
           color: #ffffff;
           line-height: 22px;
           flex-shrink: 0;
-          margin-right: 12px;
+          width: 20%;
         }
       }
     }
   }
   .content {
-    flex: 1;
     padding: 20px;
-    display: flex;
-    align-items: center;
+    height: 100%;
     .innerLeft {
+      width: 68%;
       height: 100%;
       border-right: 1px solid rgba(255, 255, 255, 0.3);
-      flex: 1;
       padding-right: 20px;
     }
     .title {
-      display: flex;
-      align-items: center;
       img {
         width: 24px;
         height: 24px;
-        flex-shrink: 0;
+        vertical-align: middle;
       }
       span {
         margin-left: 4px;
         font-size: 16px;
         font-weight: 400;
         color: #ffffff;
-        line-height: 22px;
+        line-height: 24px;
+        display: inline;
       }
     }
 
@@ -275,8 +293,6 @@ export default {
         margin-top: 10px;
       }
       .chartTop {
-        display: flex;
-        justify-content: space-between;
         font-size: 20px;
         font-weight: normal;
         color: #ffffff;
@@ -284,20 +300,20 @@ export default {
       }
     }
     .innerRight {
+      width: 32%;
+      height: 100%;
       font-size: 18px;
       font-weight: 400;
       color: #ffffff;
       line-height: 25px;
       padding-left: 28px;
+      padding-top: 70px;
+      text-align: left;
       .countTo {
         color: #fff;
         font-size: 18px;
       }
       p {
-        display: flex;
-        align-items: center;
-        flex-wrap: nowrap;
-        white-space: nowrap;
         span {
           margin-left: 8px;
         }
@@ -305,7 +321,6 @@ export default {
       img {
         width: 12px;
         height: 12px;
-        flex-shrink: 0;
         margin-left: 4px;
       }
       .huan {

@@ -26,6 +26,7 @@ export default {
   data() {
     return {
       myChart: null,
+      option: {},
     };
   },
   watch: {
@@ -41,9 +42,10 @@ export default {
       },
     },
   },
+  created() {},
   mounted() {
     this.initOption();
-    this.initChart;
+    this.initChart();
   },
   methods: {
     initOption() {
@@ -67,6 +69,7 @@ export default {
             padding: [this.$fontSize(8), 0, 0, 0], //文字左右定位
             color: '#fff', //文字颜色
             fontSize: this.$fontSize(12), //文字大小
+            interval: 0, //使x轴文字显示全
           },
           nameTextStyle: {
             // x轴name的样式调整
@@ -87,6 +90,9 @@ export default {
           axisLabel: {
             color: '#fff', //文字颜色
             fontSize: this.$fontSize(12), //文字大小
+          },
+          axisLine: {
+            show: false, //隐藏y轴
           },
           nameTextStyle: {
             // x轴name的样式调整

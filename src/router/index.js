@@ -157,7 +157,6 @@ const routes = [
   //   },
   // },
 ];
-console.log(routes);
 const router = new VueRouter({
   mode: 'history',
   scrollBehavior: () => ({y: 0}),

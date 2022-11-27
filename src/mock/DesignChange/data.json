@@ -1,12 +1,12 @@
 {
   "区域二十五": {
-    "二类": 0,
-    "三类": 1,
-    "一类": 0
+    "二类": 2022,
+    "三类": 12434,
+    "一类": 30334
   },
   "区域二十四": {
     "huanBi": "-90.91%",
-    "changePartSum": 1,
+    "changePartSum": 14242,
     "tongBi": "100%"
   },
   "区域二十六": [{
@@ -16,10 +16,52 @@
       "ecnFinishedRate": 1
     },
     {
-      "addECNCount": 0,
+      "addECNCount": 20,
       "prjType": "公安武警项目",
-      "finishedECNCount": 0,
-      "ecnFinishedRate": 1
+      "finishedECNCount": 10,
+      "ecnFinishedRate": 12
+    },
+    {
+      "addECNCount": 20,
+      "prjType": "基础科研类",
+      "finishedECNCount": 10,
+      "ecnFinishedRate": 12
+    },
+    {
+      "addECNCount": 20,
+      "prjType": "实验室基础项目",
+      "finishedECNCount": 10,
+      "ecnFinishedRate": 12
+    },
+    {
+      "addECNCount": 20,
+      "prjType": "技术基础类",
+      "finishedECNCount": 10,
+      "ecnFinishedRate": 12
+    },
+    {
+      "addECNCount": 20,
+      "prjType": "其它项目",
+      "finishedECNCount": 10,
+      "ecnFinishedRate": 12
+    },
+    {
+      "addECNCount": 20,
+      "prjType": "军贸项目",
+      "finishedECNCount": 10,
+      "ecnFinishedRate": 12
+    },
+    {
+      "addECNCount": 20,
+      "prjType": "科研所项目",
+      "finishedECNCount": 10,
+      "ecnFinishedRate": 12
+    },
+    {
+      "addECNCount": 20,
+      "prjType": "型号项目",
+      "finishedECNCount": 10,
+      "ecnFinishedRate": 12
     },
     {
       "addECNCount": 0,
@@ -29,7 +71,7 @@
     }
   ],
   "区域二十三": {
-    "addChangeCount": 1,
+    "addChangeCount": 199,
     "huanBi": "-90.91%",
     "tongBi": "100%",
     "completeRate": "100.00%"

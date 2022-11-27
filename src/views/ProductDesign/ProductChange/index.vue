@@ -9,7 +9,14 @@
           返回
         </el-button>
       </div>
-      <v-table :column="column" :tableData="tableData" />
+      <v-table
+        :column="column"
+        :tableData="tableData"
+        @handleSizeChange="handleSizeChange"
+        @handleCurrentChange="handleCurrentChange"
+        :page="page"
+        :count="count"
+      />
     </div>
   </div>
 </template>
@@ -31,7 +38,7 @@ export default {
         { label: '序号', value: 'id' },
         { label: '变更单编号', value: 'number' },
         { label: '变更单名称', value: 'name' },
-        // { label: '所属科室', value: 'createtime' },
+        { label: '所属科室', value: 'keshi' },
         { label: '创建者', value: 'creator' },
         { label: '执行时长', value: 'hours' },
         { label: '创建时间', value: 'createtime' },
@@ -41,6 +48,14 @@ export default {
   },
   computed: {
     ...mapGetters(['queryTime', 'queryYear']),
+  },
+  watch: {
+    queryYear() {
+      this.getDesignChangeByChart();
+    },
+    queryTime() {
+      this.getDesignChangeByChart();
+    },
   },
 
   created() {
@@ -56,6 +71,8 @@ export default {
         queryTime: this.queryTime,
         queryYear: this.queryYear,
         prjType,
+        page: this.page,
+        count: this.count,
       })
         .then((res) => {
           if (res.success) {
@@ -67,6 +84,14 @@ export default {
         .catch((e) => {
           console.log(e);
         });
+    },
+    handleSizeChange(size) {
+      this.count = size;
+      this.getDesignChangeByChart();
+    },
+    handleCurrentChange(page) {
+      this.page = page;
+      this.getDesignChangeByChart();
     },
   },
 };

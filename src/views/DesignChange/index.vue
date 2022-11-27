@@ -15,7 +15,7 @@
           label="平均完成率"
           progressLabel="ecnFinishedRate"
           :isRate="true"
-          v-if="rankData"
+          widthType="small"
         />
       </div>
     </div>

@@ -161,6 +161,56 @@
         "projectInitiation": 0,
         "projectUnderAcceptance": 0
       }
+    },
+    "预研项目1": {
+      "1": {
+        "prjType": "预研项目",
+        "productCount": 3,
+        "projectAccepted": 1,
+        "projectInResearch": 2,
+        "projectInitiation": 0,
+        "projectUnderAcceptance": 0
+      }
+    },
+    "预研项目2": {
+      "1": {
+        "prjType": "预研项目",
+        "productCount": 3,
+        "projectAccepted": 1,
+        "projectInResearch": 2,
+        "projectInitiation": 0,
+        "projectUnderAcceptance": 0
+      }
+    },
+    "预研项目3": {
+      "1": {
+        "prjType": "预研项目",
+        "productCount": 3,
+        "projectAccepted": 1,
+        "projectInResearch": 2,
+        "projectInitiation": 0,
+        "projectUnderAcceptance": 0
+      }
+    },
+    "预研项目4": {
+      "1": {
+        "prjType": "预研项目",
+        "productCount": 3,
+        "projectAccepted": 1,
+        "projectInResearch": 2,
+        "projectInitiation": 0,
+        "projectUnderAcceptance": 0
+      }
+    },
+    "预研项目5": {
+      "1": {
+        "prjType": "预研项目",
+        "productCount": 3,
+        "projectAccepted": 1,
+        "projectInResearch": 2,
+        "projectInitiation": 0,
+        "projectUnderAcceptance": 0
+      }
     }
   },
   "区域五": {

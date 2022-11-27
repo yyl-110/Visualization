@@ -4194,12 +4194,12 @@ ecc-jsbn@~0.1.1:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
 
-echarts@4.0.0:
-  version "4.0.0"
-  resolved "https://registry.npmmirror.com/echarts/-/echarts-4.0.0.tgz#74340ff3fc88b67aee9839a80b1cb72faacd911a"
-  integrity sha512-7MsZs2Bxx21kgUV0o8ELBK7QRdwdn4rHPCMdjR1yBZ+tllU7P7k3lY1Jx7PaW75RFL83nUuHK5P0xLfQnPohag==
+echarts@4.7.0:
+  version "4.7.0"
+  resolved "https://registry.npmmirror.com/echarts/-/echarts-4.7.0.tgz#5b3875a4c2f91e3929425fabab9eace7e4098b3f"
+  integrity sha512-NlOTdUcAsIyCCG+N4uh0ZEvXtrPW2jvcuqf03RyqYeCKzyPbiOQ4I3MdKXMhxG3lBdqQNdNXVT71SB4KTQjN0A==
   dependencies:
-    zrender "4.0.0"
+    zrender "4.3.0"
 
 ee-first@1.1.1:
   version "1.1.1"
@@ -10118,7 +10118,7 @@ yorkie@^2.0.0:
     normalize-path "^1.0.0"
     strip-indent "^2.0.0"
 
-zrender@4.0.0:
-  version "4.0.0"
-  resolved "https://registry.npmmirror.com/zrender/-/zrender-4.0.0.tgz#908935151329fa95145a333d186edd4011cf86c5"
-  integrity sha512-yb9gbnjg7BoMn5D01fX1hj788/CQgyIt+byUYdbgTZTz9TOpBy/b3m0Rx+TDT1kjfQIWWhE+HOkaAwJxbcCt1A==
+zrender@4.3.0:
+  version "4.3.0"
+  resolved "https://registry.npmmirror.com/zrender/-/zrender-4.3.0.tgz#9f056121b20bbae44414d287bf6a119ff7042661"
+  integrity sha512-Dii6j2bDsPkxQayuVf2DXJeruIB/mKVxxcGRZQ9GExiBd4c3w7+oBuvo1O/JGHeFeA1nCmSDVDs/S7yKZG1nrA==

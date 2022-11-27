@@ -17,11 +17,7 @@ export default {
     Breadcrumb,
     SelectSearch,
   },
-  watch: {
-    $route() {
-      console.log(this.$route);
-    },
-  },
+  watch: {},
   computed: {
     ...mapGetters(['sidebar', 'avatar']),
   },

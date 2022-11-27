@@ -6,7 +6,7 @@
         <Title :text="'项目数据贡献量'" />
       </div>
       <div class="chartWrap">
-        <div class="chartsdom" ref="universalChart"></div>
+        <div class="chartsdom" ref="universalChart" id="universalChart"></div>
       </div>
     </div>
   </div>
@@ -18,14 +18,15 @@ import Title from '../../../components/Common/Title.vue';
 import elementResizeDetectorMaker from 'element-resize-detector';
 import { debounce } from '@/utils/tool';
 export default {
-  name: 'ContributionChart',
-  props: ['chartData', 'type'],
-  data() {
-    return {
-      myChart: null,
-      option: {},
-    };
+  name: 'ProContributionChart',
+  props: {
+    chartData: {
+      // eslint-disable-next-line vue/require-prop-type-constructor
+      type: Array | Object,
+      default: null,
+    },
   },
+  components: { Title, DvBorder },
   watch: {
     chartData: {
       handler() {
@@ -39,28 +40,22 @@ export default {
       deep: true,
     },
   },
-  mounted() {
-    // this.initOption();
-    // this.initChart();
+  data() {
+    return {
+      myChart: null,
+      option: {},
+    };
   },
-  components: { Title, DvBorder },
+  mounted() {
+    this.initOption();
+    this.initChart();
+  },
   methods: {
     initOption() {
       let source = [];
-      try {
-        if (this.type === 1) {
-          source = this.chartData.map((i) => {
-            return [i.prjType, i.addCount];
-          });
-        } else {
-          const keys = Object.keys(this.chartData);
-          source = keys.map((i) => {
-            return [i, this.chartData[i]];
-          });
-        }
-      } catch (error) {
-        console.log('error:', error);
-      }
+      source = this.chartData.map((i) => {
+        return [i.prjType, i.addCount];
+      });
       this.option = {
         tooltip: {
           trigger: 'axis',
@@ -78,6 +73,7 @@ export default {
             padding: [this.$fontSize(8), 0, 0, 0], //文字左右定位
             color: '#fff', //文字颜色
             fontSize: this.$fontSize(12), //文字大小
+            interval: 0, //使x轴文字显示全
           },
           nameTextStyle: {
             // x轴name的样式调整
@@ -98,6 +94,9 @@ export default {
           axisLabel: {
             color: '#fff', //文字颜色
             fontSize: this.$fontSize(12), //文字大小
+          },
+          axisLine: {
+            show: false, //隐藏y轴
           },
           nameTextStyle: {
             // x轴name的样式调整
@@ -149,17 +148,19 @@ export default {
       };
     },
     initChart() {
-      let myChart = this.$echarts.init(this.$refs.universalChart);
+      let myChart = this.$echarts.init(
+        document.getElementById('universalChart'),
+      );
 
       myChart.setOption(this.option, true);
       let erd = elementResizeDetectorMaker();
-      erd.listenTo(this.$refs.universalChart, () => {
+      erd.listenTo(document.getElementById('universalChart'), () => {
         debounce(myChart.resize(), 200);
       });
-      this.myChart = myChart;
       window.addEventListener('resize', () => {
         myChart.resize();
       });
+      this.myChart = myChart;
     },
   },
 };

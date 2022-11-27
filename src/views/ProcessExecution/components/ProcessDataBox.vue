@@ -28,7 +28,9 @@
                     <countTo
                       class="countTo"
                       :startVal="0"
-                      :endVal="item.workflowAddCount"
+                      :endVal="
+                        type === 1 ? item.workflowAddCount : item.taskAddCount
+                      "
                       :duration="6000"
                       separator=""
                     ></countTo>
@@ -38,7 +40,11 @@
                     <countTo
                       :startVal="0"
                       class="countTo"
-                      :endVal="item.workflowOverdueCount"
+                      :endVal="
+                        type === 1
+                          ? item.workflowOverdueCount
+                          : item.taskOverdueCount
+                      "
                       :duration="6000"
                       separator=""
                     ></countTo>
@@ -51,7 +57,7 @@
                     <countTo
                       class="countTo"
                       :startVal="0"
-                      :endVal="parseFloat(item.tongBiAddRate)"
+                      :endVal="parseFloat(item.tongBiAddRate || 0)"
                       :duration="6000"
                       separator=""
                       suffix="%"
@@ -68,7 +74,7 @@
                     <countTo
                       class="countTo"
                       :startVal="0"
-                      :endVal="parseFloat(item.huanBiAddRate)"
+                      :endVal="parseFloat(item.huanBiAddRate || 0)"
                       :duration="6000"
                       separator=""
                       suffix="%"
@@ -103,6 +109,10 @@ export default {
       type: Array,
       default: () => [],
     },
+    type: {
+      type: Number,
+      default: 1,
+    },
   },
   data() {
     return {
@@ -110,8 +120,7 @@ export default {
     };
   },
 
-  mounted() {
-  },
+  mounted() {},
 
   methods: {
     handleClick(item) {

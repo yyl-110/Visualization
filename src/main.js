@@ -22,9 +22,7 @@ import store from './store';
 import {fontSize} from './utils/tool';
 import echarts from 'echarts';
 Vue.prototype.$echarts = echarts;
-// import Toast from './components/toast'
 
-// Vue.prototype.$Toast = Toast
 if(process.env.NODE_ENV !== 'production') require('./mock/mockService');
 
 import {
