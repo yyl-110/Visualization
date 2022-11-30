@@ -14,7 +14,6 @@
           title="变更单量完成率排行榜"
           label="平均完成率"
           progressLabel="ecnFinishedRate"
-          :isRate="true"
           widthType="small"
         />
       </div>
@@ -36,7 +35,7 @@ export default {
     return {
       panelData: {},
       changeViewData: [],
-      rankData: null,
+      rankData: [],
     };
   },
   computed: {

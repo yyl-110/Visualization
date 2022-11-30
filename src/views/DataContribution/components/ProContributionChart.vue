@@ -6,7 +6,7 @@
         <Title :text="'项目数据贡献量'" />
       </div>
       <div class="chartWrap">
-        <div class="chartsdom" ref="universalChart" id="universalChart"></div>
+        <div class="chartsdom" ref="universalChart"></div>
       </div>
     </div>
   </div>
@@ -22,8 +22,8 @@ export default {
   props: {
     chartData: {
       // eslint-disable-next-line vue/require-prop-type-constructor
-      type: Array | Object,
-      default: null,
+      type: Array,
+      default: () => [],
     },
   },
   components: { Title, DvBorder },
@@ -53,9 +53,13 @@ export default {
   methods: {
     initOption() {
       let source = [];
-      source = this.chartData.map((i) => {
-        return [i.prjType, i.addCount];
-      });
+      try {
+        source = this.chartData.map((i) => {
+          return [i[Object.keys(i)[0]].prjType, i[Object.keys(i)[0]].addCount];
+        });
+      } catch (error) {
+        console.log('error:', error);
+      }
       this.option = {
         tooltip: {
           trigger: 'axis',
@@ -142,19 +146,17 @@ export default {
           // 让图表占满容器
           top: this.$fontSize(70),
           left: this.$fontSize(52),
-          right: this.$fontSize(90),
-          bottom: this.$fontSize(70),
+          right: this.$fontSize(100),
+          bottom: this.$fontSize(90),
         },
       };
     },
     initChart() {
-      let myChart = this.$echarts.init(
-        document.getElementById('universalChart'),
-      );
+      let myChart = this.$echarts.init(this.$refs.universalChart);
 
       myChart.setOption(this.option, true);
       let erd = elementResizeDetectorMaker();
-      erd.listenTo(document.getElementById('universalChart'), () => {
+      erd.listenTo(this.$refs.universalChart, () => {
         debounce(myChart.resize(), 200);
       });
       window.addEventListener('resize', () => {
@@ -188,10 +190,11 @@ export default {
   .chartContainer {
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
     padding-top: 15px;
+    .chartsdom {
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 </style>

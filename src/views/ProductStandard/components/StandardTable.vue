@@ -6,7 +6,12 @@
         <Title :text="'PDM标准化查看'" />
       </div>
       <div class="table">
-        <v-table />
+        <v-table
+          :tableData="tableData"
+          :column="column"
+          :showPage="false"
+          :maxHeight="350"
+        />
       </div>
     </div>
   </div>
@@ -21,7 +26,24 @@ export default {
   name: 'VisualizationStandardTable',
 
   data() {
-    return {};
+    return {
+      column: [
+        { label: '序号', value: 'id' },
+        { label: '产品名称', value: 'productName' },
+        { label: '所属科室', value: 'keshi' },
+        { label: '总零件数', value: 'totalPartCount' },
+        { label: '借用件', value: 'borrowPartCount' },
+        { label: '借用率', value: 'borrowRate' },
+        { label: '标准件数', value: 'borrowStandardPartCount' },
+        { label: '标准件率', value: 'standardRate' },
+      ],
+    };
+  },
+  props: {
+    tableData: {
+      type: Array,
+      default: () => [],
+    },
   },
   mounted() {},
 
@@ -35,7 +57,7 @@ export default {
   background: #050a4e;
   box-shadow: inset -8px -8px 40px 0px rgba(0, 227, 255, 0.3),
     inset 8px 8px 40px 0px rgba(0, 227, 255, 0.3);
-  height: 506px;
+  // height: 506px;
   position: relative;
   .tableWrap {
     width: 100%;
@@ -45,11 +67,8 @@ export default {
     padding-left: 27px;
     padding-right: 14px;
     padding-bottom: 25px;
-    display: flex;
-    flex-direction: column;
-    .chartTitle {
-      flex-shrink: 0;
-    }
+    // display: flex;
+    // flex-direction: column;
   }
   .table {
     width: 100%;

@@ -14,6 +14,7 @@
         :column="column"
         :page="page"
         :count="count"
+        :total="total"
         @handleSizeChange="handleSizeChange"
         @handleCurrentChange="handleCurrentChange"
       />
@@ -55,6 +56,7 @@ export default {
       ],
       page: 1, //页码
       count: 20, //默认每页的数量
+      total: 100,
     };
   },
 
@@ -77,6 +79,7 @@ export default {
       })
         .then((res) => {
           if (res.success) {
+            this.total = res.total
             this.tableData = res['区域四十四'].map((item, index) => {
               return { id: index + 1, ...item };
             });

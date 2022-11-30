@@ -1,37 +1,146 @@
 {
   "区域三十六": [{
-      "addCount": 24,
-      "prjType": "集团项目"
+      "公安武警项目": {
+        "addCount": 6,
+        "prjType": "公安武警项目",
+        "ranking": "1"
+      }
     },
     {
-      "addCount": 0,
-      "prjType": "公安武警项目"
+      "集团项目": {
+        "addCount": 0,
+        "prjType": "集团项目",
+        "ranking": "2"
+      }
     },
     {
-      "addCount": 0,
-      "prjType": "预研项目"
+      "基础科研类": {
+        "addCount": 0,
+        "prjType": "基础科研类",
+        "ranking": "3"
+      }
+    },
+    {
+      "试验室基础项目": {
+        "addCount": 0,
+        "prjType": "试验室基础项目",
+        "ranking": "4"
+      }
+    },
+    {
+      "技术基础类": {
+        "addCount": 0,
+        "prjType": "技术基础类",
+        "ranking": "5"
+      }
+    },
+    {
+      "其他项目": {
+        "addCount": 0,
+        "prjType": "其他项目",
+        "ranking": "6"
+      }
+    },
+    {
+      "军贸项目": {
+        "addCount": 0,
+        "prjType": "军贸项目",
+        "ranking": "7"
+      }
+    },
+    {
+      "研究所项目": {
+        "addCount": 0,
+        "prjType": "研究所项目",
+        "ranking": "8"
+      }
+    },
+    {
+      "型号项目": {
+        "addCount": 0,
+        "prjType": "型号项目",
+        "ranking": "9"
+      }
+    },
+    {
+      "预研项目": {
+        "addCount": 0,
+        "prjType": "预研项目",
+        "ranking": "10"
+      }
     }
   ],
-  "区域三十七": {
-    "公安武警项目": {
-      "1": {
-        "addCount": 0,
-        "prjType": "公安武警项目"
+  "区域三十七": [{
+      "公安武警项目": {
+        "addCount": 6,
+        "prjType": "公安武警项目",
+        "ranking": "1"
       }
     },
-    "集团项目": {
-      "3": {
-        "addCount": 24,
-        "prjType": "集团项目"
+    {
+      "集团项目": {
+        "addCount": 0,
+        "prjType": "集团项目",
+        "ranking": "2"
       }
     },
-    "预研项目": {
-      "2": {
+    {
+      "基础科研类": {
         "addCount": 0,
-        "prjType": "预研项目"
+        "prjType": "基础科研类",
+        "ranking": "3"
+      }
+    },
+    {
+      "试验室基础项目": {
+        "addCount": 0,
+        "prjType": "试验室基础项目",
+        "ranking": "4"
+      }
+    },
+    {
+      "技术基础类": {
+        "addCount": 0,
+        "prjType": "技术基础类",
+        "ranking": "5"
+      }
+    },
+    {
+      "其他项目": {
+        "addCount": 0,
+        "prjType": "其他项目",
+        "ranking": "6"
+      }
+    },
+    {
+      "军贸项目": {
+        "addCount": 0,
+        "prjType": "军贸项目",
+        "ranking": "7"
+      }
+    },
+    {
+      "研究所项目": {
+        "addCount": 0,
+        "prjType": "研究所项目",
+        "ranking": "8"
+      }
+    },
+    {
+      "型号项目": {
+        "addCount": 0,
+        "prjType": "型号项目",
+        "ranking": "9"
+      }
+    },
+    {
+      "预研项目": {
+        "addCount": 0,
+        "prjType": "预研项目",
+        "ranking": "10"
       }
     }
-  },
+  ],
   "区域三十九": {
     "wcadmin": 11,
     "admin": 6,
@@ -42,23 +151,19 @@
     "小红": 1
   },
   "区域三十八": {
-    "wcadmin": 11,
-    "小白": 1,
+    "wcadmin": 0,
+    "小白": 4,
     "小绿": 1,
     "admin": 6,
     "小紫": 4,
     "小1": 1,
-    "小红1": 1,
-    "小红2": 1,
-    "小红3": 1,
-    "小红4": 1,
-    "小红5": 1,
-    "小红6": 1,
-    "小红7": 1,
-    "小红8": 1,
-    "小红9": 1,
-    "小红10": 1,
-    "小红11": 1,
-    "小红12": 1
+    "小红1": 0,
+    "小红2": null,
+    "小红3": null,
+    "小红4": null,
+    "小红5": null,
+    "小红6": null,
+    "小红7": null,
+    "小红8": null
   }
 }

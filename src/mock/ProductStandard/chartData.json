@@ -1,0 +1,53 @@
+{
+  "区域二十九": [{
+      "borrowPartCount": 30,
+      "borrowStandardPartCount": 0,
+      "prjType": "集团项目"
+    },
+    {
+      "borrowPartCount": 4,
+      "borrowStandardPartCount": 0,
+      "prjType": "公安武警项目"
+    },
+    {
+      "borrowPartCount": 0,
+      "borrowStandardPartCount": 0,
+      "prjType": "基础科研类"
+    },
+    {
+      "borrowPartCount": 0,
+      "borrowStandardPartCount": 0,
+      "prjType": "试验室基础项目"
+    },
+    {
+      "borrowPartCount": 0,
+      "borrowStandardPartCount": 0,
+      "prjType": "技术基础类"
+    },
+    {
+      "borrowPartCount": 0,
+      "borrowStandardPartCount": 0,
+      "prjType": "其他项目"
+    },
+    {
+      "borrowPartCount": 0,
+      "borrowStandardPartCount": 0,
+      "prjType": "军贸项目"
+    },
+    {
+      "borrowPartCount": 0,
+      "borrowStandardPartCount": 0,
+      "prjType": "研究所项目"
+    },
+    {
+      "borrowPartCount": 0,
+      "borrowStandardPartCount": 0,
+      "prjType": "型号项目"
+    },
+    {
+      "borrowPartCount": 0,
+      "borrowStandardPartCount": 0,
+      "prjType": "预研项目"
+    }
+  ]
+}

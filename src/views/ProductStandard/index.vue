@@ -1,13 +1,15 @@
 <template>
   <div class="ProductStandard">
-    <standard-rate />
+    <standard-rate @handelClickChart="handelClickChart" />
     <div class="tableWrap">
-      <standard-table />
+      <standard-table :tableData="tableData" />
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+import { getProductStandardByChart } from '../../api';
 import StandardRate from './components/StandardRate.vue';
 import StandardTable from './components/StandardTable.vue';
 export default {
@@ -15,14 +17,39 @@ export default {
   name: 'ProductStandard',
 
   data() {
-    return {};
+    return {
+      tableData: [],
+    };
+  },
+
+  computed: {
+    ...mapGetters(['queryTime', 'queryYear']),
   },
 
   created() {},
 
   mounted() {},
 
-  methods: {},
+  methods: {
+    /**
+     * 点击获取table数据
+     * @param {*} index
+     * @return {*}
+     */
+    handelClickChart(prjType) {
+      getProductStandardByChart({ prjType })
+        .then((res) => {
+          if (res.success) {
+            this.tableData = res['区域三十'].map((item, index) => {
+              return { id: index + 1, ...item };
+            });
+          }
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+  },
 };
 </script>
 

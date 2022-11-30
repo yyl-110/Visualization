@@ -90,8 +90,8 @@ export default {
       default: '标题',
     },
     rankData: {
-      type: Object,
-      default: () => {},
+      type: Array | Object,
+      default: () => [],
     },
     isRate: {
       type: Boolean,
@@ -110,14 +110,6 @@ export default {
   data() {
     return {
       newRankData: [],
-      // rankData: [
-      //   { title: '集团项目', id: 1, value: 50 },
-      //   { title: '公安武警项目', id: 2, value: 90 },
-      //   { title: '基础科研项目', id: 3, value: 10 },
-      //   { title: '实验基础项目', id: 4, value: 30 },
-      //   { title: '技术基础类', id: 5, value: 40 },
-      //   { title: '其他项目', id: 6, value: 70 },
-      // ],
     };
   },
   watch: {
@@ -128,8 +120,9 @@ export default {
         if (this.type === 'peopleRank') {
           this.formateCommon();
           return;
+        } else {
+          this.formateData();
         }
-        this.formateData();
       },
     },
   },
@@ -146,18 +139,17 @@ export default {
 
   methods: {
     formateData() {
-      let _rankData = [];
-      let rankNumArr = [];
-      let rankArr = {};
-
-      for (let i in this.rankData) {
-        rankNumArr.push(Number(Object.keys(this.rankData[i])[0]));
-        rankArr = { ...rankArr, ...this.rankData[i] };
+      let rankArr = [];
+      if (!(this.rankData instanceof Array)) return;
+      try {
+        rankArr = (this.rankData || []).map((item) => {
+          const key = Object.keys(item)[0];
+          return { ...item[key] };
+        });
+      } catch (error) {
+        console.log('error:', error);
       }
-      _rankData = rankNumArr.map((item) => {
-        return { ...rankArr[item] };
-      });
-      this.newRankData = [..._rankData];
+      this.newRankData = [...rankArr];
     },
     /* 普通文档贡献量排行榜 */
     formateCommon() {
@@ -191,6 +183,7 @@ export default {
       width: 100%;
       height: 100%;
       overflow: scroll;
+      padding-bottom: 30px;
     }
   }
   // .progressWrap {

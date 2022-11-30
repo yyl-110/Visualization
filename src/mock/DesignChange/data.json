@@ -1,105 +1,180 @@
 {
   "区域二十五": {
-    "二类": 2022,
-    "三类": 12434,
-    "一类": 30334
+    "二类": 2,
+    "三类": 3,
+    "一类": 6
   },
   "区域二十四": {
-    "huanBi": "-90.91%",
-    "changePartSum": 14242,
+    "huanBi": "0.00%",
+    "changePartSum": 11,
     "tongBi": "100%"
   },
   "区域二十六": [{
-      "addECNCount": 1,
+      "addECNCount": 11,
       "prjType": "集团项目",
-      "finishedECNCount": 1,
-      "ecnFinishedRate": 1
+      "finishedECNCount": 4,
+      "ranking": "",
+      "ecnFinishedRate": "36.36%"
     },
     {
-      "addECNCount": 20,
+      "addECNCount": 0,
       "prjType": "公安武警项目",
-      "finishedECNCount": 10,
-      "ecnFinishedRate": 12
+      "finishedECNCount": 0,
+      "ranking": "",
+      "ecnFinishedRate": "0%"
     },
     {
-      "addECNCount": 20,
+      "addECNCount": 0,
       "prjType": "基础科研类",
-      "finishedECNCount": 10,
-      "ecnFinishedRate": 12
+      "finishedECNCount": 0,
+      "ranking": "",
+      "ecnFinishedRate": "0%"
     },
     {
-      "addECNCount": 20,
-      "prjType": "实验室基础项目",
-      "finishedECNCount": 10,
-      "ecnFinishedRate": 12
+      "addECNCount": 0,
+      "prjType": "试验室基础项目",
+      "finishedECNCount": 0,
+      "ranking": "",
+      "ecnFinishedRate": "0%"
     },
     {
-      "addECNCount": 20,
+      "addECNCount": 0,
       "prjType": "技术基础类",
-      "finishedECNCount": 10,
-      "ecnFinishedRate": 12
+      "finishedECNCount": 0,
+      "ranking": "",
+      "ecnFinishedRate": "0%"
     },
     {
-      "addECNCount": 20,
-      "prjType": "其它项目",
-      "finishedECNCount": 10,
-      "ecnFinishedRate": 12
+      "addECNCount": 0,
+      "prjType": "其他项目",
+      "finishedECNCount": 0,
+      "ranking": "",
+      "ecnFinishedRate": "0%"
     },
     {
-      "addECNCount": 20,
+      "addECNCount": 11,
       "prjType": "军贸项目",
-      "finishedECNCount": 10,
-      "ecnFinishedRate": 12
+      "finishedECNCount": 4,
+      "ranking": "",
+      "ecnFinishedRate": "36.36%"
     },
     {
-      "addECNCount": 20,
-      "prjType": "科研所项目",
-      "finishedECNCount": 10,
-      "ecnFinishedRate": 12
+      "addECNCount": 0,
+      "prjType": "研究所项目",
+      "finishedECNCount": 0,
+      "ranking": "",
+      "ecnFinishedRate": "0%"
     },
     {
-      "addECNCount": 20,
+      "addECNCount": 0,
       "prjType": "型号项目",
-      "finishedECNCount": 10,
-      "ecnFinishedRate": 12
+      "finishedECNCount": 0,
+      "ranking": "",
+      "ecnFinishedRate": "0%"
     },
     {
       "addECNCount": 0,
       "prjType": "预研项目",
       "finishedECNCount": 0,
-      "ecnFinishedRate": 1
+      "ranking": "",
+      "ecnFinishedRate": "0%"
     }
   ],
   "区域二十三": {
-    "addChangeCount": 199,
-    "huanBi": "-90.91%",
+    "addChangeCount": 11,
+    "huanBi": "0.00%",
     "tongBi": "100%",
-    "completeRate": "100.00%"
+    "completeRate": "36.36%"
   },
-  "区域二十七": {
-    "公安武警项目": {
-      "2": {
-        "addECNCount": 0,
-        "ecnFinishedRate": 1,
-        "finishedECNCount": 0,
-        "prjType": "公安武警项目"
+  "区域二十七": [{
+      "集团项目": {
+        "addECNCount": 11,
+        "prjType": "集团项目",
+        "finishedECNCount": 4,
+        "ranking": "1",
+        "ecnFinishedRate": "36.36%"
       }
     },
-    "集团项目": {
-      "1": {
-        "addECNCount": 1,
-        "ecnFinishedRate": 1,
-        "finishedECNCount": 1,
-        "prjType": "集团项目"
+    {
+      "军贸项目": {
+        "addECNCount": 11,
+        "prjType": "军贸项目",
+        "finishedECNCount": 4,
+        "ranking": "2",
+        "ecnFinishedRate": "36.36%"
       }
     },
-    "预研项目": {
-      "3": {
+    {
+      "公安武警项目": {
         "addECNCount": 0,
-        "ecnFinishedRate": 1,
+        "prjType": "公安武警项目",
         "finishedECNCount": 0,
-        "prjType": "预研项目"
+        "ranking": "3",
+        "ecnFinishedRate": "0%"
+      }
+    },
+    {
+      "基础科研类": {
+        "addECNCount": 0,
+        "prjType": "基础科研类",
+        "finishedECNCount": 0,
+        "ranking": "4",
+        "ecnFinishedRate": "0%"
+      }
+    },
+    {
+      "试验室基础项目": {
+        "addECNCount": 0,
+        "prjType": "试验室基础项目",
+        "finishedECNCount": 0,
+        "ranking": "5",
+        "ecnFinishedRate": "0%"
+      }
+    },
+    {
+      "技术基础类": {
+        "addECNCount": 0,
+        "prjType": "技术基础类",
+        "finishedECNCount": 0,
+        "ranking": "6",
+        "ecnFinishedRate": "0%"
+      }
+    },
+    {
+      "其他项目": {
+        "addECNCount": 0,
+        "prjType": "其他项目",
+        "finishedECNCount": 0,
+        "ranking": "7",
+        "ecnFinishedRate": "0%"
+      }
+    },
+    {
+      "研究所项目": {
+        "addECNCount": 0,
+        "prjType": "研究所项目",
+        "finishedECNCount": 0,
+        "ranking": "8",
+        "ecnFinishedRate": "0%"
+      }
+    },
+    {
+      "型号项目": {
+        "addECNCount": 0,
+        "prjType": "型号项目",
+        "finishedECNCount": 0,
+        "ranking": "9",
+        "ecnFinishedRate": "0%"
+      }
+    },
+    {
+      "预研项目": {
+        "addECNCount": 0,
+        "prjType": "预研项目",
+        "finishedECNCount": 0,
+        "ranking": "10",
+        "ecnFinishedRate": "0%"
       }
     }
-  }
+  ]
 }

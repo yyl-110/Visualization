@@ -15,25 +15,48 @@ import Title from '../../../components/Common/Title.vue';
 import elementResizeDetectorMaker from 'element-resize-detector';
 import { debounce } from '../../../utils/tool';
 import DvBorder from '../../../components/Common/DvBorder.vue';
+import { mapGetters } from 'vuex';
+import { getProductStandard } from '../../../api';
 export default {
   name: 'StandardChart',
   data() {
     return {
       option: {},
       myChart: null,
+      chartData: [],
     };
   },
+  watch: {
+    queryYear() {},
+    queryTime() {},
+    chartData: {
+      deep: true,
+      handler() {
+        this.initOption();
+        if (this.myChart) {
+          this.myChart.setOption(this.option, true);
+        } else {
+          this.initCharts();
+        }
+      },
+    },
+  },
+  created() {
+    this.handelGetProductStandard();
+  },
+  computed: {
+    ...mapGetters(['queryYear', 'queryTime']),
+  },
   mounted() {
+    this.initOption();
     this.initCharts();
-    let erd = elementResizeDetectorMaker();
-    let that = this;
-    erd.listenTo(document.getElementById('StandardChart'), () => {
-      debounce(that.myChart.resize(), 200);
-    });
   },
   methods: {
-    initCharts() {
-      let myChart = this.$echarts.init(document.getElementById('StandardChart'));
+    initOption() {
+      let source = [];
+      source = (this.chartData || []).map((i) => {
+        return [i.prjType, i.borrowStandardPartCount, i.borrowPartCount];
+      });
       this.option = {
         legend: {
           top: '-6',
@@ -51,18 +74,7 @@ export default {
           trigger: 'axis',
         },
         dataset: {
-          source: [
-            ['', '标准件数量', '借用件数量'],
-            ['集团项目', 100, 200],
-            ['公安武警项目', 83.1, 73.4],
-            ['基础科研项目', 86.4, 65.2],
-            ['实验基础项目', 72.4, 53.9],
-            ['技术基础类', 72.4, 53.9],
-            ['其他项目', 72.4, 53.9],
-            ['技术基础类1', 72.4, 53.9],
-            ['技术基础类2', 72.4, 53.9],
-            ['技术基础类3', 72.4, 53.9],
-          ],
+          source: [['', '标准件数量', '借用件数量'], ...source],
         },
         xAxis: {
           type: 'category',
@@ -79,6 +91,7 @@ export default {
             padding: [this.$fontSize(8), 0, 0, 0],
             color: '#fff',
             fontSize: this.$fontSize(12),
+            interval: 0, //使x轴文字显示全
           },
           axisLine: {
             show: true,
@@ -95,6 +108,9 @@ export default {
             color: '#fff',
             fontSize: this.$fontSize(14),
             padding: [0, this.$fontSize(36), this.$fontSize(10), 0],
+          },
+          axisLine: {
+            show: false, //隐藏y轴
           },
           axisLabel: {
             color: '#fff',
@@ -163,9 +179,13 @@ export default {
           bottom: this.$fontSize(45),
         },
       };
+    },
+    initCharts() {
+      let myChart = this.$echarts.init(
+        document.getElementById('StandardChart'),
+      );
       myChart.setOption(this.option, true);
       myChart.getZr().on('click', (params) => {
-        console.log('params:', this.option.series);
         let pointInPixel = [params.offsetX, params.offsetY];
         if (myChart.containPixel('grid', pointInPixel)) {
           let xIndex = myChart.convertFromPixel({ seriesIndex: 0 }, [
@@ -173,12 +193,43 @@ export default {
             params.offsetY,
           ])[0];
           console.log(xIndex);
+          try {
+            const prjType = this.chartData[xIndex].prjType;
+            this.$emit('handelClickChart', prjType);
+          } catch (error) {
+            console.log('error:', error);
+          }
         }
       });
-      this.myChart = myChart;
+      let erd = elementResizeDetectorMaker();
+      erd.listenTo(document.getElementById('StandardChart'), () => {
+        debounce(myChart.resize(), 200);
+      });
       window.addEventListener('resize', () => {
         myChart.resize();
       });
+      this.myChart = myChart;
+    },
+    handelGetProductStandard() {
+      getProductStandard({
+        queryYear: this.queryYear,
+        queryTime: this.queryTime,
+      })
+        .then((res) => {
+          if (res.success) {
+            this.chartData = res['区域二十九'];
+            /* 默认设置第一个座位table数据 */
+            try {
+              const prjType = this.chartData[0].prjType;
+              this.$emit('handelClickChart', prjType);
+            } catch (error) {
+              console.log('error:', error);
+            }
+          }
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     },
   },
   components: { Title, DvBorder },
@@ -191,7 +242,7 @@ export default {
   background: #050a4e;
   box-shadow: inset -8px -8px 40px 0px rgba(0, 227, 255, 0.3),
     inset 8px 8px 40px 0px rgba(0, 227, 255, 0.3);
-    position: relative;
+  position: relative;
   .chartWrap {
     padding: 20px;
     width: 100%;

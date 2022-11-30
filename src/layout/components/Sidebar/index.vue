@@ -45,7 +45,6 @@ export default {
   computed: {
     ...mapGetters(['sidebar']),
     routes() {
-      console.log(this.$router.options.routes);
       let route = this.$router.options.routes.filter((i) => !i.hidden);
       const dataStatistice = route.filter(
         (i) => i.children[0].meta.mainTitle === DATA_STATISTICE,

@@ -55,9 +55,17 @@ export default {
   },
   methods: {
     initOption() {
-      const source = this.chartData.map((i) => {
-        return [i.prjType, i.workflowOverdueCount];
-      });
+      let source = [];
+      try {
+        source = this.chartData.map((i) => {
+          return [
+            i[Object.keys(i)[0]].prjType,
+            i[Object.keys(i)[0]].workflowOverdueCount,
+          ];
+        });
+      } catch (error) {
+        console.log('error:', error);
+      }
       this.option = {
         tooltip: {
           trigger: 'axis',
@@ -168,12 +176,12 @@ export default {
       });
       let erd = elementResizeDetectorMaker();
       erd.listenTo(this.$refs.universalChart, () => {
-        debounce(this.myChart.resize(), 200);
+        debounce(myChart.resize(), 200);
       });
-      this.myChart = myChart;
       window.addEventListener('resize', () => {
         myChart.resize();
       });
+      this.myChart = myChart;
     },
   },
 };

@@ -15,11 +15,18 @@ import designChange from './DesignChange/data.json';
 import data35 from './DataContribution/35.json';
 import click35 from './DataContribution/click35.json';
 import processEfficiency from './ProcessEfficiency/data.json';
+import data29 from './ProductStandard/chartData.json';
+import table30 from './ProductStandard/standardTable.json';
+import data33 from './PartsReuse/data.json';
 
 /* product-design */
 Mock.mock('/Windchill/app/product-design/addStatistics', 'post', {success: true, ...productDesignData});
-Mock.mock('/Windchill/app/design-change/ecnListStatistics', 'post', {success: true, ...productChange});
-Mock.mock('/Windchill/app/product-design/productListStatistics', 'post', {success: true, ...productDesignTable2});
+Mock.mock('/Windchill/app/design-change/ecnListStatistics', 'post', {success: true, total: 11, ...productChange});
+Mock.mock('/Windchill/app/product-design/productListStatistics', 'post', {
+  success: true,
+  total: 100,
+  ...productDesignTable2,
+});
 Mock.mock('/Windchill/app/product-design/addPartStatisticsByPrjType', 'post', {
   success: true,
   ...productDesignStatistics,
@@ -61,10 +68,17 @@ Mock.mock('/Windchill/app/data-contribution/contributionStatistics', 'post', {
   ...click35,
 });
 
+/* productStandard */
+Mock.mock('/Windchill/app/product-standard/standardRateStatistics', 'post', {success: true, ...data29});
+Mock.mock('/Windchill/app/product-standard/standardRateStatisticsByPrjType', 'post', {success: true, ...table30});
+
+/* parts */
+Mock.mock('/Windchill/app/parts-reuse/reuseStatistics', 'post', {success: true, total: 6, ...data33});
+
 /* process-execution */
 Mock.mock('/Windchill/app/process-execution/overdueStatistics', 'post', {success: true, ...processCardData});
 Mock.mock('/Windchill/app/process-execution/overdueStatisticsByWfType', 'post', {success: true, ...processData});
-Mock.mock('/Windchill/app/process-execution/overdueWfList', 'post', {success: true, ...tableData});
-Mock.mock('/Windchill/app/process-execution/overdueWfListStatistics', 'post', {success: true, ...pdm});
+Mock.mock('/Windchill/app/process-execution/overdueWfList', 'post', {success: true, total: 100, ...tableData});
+Mock.mock('/Windchill/app/process-execution/overdueWfListStatistics', 'post', {success: true, total: 1000, ...pdm});
 
 Mock.mock('/Windchill/app/process-efficiency/efficiencyStatistics', 'post', {success: true, ...processEfficiency});

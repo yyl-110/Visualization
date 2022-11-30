@@ -5,16 +5,16 @@
     <div class="panelCartWrap clearfix">
       <div class="dataBar">
         <pro-contribution-chart :chartData="chartData1" v-if="type === 1" />
-        <peo-contribution-chart-vue :chartData="chartData2" v-if="type === 2" />
+        <peo-contribution-chart :chartData="chartData2" v-if="type === 2" />
       </div>
       <div class="rank">
         <Rank
           :key="type"
+          :type="type === 1 ? '' : 'peopleRank'"
           :rankData="rankData"
-          title="普通文档贡献量排行榜"
+          :title="processType + '排行榜'"
           label="数量"
           progressLabel="addCount"
-          :type="type === 1 ? '' : 'peopleRank'"
           widthType="small"
         />
       </div>
@@ -25,7 +25,7 @@
 <script>
 import BtnGroup from '../../components/Common/BtnGroup.vue';
 import ProContributionChart from './components/ProContributionChart.vue';
-import PeoContributionChartVue from './components/PeoContributionChart.vue';
+import PeoContributionChart from './components/PeoContributionChart.vue';
 import DataView from './components/DataView.vue';
 import Rank from '@/components/Common/Rank';
 import { getContribution, getContributionByCard } from '../../api';
@@ -35,7 +35,7 @@ export default {
     BtnGroup,
     DataView,
     ProContributionChart,
-    PeoContributionChartVue,
+    PeoContributionChart,
     Rank,
   },
   name: 'DataContribution',

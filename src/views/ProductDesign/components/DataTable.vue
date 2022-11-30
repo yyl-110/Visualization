@@ -25,7 +25,7 @@
         </thead>
         <tbody>
           <tr align="center">
-            <td class="border_r">{{tableData.prjType}}</td>
+            <td class="border_r">{{ tableData.prjType }}</td>
             <td class="border_l">{{ tableData.ranking }}</td>
             <td class="border_r">{{ tableData.addPartCount }}</td>
             <td class="border_n">{{ tableData.releasedPartCount }}</td>
@@ -61,20 +61,20 @@
         <tbody>
           <tr>
             <td>{{ tableData.prjType }}</td>
-            <td>5</td>
-            <td @click="handelClickTable('产品库总数')">
+            <td>{{ tableData.ranking }}</td>
+            <td>
               {{ tableData.productCount }}
             </td>
-            <td @click="handelClickTable('总项目立项数')">
+            <td @click="handelClickTable('项目立项')">
               {{ tableData.projectInitiation }}
             </td>
-            <td @click="handelClickTable('总项目在研数')">
+            <td @click="handelClickTable('项目在研')">
               {{ tableData.projectInResearch }}
             </td>
-            <td @click="handelClickTable('总项目验中数')">
+            <td @click="handelClickTable('验收中')">
               {{ tableData.projectUnderAcceptance }}
             </td>
-            <td @click="handelClickTable('总项目验收数')">
+            <td @click="handelClickTable('项目验收')">
               {{ tableData.projectAccepted }}
             </td>
           </tr>
@@ -105,8 +105,7 @@ export default {
   data() {
     return {};
   },
-  mounted() {
-  },
+  mounted() {},
 
   methods: {
     handelClickTable(val) {

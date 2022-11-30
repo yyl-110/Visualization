@@ -10,6 +10,7 @@
               :md="{ span: '4-8' }"
               :sm="{ span: '4-8' }"
               :xs="{ span: '4-8' }"
+              :xl="{ span: '4-8' }"
               v-for="(item, index) in cardData"
               :key="index"
             >
@@ -71,6 +72,23 @@ export default {
         margin-top: 30px;
       }
       width: 100%;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .el-col-xs-4-8 {
+      width: 20%;
+    }
+    .el-col-xs-offset-4-8 {
+      margin-left: 20%;
+    }
+    .el-col-xs-pull-4-8 {
+      position: relative;
+      right: 20%;
+    }
+    .el-col-xs-push-4-8 {
+      position: relative;
+      left: 20%;
     }
   }
 

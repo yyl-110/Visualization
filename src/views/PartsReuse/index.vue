@@ -9,8 +9,8 @@
               v-model="formInline.partsType"
               placeholder="请选择零件类型"
             >
-              <el-option label="类型一" value="shanghai"></el-option>
-              <el-option label="类型二" value="beijing"></el-option>
+              <el-option label="借用件" value="借用件"></el-option>
+              <el-option label="标准件" value="标准件"></el-option>
             </el-select>
           </el-form-item>
           <el-form-item label="大于借用次数:">
@@ -21,7 +21,9 @@
             ></el-input>
           </el-form-item>
           <el-form-item style="float: right" class="btn">
-            <el-button icon="el-icon-refresh-right">重置</el-button>
+            <el-button icon="el-icon-refresh-right" @click="resetForm">
+              重置
+            </el-button>
             <el-button type="primary" @click="onSubmit" icon="el-icon-search">
               查询
             </el-button>
@@ -32,7 +34,13 @@
       <div class="tableContainer">
         <Title text="零件重用统计表" />
         <div class="innerTable">
-          <v-table :column="column" :table-data="tableData" />
+          <v-table
+            :column="column"
+            :tableData="tableData"
+            :page="page"
+            :count="count"
+            :total="total"
+          />
         </div>
       </div>
     </div>
@@ -40,6 +48,7 @@
 </template>
 
 <script>
+import { getPartsReuse } from '../../api';
 import DvBorder from '../../components/Common/DvBorder.vue';
 import Title from '../../components/Common/Title.vue';
 import VTable from '../../components/Common/V-Table.vue';
@@ -52,50 +61,58 @@ export default {
         partsType: '',
         num: '',
       },
-      tableData: [
-        {
-          id: 1,
-          name: '产品01',
-          coding: '0000251',
-          partsNum: '233',
-          borrowProduct: '产品01',
-        },
-        {
-          id: 1,
-          name: '产品01',
-          coding: '0000251',
-          partsNum: '233',
-          borrowProduct: '产品01',
-        },
-        {
-          id: 1,
-          name: '产品01',
-          coding: '0000251',
-          partsNum: '233',
-          borrowProduct: '产品01',
-        },
-        {
-          id: 1,
-          name: '产品01',
-          coding: '0000251',
-          partsNum: '233',
-          borrowProduct: '产品01',
-        },
-      ],
+      tableData: [],
       column: [
         { label: '序号', value: 'id', width: '100' },
-        { label: '零件编码', value: 'coding' },
-        { label: '名称', value: 'name' },
-        { label: '被重用次数', value: 'partsNum' },
-        { label: '借用产品', value: 'borrowProduct' },
+        { label: '零件编码', value: 'borrowPartNumber' },
+        { label: '名称', value: 'borrowPartName' },
+        { label: '被重用次数', value: 'borrowedTime' },
+        { label: '借用产品', value: 'borrowedProductName' },
       ],
+      page: 1,
+      count: 10,
+      total: 100,
     };
+  },
+  watch: {},
+
+  created() {
+    this.getPartsReuse();
   },
 
   mounted() {},
 
   methods: {
-    onSubmit() {},
+    onSubmit() {
+      this.getPartsReuse();
+    },
+    getPartsReuse() {
+      getPartsReuse({
+        page: this.page,
+        count: this.count,
+        reuseTime: this.formInline.num,
+        partType: this.formInline.partsType,
+      })
+        .then((res) => {
+          if (res.success) {
+            this.total = res.total;
+            this.tableData = res['区域三十三'].map((item, index) => {
+              return { id: index + 1, ...item };
+            });
+          }
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+    /**
+     * 重置
+     * @return {*}
+     */
+    resetForm() {
+      this.formInline = { partsType: '', num: '' };
+      this.getPartsReuse();
+    },
   },
 };
 </script>
@@ -108,6 +125,9 @@ export default {
   display: none !important;
 }
 ::v-deep.el-form {
+  .el-form-item__label {
+    color: #ffffff;
+  }
   .el-form-item {
     margin-bottom: 0;
     &.btn {

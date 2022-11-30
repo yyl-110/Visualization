@@ -2,15 +2,30 @@
   <div class="changePanel">
     <dv-border />
     <div class="panelList">
-      <el-row :gutter="60">
+      <el-row :gutter="40">
         <el-col :span="8">
-          <panel-item class="panItme" :type="1" :itemData="panel1" title="设计变更单" />
+          <panel-item
+            class="panItme"
+            :type="1"
+            :itemData="panel1"
+            title="设计变更单"
+          />
         </el-col>
         <el-col :span="8">
-          <panel-item class="panItme" :type="2" :itemData="panel2" title="变更零件数" />
+          <panel-item
+            class="panItme"
+            :type="2"
+            :itemData="panel2"
+            title="变更零件数"
+          />
         </el-col>
         <el-col :span="8">
-          <panel-item class="panItme" :type="3" :itemData="panel3" title="变更类型" />
+          <panel-item
+            class="panItme"
+            :type="3"
+            :itemData="panel3"
+            title="变更类型"
+          />
         </el-col>
       </el-row>
     </div>
@@ -39,7 +54,7 @@ export default {
   },
   watch: {
     panelData: {
-      handler(newValue, oldValue) {
+      handler() {
         this.panel1 = this.panelData['区域二十三'];
         this.panel2 = this.panelData['区域二十四'];
         this.panel3 = this.panelData['区域二十五'];
@@ -68,10 +83,7 @@ export default {
     height: 100%;
     padding: 0 26px;
     padding-top: 30px;
-    overflow-y: scroll;
-    &::-webkit-scrollbar {
-      display: none;
-    }
+    overflow: hidden;
   }
 }
 </style>

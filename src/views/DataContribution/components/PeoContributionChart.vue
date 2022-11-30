@@ -27,6 +27,13 @@ export default {
     },
   },
   components: { Title, DvBorder },
+
+  data() {
+    return {
+      myChart: null,
+      option: {},
+    };
+  },
   watch: {
     chartData: {
       handler() {
@@ -40,12 +47,6 @@ export default {
       deep: true,
     },
   },
-  data() {
-    return {
-      myChart: null,
-      option: {},
-    };
-  },
   mounted() {
     this.initOption();
     this.initChart();
@@ -53,10 +54,14 @@ export default {
   methods: {
     initOption() {
       let source = [];
-      const keys = Object.keys(this.chartData);
-      source = keys.map((i) => {
-        return [i, this.chartData[i]];
-      });
+      try {
+        const keys = Object.keys(this.chartData);
+        source = keys.map((i) => {
+          return [i, this.chartData[i]];
+        });
+      } catch (error) {
+        console.log('error:', error);
+      }
       this.option = {
         tooltip: {
           trigger: 'axis',
@@ -187,10 +192,11 @@ export default {
   .chartContainer {
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
     padding-top: 15px;
+    .chartsdom {
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 </style>

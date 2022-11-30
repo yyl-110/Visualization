@@ -1,35 +1,144 @@
 {
-  "区域四十三": {
-    "公安武警项目": {
-      "1": {
-        "prjType": "公安武警项目",
-        "workflowOverdueCount": 0
+  "区域四十三": [{
+      "试验室基础项目": {
+        "workflowOverdueCount": 3,
+        "prjType": "试验室基础项目",
+        "ranking": "1"
       }
     },
-    "集团项目": {
-      "3": {
+    {
+      "集团项目": {
+        "workflowOverdueCount": 0,
         "prjType": "集团项目",
-        "workflowOverdueCount": 2
+        "ranking": "2"
       }
     },
-    "预研项目": {
-      "2": {
+    {
+      "公安武警项目": {
+        "workflowOverdueCount": 0,
+        "prjType": "公安武警项目",
+        "ranking": "3"
+      }
+    },
+    {
+      "基础科研类": {
+        "workflowOverdueCount": 0,
+        "prjType": "基础科研类",
+        "ranking": "4"
+      }
+    },
+    {
+      "技术基础类": {
+        "workflowOverdueCount": 0,
+        "prjType": "技术基础类",
+        "ranking": "5"
+      }
+    },
+    {
+      "其他项目": {
+        "workflowOverdueCount": 0,
+        "prjType": "其他项目",
+        "ranking": "6"
+      }
+    },
+    {
+      "军贸项目": {
+        "workflowOverdueCount": 0,
+        "prjType": "军贸项目",
+        "ranking": "7"
+      }
+    },
+    {
+      "研究所项目": {
+        "workflowOverdueCount": 0,
+        "prjType": "研究所项目",
+        "ranking": "8"
+      }
+    },
+    {
+      "型号项目": {
+        "workflowOverdueCount": 0,
+        "prjType": "型号项目",
+        "ranking": "9"
+      }
+    },
+    {
+      "预研项目": {
+        "workflowOverdueCount": 0,
         "prjType": "预研项目",
-        "workflowOverdueCount": 0
+        "ranking": "10"
       }
     }
-  },
+  ],
   "区域四十二": [{
-      "workflowOverdueCount": 2,
-      "prjType": "集团项目"
+      "试验室基础项目": {
+        "workflowOverdueCount": 3,
+        "prjType": "试验室基础项目",
+        "ranking": "1"
+      }
     },
     {
-      "workflowOverdueCount": 0,
-      "prjType": "公安武警项目"
+      "集团项目": {
+        "workflowOverdueCount": 0,
+        "prjType": "集团项目",
+        "ranking": "2"
+      }
     },
     {
-      "workflowOverdueCount": 0,
-      "prjType": "预研项目"
+      "公安武警项目": {
+        "workflowOverdueCount": 0,
+        "prjType": "公安武警项目",
+        "ranking": "3"
+      }
+    },
+    {
+      "基础科研类": {
+        "workflowOverdueCount": 0,
+        "prjType": "基础科研类",
+        "ranking": "4"
+      }
+    },
+    {
+      "技术基础类": {
+        "workflowOverdueCount": 0,
+        "prjType": "技术基础类",
+        "ranking": "5"
+      }
+    },
+    {
+      "其他项目": {
+        "workflowOverdueCount": 0,
+        "prjType": "其他项目",
+        "ranking": "6"
+      }
+    },
+    {
+      "军贸项目": {
+        "workflowOverdueCount": 0,
+        "prjType": "军贸项目",
+        "ranking": "7"
+      }
+    },
+    {
+      "研究所项目": {
+        "workflowOverdueCount": 0,
+        "prjType": "研究所项目",
+        "ranking": "8"
+      }
+    },
+    {
+      "型号项目": {
+        "workflowOverdueCount": 0,
+        "prjType": "型号项目",
+        "ranking": "9"
+      }
+    },
+    {
+      "预研项目": {
+        "workflowOverdueCount": 0,
+        "prjType": "预研项目",
+        "ranking": "10"
+      }
     }
   ]
 }

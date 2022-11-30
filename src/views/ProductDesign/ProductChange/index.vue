@@ -16,6 +16,7 @@
         @handleCurrentChange="handleCurrentChange"
         :page="page"
         :count="count"
+        :total="total"
       />
     </div>
   </div>
@@ -44,6 +45,9 @@ export default {
         { label: '创建时间', value: 'createtime' },
         { label: '是否完成', value: 'isFinish' },
       ],
+      total: 100,
+      count: 10,
+      page: 1,
     };
   },
   computed: {
@@ -76,6 +80,7 @@ export default {
       })
         .then((res) => {
           if (res.success) {
+            this.total = res.total;
             this.tableData = res['区域二十八'].map((item, index) => {
               return { id: index + 1, ...item };
             });

@@ -5,6 +5,7 @@
       stripe
       style="width: 100%; height: 100%"
       row-class-name="vTable"
+      :max-height="maxHeight"
     >
       <el-table-column
         :width="item.width"
@@ -15,7 +16,7 @@
         :key="item.value"
       ></el-table-column>
     </el-table>
-    <div class="pageWrap clearfix">
+    <div class="pageWrap clearfix" v-if="showPage">
       <el-pagination
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
@@ -26,7 +27,7 @@
         layout="total, prev, pager, next,sizes, slot, jumper"
         :total="total"
       >
-        <span class="pageTotal">{{ page }}/{{ total }}</span>
+        <span class="pageTotal">{{ page }}/{{ Math.ceil(total / count) }}</span>
       </el-pagination>
     </div>
   </div>
@@ -105,6 +106,13 @@ export default {
     total: {
       type: Number,
       default: 100,
+    },
+    showPage: {
+      type: Boolean,
+      default: true,
+    },
+    maxHeight: {
+      type: Number,
     },
   },
 

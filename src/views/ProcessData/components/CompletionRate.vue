@@ -29,7 +29,12 @@ export default {
       type: String,
       default: '',
     },
+    update: {
+      type: Number,
+      default: 0,
+    },
   },
+
   watch: {
     processType(val) {
       if (!val) return;
@@ -45,6 +50,9 @@ export default {
           this.initChart();
         }
       },
+    },
+    update() {
+      this.getProcessDataByCard();
     },
   },
   computed: {

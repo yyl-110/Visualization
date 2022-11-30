@@ -1,15 +1,39 @@
 {
   "区域四十四": [{
-      "workflowStatus": "正在运行",
-      "workflowName": "208WTDocWF_SY00000243, 试验任务申请书_test, A.2$WTDOC_XT_MAIN_WF",
+      "workflowStatus": "已执行",
+      "workflowName": "208PartWF_0000000001, test20170809_01_asm1, A.3 (Design)$DESIGN_XT_MAIN_WF",
       "wfCreator": "wcadmin",
-      "hours": "816.0h"
+      "hours": "1464.0h"
     },
     {
       "workflowStatus": "已终止",
-      "workflowName": "208WTDocWF_SY00000281, 试验任务申请书_test3, A.1$WTDOC_XT_MAIN_WF",
+      "workflowName": "208PartWF_TEST20170808_01, test20170808_01, A.3 (Design)$DESIGN_XT_MAIN_WF",
       "wfCreator": "wcadmin",
-      "hours": "672.0h"
+      "hours": "1464.0h"
+    },
+    {
+      "workflowStatus": "已终止",
+      "workflowName": "208PartWF_TEST20170808_01, test20170808_01, A.3 (Design)$DESIGN_XT_MAIN_WF",
+      "wfCreator": "wcadmin",
+      "hours": "1464.0h"
+    },
+    {
+      "workflowStatus": "已终止",
+      "workflowName": "208PartWF_TEST20170808_01, test20170808_01, A.3 (Design)$DESIGN_XT_MAIN_WF",
+      "wfCreator": "wcadmin",
+      "hours": "1464.0h"
+    },
+    {
+      "workflowStatus": "已终止",
+      "workflowName": "208PartWF_TEST20170808_01, test20170808_01, A.3 (Design)$DESIGN_XT_MAIN_WF",
+      "wfCreator": "wcadmin",
+      "hours": "1464.0h"
+    },
+    {
+      "workflowStatus": "已执行",
+      "workflowName": "208PartWF_0000000001, test20170809_01_asm1, A.4 (Design)$DESIGN_XT_MAIN_WF",
+      "wfCreator": "wcadmin",
+      "hours": "1464.0h"
     }
   ]
 }

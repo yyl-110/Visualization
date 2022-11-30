@@ -1,5 +1,5 @@
 <template>
-  <div class="panelItem">
+  <div class="panelItem" :style="{ width: isCollapse ? '7rem' : '6.25rem' }">
     <Decoration />
     <div class="content clearfix" v-if="type === 1 || type === 2">
       <div class="innerLeft floatL">
@@ -152,6 +152,7 @@ import Decoration from '../../../components/Common/Decoration.vue';
 import Percent from '../../../components/Common/Percent.vue';
 import countTo from 'vue-count-to';
 import { getMaxNumber } from '../../../utils/tool';
+import { mapGetters } from 'vuex';
 export default {
   components: { Decoration, Percent, countTo },
   name: 'VueDataVPanelItem',
@@ -179,6 +180,12 @@ export default {
       cardData: {},
     };
   },
+  computed: {
+    ...mapGetters(['sidebar']),
+    isCollapse() {
+      return !this.sidebar.opened;
+    },
+  },
 
   mounted() {},
 
@@ -196,6 +203,7 @@ export default {
   height: 240px;
   background: rgba(255, 255, 255, 0.05);
   position: relative;
+  transition: width 0.1s;
   .bottomDec {
     position: absolute;
     bottom: 0;
@@ -306,16 +314,19 @@ export default {
       font-weight: 400;
       color: #ffffff;
       line-height: 25px;
-      padding-left: 28px;
+      padding-left: 26px;
       padding-top: 70px;
       text-align: left;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
       .countTo {
         color: #fff;
         font-size: 18px;
       }
       p {
         span {
-          margin-left: 8px;
+          margin-left: 6px;
         }
       }
       img {

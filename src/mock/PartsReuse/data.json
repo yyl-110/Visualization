@@ -1,0 +1,39 @@
+{
+  "区域三十三": [{
+      "borrowPartName": "标准件6",
+      "borrowPartNumber": "0000000056",
+      "borrowedProductName": "测试产品库1,测试产品库2",
+      "borrowedTime": 6
+    },
+    {
+      "borrowPartName": "标准件1",
+      "borrowPartNumber": "0000000051",
+      "borrowedProductName": "测试产品库1,测试产品库2",
+      "borrowedTime": 8
+    },
+    {
+      "borrowPartName": "标准件2",
+      "borrowPartNumber": "0000000052",
+      "borrowedProductName": "测试产品库1,测试产品库2",
+      "borrowedTime": 2
+    },
+    {
+      "borrowPartName": "标准件3",
+      "borrowPartNumber": "0000000053",
+      "borrowedProductName": "测试产品库1,测试产品库2",
+      "borrowedTime": 2
+    },
+    {
+      "borrowPartName": "标准件4",
+      "borrowPartNumber": "0000000054",
+      "borrowedProductName": "测试产品库1,测试产品库2",
+      "borrowedTime": 3
+    },
+    {
+      "borrowPartName": "标准件5",
+      "borrowPartNumber": "0000000055",
+      "borrowedProductName": "测试产品库1,测试产品库2",
+      "borrowedTime": 4
+    }
+  ]
+}

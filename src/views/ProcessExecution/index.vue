@@ -65,14 +65,15 @@ export default {
       cardData: [],
       dataJson: {},
       commonChartData: [],
-      rankData: {},
+      rankData: [],
       wfType1: '', //点击四十一的type
       wfType2: '', //点击四十五的type
     };
   },
 
   watch: {
-    wfType1() {
+    wfType1(val) {
+      if (val === '') return;
       this.getProcessExecutionByPro();
     },
     queryYear() {
@@ -114,7 +115,6 @@ export default {
         .then((res) => {
           if (res.success) {
             this.dataJson = res || {};
-            console.log(this.dataJson, 8383);
             if (this.type === 1) {
               if ('区域四十一' in this.dataJson) {
                 this.cardData = this.dataJson['区域四十一'];
@@ -161,11 +161,20 @@ export default {
     },
     /* 柱状图点击 */
     chartClick(index) {
+      let prjType = '';
+      const chartRow = this.commonChartData[index];
+      try {
+        const key = Object.keys(chartRow)[0];
+        prjType = chartRow[key].prjType;
+      } catch (error) {
+        console.log('error:', error);
+      }
+      console.log(this.commonChartData[index]);
       this.$router.push({
         path: '/product-design/overdue',
         query: {
           wfType: this.type === 1 ? this.wfType1 : this.wfType2,
-          prjType: this.commonChartData[index].prjType,
+          prjType,
         },
       });
     },

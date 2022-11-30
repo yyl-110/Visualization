@@ -24,8 +24,8 @@ export default {
   },
   props: {
     chartData: {
-      type: Object,
-      default: () => {},
+      type: Array,
+      default: () => [],
     },
   },
   watch: {
@@ -57,14 +57,21 @@ export default {
 
   methods: {
     initOption() {
-      const xData = Object.keys(this.chartData);
+      let xData = [];
       let drawing = [];
       let parts = [];
       let model = [];
-      for (let key in this.chartData) {
-        drawing.push(this.chartData[key]['addDrawingCount']);
-        model.push(this.chartData[key]['addModelCount']);
-        parts.push(this.chartData[key]['addPartCount']);
+      try {
+        xData = this.chartData.map((i) => {
+          return Object.keys(i)[0];
+        });
+        for (let i = 0; i < xData.length; i++) {
+          drawing.push(this.chartData[i][xData[i]]['addDrawingCount']);
+          model.push(this.chartData[i][xData[i]]['addModelCount']);
+          parts.push(this.chartData[i][xData[i]]['addPartCount']);
+        }
+      } catch (error) {
+        throw new Error(error);
       }
 
       this.option = {
@@ -112,7 +119,7 @@ export default {
             show: true, //隐藏
           },
           axisLine: {
-              show: false, //隐藏y轴
+            show: false, //隐藏y轴
           },
           axisLabel: {
             color: '#fff', //文字颜色

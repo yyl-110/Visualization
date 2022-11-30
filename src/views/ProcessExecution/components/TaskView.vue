@@ -13,6 +13,7 @@
         :count="count"
         @handleSizeChange="handleSizeChange"
         @handleCurrentChange="handleCurrentChange"
+        :total="total"
       />
     </div>
   </div>
@@ -58,7 +59,7 @@ export default {
       tableData: [],
       column: [
         { label: '序号', value: 'id' },
-        { label: '课程名称', value: 'wfName' },
+        { label: '流程名称', value: 'wfName' },
         { label: '所属科室', value: 'keshi' },
         { label: '任务节点名称', value: 'taskName' },
         { label: '任务承担者', value: 'taskOwner' },
@@ -67,6 +68,7 @@ export default {
       ],
       page: 1,
       count: 5,
+      total: 100,
     };
   },
   created() {
@@ -77,6 +79,7 @@ export default {
   methods: {
     /* 获取四十六数据 */
     getProcessExecutionByExe() {
+      console.log(this.page, this.count, this.wfType);
       getProcessExecutionByExe({
         queryYear: this.queryYear,
         queryTime: this.queryTime,
@@ -88,6 +91,7 @@ export default {
           console.log(res);
           if (res.success) {
             try {
+              this.total = res.total || 100;
               this.tableData = res['区域四十六'].map((item, index) => {
                 return { id: index + 1, ...item };
               });

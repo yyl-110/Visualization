@@ -14,6 +14,7 @@
         :column="column"
         :page="page"
         :count="count"
+        :total="total"
         @handleSizeChange="handleSizeChange"
         @handleCurrentChange="handleCurrentChange"
       />
@@ -54,6 +55,7 @@ export default {
       ],
       page: 1,
       count: 20,
+      total: 100,
     };
   },
 
@@ -69,6 +71,7 @@ export default {
       getPdmList({ prjStatus, prjType, page: this.page, count: this.count })
         .then((res) => {
           if (res.success) {
+            this.total = res.total;
             this.tableData = res['区域十五'].map((item, index) => {
               return { id: index + 1, ...item };
             });

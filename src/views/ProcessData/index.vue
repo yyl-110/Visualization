@@ -5,7 +5,7 @@
     <!-- 数据 -->
     <div class="preData clearfix">
       <div class="leftChart">
-        <completion-rate :processType="processType" />
+        <completion-rate :processType="processType" :update="update" />
       </div>
       <div class="rank">
         <Rank
@@ -45,8 +45,9 @@ export default {
   data() {
     return {
       completionData: [],
-      rankData: null,
+      rankData: [],
       cardData: [],
+      update: 1,
     };
   },
 
@@ -54,11 +55,13 @@ export default {
     this.getProcessData();
   },
 
-  mounted() {
-    console.log(123123);
-  },
+  mounted() {},
 
   methods: {
+    /**
+     * @param {*}
+     * @return {*}
+     */
     getProcessData() {
       getProcessData({
         queryYear: this.queryYear,
@@ -68,10 +71,18 @@ export default {
           if (res.success) {
             this.rankData = res['区域二十二'];
             this.cardData = res['区域二十'];
-            this.$store.dispatch('page/changeProcessType', {
-              key: 'processType',
-              value: this.cardData[0].workflowType,
-            });
+            try {
+              if (this.processType === this.cardData[0].workflowType) {
+                this.update = this.update + 1;
+              } else {
+                this.$store.dispatch('page/changeProcessType', {
+                  key: 'processType',
+                  value: this.cardData[0].workflowType,
+                });
+              }
+            } catch (error) {
+              console.log('error:', error);
+            }
           }
         })
         .catch((e) => {

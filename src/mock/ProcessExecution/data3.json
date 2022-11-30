@@ -1,66 +1,48 @@
 {
   "区域四十六": [{
-      "hours": "816.0h",
+      "hours": "936.0h",
+      "isCompleted": "是",
+      "isOverdue": "是",
+      "keshi": "科室三",
+      "taskName": "修改",
       "taskOwner": "wcadmin",
+      "wfName": "208PartWF_TEST20170808_01, test20170808_01, A.3 (Design)$DESIGN_XT_MAIN_WF"
+    },
+    {
+      "hours": "936.0h",
+      "isCompleted": "是",
+      "isOverdue": "是",
+      "keshi": "科室三",
       "taskName": "编制",
-      "wfName": "208WTDocWF_SY00000304, 试验任务申请书_test4, A.2$WTDOC_XT_MAIN_WF",
-      "isCompleted": "是"
+      "taskOwner": "wcadmin",
+      "wfName": "208PartWF_TEST20170808_01, test20170808_01, A.3 (Design)$DESIGN_XT_MAIN_WF"
     },
     {
-      "hours": "816.0h",
-      "taskOwner": "wcadmin",
-      "taskName": "审查",
-      "wfName": "208WTDocWF_SY00000304, 试验任务申请书_test4, A.2$WTDOC_XT_MAIN_WF",
-      "isCompleted": "是"
-    },
-    {
-      "hours": "696.0h",
-      "taskOwner": "wcadmin",
-      "taskName": "审查",
-      "wfName": "208WTDocWF_SY00000243, 试验任务申请书_test, A.2$WTDOC_XT_MAIN_WF",
-      "isCompleted": "是"
-    },
-    {
-      "hours": "1440.0h",
-      "taskOwner": "wcadmin",
-      "taskName": "会签",
-      "wfName": "208WTDocWF_SY00000243, 试验任务申请书_test, A.2$WTDOC_XT_MAIN_WF",
-      "isCompleted": "是"
-    },
-    {
-      "hours": "1440.0h",
-      "taskOwner": "wcadmin",
-      "taskName": "审定",
-      "wfName": "208WTDocWF_SY00000243, 试验任务申请书_test, A.2$WTDOC_XT_MAIN_WF",
-      "isCompleted": "是"
-    },
-    {
-      "hours": "1296.0h",
-      "taskOwner": "wcadmin",
-      "taskName": "审定",
-      "wfName": "208WTDocWF_SY00000281, 试验任务申请书_test3, A.1$WTDOC_XT_MAIN_WF",
-      "isCompleted": "是"
-    },
-    {
-      "hours": "1296.0h",
-      "taskOwner": "wcadmin",
-      "taskName": "批准",
-      "wfName": "208WTDocWF_SY00000281, 试验任务申请书_test3, A.1$WTDOC_XT_MAIN_WF",
-      "isCompleted": "是"
-    },
-    {
-      "hours": "696.0h",
-      "taskOwner": "wcadmin",
-      "taskName": "发送确认",
-      "wfName": "208WTDocWF_SY00000243, 试验任务申请书_test, A.2$WTDOC_XT_MAIN_WF",
-      "isCompleted": "否"
-    },
-    {
-      "hours": "552.0h",
-      "taskOwner": "wcadmin",
+      "hours": "936.0h",
+      "isCompleted": "是",
+      "isOverdue": "是",
+      "keshi": "科室三",
       "taskName": "编制",
-      "wfName": "208WTDocWF_SY00000281, 试验任务申请书_test3, A.1$WTDOC_XT_MAIN_WF",
-      "isCompleted": "是"
+      "taskOwner": "wcadmin",
+      "wfName": "208PartWF_TEST20170808_01, test20170808_01, A.3 (Design)$DESIGN_XT_MAIN_WF"
+    },
+    {
+      "hours": "24.0h",
+      "isCompleted": "是",
+      "isOverdue": "是",
+      "keshi": "科室三",
+      "taskName": "编制",
+      "taskOwner": "wcadmin",
+      "wfName": "208PartWF_TEST20170808_01, test20170808_01, A.3 (Design)$DESIGN_XT_MAIN_WF"
+    },
+    {
+      "hours": "0.0h",
+      "isCompleted": "是",
+      "isOverdue": "否",
+      "keshi": "科室三",
+      "taskName": "标准化检查",
+      "taskOwner": "test1",
+      "wfName": "208PartWF_TEST20170808_01, test20170808_01, A.3 (Design)$DESIGN_XT_MAIN_WF"
     }
   ]
 }
