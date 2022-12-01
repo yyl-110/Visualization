@@ -104,7 +104,7 @@ export default {
   .partsWrap {
     width: 100%;
     padding: 0 20px 30px;
-    height: 100%;
+    height: 80%;
     .titleWrap {
       padding: 13px 0 20px;
       overflow: hidden;

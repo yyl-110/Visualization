@@ -35,7 +35,9 @@
                       :duration="6000"
                       separator=""
                     ></countTo>
-                    <div class="name">当前新增流程数量</div>
+                    <div class="name">
+                      {{ type === 1 ? '当前新增流程数量' : '当前新增任务数量' }}
+                    </div>
                   </div>
                   <div class="preWrap item">
                     <countTo

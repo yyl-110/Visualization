@@ -50,7 +50,7 @@ export default {
         { label: '序号', value: 'id' },
         { label: '流程名称', value: 'workflowName' },
         { label: '执行时长', value: 'hours' },
-        { label: '所属科室', value: 'keshi' },
+        { label: '所属科室', value: 'keShi' },
         { label: '流程状态', value: 'workflowStatus' },
         { label: '流程承担者', value: 'wfCreator' },
       ],
@@ -121,7 +121,7 @@ export default {
   .partsWrap {
     width: 100%;
     padding: 0 20px 30px;
-    height: 100%;
+    height: 80%;
     .titleWrap {
       padding: 13px 0 20px;
       overflow: hidden;

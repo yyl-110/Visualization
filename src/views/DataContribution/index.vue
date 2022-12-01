@@ -12,7 +12,7 @@
           :key="type"
           :type="type === 1 ? '' : 'peopleRank'"
           :rankData="rankData"
-          :title="processType + '排行榜'"
+          :title="processType + '贡献量排行榜'"
           label="数量"
           progressLabel="addCount"
           widthType="small"

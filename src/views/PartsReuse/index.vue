@@ -40,6 +40,8 @@
             :page="page"
             :count="count"
             :total="total"
+            @handleSizeChange="handleSizeChange"
+            @handleCurrentChange="handleCurrentChange"
           />
         </div>
       </div>
@@ -48,6 +50,7 @@
 </template>
 
 <script>
+import { Message } from 'element-ui';
 import { getPartsReuse } from '../../api';
 import DvBorder from '../../components/Common/DvBorder.vue';
 import Title from '../../components/Common/Title.vue';
@@ -77,13 +80,21 @@ export default {
   watch: {},
 
   created() {
-    this.getPartsReuse();
+    // this.getPartsReuse();
   },
 
   mounted() {},
 
   methods: {
     onSubmit() {
+      if (!this.formInline.partsType) {
+        Message.error('请选择零件类型');
+        return;
+      }
+      if (!this.formInline.num) {
+        Message.error('请填写借用次数');
+        return;
+      }
       this.getPartsReuse();
     },
     getPartsReuse() {
@@ -111,6 +122,28 @@ export default {
      */
     resetForm() {
       this.formInline = { partsType: '', num: '' };
+      this.page = 1;
+      this.count = 10;
+      this.total = 100;
+      // this.getPartsReuse();
+      this.tableData = [];
+    },
+
+    /**
+     * 修改每页count
+     * @return {*}
+     */
+    handleSizeChange(size) {
+      this.count = size;
+      this.getPartsReuse();
+    },
+
+    /**
+     * page
+     * @return {*}
+     */
+    handleCurrentChange(page) {
+      this.page = page;
       this.getPartsReuse();
     },
   },
@@ -169,6 +202,7 @@ export default {
     width: 100%;
     padding: 0 20px 30px;
     height: 100%;
+    box-sizing: border-box;
   }
   .options {
     border-bottom: 1px solid rgba(229, 230, 232, 0.2);
@@ -177,8 +211,12 @@ export default {
   }
   .tableContainer {
     padding-top: 30px;
+    box-sizing: border-box;
+    height: 100%;
+
     .innerTable {
       margin-top: 30px;
+      height: 70%;
     }
   }
 }

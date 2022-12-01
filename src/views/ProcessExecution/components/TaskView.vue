@@ -131,6 +131,9 @@ export default {
   // height: 100%;
   padding-bottom: 30px;
   position: relative;
+  background: #050a4e;
+  box-shadow: inset -8px -8px 40px 0px rgba(0, 227, 255, 0.3),
+    inset 8px 8px 40px 0px rgba(0, 227, 255, 0.3);
   .inner {
     padding: 20px;
     padding-bottom: 0;

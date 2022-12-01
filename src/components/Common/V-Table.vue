@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrap">
     <el-table
       :data="tableData"
       stripe
@@ -136,6 +136,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.wrap {
+  height: 100%;
+}
 .pageWrap {
   width: 100%;
   margin-top: 50px;
@@ -211,6 +214,11 @@ export default {
 }
 ::v-deep.el-table {
   background: transparent !important;
+  height: 100% !important;
+  .el-table__body-wrapper {
+    overflow-y: auto;
+    height: 100%;
+  }
   thead {
     tr {
       background: rgb(43, 99, 149);

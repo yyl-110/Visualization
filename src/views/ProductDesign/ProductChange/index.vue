@@ -3,7 +3,7 @@
     <dv-border />
     <div class="partsWrap">
       <div class="titleWrap">
-        <Title text="PDM中超期流程任务查看" class="title" />
+        <Title text="PDM产品中变更单查看" class="title" />
         <el-button type="primary" class="back" @click="$router.go(-1)">
           <img src="../../../assets/imgs/icon_return@2x.png" alt="" />
           返回
@@ -39,7 +39,7 @@ export default {
         { label: '序号', value: 'id' },
         { label: '变更单编号', value: 'number' },
         { label: '变更单名称', value: 'name' },
-        { label: '所属科室', value: 'keshi' },
+        { label: '所属科室', value: 'keShi' },
         { label: '创建者', value: 'creator' },
         { label: '执行时长', value: 'hours' },
         { label: '创建时间', value: 'createtime' },
@@ -113,7 +113,7 @@ export default {
   .partsWrap {
     width: 100%;
     padding: 0 20px 30px;
-    height: 100%;
+    height: 80%;
     .titleWrap {
       padding: 13px 0 20px;
       overflow: hidden;
