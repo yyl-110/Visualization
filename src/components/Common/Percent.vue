@@ -1,6 +1,6 @@
 <template>
   <div class="percentWrap">
-    <div class="chartsdom" ref="PercentChart"></div>
+    <div class="chartsdom" ref="PercentChart" id="PercentChart"></div>
   </div>
 </template>
 
@@ -94,7 +94,7 @@ export default {
             margin: 10,
             textStyle: {
               color: '#999',
-              fontSize: 16,
+              fontSize: this.$fontSize(16),
             },
           },
         },
@@ -122,8 +122,7 @@ export default {
             symbolSize: [6, 50],
             symbolBoundingData: maxData,
             data: greenBar,
-            z: 99999999,
-            animationEasing: 'elasticOut',
+            z: 999,
             animationDelay: function (dataIndex, params) {
               return params.index * 30;
             },
@@ -144,7 +143,6 @@ export default {
             symbolBoundingData: maxData,
             data: greenBar,
             z: 99999,
-            animationEasing: 'elasticOut',
             animationDelay: function (dataIndex, params) {
               return params.index * 30;
             },
@@ -160,13 +158,10 @@ export default {
         debounce(myChart.resize(), 200);
       });
       this.myChart = myChart;
-      window.addEventListener('resize', () => {
-        myChart.resize();
-      });
     },
   },
   beforeDestroy() {
-    erd.uninstall(this.refs.PercentChart);
+    // erd.uninstall(this.refs.PercentChart);
   },
 };
 </script>
