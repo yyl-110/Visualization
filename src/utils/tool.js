@@ -91,3 +91,11 @@ export const getMaxNumber = (number) => {
   if (Math.floor(number / 10) > 100000 && Math.floor(number / 10) <= 1000000) return 10000000;
   if (Math.floor(number / 10) > 1000000 && Math.floor(number / 10) <= 10000000) return 100000000;
 };
+
+/**
+ * echarts resise
+ * @return {*}
+ */
+export const chartResise = (chart) => {
+  if (chart) chart.resize();
+};

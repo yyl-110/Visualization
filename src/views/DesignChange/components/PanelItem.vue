@@ -54,7 +54,7 @@
             :endVal="parseFloat(cardData.tongBi || 0)"
             :duration="6000"
             separator=""
-            :decimals="1"
+            :decimals="2"
             suffix="%"
             class="countTo"
           ></countTo>
@@ -68,7 +68,7 @@
             :duration="6000"
             separator=""
             suffix="%"
-            :decimals="1"
+            :decimals="2"
             class="countTo"
           ></countTo>
           <img src="../../../assets/imgs/icon_rise@2x.png" alt="" />

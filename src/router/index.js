@@ -32,20 +32,20 @@ const routes = [
             component: () => import('@/views/ProductDesign/PdmList'),
             meta: {title: 'PDM查看列表', mainTitle: DATA_STATISTICE},
           },
-          {
-            path: 'overdue',
-            name: 'Overdue',
-            hidden: true,
-            component: () => import('@/views/ProductDesign/Overdue'),
-            meta: {title: '超期流程任务', mainTitle: DATA_STATISTICE},
-          },
-          {
-            path: 'change',
-            name: 'ProductChange',
-            hidden: true,
-            component: () => import('@/views/ProductDesign/ProductChange'),
-            meta: {title: 'PDM产品变更单', mainTitle: DATA_STATISTICE},
-          },
+          // {
+          //   path: 'overdue',
+          //   name: 'Overdue',
+          //   hidden: true,
+          //   component: () => import('@/views/ProductDesign/Overdue'),
+          //   meta: {title: '超期流程任务', mainTitle: DATA_STATISTICE},
+          // },
+          // {
+          //   path: 'change',
+          //   name: 'ProductChange',
+          //   hidden: true,
+          //   component: () => import('@/views/ProductDesign/ProductChange'),
+          //   meta: {title: 'PDM产品变更单', mainTitle: DATA_STATISTICE},
+          // },
         ],
       },
     ],
@@ -75,17 +75,47 @@ const routes = [
     ],
   },
   {
-    path: '/design-change',
+    path: '/design',
     component: layout,
+    redirect: '/design/change/index',
     children: [
       {
-        path: 'index',
+        path: 'change',
         name: 'DesignChange',
+        redirect: '/design/change/index',
         component: () => import('@/views/DesignChange'),
         meta: {title: '设计更改统计', icon: 'icon_design.png', mainTitle: DATA_STATISTICE},
+        noShowingChildren: true,
+        children: [
+          {
+            path: 'index',
+            name: 'DesignChange',
+            component: () => import('@/views/DesignChange/Home'),
+            meta: {mainTitle: DATA_STATISTICE},
+          },
+          {
+            path: 'list',
+            name: 'ProductChange',
+            hidden: true,
+            component: () => import('@/views/DesignChange/ProductChange'),
+            meta: {title: 'PDM产品变更单', mainTitle: DATA_STATISTICE},
+          },
+        ],
       },
     ],
   },
+  // {
+  //   path: '/design-change',
+  //   component: layout,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       name: 'DesignChange',
+  //       component: () => import('@/views/DesignChange'),
+  //       meta: {title: '设计更改统计', icon: 'icon_design.png', mainTitle: DATA_STATISTICE},
+  //     },
+  //   ],
+  // },
   {
     path: '/product-standard',
     component: layout,
@@ -123,17 +153,47 @@ const routes = [
     ],
   },
   {
-    path: '/process-execution',
+    path: '/process',
     component: layout,
+    redirect: '/process/execution/index',
     children: [
       {
-        path: 'index',
+        path: 'execution',
         name: 'ProcessExecution',
+        redirect: '/process/execution/index',
         component: () => import('@/views/ProcessExecution'),
         meta: {title: '流程执行量统计', icon: 'icon_implement.png', mainTitle: SERVICE_MONITORING},
+        noShowingChildren: true,
+        children: [
+          {
+            path: 'index',
+            name: 'ProcessExecution',
+            component: () => import('@/views/ProcessExecution/Home'),
+            meta: {mainTitle: SERVICE_MONITORING},
+          },
+          {
+            path: 'overdue',
+            name: 'Overdue',
+            hidden: true,
+            component: () => import('@/views/ProcessExecution/Overdue'),
+            meta: {title: '超期流程任务', mainTitle: DATA_STATISTICE},
+          },
+        ],
       },
     ],
   },
+  // {
+  //   path: '/process-execution',
+  //   component: layout,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       name: 'ProcessExecution',
+  //       component: () => import('@/views/ProcessExecution/Home'),
+  //       meta: {title: '流程执行量统计', icon: 'icon_implement.png', mainTitle: SERVICE_MONITORING},
+  //     },
+  //   ],
+  // },
   {
     path: '/process-efficiency',
     component: layout,

@@ -37,9 +37,11 @@ export default {
   },
   watch: {
     queryYear() {
+      this.page = 1;
       this.getPdmList();
     },
     queryTime() {
+      this.page = 1;
       this.getPdmList();
     },
   },

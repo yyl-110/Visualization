@@ -7,6 +7,7 @@
 <script>
 import elementResizeDetectorMaker from 'element-resize-detector';
 import { debounce } from '../../utils/tool';
+let erd = elementResizeDetectorMaker();
 
 export default {
   name: 'Percent',
@@ -155,7 +156,6 @@ export default {
       let myChart = this.$echarts.init(this.$refs.PercentChart);
 
       myChart.setOption(this.option, true);
-      let erd = elementResizeDetectorMaker();
       erd.listenTo(this.$refs.PercentChart, () => {
         debounce(myChart.resize(), 200);
       });
@@ -164,6 +164,9 @@ export default {
         myChart.resize();
       });
     },
+  },
+  beforeDestroy() {
+    erd.removeAllListeners(this.refs.PercentChart);
   },
 };
 </script>

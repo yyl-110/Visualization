@@ -310,15 +310,4 @@ export default {
     }
   }
 }
-/deep/.el-radio-button__inner {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: transparent !important;
-  color: #23cefd;
-  width: 72px;
-  height: 34px;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 </style>

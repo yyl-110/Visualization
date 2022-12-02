@@ -1,22 +1,22 @@
 <template>
-  <div class="overdue">
+  <div class="productChange">
     <dv-border />
     <div class="partsWrap">
       <div class="titleWrap">
-        <Title text="PDM中超期流程查看列表" class="title" />
+        <Title text="PDM产品中变更单查看" class="title" />
         <el-button type="primary" class="back" @click="$router.go(-1)">
           <img src="../../../assets/imgs/icon_return@2x.png" alt="" />
           返回
         </el-button>
       </div>
       <v-table
-        :tableData="tableData"
         :column="column"
+        :tableData="tableData"
+        @handleSizeChange="handleSizeChange"
+        @handleCurrentChange="handleCurrentChange"
         :page="page"
         :count="count"
         :total="total"
-        @handleSizeChange="handleSizeChange"
-        @handleCurrentChange="handleCurrentChange"
       />
     </div>
   </div>
@@ -26,61 +26,64 @@
 import Title from '../../../components/Common/Title.vue';
 import VTable from '@/components/Common/V-Table.vue';
 import DvBorder from '../../../components/Common/DvBorder.vue';
-import { getProcessExecutionByChart } from '../../../api';
+import { getDesignChangeByChart } from '../../../api';
 import { mapGetters } from 'vuex';
 export default {
   components: { Title, VTable, DvBorder },
-  name: 'Overdue',
+  name: 'ProductChange',
 
-  computed: {
-    ...mapGetters(['queryYear', 'queryTime', 'queryType']),
-  },
-  watch: {
-    queryYear() {
-      this.getProcessExecutionByChart();
-    },
-    queryTime() {
-      this.getProcessExecutionByChart();
-    },
-  },
   data() {
     return {
       tableData: [],
       column: [
         { label: '序号', value: 'id' },
-        { label: '流程名称', value: 'workflowName' },
-        { label: '执行时长', value: 'hours' },
+        { label: '变更单编号', value: 'number' },
+        { label: '变更单名称', value: 'name' },
         { label: '所属科室', value: 'keShi' },
-        { label: '流程状态', value: 'workflowStatus' },
-        { label: '流程承担者', value: 'wfCreator' },
+        { label: '创建者', value: 'creator' },
+        { label: '执行时长', value: 'hours' },
+        { label: '创建时间', value: 'createtime' },
+        { label: '是否完成', value: 'isFinish' },
       ],
-      page: 1, //页码
-      count: 20, //默认每页的数量
       total: 100,
+      count: 10,
+      page: 1,
     };
+  },
+  computed: {
+    ...mapGetters(['queryTime', 'queryYear']),
+  },
+  watch: {
+    queryYear() {
+      this.page = 1;
+      this.getDesignChangeByChart();
+    },
+    queryTime() {
+      this.page = 1;
+      this.getDesignChangeByChart();
+    },
   },
 
   created() {
-    this.getProcessExecutionByChart();
+    this.getDesignChangeByChart();
   },
 
   mounted() {},
 
   methods: {
-    getProcessExecutionByChart() {
-      const { wfType, prjType } = this.$route.query;
-      getProcessExecutionByChart({
-        wfType,
-        prjType,
-        queryYear: this.queryYear,
+    getDesignChangeByChart() {
+      const { prjType } = this.$route.query;
+      getDesignChangeByChart({
         queryTime: this.queryTime,
+        queryYear: this.queryYear,
+        prjType,
         page: this.page,
         count: this.count,
       })
         .then((res) => {
           if (res.success) {
-            this.total = res.total
-            this.tableData = res['区域四十四'].map((item, index) => {
+            this.total = res.total;
+            this.tableData = res['区域二十八'].map((item, index) => {
               return { id: index + 1, ...item };
             });
           }
@@ -89,29 +92,20 @@ export default {
           console.log(e);
         });
     },
-    /**
-     * 修改每页count
-     * @return {*}
-     */
     handleSizeChange(size) {
       this.count = size;
-      this.getProcessExecutionByChart();
+      this.getDesignChangeByChart();
     },
-
-    /**
-     * page
-     * @return {*}
-     */
     handleCurrentChange(page) {
       this.page = page;
-      this.getProcessExecutionByChart();
+      this.getDesignChangeByChart();
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.overdue {
+.productChange {
   width: 100%;
   background: #050a4e;
   box-shadow: inset -8px -8px 40px 0px rgba(0, 227, 255, 0.3),

@@ -15,6 +15,8 @@ import Title from '../../../components/Common/Title.vue';
 import elementResizeDetectorMaker from 'element-resize-detector';
 import { debounce } from '../../../utils/tool';
 import DvBorder from '../../../components/Common/DvBorder.vue';
+let erd = elementResizeDetectorMaker();
+
 export default {
   name: 'VueDataVChangeView',
   props: {
@@ -146,7 +148,6 @@ export default {
     initChart() {
       let myChart = this.$echarts.init(document.getElementById('ChangeView'));
       myChart.setOption(this.option, true);
-      let erd = elementResizeDetectorMaker();
       erd.listenTo(document.getElementById('ChangeView'), () => {
         debounce(myChart.resize(), 200);
       });
@@ -164,10 +165,10 @@ export default {
         }
       });
       this.myChart = myChart;
-      window.addEventListener('resize', () => {
-        myChart.resize();
-      });
     },
+  },
+  beforeDestroy() {
+    erd.removeAllListeners(document.getElementById('ChangeView'));
   },
   components: { Title, DvBorder },
 };

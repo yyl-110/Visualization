@@ -17,6 +17,7 @@ import DvBorder from '../../../components/Common/DvBorder.vue';
 import Title from '../../../components/Common/Title.vue';
 import elementResizeDetectorMaker from 'element-resize-detector';
 import { debounce } from '@/utils/tool';
+let erd = elementResizeDetectorMaker();
 export default {
   name: 'ProContributionChart',
   props: {
@@ -157,15 +158,14 @@ export default {
       let myChart = this.$echarts.init(document.getElementById('propleChart'));
 
       myChart.setOption(this.option, true);
-      let erd = elementResizeDetectorMaker();
       erd.listenTo(document.getElementById('propleChart'), () => {
         debounce(myChart.resize(), 200);
       });
-      window.addEventListener('resize', () => {
-        myChart.resize();
-      });
       this.myChart = myChart;
     },
+  },
+  beforeDestroy() {
+    erd.removeAllListeners(document.getElementById('propleChart'));
   },
 };
 </script>

@@ -15,6 +15,7 @@ import Title from '../../../components/Common/Title.vue';
 import elementResizeDetectorMaker from 'element-resize-detector';
 import { debounce, isEmptyObject } from '../../../utils/tool';
 import DvBorder from '../../../components/Common/DvBorder.vue';
+let erd = elementResizeDetectorMaker();
 export default {
   name: 'BaseChart',
   props: {
@@ -172,15 +173,15 @@ export default {
       if (isEmptyObject(this.chartData)) return;
       let myChart = this.$echarts.init(this.$refs.BaseChart);
       myChart.setOption(this.option, true);
-      let erd = elementResizeDetectorMaker();
+
       erd.listenTo(document.getElementById('BaseChart'), () => {
         debounce(myChart.resize(), 300);
       });
       this.myChart = myChart;
-      window.addEventListener('resize', () => {
-        myChart.resize();
-      });
     },
+  },
+  beforeDestroy() {
+    erd.removeAllListeners(document.getElementById('BaseChart'));
   },
   components: { Title, DvBorder },
 };

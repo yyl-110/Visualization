@@ -18,7 +18,7 @@
       :duration="6000"
       separator=""
       suffix="%"
-      :decimals="1"
+      :decimals="2"
       class="countTo"
     ></countTo>
     ；新增
@@ -38,7 +38,7 @@
       :duration="6000"
       separator=""
       suffix="%"
-      :decimals="1"
+      :decimals="2"
       class="countTo"
     ></countTo>
     ; 新增
@@ -58,7 +58,7 @@
       :duration="6000"
       separator=""
       suffix="%"
-      :decimals="1"
+      :decimals="2"
       class="countTo"
     ></countTo>
     ；
@@ -99,6 +99,7 @@
       :duration="6000"
       separator=""
       suffix="%"
+      :decimals="2"
       class="countTo"
     ></countTo>
     <img src="../../../assets/imgs/icon_rise@2x.png" class="up" alt="" />
@@ -109,6 +110,7 @@
       :duration="6000"
       separator=""
       suffix="%"
+      :decimals="2"
       class="countTo"
     ></countTo>
     <img src="../../../assets/imgs/icon_rise@2x.png" class="up" alt="" />

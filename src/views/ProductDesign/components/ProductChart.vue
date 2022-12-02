@@ -10,7 +10,9 @@
 <script>
 import DvBorder from '../../../components/Common/DvBorder.vue';
 import elementResizeDetectorMaker from 'element-resize-detector';
-import { debounce, fontSize } from '../../../utils/tool';
+import { debounce } from '../../../utils/tool';
+/* 窗口变化监听 */
+let erd = elementResizeDetectorMaker();
 
 export default {
   components: { DvBorder },
@@ -159,16 +161,14 @@ export default {
         }
       });
 
-      this.myChart = myChart;
-      /* 窗口变化监听 */
-      let erd = elementResizeDetectorMaker();
       erd.listenTo(document.getElementById('ProductChart'), () => {
-        debounce(myChart.resize());
+        debounce(myChart.resize(), 200);
       });
-      window.addEventListener('resize', () => {
-        myChart.resize();
-      });
+      this.myChart = myChart;
     },
+  },
+  beforeDestroy() {
+    erd.removeAllListeners(document.getElementById('ProductChart'));
   },
 };
 </script>

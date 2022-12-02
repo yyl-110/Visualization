@@ -42,6 +42,7 @@
             :total="total"
             @handleSizeChange="handleSizeChange"
             @handleCurrentChange="handleCurrentChange"
+            :showPage="showPage"
           />
         </div>
       </div>
@@ -75,6 +76,7 @@ export default {
       page: 1,
       count: 10,
       total: 100,
+      showPage: false,
     };
   },
   watch: {},
@@ -95,6 +97,7 @@ export default {
         Message.error('请填写借用次数');
         return;
       }
+      this.page = 1;
       this.getPartsReuse();
     },
     getPartsReuse() {
@@ -106,7 +109,8 @@ export default {
       })
         .then((res) => {
           if (res.success) {
-            this.total = res.total;
+            if (res.total) this.total = res.total;
+            this.showPage = true;
             this.tableData = res['区域三十三'].map((item, index) => {
               return { id: index + 1, ...item };
             });
@@ -126,6 +130,7 @@ export default {
       this.count = 10;
       this.total = 100;
       // this.getPartsReuse();
+      this.showPage = false;
       this.tableData = [];
     },
 

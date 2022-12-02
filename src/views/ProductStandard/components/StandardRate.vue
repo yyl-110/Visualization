@@ -17,6 +17,7 @@ import { debounce } from '../../../utils/tool';
 import DvBorder from '../../../components/Common/DvBorder.vue';
 import { mapGetters } from 'vuex';
 import { getProductStandard } from '../../../api';
+let erd = elementResizeDetectorMaker();
 export default {
   name: 'StandardChart',
   data() {
@@ -201,12 +202,8 @@ export default {
           }
         }
       });
-      let erd = elementResizeDetectorMaker();
       erd.listenTo(document.getElementById('StandardChart'), () => {
         debounce(myChart.resize(), 200);
-      });
-      window.addEventListener('resize', () => {
-        myChart.resize();
       });
       this.myChart = myChart;
     },
@@ -231,6 +228,9 @@ export default {
           console.log(e);
         });
     },
+  },
+  beforeDestroy() {
+    erd.removeAllListeners(document.getElementById('StandardChart'));
   },
   components: { Title, DvBorder },
 };

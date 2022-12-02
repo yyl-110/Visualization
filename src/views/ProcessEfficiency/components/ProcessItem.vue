@@ -43,7 +43,7 @@
             :duration="6000"
             separator=""
             suffix="%"
-            :decimals="1"
+            :decimals="2"
             class="countTo"
           ></countTo>
           <img src="../../../assets/imgs/icon_rise@2x.png" class="up" alt="" />
@@ -56,7 +56,7 @@
             :duration="6000"
             separator=""
             suffix="%"
-            :decimals="1"
+            :decimals="2"
             class="countTo"
           ></countTo>
           <img src="../../../assets/imgs/icon_rise@2x.png" class="up" alt="" />
@@ -92,6 +92,14 @@ export default {
       default: () => {},
     },
   },
+  watch: {
+    cardData: {
+      deep: true,
+      handler() {
+        this.init();
+      },
+    },
+  },
   data() {
     return {
       p1: '',
@@ -101,22 +109,26 @@ export default {
     };
   },
   created() {
-    try {
-      const t1_key = Object.keys(this.cardData.wfConsumeShortest)[0];
-      const t2_key = Object.keys(this.cardData.wfConsumeLongest)[0];
-      this.p1 = t1_key;
-      this.p2 = t2_key;
-      this.t1 = this.cardData.wfConsumeShortest[t1_key];
-      this.t2 = this.cardData.wfConsumeLongest[t2_key];
-      // this.t1 =
-    } catch (error) {
-      throw new Error(error);
-    }
+    this.init();
   },
 
   mounted() {},
 
-  methods: {},
+  methods: {
+    init() {
+      try {
+        const t1_key = Object.keys(this.cardData.wfConsumeShortest)[0];
+        const t2_key = Object.keys(this.cardData.wfConsumeLongest)[0];
+        this.p1 = t1_key;
+        this.p2 = t2_key;
+        this.t1 = this.cardData.wfConsumeShortest[t1_key];
+        this.t2 = this.cardData.wfConsumeLongest[t2_key];
+        // this.t1 =
+      } catch (error) {
+        throw new Error(error);
+      }
+    },
+  },
 };
 </script>
 

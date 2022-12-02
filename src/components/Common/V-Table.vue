@@ -16,7 +16,7 @@
         :key="item.value"
       ></el-table-column>
     </el-table>
-    <div class="pageWrap clearfix" v-if="showPage">
+    <div class="pageWrap clearfix" v-if="showPage && tableData.length">
       <el-pagination
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
@@ -217,7 +217,7 @@ export default {
   height: 100% !important;
   .el-table__body-wrapper {
     overflow-y: auto;
-    height: 100%;
+    height: 92%;
   }
   thead {
     tr {

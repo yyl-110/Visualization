@@ -19,7 +19,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
-import {fontSize} from './utils/tool';
+import {fontSize,chartResise} from './utils/tool';
 import echarts from 'echarts';
 Vue.prototype.$echarts = echarts;
 
@@ -68,6 +68,7 @@ Vue.use(Button)
 import '@/assets/js/flexible';
 
 Vue.prototype.$fontSize = fontSize;
+Vue.prototype.$chartResise = chartResise;
 
 Vue.config.productionTip = false;
 

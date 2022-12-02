@@ -29,6 +29,7 @@
             :duration="6000"
             separator=""
             suffix="%"
+            :decimals="2"
           ></countTo>
           <div class="name">流程完成率</div>
         </div>
@@ -43,7 +44,7 @@
             :duration="6000"
             separator=""
             suffix="%"
-            :decimals="1"
+            :decimals="2"
           ></countTo>
           <img src="../../assets/imgs/icon_rise@2x.png" class="up" alt="" />
         </div>
@@ -56,7 +57,7 @@
             :duration="6000"
             separator=""
             suffix="%"
-            :decimals="1"
+            :decimals="2"
           ></countTo>
           <img src="../../assets/imgs/icon_rise@2x.png" class="up" alt="" />
         </div>
@@ -89,7 +90,7 @@
             :duration="6000"
             separator=""
             suffix="%"
-            :decimals="1"
+            :decimals="2"
           ></countTo>
           <img src="../../assets/imgs/icon_rise@2x.png" class="up" alt="" />
         </div>
@@ -102,7 +103,7 @@
             :duration="6000"
             separator=""
             suffix="%"
-            :decimals="1"
+            :decimals="2"
           ></countTo>
           <img src="../../assets/imgs/icon_rise@2x.png" class="up" alt="" />
         </div>

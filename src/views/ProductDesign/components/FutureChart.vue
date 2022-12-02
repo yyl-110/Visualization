@@ -15,6 +15,8 @@ import Title from '@/components/Common/Title.vue';
 import elementResizeDetectorMaker from 'element-resize-detector';
 import { debounce } from '../../../utils/tool';
 import DvBorder from '../../../components/Common/DvBorder.vue';
+/* 窗口变化监听 */
+let erd = elementResizeDetectorMaker();
 
 export default {
   name: 'FutureChart',
@@ -179,17 +181,14 @@ export default {
     initChart() {
       let myChart = this.$echarts.init(document.getElementById('FutureChart'));
       myChart.setOption(this.option, true);
-
-      this.myChart = myChart;
-      /* 窗口变化监听 */
-      let erd = elementResizeDetectorMaker();
       erd.listenTo(document.getElementById('FutureChart'), () => {
-        debounce(myChart.resize());
+        debounce(myChart.resize(), 200);
       });
-      window.addEventListener('resize', () => {
-        myChart.resize();
-      });
+      this.myChart = myChart;
     },
+  },
+  beforeDestroy() {
+    erd.removeAllListeners(document.getElementById('FutureChart'));
   },
 };
 </script>

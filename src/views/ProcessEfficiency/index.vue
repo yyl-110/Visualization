@@ -42,14 +42,6 @@ export default {
   },
   mounted() {},
   watch: {
-    isCollapse(val) {
-      console.log(val);
-      setTimeout(() => {
-        if (this.$refs.borderBox) {
-          this.$refs.borderBox.initWH();
-        }
-      }, 300);
-    },
     queryTime() {
       this.getProcessEfficiency();
     },

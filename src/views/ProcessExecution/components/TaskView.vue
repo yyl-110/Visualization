@@ -45,12 +45,15 @@ export default {
   watch: {
     wfType(val, oldVal) {
       if (!oldVal) return;
+      this.page = 1;
       this.getProcessExecutionByExe();
     },
     queryYear() {
+      this.page = 1;
       this.getProcessExecutionByExe();
     },
     queryTime() {
+      this.page = 1;
       this.getProcessExecutionByExe();
     },
   },

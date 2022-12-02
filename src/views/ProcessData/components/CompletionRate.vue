@@ -17,6 +17,7 @@ import { debounce } from '../../../utils/tool';
 import DvBorder from '../../../components/Common/DvBorder.vue';
 import { getProcessDataByCard } from '@/api';
 import { mapGetters } from 'vuex';
+let erd = elementResizeDetectorMaker();
 
 export default {
   name: 'CompletionRate',
@@ -229,14 +230,10 @@ export default {
       let myChart = this.$echarts.init(document.getElementById('RateChart'));
 
       myChart.setOption(this.option, true);
-      let erd = elementResizeDetectorMaker();
       erd.listenTo(document.getElementById('RateChart'), () => {
         debounce(myChart.resize(), 200);
       });
       this.myChart = myChart;
-      window.addEventListener('resize', () => {
-        myChart.resize();
-      });
     },
     getProcessDataByCard() {
       getProcessDataByCard({
@@ -254,6 +251,9 @@ export default {
           console.log(e);
         });
     },
+  },
+  beforeDestroy() {
+    erd.removeAllListeners(document.getElementById('RateChart'));
   },
 };
 </script>

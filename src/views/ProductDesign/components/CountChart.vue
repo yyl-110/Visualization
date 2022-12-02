@@ -11,6 +11,7 @@
 import elementResizeDetectorMaker from 'element-resize-detector';
 import { debounce, fontSize } from '../../../utils/tool';
 import DvBorder from '../../../components/Common/DvBorder.vue';
+let erd = elementResizeDetectorMaker();
 export default {
   components: { DvBorder },
   name: 'CountChart',
@@ -100,9 +101,10 @@ export default {
             // x轴name的样式调整
             color: '#fff',
             fontSize: this.$fontSize(14),
+            padding: [0, this.$fontSize(30), this.$fontSize(10), 0],
           },
           axisLine: {
-              show: false, //隐藏y轴
+            show: false, //隐藏y轴
           },
           axisLabel: {
             color: '#fff', //文字颜色
@@ -183,7 +185,7 @@ export default {
         ],
         grid: {
           // 让图表占满容器
-          top: this.$fontSize(31),
+          top: this.$fontSize(41),
           left: this.$fontSize(48),
           right: this.$fontSize(80),
           bottom: this.$fontSize(45),
@@ -196,7 +198,6 @@ export default {
 
       /* 点击柱形图 */
       myChart.getZr().on('click', (params) => {
-
         let pointInPixel = [params.offsetX, params.offsetY];
         if (myChart.containPixel('grid', pointInPixel)) {
           let xIndex = myChart.convertFromPixel({ seriesIndex: 0 }, [
@@ -208,15 +209,14 @@ export default {
           console.log(xIndex);
         }
       });
-      let erd = elementResizeDetectorMaker();
       erd.listenTo(document.getElementById('CountChart'), () => {
         debounce(myChart.resize(), 200);
       });
-      window.addEventListener('resize', () => {
-        myChart.resize();
-      });
       this.myChart = myChart;
     },
+  },
+  beforeDestroy() {
+    erd.removeAllListeners(document.getElementById('CountChart'));
   },
 };
 </script>
