@@ -163,7 +163,7 @@ export default {
     },
   },
   beforeDestroy() {
-    erd.removeAllListeners(this.$refs.universalChart);
+    erd.uninstall(this.$refs.universalChart);
   },
 };
 </script>

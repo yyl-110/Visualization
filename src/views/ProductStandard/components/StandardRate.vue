@@ -5,7 +5,7 @@
       <div class="chartTitle">
         <Title :text="'标准化率用统计图'" />
       </div>
-      <div class="chartsdom" id="StandardChart"></div>
+      <div class="chartsdom" id="StandardChart" ref="StandardChart"></div>
     </div>
   </div>
 </template>
@@ -230,7 +230,7 @@ export default {
     },
   },
   beforeDestroy() {
-    erd.removeAllListeners(document.getElementById('StandardChart'));
+    erd.uninstall(this.$refs.StandardChart);
   },
   components: { Title, DvBorder },
 };

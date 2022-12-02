@@ -5,21 +5,12 @@
 </template>
 
 <script>
-import { screenSize } from '@/assets/js/utils';
-import { IEVersion } from './utils/tool';
 export default {
   name: 'App',
   data() {
     return {};
   },
-  created() {
-    // 是IE9，引入js文件
-    if (IEVersion() !== -1) {
-      // document.body.classList.add('IE');
-    } else {
-      // document.body.classList.add('noIE');
-    }
-  },
+  created() {},
   mounted() {
     // screenSize(this.$refs.appContainer);
   },

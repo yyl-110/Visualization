@@ -2,7 +2,7 @@
   <div class="countContainer">
     <dv-border />
     <div class="chartWrap">
-      <div class="chartsdom" id="CountChart"></div>
+      <div class="chartsdom" id="CountChart" ref="CountChart"></div>
     </div>
   </div>
 </template>
@@ -11,7 +11,6 @@
 import elementResizeDetectorMaker from 'element-resize-detector';
 import { debounce, fontSize } from '../../../utils/tool';
 import DvBorder from '../../../components/Common/DvBorder.vue';
-let erd = elementResizeDetectorMaker();
 export default {
   components: { DvBorder },
   name: 'CountChart',
@@ -38,9 +37,11 @@ export default {
     return {
       option: {},
       myChart: null,
+      erd: null,
     };
   },
   mounted() {
+    this.erd = elementResizeDetectorMaker();
     this.initOption();
     this.initCharts();
   },
@@ -209,14 +210,14 @@ export default {
           console.log(xIndex);
         }
       });
-      erd.listenTo(document.getElementById('CountChart'), () => {
+      this.erd.listenTo(document.getElementById('CountChart'), () => {
         debounce(myChart.resize(), 200);
       });
       this.myChart = myChart;
     },
   },
   beforeDestroy() {
-    erd.removeAllListeners(document.getElementById('CountChart'));
+    this.erd.uninstall(this.$refs.CountChart);
   },
 };
 </script>

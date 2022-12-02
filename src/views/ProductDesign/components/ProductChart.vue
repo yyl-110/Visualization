@@ -168,7 +168,7 @@ export default {
     },
   },
   beforeDestroy() {
-    erd.removeAllListeners(document.getElementById('ProductChart'));
+    erd.uninstall(this.$refs.ProductChart);
   },
 };
 </script>

@@ -168,7 +168,7 @@ export default {
     },
   },
   beforeDestroy() {
-    erd.removeAllListeners(document.getElementById('ChangeView'));
+    erd.uninstall(this.$refs.ChangeView);
   },
   components: { Title, DvBorder },
 };

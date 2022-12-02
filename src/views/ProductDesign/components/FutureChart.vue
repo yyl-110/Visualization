@@ -5,7 +5,7 @@
       <Title :text="'近六期的趋势图'" />
     </div>
     <div class="chartWrap">
-      <div class="chartsdom" id="FutureChart"></div>
+      <div class="chartsdom" id="FutureChart" ref="FutureChart"></div>
     </div>
   </div>
 </template>
@@ -188,7 +188,7 @@ export default {
     },
   },
   beforeDestroy() {
-    erd.removeAllListeners(document.getElementById('FutureChart'));
+    erd.uninstall(this.$refs.FutureChart);
   },
 };
 </script>

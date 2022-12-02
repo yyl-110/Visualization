@@ -5,7 +5,7 @@
       <Title :text="'项目类型流程数量及完成率'" />
     </div>
     <div class="chartWrap">
-      <div class="chartsdom" id="RateChart"></div>
+      <div class="chartsdom" id="RateChart" ref="RateChart"></div>
     </div>
   </div>
 </template>
@@ -253,7 +253,7 @@ export default {
     },
   },
   beforeDestroy() {
-    erd.removeAllListeners(document.getElementById('RateChart'));
+    erd.uninstall(this.$refs.RateChart);
   },
 };
 </script>

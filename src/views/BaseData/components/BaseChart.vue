@@ -181,7 +181,7 @@ export default {
     },
   },
   beforeDestroy() {
-    erd.removeAllListeners(document.getElementById('BaseChart'));
+    erd.uninstall(this.$refs.BaseChart);
   },
   components: { Title, DvBorder },
 };

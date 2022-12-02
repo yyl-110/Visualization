@@ -166,7 +166,7 @@ export default {
     },
   },
   beforeDestroy() {
-    erd.removeAllListeners(this.refs.PercentChart);
+    erd.uninstall(this.refs.PercentChart);
   },
 };
 </script>

@@ -165,7 +165,7 @@ export default {
     },
   },
   beforeDestroy() {
-    erd.removeAllListeners(document.getElementById('propleChart'));
+    erd.uninstall(this.$refs.propleChart);
   },
 };
 </script>
