@@ -53,6 +53,9 @@ export default {
     this.initChart();
   },
   methods: {
+    handelResize() {
+      this.myChart.resize();
+    },
     initOption() {
       let source = [];
       try {
@@ -158,13 +161,15 @@ export default {
       let myChart = this.$echarts.init(document.getElementById('propleChart'));
 
       myChart.setOption(this.option, true);
-      erd.listenTo(document.getElementById('propleChart'), () => {
-        debounce(myChart.resize(), 200);
-      });
+      erd.listenTo(
+        document.getElementById('propleChart'),
+        debounce(this.handelResize, 300),
+      );
       this.myChart = myChart;
     },
   },
   beforeDestroy() {
+    this.myChart.clear();
     erd.uninstall(this.$refs.propleChart);
   },
 };

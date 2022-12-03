@@ -17,20 +17,31 @@ export const fontSize = (res) => {
   return res * fontSize;
 };
 
-// fn 是需要防抖处理的函数
-// wait 是时间间隔
-export const debounce = (fn, wait = 50) => {
-  // 通过闭包缓存一个定时器 id
-  let timer = null;
-  // 将 debounce 处理结果当作函数返回
-  // 触发事件回调时执行这个返回函数
-  return function (...args) {
-    // 如果已经设定过定时器就清空上一次的定时器
-    if (timer) clearTimeout(timer);
-    // 开始设定一个新的定时器，定时器结束后执行传入的函数 fn
-    timer = setTimeout(() => {
-      fn.apply(this, args);
-    }, wait);
+/**
+ *
+ * @param fn {Function}   实际要执行的函数
+ * @param delay {Number}  延迟时间，也就是阈值，单位是毫秒（ms）
+ *
+ * @return {Function}     返回一个“去弹跳”了的函数
+ */
+export const debounce = function (fn, delay) {
+  // 定时器，用来 setTimeout
+  var timer;
+
+  // 返回一个函数，这个函数会在一个时间区间结束后的 delay 毫秒时执行 fn 函数
+  return function () {
+    // 保存函数调用时的上下文和参数，传递给 fn
+    var context = this;
+    var args = arguments;
+
+    // 每次这个返回的函数被调用，就清除定时器，以保证不执行 fn
+    clearTimeout(timer);
+
+    // 当返回的函数被最后一次调用后（也就是用户停止了某个连续的操作），
+    // 再过 delay 毫秒就执行 fn
+    timer = setTimeout(function () {
+      fn.apply(context, args);
+    }, delay);
   };
 };
 

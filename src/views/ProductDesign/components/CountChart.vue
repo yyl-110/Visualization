@@ -47,6 +47,9 @@ export default {
   },
 
   methods: {
+    handelResize() {
+      this.myChart.resize();
+    },
     initOption() {
       /* 组装数据 */
       const source = this.chartData.map((i) => {
@@ -210,13 +213,15 @@ export default {
           console.log(xIndex);
         }
       });
-      this.erd.listenTo(document.getElementById('CountChart'), () => {
-        debounce(myChart.resize(), 200);
-      });
+      this.erd.listenTo(
+        document.getElementById('CountChart'),
+        debounce(this.handelResize, 300),
+      );
       this.myChart = myChart;
     },
   },
   beforeDestroy() {
+    this.myChart.clear();
     this.erd.uninstall(this.$refs.CountChart);
   },
 };

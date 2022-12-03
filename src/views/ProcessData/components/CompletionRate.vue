@@ -76,6 +76,9 @@ export default {
   },
 
   methods: {
+    handelResize() {
+      this.myChart.resize();
+    },
     initOption() {
       const xLabel = this.completionData.map((i) => i.prjType);
       const data1 = this.completionData.map((i) => i.workflowFinishCount);
@@ -230,9 +233,10 @@ export default {
       let myChart = this.$echarts.init(document.getElementById('RateChart'));
 
       myChart.setOption(this.option, true);
-      erd.listenTo(document.getElementById('RateChart'), () => {
-        debounce(myChart.resize(), 200);
-      });
+      erd.listenTo(
+        document.getElementById('RateChart'),
+        debounce(this.handelResize, 300),
+      );
       this.myChart = myChart;
     },
     getProcessDataByCard() {
@@ -253,6 +257,7 @@ export default {
     },
   },
   beforeDestroy() {
+    this.myChart.clear();
     erd.uninstall(this.$refs.RateChart);
   },
 };

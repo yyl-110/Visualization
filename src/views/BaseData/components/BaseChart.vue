@@ -60,6 +60,9 @@ export default {
     this.initChart();
   },
   methods: {
+    handelResize() {
+      this.myChart.resize();
+    },
     initOption() {
       /* 组装数据 */
       const source = Object.keys(this.chartData).map((i) => {
@@ -174,13 +177,15 @@ export default {
       let myChart = this.$echarts.init(this.$refs.BaseChart);
       myChart.setOption(this.option, true);
 
-      erd.listenTo(document.getElementById('BaseChart'), () => {
-        debounce(myChart.resize(), 300);
-      });
+      erd.listenTo(
+        document.getElementById('BaseChart'),
+        debounce(this.handelResize, 300),
+      );
       this.myChart = myChart;
     },
   },
   beforeDestroy() {
+    this.myChart.clear();
     erd.uninstall(this.$refs.BaseChart);
   },
   components: { Title, DvBorder },

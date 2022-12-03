@@ -58,6 +58,9 @@ export default {
   },
 
   methods: {
+    handelResize() {
+      this.myChart.resize();
+    },
     initOption() {
       let xData = [];
       let drawing = [];
@@ -181,13 +184,15 @@ export default {
     initChart() {
       let myChart = this.$echarts.init(document.getElementById('FutureChart'));
       myChart.setOption(this.option, true);
-      erd.listenTo(document.getElementById('FutureChart'), () => {
-        debounce(myChart.resize(), 200);
-      });
+      erd.listenTo(
+        document.getElementById('FutureChart'),
+        debounce(this.handelResize, 300),
+      );
       this.myChart = myChart;
     },
   },
   beforeDestroy() {
+    this.myChart.clear();
     erd.uninstall(this.$refs.FutureChart);
   },
 };

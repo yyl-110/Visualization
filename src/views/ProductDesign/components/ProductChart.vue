@@ -50,6 +50,9 @@ export default {
   },
 
   methods: {
+    handelResize() {
+      this.myChart.resize();
+    },
     initOption() {
       /* 组装数据 */
       const source = this.productData.map((i) => {
@@ -161,13 +164,12 @@ export default {
         }
       });
 
-      erd.listenTo(document.getElementById('ProductChart'), () => {
-        debounce(myChart.resize(), 200);
-      });
+      erd.listenTo(document.getElementById('ProductChart'), debounce(this.handelResize, 300),);
       this.myChart = myChart;
     },
   },
   beforeDestroy() {
+    this.myChart.clear()
     erd.uninstall(this.$refs.ProductChart);
   },
 };

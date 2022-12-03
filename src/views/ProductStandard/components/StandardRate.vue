@@ -53,6 +53,9 @@ export default {
     this.initCharts();
   },
   methods: {
+    handelResize() {
+      this.myChart.resize();
+    },
     initOption() {
       let source = [];
       source = (this.chartData || []).map((i) => {
@@ -202,9 +205,10 @@ export default {
           }
         }
       });
-      erd.listenTo(document.getElementById('StandardChart'), () => {
-        debounce(myChart.resize(), 200);
-      });
+      erd.listenTo(
+        document.getElementById('StandardChart'),
+        debounce(this.handelResize, 300),
+      );
       this.myChart = myChart;
     },
     handelGetProductStandard() {
@@ -230,6 +234,7 @@ export default {
     },
   },
   beforeDestroy() {
+    this.myChart.clear();
     erd.uninstall(this.$refs.StandardChart);
   },
   components: { Title, DvBorder },

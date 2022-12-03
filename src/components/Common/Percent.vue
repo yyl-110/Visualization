@@ -55,6 +55,9 @@ export default {
   },
 
   methods: {
+    handelResize() {
+      this.myChart.resize();
+    },
     initOption() {
       let maxData = this.maxData;
       let greenBar = this.value;
@@ -154,14 +157,17 @@ export default {
       let myChart = this.$echarts.init(this.$refs.PercentChart);
 
       myChart.setOption(this.option, true);
-      erd.listenTo(this.$refs.PercentChart, () => {
-        debounce(myChart.resize(), 200);
-      });
+      erd.listenTo(this.$refs.PercentChart, debounce(this.handelResize, 300));
       this.myChart = myChart;
     },
   },
   beforeDestroy() {
-    // erd.uninstall(this.refs.PercentChart);
+    this.myChart.clear();
+    try {
+      erd.removeAllListeners(this.$refs.PercentChart);
+    } catch (error) {
+      console.log('error:', error);
+    }
   },
 };
 </script>
@@ -170,6 +176,10 @@ export default {
 .percentWrap {
   width: 100%;
   height: 100%;
+  .percentInnerWrap {
+    width: 100%;
+    height: 100%;
+  }
   .chartsdom {
     width: 100%;
     height: 100%;

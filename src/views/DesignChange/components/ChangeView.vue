@@ -50,6 +50,9 @@ export default {
     this.initChart();
   },
   methods: {
+    handelResize() {
+      this.myChart.resize();
+    },
     initOption() {
       const source = this.changeViewData.map((i) => {
         return [i.prjType, i.addECNCount];
@@ -148,9 +151,10 @@ export default {
     initChart() {
       let myChart = this.$echarts.init(document.getElementById('ChangeView'));
       myChart.setOption(this.option, true);
-      erd.listenTo(document.getElementById('ChangeView'), () => {
-        debounce(myChart.resize(), 200);
-      });
+      erd.listenTo(
+        document.getElementById('ChangeView'),
+        debounce(this.handelResize, 300),
+      );
       /* 点击柱形图 */
       myChart.getZr().on('click', (params) => {
         let pointInPixel = [params.offsetX, params.offsetY];
@@ -168,6 +172,7 @@ export default {
     },
   },
   beforeDestroy() {
+    this.myChart.clear();
     erd.uninstall(this.$refs.ChangeView);
   },
   components: { Title, DvBorder },

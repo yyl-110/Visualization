@@ -55,6 +55,9 @@ export default {
     this.initChart();
   },
   methods: {
+    handelResize() {
+      this.myChart.resize();
+    },
     initOption() {
       let source = [];
       try {
@@ -175,13 +178,12 @@ export default {
           console.log(xIndex);
         }
       });
-      erd.listenTo(this.$refs.universalChart, () => {
-        debounce(myChart.resize(), 200);
-      });
+      erd.listenTo(this.$refs.universalChart, debounce(this.handelResize, 300));
       this.myChart = myChart;
     },
   },
   beforeDestroy() {
+    this.myChart.clear();
     erd.uninstall(this.$refs.universalChart);
   },
 };
