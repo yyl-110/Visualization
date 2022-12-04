@@ -18,13 +18,13 @@ export default {
 </script>
 
 <style lang="scss">
-@import './styles/variables.scss';
-@import './styles/mixin.scss';
-@import './styles/index.scss';
-@import './styles/base.scss';
-@import './styles/transition.scss';
-@import './styles/element-ui.scss';
-@import './styles/sidebar.scss';
+@import '@/assets/styles/variables.scss';
+@import '@/assets/styles/mixin.scss';
+@import '@/assets/styles/index.scss';
+@import '@/assets/styles/base.scss';
+@import '@/assets/styles/transition.scss';
+@import '@/assets/styles/element-ui.scss';
+@import '@/assets/styles/sidebar.scss';
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

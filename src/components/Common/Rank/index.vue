@@ -8,7 +8,11 @@
           <thead>
             <tr height="35">
               <th width="50"><div class="text rankText">排名</div></th>
-              <th width="106"><div class="text name">项目类型</div></th>
+              <th width="106">
+                <div class="text name">
+                  {{ rowName ? rowName : '项目类型' }}
+                </div>
+              </th>
               <th :width="widthType === 'lang' ? 380 : 260">
                 <div class="progressWrap">
                   <div class="progress"></div>
@@ -54,8 +58,11 @@
                   </div>
                 </td>
                 <td width="80" valign="middle">
-                  <div class="text rate">
-                    {{ item[progressLabel] }}{{ isRate ? '%' : '' }}
+                  <div class="text rate" v-if="isRate">
+                    {{ item[progressLabel] | fomartNum }}
+                  </div>
+                  <div class="text rate" v-else>
+                    {{ item[progressLabel] }}
                   </div>
                 </td>
               </tr>
@@ -90,7 +97,7 @@ export default {
       default: '标题',
     },
     rankData: {
-      type: Array | Object,
+      type: Array,
       default: () => [],
     },
     isRate: {
@@ -105,6 +112,10 @@ export default {
     widthType: {
       type: String,
       default: 'lang',
+    },
+    rowName: {
+      type: String,
+      default: '',
     },
   },
   data() {
@@ -153,15 +164,17 @@ export default {
     },
     /* 普通文档贡献量排行榜 */
     formateCommon() {
-      const keys = Object.keys(this.rankData);
-      const arr = keys.map((i) => {
-        const item = {
-          prjType: i,
-        };
-        item[this.progressLabel] = this.rankData[i];
-        return item;
-      });
-      this.newRankData = arr;
+      try {
+        let arr = this.rankData.map((i) => {
+          let key = Object.keys(i)[0];
+          let item = { prjType: key };
+          item[this.progressLabel] = i[key];
+          return item;
+        });
+        this.newRankData = arr;
+      } catch (error) {
+        console.log('error:', error);
+      }
     },
   },
 };

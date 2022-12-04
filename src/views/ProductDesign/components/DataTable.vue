@@ -29,10 +29,10 @@
             <td class="border_l">{{ tableData.ranking }}</td>
             <td class="border_r">{{ tableData.addPartCount }}</td>
             <td class="border_n">{{ tableData.releasedPartCount }}</td>
-            <td class="border_l">{{ tableData.partReleasedRate }}</td>
+            <td class="border_l">{{ tableData.partReleasedRate | fomartNum }}</td>
             <td class="border_r">{{ tableData.addModelCount }}</td>
             <td class="border_n">{{ tableData.releasedModelCount }}</td>
-            <td class="border_l">{{ tableData.modelReleasedRate }}</td>
+            <td class="border_l">{{ tableData.modelReleasedRate | fomartNum }}</td>
             <td class="border_r">{{ tableData.addDrawingCount }}</td>
             <td class="border_n">{{ tableData.releasedDrawingCount }}</td>
             <td class="border_l">
@@ -104,6 +104,11 @@ export default {
 
   data() {
     return {};
+  },
+  computed:{
+    fomartNum(){
+
+    }
   },
   mounted() {},
 

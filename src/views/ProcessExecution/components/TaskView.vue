@@ -66,7 +66,23 @@ export default {
         { label: '所属科室', value: 'keshi' },
         { label: '任务节点名称', value: 'taskName' },
         { label: '任务承担者', value: 'taskOwner' },
-        { label: '任务耗时', value: 'hours' },
+        {
+          label: '任务耗时',
+          value: 'hours',
+          render: function (h, parmas) {
+            return [
+              h(
+                'span',
+                {
+                  style: {
+                    color: parmas.row.isOverdue === '是' ? 'red' : '',
+                  },
+                },
+                parmas.row.hours,
+              ),
+            ];
+          },
+        },
         { label: '任务是否完成', value: 'isCompleted' },
       ],
       page: 1,

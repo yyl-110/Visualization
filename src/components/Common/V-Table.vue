@@ -12,9 +12,27 @@
         align="center"
         :prop="item.value"
         :label="item.label"
-        v-for="item in column"
+        v-for="(item, index) in column"
         :key="item.value"
-      ></el-table-column>
+        :formatter="item.format"
+      >
+        <template slot-scope="scope">
+          <template v-if="item.render">
+            <render
+              :column="item"
+              :row="scope.row"
+              :render="item.render"
+              :index="scope.$index"
+            />
+          </template>
+          <template v-else-if="item.format">
+            <span>{{ item.format(scope.row[item.value]) }}</span>
+          </template>
+          <template v-else>
+            <span>{{ scope.row[item.value] }}</span>
+          </template>
+        </template>
+      </el-table-column>
     </el-table>
     <div class="pageWrap clearfix" v-if="showPage && tableData.length">
       <el-pagination
@@ -36,6 +54,28 @@
 <script>
 export default {
   name: 'VisualizationVTable',
+  components: {
+    render: {
+      functional: true,
+      props: {
+        row: Object,
+        render: Function,
+        index: Number,
+        column: {
+          type: Object,
+          default: null,
+        },
+      },
+      render: (h, opt) => {
+        const params = {
+          row: opt.props.row,
+          index: opt.props.index,
+        };
+        if (opt.props.column) params.column = opt.props.column;
+        return opt.props.render(h, params);
+      },
+    },
+  },
   props: {
     tableData: {
       type: Array,
@@ -84,16 +124,7 @@ export default {
     },
     column: {
       type: Array,
-      default: () => [
-        { label: '序号', value: 'id' },
-        { label: '产品名称', value: 'name' },
-        { label: '所属科室', value: 'department' },
-        { label: '总零件数', value: 'partsNum' },
-        { label: '借用件', value: 'jieyong' },
-        { label: '借用率', value: 'jyRate' },
-        { label: '标准件数', value: 'standard' },
-        { label: '标准件率', value: 'standardRate' },
-      ],
+      default: () => [],
     },
     page: {
       type: Number,

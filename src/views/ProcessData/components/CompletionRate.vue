@@ -81,7 +81,7 @@ export default {
     },
     initOption() {
       const xLabel = this.completionData.map((i) => i.prjType);
-      const data1 = this.completionData.map((i) => i.workflowFinishCount);
+      const data1 = this.completionData.map((i) => i.workflowAddCount);
       const data2 = this.completionData.map((i) =>
         parseInt(i.workflowFinishRate),
       );

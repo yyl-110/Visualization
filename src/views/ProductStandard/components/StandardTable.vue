@@ -33,9 +33,37 @@ export default {
         { label: '所属科室', value: 'keshi' },
         { label: '总零件数', value: 'totalPartCount' },
         { label: '借用件', value: 'borrowPartCount' },
-        { label: '借用率', value: 'borrowRate' },
+        {
+          label: '借用率',
+          value: 'borrowRate',
+          format(val) {
+            let value = val.borrowRate;
+            try {
+              let val = parseFloat(value || 0);
+              return val.toFixed(2) + '%';
+              // eslint-disable-next-line no-empty, no-unreachable
+            } catch (error) {
+              console.log(error);
+              return value;
+            }
+          },
+        },
         { label: '标准件数', value: 'borrowStandardPartCount' },
-        { label: '标准件率', value: 'standardRate' },
+        {
+          label: '标准件率',
+          value: 'standardRate',
+          format(val) {
+            let value = val.standardRate;
+            try {
+              let val = parseFloat(value || 0);
+              return val.toFixed(2) + '%';
+              // eslint-disable-next-line no-empty, no-unreachable
+            } catch (error) {
+              console.log(error);
+              return value;
+            }
+          },
+        },
       ],
     };
   },

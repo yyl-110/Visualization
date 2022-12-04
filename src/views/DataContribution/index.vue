@@ -14,6 +14,7 @@
           :rankData="rankData"
           :title="processType + '贡献量排行榜'"
           label="数量"
+          :rowName="type === 1 ? '项目类型' : '人员'"
           progressLabel="addCount"
           widthType="small"
         />

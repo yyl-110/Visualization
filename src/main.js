@@ -19,11 +19,11 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
-import {fontSize,chartResise} from './utils/tool';
-import echarts from 'echarts';
+import {fontSize, chartResise} from './utils/tool';
+import echarts from '@/utils/echarts.js';
 Vue.prototype.$echarts = echarts;
 
-if(process.env.NODE_ENV !== 'production') require('./mock/mockService');
+if (process.env.NODE_ENV !== 'production') require('./mock/mockService');
 
 import {
   Button,
@@ -65,6 +65,11 @@ Vue.use(Button)
   .use(Submenu)
   .use(Input)
   .use(ElScrollbar);
+// 过滤器
+import filters from '@/utils/filters';
+Object.keys(filters).forEach((key) => {
+  Vue.filter(key, filters[key]);
+});
 import '@/assets/js/flexible';
 
 Vue.prototype.$fontSize = fontSize;

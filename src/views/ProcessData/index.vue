@@ -14,6 +14,7 @@
           label="平均完成率"
           progressLabel="workflowFinishRate"
           widthType="small"
+          :isRate="true"
         />
       </div>
     </div>

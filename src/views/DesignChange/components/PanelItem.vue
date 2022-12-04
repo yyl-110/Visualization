@@ -33,7 +33,7 @@
         </div>
         <div class="chartItem" v-if="type === 1">
           <div class="chartTop clearfix">
-            <span class="floatL">当前新增</span>
+            <span class="floatL">完成率</span>
             <span class="floatR">{{ cardData.completeRate }}</span>
           </div>
           <div class="percentContainer">

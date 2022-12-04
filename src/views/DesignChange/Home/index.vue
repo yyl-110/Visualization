@@ -15,6 +15,7 @@
           label="平均完成率"
           progressLabel="ecnFinishedRate"
           widthType="small"
+          :isRate="true"
         />
       </div>
     </div>

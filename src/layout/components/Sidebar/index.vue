@@ -36,7 +36,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import SidebarItem from './SidebarItem';
-import variables from '@/styles/variables.scss';
+import variables from '@/assets/styles/variables.scss';
 import { DATA_STATISTICE, SERVICE_MONITORING } from '../../../utils/enum';
 
 export default {

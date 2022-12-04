@@ -31,6 +31,9 @@ module.exports = {
     },
   },
   chainWebpack: (config) => {
+    // 移除prefetch插件，避免加载多余的资源
+    config.plugins.delete('prefetch');
+    config.plugins.delete('preload');
     config.entry.app = ['babel-polyfill', './src/main.js'];
     config.module
       .rule('compile')
@@ -54,6 +57,7 @@ module.exports = {
       });
   },
   css: {
+    extract: true,
     loaderOptions: {
       // 给 sass-loader 传递选项
       sass: {},
