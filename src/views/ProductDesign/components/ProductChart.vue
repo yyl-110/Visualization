@@ -78,7 +78,7 @@ export default {
           axisLabel: {
             padding: [this.$fontSize(8), 0, 0, 0], //文字左右定位
             color: '#fff', //文字颜色
-            fontSize: this.$fontSize(12), //文字大小
+            fontSize: this.$fontSize(14), //文字大小
           },
           axisLine: {
             show: true,
@@ -93,7 +93,7 @@ export default {
           type: 'value',
           axisLabel: {
             color: '#fff', //文字颜色
-            fontSize: this.$fontSize(12), //文字大小
+            fontSize: this.$fontSize(14), //文字大小
           },
           axisLine: {
             show: false, //隐藏y轴
@@ -127,7 +127,7 @@ export default {
               show: true,
               color: '#FFFFFF',
               position: 'top',
-              fontSize: this.$fontSize(12),
+              fontSize: this.$fontSize(14),
             },
             itemStyle: {
               normal: {
@@ -148,7 +148,11 @@ export default {
       };
     },
     initChart() {
-      let myChart = this.$echarts.init(document.getElementById('ProductChart'));
+      let myChart = this.$echarts.init(
+        document.getElementById('ProductChart'),
+        null,
+        { renderer: 'svg' },
+      );
       myChart.setOption(this.option, true);
       /* 点击柱形图 */
       myChart.getZr().on('click', (params) => {
@@ -164,12 +168,15 @@ export default {
         }
       });
 
-      erd.listenTo(document.getElementById('ProductChart'), debounce(this.handelResize, 300),);
+      erd.listenTo(
+        document.getElementById('ProductChart'),
+        debounce(this.handelResize, 300),
+      );
       this.myChart = myChart;
     },
   },
   beforeDestroy() {
-    this.myChart.clear()
+    this.myChart.clear();
     erd.uninstall(this.$refs.ProductChart);
   },
 };

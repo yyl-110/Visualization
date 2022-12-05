@@ -172,6 +172,11 @@ export default {
     margin-left: 20px;
     float: left;
     /deep/ .el-select {
+      .is-disabled {
+        .el-input__inner {
+          color: #23cefd !important;
+        }
+      }
       input {
         background: #050a4e;
         box-shadow: inset 2px 5px 10px 0px rgba(11, 219, 247, 0.3),
@@ -184,6 +189,7 @@ export default {
         border-radius: 4px;
         border: 1px solid #23cefd;
         height: 32px !important;
+
         .el-input__inner {
           height: 100% !important;
         }

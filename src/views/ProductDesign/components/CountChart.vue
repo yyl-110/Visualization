@@ -9,7 +9,7 @@
 
 <script>
 import elementResizeDetectorMaker from 'element-resize-detector';
-import { debounce, fontSize } from '../../../utils/tool';
+import { debounce } from '../../../utils/tool';
 import DvBorder from '../../../components/Common/DvBorder.vue';
 export default {
   components: { DvBorder },
@@ -65,7 +65,7 @@ export default {
           icon: 'circle',
           textStyle: {
             fontSize: this.$fontSize(14), //字体大小
-            color: 'rgba(255,255,255,0.5)', //字体颜色
+            color: '#fff', //字体颜色
           },
         },
         tooltip: {
@@ -88,7 +88,7 @@ export default {
           axisLabel: {
             padding: [this.$fontSize(8), 0, 0, 0], //文字左右定位
             color: '#fff', //文字颜色
-            fontSize: this.$fontSize(12), //文字大小
+            fontSize: this.$fontSize(14), //文字大小
             lineHeight: this.$fontSize(22),
           },
           axisLine: {
@@ -112,7 +112,7 @@ export default {
           },
           axisLabel: {
             color: '#fff', //文字颜色
-            fontSize: this.$fontSize(12), //文字大小
+            fontSize: this.$fontSize(14), //文字大小
           },
           nameGap: this.$fontSize(10), // x轴name与横坐标轴线的间距
           name: '数量',
@@ -147,7 +147,7 @@ export default {
               show: true,
               color: '#FFFFFF',
               position: 'top',
-              fontSize: this.$fontSize(12),
+              fontSize: this.$fontSize(14),
             },
           },
           {
@@ -165,7 +165,7 @@ export default {
               show: true,
               color: '#FFFFFF',
               position: 'top',
-              fontSize: this.$fontSize(12),
+              fontSize: this.$fontSize(14),
             },
           },
           {
@@ -183,7 +183,7 @@ export default {
               show: true,
               color: '#FFFFFF',
               position: 'top',
-              fontSize: this.$fontSize(12),
+              fontSize: this.$fontSize(14),
             },
           },
         ],
@@ -197,7 +197,11 @@ export default {
       };
     },
     initCharts() {
-      let myChart = this.$echarts.init(document.getElementById('CountChart'));
+      let myChart = this.$echarts.init(
+        document.getElementById('CountChart'),
+        null,
+        { renderer: 'svg' },
+      );
       myChart.setOption(this.option, true);
 
       /* 点击柱形图 */

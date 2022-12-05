@@ -113,7 +113,7 @@ export default {
             axisLabel: {
               padding: [this.$fontSize(8), 0, 0, 0], //文字左右定位
               color: '#fff', //文字颜色
-              fontSize: this.$fontSize(12), //文字大小
+              fontSize: this.$fontSize(14), //文字大小
               interval: 0, //使x轴文字显示全
             },
             data: xLabel,
@@ -134,11 +134,10 @@ export default {
             axisLine: {
               show: false, //隐藏y轴
             },
-            interval: 50,
             axisLabel: {
               formatter: '{value}',
               color: '#fff', //文字颜色
-              fontSize: this.$fontSize(12), //文字大小
+              fontSize: this.$fontSize(14), //文字大小
             },
             splitLine: {
               lineStyle: {
@@ -168,7 +167,7 @@ export default {
             axisLabel: {
               formatter: '{value}',
               color: '#fff', //文字颜色
-              fontSize: this.$fontSize(12), //文字大小
+              fontSize: this.$fontSize(14), //文字大小
             },
           },
         ],
@@ -210,7 +209,7 @@ export default {
               show: true,
               color: '#FFFFFF',
               position: 'top',
-              fontSize: this.$fontSize(12),
+              fontSize: this.$fontSize(14),
             },
             tooltip: {
               valueFormatter: function (value) {
@@ -230,7 +229,11 @@ export default {
       };
     },
     initChart() {
-      let myChart = this.$echarts.init(document.getElementById('RateChart'));
+      let myChart = this.$echarts.init(
+        document.getElementById('RateChart'),
+        null,
+        { renderer: 'svg' },
+      );
 
       myChart.setOption(this.option, true);
       erd.listenTo(

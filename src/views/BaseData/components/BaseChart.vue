@@ -86,7 +86,7 @@ export default {
           data: [this.chartTitle],
           textStyle: {
             fontSize: this.$fontSize(14), //字体大小
-            color: 'rgba(255,255,255,0.5)', //字体颜色
+            color: '#fff', //字体颜色
           },
         },
         dataset: {
@@ -98,7 +98,7 @@ export default {
             padding: [0, 0, 0, 0],
             margin: this.$fontSize(16),
             rotate: 45, // 调整数值改变倾斜的幅度（范围-90到90）
-            fontSize: this.$fontSize(12),
+            fontSize: this.$fontSize(14),
             color: '#fff',
           },
           nameTextStyle: {
@@ -174,7 +174,9 @@ export default {
     },
     initChart() {
       if (isEmptyObject(this.chartData)) return;
-      let myChart = this.$echarts.init(this.$refs.BaseChart);
+      let myChart = this.$echarts.init(this.$refs.BaseChart, null, {
+        renderer: 'svg',
+      });
       myChart.setOption(this.option, true);
 
       erd.listenTo(

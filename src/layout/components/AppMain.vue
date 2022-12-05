@@ -1,9 +1,10 @@
 <template>
   <section class="app-main">
     <div class="scroll">
-      <transition name="fade-transform" mode="out-in">
+      <transition name="fade-transform" mode="out-in" v-if="$isIE">
         <router-view :key="key" />
       </transition>
+      <router-view :key="key" v-else />
     </div>
   </section>
 </template>
@@ -16,8 +17,7 @@ export default {
       return this.$route.path;
     },
   },
-  created() {
-  },
+  created() {},
 };
 </script>
 

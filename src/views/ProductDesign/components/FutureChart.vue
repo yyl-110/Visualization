@@ -95,7 +95,7 @@ export default {
           icon: 'circle',
           data: ['图纸数量', '模型数量', '零部件数量'],
           textStyle: {
-            fontSize: this.$fontSize(12), //字体大小
+            fontSize: this.$fontSize(14), //字体大小
             color: '#fff', //字体颜色
           },
         },
@@ -107,11 +107,11 @@ export default {
           },
           axisLabel: {
             color: '#fff', //文字颜色
-            fontSize: this.$fontSize(12), //文字大小
+            fontSize: this.$fontSize(14), //文字大小
           },
           nameTextStyle: {
             color: '#fff',
-            fontSize: this.$fontSize(12),
+            fontSize: this.$fontSize(14),
           },
         },
         yAxis: {
@@ -128,7 +128,7 @@ export default {
           },
           axisLabel: {
             color: '#fff', //文字颜色
-            fontSize: this.$fontSize(12), //文字大小
+            fontSize: this.$fontSize(14), //文字大小
           },
           nameTextStyle: {
             padding: [0, 0, this.$fontSize(10), 0],
@@ -182,7 +182,11 @@ export default {
       };
     },
     initChart() {
-      let myChart = this.$echarts.init(document.getElementById('FutureChart'));
+      let myChart = this.$echarts.init(
+        document.getElementById('FutureChart'),
+        null,
+        { renderer: 'svg' },
+      );
       myChart.setOption(this.option, true);
       erd.listenTo(
         document.getElementById('FutureChart'),

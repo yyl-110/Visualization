@@ -19,11 +19,12 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
-import {fontSize, chartResise} from './utils/tool';
+import {fontSize, IEVersion} from './utils/tool';
 import echarts from '@/utils/echarts.js';
 Vue.prototype.$echarts = echarts;
+Vue.prototype.$isIE = IEVersion();
 
-if (process.env.NODE_ENV !== 'production') require('./mock/mockService');
+ require('./mock/mockService');
 
 import {
   Button,
@@ -73,7 +74,6 @@ Object.keys(filters).forEach((key) => {
 import '@/assets/js/flexible';
 
 Vue.prototype.$fontSize = fontSize;
-Vue.prototype.$chartResise = chartResise;
 
 Vue.config.productionTip = false;
 

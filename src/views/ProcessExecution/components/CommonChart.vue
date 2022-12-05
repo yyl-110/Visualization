@@ -86,7 +86,7 @@ export default {
           axisLabel: {
             padding: [this.$fontSize(8), 0, 0, 0], //文字左右定位
             color: '#fff', //文字颜色
-            fontSize: this.$fontSize(12), //文字大小
+            fontSize: this.$fontSize(14), //文字大小
             interval: 0, //使x轴文字显示全
           },
           nameTextStyle: {
@@ -107,7 +107,7 @@ export default {
           type: 'value',
           axisLabel: {
             color: '#fff', //文字颜色
-            fontSize: this.$fontSize(12), //文字大小
+            fontSize: this.$fontSize(14), //文字大小
           },
           axisLine: {
             show: false, //隐藏y轴
@@ -141,7 +141,7 @@ export default {
               show: true,
               color: '#FFFFFF',
               position: 'top',
-              fontSize: this.$fontSize(12),
+              fontSize: this.$fontSize(14),
             },
             itemStyle: {
               normal: {
@@ -162,7 +162,9 @@ export default {
       };
     },
     initChart() {
-      let myChart = this.$echarts.init(this.$refs.universalChart);
+      let myChart = this.$echarts.init(this.$refs.universalChart, null, {
+        renderer: 'svg',
+      });
 
       myChart.setOption(this.option, true);
       /* 点击柱形图 */

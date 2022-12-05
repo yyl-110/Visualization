@@ -17,9 +17,6 @@
 
 <script>
 import { Navbar, Sidebar, AppMain } from './components';
-import ResizeMixin from './mixin/ResizeHandler';
-
-import { screenSize } from '@/assets/js/utils';
 
 export default {
   name: 'Layout',
@@ -28,7 +25,6 @@ export default {
     Sidebar,
     AppMain,
   },
-  mixins: [ResizeMixin],
   mounted() {},
   computed: {
     sidebar() {

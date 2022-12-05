@@ -8,12 +8,12 @@
           <thead>
             <tr height="35">
               <th width="50"><div class="text rankText">排名</div></th>
-              <th width="106">
+              <th width="112">
                 <div class="text name">
                   {{ rowName ? rowName : '项目类型' }}
                 </div>
               </th>
-              <th :width="widthType === 'lang' ? 380 : 260">
+              <th :class="[widthType === 'lang' ? 'maxWidth' : 'minWidth']">
                 <div class="progressWrap">
                   <div class="progress"></div>
                 </div>
@@ -41,10 +41,10 @@
                     </div>
                   </div>
                 </td>
-                <td width="106">
+                <td width="112">
                   <div class="text name">{{ item.prjType }}</div>
                 </td>
-                <td :width="widthType === 'lang' ? 380 : 260">
+                <td :class="[widthType === 'lang' ? 'maxWidth' : 'minWidth']">
                   <div class="progressWrap">
                     <div class="progress">
                       <el-progress
@@ -191,7 +191,7 @@ export default {
   position: relative;
   .tableWrapper {
     width: 100%;
-    height: calc(100% - 36px);
+    height: calc(100% - 42px);
     .innerWrap {
       width: 100%;
       height: 100%;
@@ -213,8 +213,12 @@ export default {
     height: 100%;
     padding: 18px 0 0 30px;
   }
+  .progressWrap {
+    width: 100%;
+    height: 100%;
+  }
   .progress {
-    width: 86%;
+    width: 84%;
     margin: 0 auto;
   }
   .name {
@@ -227,6 +231,7 @@ export default {
     // height: 100%;
     // margin-top: 8px;
     border-collapse: collapse;
+
     thead {
       width: 100%;
     }
@@ -235,6 +240,9 @@ export default {
       height: 100%;
       // overflow: auto;
       display: block;
+      .rate {
+        text-indent: 20px;
+      }
       // .progressWrap {
       //   height: 50px;
       // }
@@ -252,6 +260,12 @@ export default {
       table-layout: fixed;
 
       display: table;
+      .minWidth {
+        width: 360px !important;
+      }
+      .maxWidth {
+        width: 400px !important;
+      }
       .rankNum {
         // height: 50px;
         width: 24px;
@@ -267,14 +281,17 @@ export default {
           text-align: center;
           border: 1px solid rgba(8, 58, 190, 1);
           &.one {
+            background-color: #f7bcf8;
             background: linear-gradient(180deg, #f7bcf8 0%, #c64cc9 100%);
             border: none;
           }
           &.two {
+            background-color: #ffc688;
             background: linear-gradient(180deg, #ffc688 0%, #ff9f13 100%);
             border: none;
           }
           &.three {
+            background-color: #0497e7;
             background: linear-gradient(180deg, #0497e7 0%, #0948cc 100%);
             border: none;
           }

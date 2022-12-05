@@ -71,7 +71,7 @@ export default {
           icon: 'circle',
           textStyle: {
             fontSize: this.$fontSize(14),
-            color: 'rgba(255,255,255,0.5)', //字体颜色
+            color: '#fff', //字体颜色
           },
         },
         tooltip: {
@@ -94,7 +94,7 @@ export default {
           axisLabel: {
             padding: [this.$fontSize(8), 0, 0, 0],
             color: '#fff',
-            fontSize: this.$fontSize(12),
+            fontSize: this.$fontSize(14),
             interval: 0, //使x轴文字显示全
           },
           axisLine: {
@@ -118,7 +118,7 @@ export default {
           },
           axisLabel: {
             color: '#fff',
-            fontSize: this.$fontSize(12),
+            fontSize: this.$fontSize(14),
           },
           nameGap: 10,
           name: '数量',
@@ -187,6 +187,10 @@ export default {
     initCharts() {
       let myChart = this.$echarts.init(
         document.getElementById('StandardChart'),
+        null,
+        {
+          renderer: 'svg',
+        },
       );
       myChart.setOption(this.option, true);
       myChart.getZr().on('click', (params) => {

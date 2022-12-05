@@ -3,12 +3,9 @@
     <dv-border />
     <div class="partsWrap">
       <div class="options">
-        <el-form :inline="true" :model="formInline" class="demo-form-inline">
+        <el-form :inline="true" class="demo-form-inline">
           <el-form-item label="零件类型:" style="margin-right: 113px">
-            <el-select
-              v-model="formInline.partsType"
-              placeholder="请选择零件类型"
-            >
+            <el-select v-model="partsType" placeholder="请选择零件类型">
               <el-option label="借用件" value="借用件"></el-option>
               <el-option label="标准件" value="标准件"></el-option>
             </el-select>
@@ -16,7 +13,7 @@
           <el-form-item label="大于借用次数:">
             <el-input
               type="number"
-              v-model="formInline.num"
+              v-model.number="num"
               placeholder="请输入借用次数"
             ></el-input>
           </el-form-item>
@@ -61,10 +58,8 @@ export default {
   name: 'PartsReuse',
   data() {
     return {
-      formInline: {
-        partsType: '',
-        num: '',
-      },
+      partsType: '',
+      num: '',
       tableData: [],
       column: [
         { label: '序号', value: 'id', width: '100' },
@@ -79,7 +74,13 @@ export default {
       showPage: false,
     };
   },
-  watch: {},
+  watch: {
+    num(val) {
+      if (val === 0) {
+        this.num = '';
+      }
+    },
+  },
 
   created() {
     // this.getPartsReuse();
@@ -89,11 +90,11 @@ export default {
 
   methods: {
     onSubmit() {
-      if (!this.formInline.partsType) {
+      if (!this.partsType) {
         Message.error('请选择零件类型');
         return;
       }
-      if (!this.formInline.num) {
+      if (!this.num) {
         Message.error('请填写借用次数');
         return;
       }
@@ -104,8 +105,8 @@ export default {
       getPartsReuse({
         page: this.page,
         count: this.count,
-        reuseTime: this.formInline.num,
-        partType: this.formInline.partsType,
+        reuseTime: this.num,
+        partType: this.partsType,
       })
         .then((res) => {
           if (res.success) {
@@ -125,7 +126,8 @@ export default {
      * @return {*}
      */
     resetForm() {
-      this.formInline = { partsType: '', num: '' };
+      this.partsType = '';
+      this.num = '';
       this.page = 1;
       this.count = 10;
       this.total = 100;

@@ -55,22 +55,22 @@ export const IEVersion = () => {
     reIE.test(userAgent);
     const fIEVersion = parseFloat(RegExp['$1']);
     if (fIEVersion == 7) {
-      return 7;
+      return true;
     } else if (fIEVersion == 8) {
-      return 8;
+      return true;
     } else if (fIEVersion == 9) {
-      return 9;
+      return true;
     } else if (fIEVersion == 10) {
-      return 10;
+      return true;
     } else {
-      return 6; //IE版本<=7
+      return true; //IE版本<=7
     }
   } else if (isEdge) {
-    return 'edge'; //edge
+    return true; //edge
   } else if (isIE11) {
-    return 11; //IE11
+    return true; //IE11
   } else {
-    return -1; //不是ie浏览器
+    return false; //不是ie浏览器
   }
 };
 
