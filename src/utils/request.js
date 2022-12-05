@@ -5,7 +5,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 // create an axios instance
 // process.env.VUE_APP_BASE_API
 const service = axios.create({
-  baseURL: process.env.NODE_ENV === 'production' ? '' : '', // url = base url + request url
+  baseURL: process.env.NODE_ENV === 'production' ? process.env.VUE_APP_BASE_API : '', // url = base url + request url
   // withCredentials: true, // send cookies when cross-domain requests
   timeout: 10000, // request timeout
 });

@@ -24,7 +24,7 @@ import echarts from '@/utils/echarts.js';
 Vue.prototype.$echarts = echarts;
 Vue.prototype.$isIE = IEVersion();
 
- require('./mock/mockService');
+if (process.env.NODE_ENV !== 'production') require('./mock/mockService');
 
 import {
   Button,
