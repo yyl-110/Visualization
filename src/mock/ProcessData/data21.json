@@ -1,51 +1,51 @@
 {
   "区域二十一": [{
-      "workflowAddCount": 100,
+      "workflowAddCount": 0,
       "prjType": "集团项目",
-      "workflowFinishRate": "0.00%",
+      "workflowFinishRate": "0%",
       "workflowFinishCount": 0,
       "ranking": ""
     },
     {
-      "workflowAddCount": 10,
+      "workflowAddCount": 0,
       "prjType": "公安武警项目",
       "workflowFinishRate": "0%",
       "workflowFinishCount": 0,
       "ranking": ""
     },
     {
-      "workflowAddCount": 20,
+      "workflowAddCount": 0,
       "prjType": "基础科研类",
       "workflowFinishRate": "0%",
       "workflowFinishCount": 0,
       "ranking": ""
     },
     {
-      "workflowAddCount": 9,
+      "workflowAddCount": 0,
       "prjType": "试验室基础项目",
-      "workflowFinishRate": "100.00%",
-      "workflowFinishCount": 10,
+      "workflowFinishRate": "0",
+      "workflowFinishCount": 0,
       "ranking": ""
     },
     {
-      "workflowAddCount": 2,
+      "workflowAddCount": 0,
       "prjType": "技术基础类",
-      "workflowFinishRate": "10%",
+      "workflowFinishRate": "0",
       "workflowFinishCount": 0,
       "ranking": ""
     },
     {
       "workflowAddCount": 0,
       "prjType": "其他项目",
-      "workflowFinishRate": "50%",
+      "workflowFinishRate": "0",
       "workflowFinishCount": 0,
       "ranking": ""
     },
     {
-      "workflowAddCount": 30,
+      "workflowAddCount": 0,
       "prjType": "军贸项目",
-      "workflowFinishRate": "0.00%",
-      "workflowFinishCount": 1,
+      "workflowFinishRate": "00%",
+      "workflowFinishCount": 0,
       "ranking": ""
     },
     {
@@ -56,10 +56,10 @@
       "ranking": ""
     },
     {
-      "workflowAddCount": 20,
+      "workflowAddCount": 0,
       "prjType": "型号项目",
       "workflowFinishRate": "0%",
-      "workflowFinishCount": 2,
+      "workflowFinishCount": 0,
       "ranking": ""
     },
     {

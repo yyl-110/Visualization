@@ -81,7 +81,7 @@ export default {
           axisLabel: {
             padding: [this.$fontSize(8), 0, 0, 0], //文字左右定位
             color: '#fff', //文字颜色
-            fontSize: this.$fontSize(14), //文字大小
+            fontSize: this.$fontSize(12), //文字大小
             interval: 0, //使x轴文字显示全
           },
           nameTextStyle: {

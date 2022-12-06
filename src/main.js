@@ -20,7 +20,8 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import {fontSize, IEVersion} from './utils/tool';
-import echarts from '@/utils/echarts.js';
+// import echarts from '@/utils/echarts.js';
+import echarts from '@/utils/echarts.min.js';
 Vue.prototype.$echarts = echarts;
 Vue.prototype.$isIE = IEVersion();
 

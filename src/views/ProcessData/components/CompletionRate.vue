@@ -85,6 +85,10 @@ export default {
       const data2 = this.completionData.map((i) =>
         parseInt(i.workflowFinishRate),
       );
+      const max1 = data1.sort((a, b) => b - a)[0];
+      console.log('max1:', max1);
+      const max2 = data2.sort((a, b) => b - a)[0];
+      console.log('max2:', max2);
       this.option = {
         animation: !this.$isIE,
         tooltip: {
@@ -114,7 +118,7 @@ export default {
             axisLabel: {
               padding: [this.$fontSize(8), 0, 0, 0], //文字左右定位
               color: '#fff', //文字颜色
-              fontSize: this.$fontSize(14), //文字大小
+              fontSize: this.$fontSize(12), //文字大小
               interval: 0, //使x轴文字显示全
             },
             data: xLabel,
@@ -125,6 +129,9 @@ export default {
         ],
         yAxis: [
           {
+            min: 0,
+            max: max1,
+            interval: (max1) / 5,
             type: 'value',
             name: '数量',
             nameTextStyle: {
@@ -149,8 +156,11 @@ export default {
             },
           },
           {
+            min: 0,
+            max: max2,
             type: 'value',
             name: '流程完成率%',
+            interval: (max2) / 5,
             axisLine: {
               show: false, //隐藏y轴
             },
@@ -223,7 +233,7 @@ export default {
         grid: {
           // 让图表占满容器
           top: this.$fontSize(101),
-          left: this.$fontSize(42),
+          left: this.$fontSize(60),
           right: this.$fontSize(70),
           bottom: this.$fontSize(80),
         },
