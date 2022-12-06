@@ -59,6 +59,7 @@ export default {
         return [i.prjType, i.addCount];
       });
       this.option = {
+        animation: !this.$isIE,
         tooltip: {
           trigger: 'axis',
           showDelay: 0, // 显示延迟，添加显示延迟可以避免频繁切换，单位ms

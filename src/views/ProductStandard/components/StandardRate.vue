@@ -62,6 +62,7 @@ export default {
         return [i.prjType, i.borrowStandardPartCount, i.borrowPartCount];
       });
       this.option = {
+        animation: !this.$isIE,
         legend: {
           top: '-6',
           right: 0,

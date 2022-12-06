@@ -17,12 +17,12 @@
         <common-chart
           :chartData="commonChartData"
           @chartClick="chartClick"
-          :title="wfType1 + '超期任务排行'"
+          :title="wfType1 + '超期流程量'"
         />
       </div>
       <div class="rank">
         <Rank
-          :title="wfType1 + '超期任务排行'"
+          :title="wfType1 + '超期流程排行榜'"
           :rankData="rankData"
           label="流程超期数量"
           progressLabel="workflowOverdueCount"

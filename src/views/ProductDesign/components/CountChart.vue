@@ -74,6 +74,7 @@ export default {
         dataset: {
           source: [['', '零部件数量', '模型数量', '图纸数量'], ...source],
         },
+        animation: !this.$isIE,
         xAxis: {
           type: 'category',
           name: '项目类型',

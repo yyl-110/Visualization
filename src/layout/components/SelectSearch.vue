@@ -20,7 +20,6 @@
         v-model="middleData"
         placeholder="请选择"
         size="mini"
-        :disabled="selectType === 4"
         @change="handleChangeTime"
       >
         <el-option

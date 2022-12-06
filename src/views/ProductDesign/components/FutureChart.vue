@@ -80,6 +80,7 @@ export default {
       }
 
       this.option = {
+        animation: !this.$isIE,
         tooltip: {
           trigger: 'axis',
           axisPointer: {

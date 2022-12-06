@@ -69,6 +69,7 @@ export default {
         return [i, this.chartData[i]];
       });
       this.option = {
+        animation: !this.$isIE,
         tooltip: {
           trigger: 'axis',
           showDelay: 0,

@@ -86,6 +86,7 @@ export default {
         parseInt(i.workflowFinishRate),
       );
       this.option = {
+        animation: !this.$isIE,
         tooltip: {
           trigger: 'axis',
           axisPointer: {

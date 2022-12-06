@@ -66,6 +66,7 @@ export default {
       let gridRight = '0';
 
       this.option = {
+        animation: !this.$isIE,
         tooltip: {},
         xAxis: {
           max: maxData,

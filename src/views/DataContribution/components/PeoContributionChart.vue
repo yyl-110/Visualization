@@ -67,6 +67,7 @@ export default {
         console.log('error:', error);
       }
       this.option = {
+        animation: !this.$isIE,
         tooltip: {
           trigger: 'axis',
           showDelay: 0, // 显示延迟，添加显示延迟可以避免频繁切换，单位ms

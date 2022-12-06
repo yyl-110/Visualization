@@ -13,6 +13,7 @@
           <el-form-item label="大于借用次数:">
             <el-input
               type="number"
+              @oninput="value=value.replace(/[^d]/g,'')"
               v-model.number="num"
               placeholder="请输入借用次数"
             ></el-input>
