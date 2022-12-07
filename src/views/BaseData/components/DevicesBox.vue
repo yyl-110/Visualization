@@ -13,6 +13,7 @@
             :value="[devicesData.AddStandardParts || 0]"
             :color="'#00DFFB'"
             :bgColor="'rgba(0, 223, 251, 0.3)'"
+            key="1"
           />
         </div>
       </div>
@@ -29,6 +30,7 @@
             :value="[devicesData.AddComponentsParts || 0]"
             :color="'#009AFF'"
             :bgColor="'rgba(0, 154, 255, 0.3)'"
+            key="2"
           />
         </div>
       </div>

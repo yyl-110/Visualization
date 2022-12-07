@@ -13,6 +13,8 @@ import elementResizeDetectorMaker from 'element-resize-detector';
 import { debounce } from '../../../utils/tool';
 /* 窗口变化监听 */
 let erd = elementResizeDetectorMaker();
+let myChart = null;
+let option = {};
 
 export default {
   components: { DvBorder },
@@ -24,17 +26,14 @@ export default {
     },
   },
   data() {
-    return {
-      option: {},
-      myChart: null,
-    };
+    return {};
   },
   watch: {
     productData: {
       handler() {
         this.initOption();
-        if (this.myChart) {
-          this.myChart.setOption(this.option, true);
+        if (myChart) {
+          myChart.setOption(option, true);
         } else {
           this.$nextTick(() => {
             this.initChart();
@@ -51,14 +50,14 @@ export default {
 
   methods: {
     handelResize() {
-      this.myChart.resize();
+      myChart.resize();
     },
     initOption() {
       /* 组装数据 */
       const source = this.productData.map((i) => {
         return [i.prjType, i.addCount];
       });
-      this.option = {
+      option = {
         animation: !this.$isIE,
         tooltip: {
           trigger: 'axis',
@@ -149,12 +148,12 @@ export default {
       };
     },
     initChart() {
-      let myChart = this.$echarts.init(
+      myChart = this.$echarts.init(
         document.getElementById('ProductChart'),
         null,
         { renderer: 'svg' },
       );
-      myChart.setOption(this.option, true);
+      myChart.setOption(option, true);
       /* 点击柱形图 */
       myChart.getZr().on('click', (params) => {
         let pointInPixel = [params.offsetX, params.offsetY];
@@ -173,11 +172,10 @@ export default {
         document.getElementById('ProductChart'),
         debounce(this.handelResize, 300),
       );
-      this.myChart = myChart;
     },
   },
   beforeDestroy() {
-    this.myChart.clear();
+    if (myChart) myChart.clear();
     erd.uninstall(this.$refs.ProductChart);
   },
 };

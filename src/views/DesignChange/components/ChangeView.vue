@@ -16,6 +16,8 @@ import elementResizeDetectorMaker from 'element-resize-detector';
 import { debounce } from '../../../utils/tool';
 import DvBorder from '../../../components/Common/DvBorder.vue';
 let erd = elementResizeDetectorMaker();
+let myChart = null;
+let option = {};
 
 export default {
   name: 'VueDataVChangeView',
@@ -26,18 +28,15 @@ export default {
     },
   },
   data() {
-    return {
-      myChart: null,
-      option: {},
-    };
+    return {};
   },
   watch: {
     changeViewData: {
       deep: true,
       handler() {
         this.initOption();
-        if (this.myChart) {
-          this.myChart.setOption(this.option, true);
+        if (myChart) {
+          myChart.setOption(option, true);
         } else {
           this.initChart();
         }
@@ -51,13 +50,13 @@ export default {
   },
   methods: {
     handelResize() {
-      this.myChart.resize();
+      myChart.resize();
     },
     initOption() {
       const source = this.changeViewData.map((i) => {
         return [i.prjType, i.addECNCount];
       });
-      this.option = {
+      option = {
         animation: !this.$isIE,
         tooltip: {
           trigger: 'axis',
@@ -150,12 +149,12 @@ export default {
       };
     },
     initChart() {
-      let myChart = this.$echarts.init(
+      myChart = this.$echarts.init(
         document.getElementById('ChangeView'),
         null,
         { renderer: 'svg' },
       );
-      myChart.setOption(this.option, true);
+      myChart.setOption(option, true);
       erd.listenTo(
         document.getElementById('ChangeView'),
         debounce(this.handelResize, 300),
@@ -173,11 +172,10 @@ export default {
           console.log(xIndex);
         }
       });
-      this.myChart = myChart;
     },
   },
   beforeDestroy() {
-    this.myChart.clear();
+    if (myChart) myChart.clear();
     erd.uninstall(this.$refs.ChangeView);
   },
   components: { Title, DvBorder },

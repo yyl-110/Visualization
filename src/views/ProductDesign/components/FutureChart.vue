@@ -17,6 +17,8 @@ import { debounce } from '../../../utils/tool';
 import DvBorder from '../../../components/Common/DvBorder.vue';
 /* 窗口变化监听 */
 let erd = elementResizeDetectorMaker();
+let myChart = null;
+let option = {};
 
 export default {
   name: 'FutureChart',
@@ -34,8 +36,8 @@ export default {
     chartData: {
       handler() {
         this.initOption();
-        if (this.myChart) {
-          this.myChart.setOption(this.option, true);
+        if (myChart) {
+          myChart.setOption(option, true);
         } else {
           this.$nextTick(() => {
             this.initChart();
@@ -59,7 +61,7 @@ export default {
 
   methods: {
     handelResize() {
-      this.myChart.resize();
+      myChart.resize();
     },
     initOption() {
       let xData = [];
@@ -79,7 +81,7 @@ export default {
         throw new Error(error);
       }
 
-      this.option = {
+      option = {
         animation: !this.$isIE,
         tooltip: {
           trigger: 'axis',
@@ -183,21 +185,20 @@ export default {
       };
     },
     initChart() {
-      let myChart = this.$echarts.init(
+      myChart = this.$echarts.init(
         document.getElementById('FutureChart'),
         null,
         { renderer: 'svg' },
       );
-      myChart.setOption(this.option, true);
+      myChart.setOption(option, true);
       erd.listenTo(
         document.getElementById('FutureChart'),
         debounce(this.handelResize, 300),
       );
-      this.myChart = myChart;
     },
   },
   beforeDestroy() {
-    this.myChart.clear();
+    if (myChart) myChart.clear();
     erd.uninstall(this.$refs.FutureChart);
   },
 };

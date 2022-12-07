@@ -11,6 +11,9 @@
 import elementResizeDetectorMaker from 'element-resize-detector';
 import { debounce } from '../../../utils/tool';
 import DvBorder from '../../../components/Common/DvBorder.vue';
+let erd = elementResizeDetectorMaker();
+let myChart = null;
+let option = {};
 export default {
   components: { DvBorder },
   name: 'CountChart',
@@ -24,8 +27,8 @@ export default {
     chartData: {
       handler() {
         this.initOption();
-        if (this.myChart) {
-          this.myChart.setOption(this.option, true);
+        if (myChart) {
+          myChart.setOption(option, true);
         } else {
           this.initCharts();
         }
@@ -34,28 +37,23 @@ export default {
     },
   },
   data() {
-    return {
-      option: {},
-      myChart: null,
-      erd: null,
-    };
+    return {};
   },
   mounted() {
-    this.erd = elementResizeDetectorMaker();
     this.initOption();
     this.initCharts();
   },
 
   methods: {
     handelResize() {
-      this.myChart.resize();
+      myChart.resize();
     },
     initOption() {
       /* 组装数据 */
       const source = this.chartData.map((i) => {
         return [i.prjType, i.addPartCount, i.addModelCount, i.addDrawingCount];
       });
-      this.option = {
+      option = {
         legend: {
           top: -this.$fontSize(6),
           right: 0,
@@ -198,12 +196,12 @@ export default {
       };
     },
     initCharts() {
-      let myChart = this.$echarts.init(
+      myChart = this.$echarts.init(
         document.getElementById('CountChart'),
         null,
         { renderer: 'svg' },
       );
-      myChart.setOption(this.option, true);
+      myChart.setOption(option, true);
 
       /* 点击柱形图 */
       myChart.getZr().on('click', (params) => {
@@ -218,16 +216,15 @@ export default {
           console.log(xIndex);
         }
       });
-      this.erd.listenTo(
+      erd.listenTo(
         document.getElementById('CountChart'),
         debounce(this.handelResize, 300),
       );
-      this.myChart = myChart;
     },
   },
   beforeDestroy() {
-    this.myChart.clear();
-    this.erd.uninstall(this.$refs.CountChart);
+    if (myChart) myChart.clear();
+    erd.uninstall(this.$refs.CountChart);
   },
 };
 </script>

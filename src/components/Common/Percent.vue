@@ -8,7 +8,8 @@
 import elementResizeDetectorMaker from 'element-resize-detector';
 import { debounce } from '../../utils/tool';
 let erd = elementResizeDetectorMaker();
-
+let myChart = null;
+let option = {};
 export default {
   name: 'Percent',
   props: {
@@ -30,17 +31,14 @@ export default {
     },
   },
   data() {
-    return {
-      option: {},
-      myChart: null,
-    };
+    return {};
   },
   watch: {
     value: {
       handler() {
         this.initOption();
-        if (this.myChart) {
-          this.myChart.setOption(this.option, true);
+        if (myChart) {
+          this.getChart().setOption(option, true);
         } else {
           this.initChart();
         }
@@ -56,7 +54,9 @@ export default {
 
   methods: {
     handelResize() {
-      this.myChart.resize();
+      if (this.getChart()) {
+        this.getChart().resize();
+      }
     },
     initOption() {
       let maxData = this.maxData;
@@ -65,7 +65,7 @@ export default {
       let gridLeft = '0';
       let gridRight = '0';
 
-      this.option = {
+      option = {
         animation: !this.$isIE,
         tooltip: {},
         xAxis: {
@@ -127,9 +127,9 @@ export default {
             symbolBoundingData: maxData,
             data: greenBar,
             z: 999,
-            animationDelay: function (dataIndex, params) {
-              return params.index * 30;
-            },
+            // animationDelay: function (dataIndex, params) {
+            //   return params.index * 30;
+            // },
           },
           {
             // full data
@@ -147,24 +147,30 @@ export default {
             symbolBoundingData: maxData,
             data: greenBar,
             z: 99999,
-            animationDelay: function (dataIndex, params) {
-              return params.index * 30;
-            },
+            // animationDelay: function (dataIndex, params) {
+            //   return params.index * 30;
+            // },
           },
         ],
       };
     },
     initChart() {
-      let myChart = this.$echarts.init(this.$refs.PercentChart);
+      myChart = this.$echarts.init(this.$refs.PercentChart);
 
-      myChart.setOption(this.option, true);
+      this.getChart().setOption(option, true);
       erd.listenTo(this.$refs.PercentChart, debounce(this.handelResize, 300));
-      this.myChart = myChart;
+    },
+    getChart() {
+      try {
+        return this.$echarts.getInstanceByDom(this.$refs.PercentChart);
+      } catch {
+        return null;
+      }
     },
   },
   beforeDestroy() {
-    this.myChart.clear();
     try {
+      this.getChart().clear();
       erd.removeAllListeners(this.$refs.PercentChart);
     } catch (error) {
       console.log('error:', error);

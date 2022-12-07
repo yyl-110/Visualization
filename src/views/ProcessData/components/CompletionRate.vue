@@ -18,6 +18,8 @@ import DvBorder from '../../../components/Common/DvBorder.vue';
 import { getProcessDataByCard } from '@/api';
 import { mapGetters } from 'vuex';
 let erd = elementResizeDetectorMaker();
+let myChart = null;
+let option = {};
 
 export default {
   name: 'CompletionRate',
@@ -45,8 +47,8 @@ export default {
       deep: true,
       handler() {
         this.initOption();
-        if (this.myChart) {
-          this.myChart.setOption(this.option, true);
+        if (myChart) {
+          myChart.setOption(option, true);
         } else {
           this.initChart();
         }
@@ -61,8 +63,6 @@ export default {
   },
   data() {
     return {
-      option: {},
-      myChart: null,
       completionData: [],
     };
   },
@@ -77,7 +77,7 @@ export default {
 
   methods: {
     handelResize() {
-      this.myChart.resize();
+      myChart.resize();
     },
     initOption() {
       const xLabel = this.completionData.map((i) => i.prjType);
@@ -89,7 +89,7 @@ export default {
       console.log('max1:', max1);
       const max2 = data2.sort((a, b) => b - a)[0];
       console.log('max2:', max2);
-      this.option = {
+      option = {
         animation: !this.$isIE,
         tooltip: {
           trigger: 'axis',
@@ -131,7 +131,7 @@ export default {
           {
             min: 0,
             max: max1,
-            interval: (max1) / 5,
+            interval: max1 / 5,
             type: 'value',
             name: '数量',
             nameTextStyle: {
@@ -160,7 +160,7 @@ export default {
             max: max2,
             type: 'value',
             name: '流程完成率%',
-            interval: (max2) / 5,
+            interval: max2 / 5,
             axisLine: {
               show: false, //隐藏y轴
             },
@@ -240,18 +240,15 @@ export default {
       };
     },
     initChart() {
-      let myChart = this.$echarts.init(
-        document.getElementById('RateChart'),
-        null,
-        { renderer: 'svg' },
-      );
+      myChart = this.$echarts.init(document.getElementById('RateChart'), null, {
+        renderer: 'svg',
+      });
 
-      myChart.setOption(this.option, true);
+      myChart.setOption(option, true);
       erd.listenTo(
         document.getElementById('RateChart'),
         debounce(this.handelResize, 300),
       );
-      this.myChart = myChart;
     },
     getProcessDataByCard() {
       getProcessDataByCard({
@@ -271,7 +268,7 @@ export default {
     },
   },
   beforeDestroy() {
-    this.myChart.clear();
+    if (myChart) myChart.clear();
     erd.uninstall(this.$refs.RateChart);
   },
 };

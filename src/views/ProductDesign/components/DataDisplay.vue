@@ -1,7 +1,7 @@
 <template>
   <!-- 数据展示区域 -->
   <div class="dataDisplay" v-if="type === 'parts'">
-    本月新增
+    {{ timeType }}新增
     <img src="../../../assets/imgs/parts.png" alt="" />
     零部件数量
     <countTo
@@ -64,7 +64,7 @@
     ；
   </div>
   <div v-else class="dataDisplay">
-    本月总
+    {{ timeType }}总
     <img
       class="productIcon"
       src="../../../assets/imgs/icon_product@2x.png"
@@ -120,6 +120,7 @@
 
 <script>
 import countTo from 'vue-count-to';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'DataDisplay',
@@ -131,6 +132,24 @@ export default {
     disData: {
       type: Object,
       default: () => {},
+    },
+  },
+  computed: {
+    ...mapGetters(['queryYear', 'queryTime', 'queryType']),
+    timeType() {
+      if (this.queryType === 1) {
+        return '本月';
+      }
+      if (this.queryType === 2) {
+        return '本季度';
+      }
+      if (this.queryType === 3) {
+        return this.queryTime;
+      }
+      if (this.queryType === 4) {
+        return '本年度';
+      }
+      return '本月';
     },
   },
   components: {

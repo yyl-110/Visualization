@@ -1,7 +1,7 @@
 <template>
   <section class="app-main">
     <div class="scroll">
-      <transition name="fade-transform" mode="out-in" v-if="$isIE">
+      <transition name="fade-transform" mode="out-in" v-if="!$isIE">
         <router-view :key="key" />
       </transition>
       <router-view :key="key" v-else />

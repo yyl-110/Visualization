@@ -22,7 +22,7 @@
       </div>
       <div class="chartItem">
         <div class="chartTop clearfix">
-          <span class="float_l">当前新增</span>
+          <span class="float_l">完成率</span>
           <span class="float_r">{{ cardData.wfFinishRate }}</span>
         </div>
         <div class="percentContainer">
@@ -39,7 +39,7 @@
           同比&nbsp;
           <countTo
             :startVal="0"
-            :endVal="parseFloat(cardData.huanBiAddRate)"
+            :endVal="parseFloat(cardData.tongBiAddRate)"
             :duration="6000"
             separator=""
             suffix="%"
@@ -52,7 +52,7 @@
           环比&nbsp;
           <countTo
             :startVal="0"
-            :endVal="parseFloat(cardData.tongBiAddRate)"
+            :endVal="parseFloat(cardData.huanBiAddRate)"
             :duration="6000"
             separator=""
             suffix="%"
