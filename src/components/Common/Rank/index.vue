@@ -194,7 +194,6 @@ export default {
           item[this.progressLabel] = i[key];
           return item;
         });
-        console.log('arr:哈哈哈', arr);
         this.newRankData = arr;
         if (this.isRate) {
           this.max = 100;
