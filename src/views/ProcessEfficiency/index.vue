@@ -9,7 +9,11 @@
           :key="index"
           style="margin-top: 30px"
         >
-          <process-item style="margin: 0 auto" :cardData="item" />
+          <process-item
+            style="margin: 0 auto"
+            :cardData="item"
+            :max="maxData"
+          />
         </el-col>
       </el-row>
     </div>
@@ -28,6 +32,7 @@ export default {
   data() {
     return {
       cardData: [],
+      maxData: 100,
     };
   },
 
@@ -62,6 +67,12 @@ export default {
         .then((res) => {
           if (res.success) {
             this.cardData = res['区域四十七'];
+            try {
+              const arr = this.cardData.map((i) => i.wfAddCount);
+              this.maxData = arr.sort((a, b) => b - a)[0];
+            } catch (error) {
+              console.log('error:', error);
+            }
           }
         })
         .catch((e) => {
@@ -88,6 +99,7 @@ export default {
   position: relative;
   .processWrap {
     padding: 0 30px 20px;
+    min-height: 800px;
   }
 }
 </style>

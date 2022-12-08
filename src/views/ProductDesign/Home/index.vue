@@ -32,6 +32,7 @@
             label="零件发布率"
             progressLabel="partReleasedRate"
             widthType="small"
+            :isRate="true"
           />
         </div>
       </div>

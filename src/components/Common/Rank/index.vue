@@ -51,7 +51,7 @@
                         :text-inside="false"
                         :show-text="false"
                         :stroke-width="10"
-                        :percentage="parseFloat(item[progressLabel] || 0) || 0"
+                        :percentage="item[progressLabel] | format(that)"
                         color="#23CEFD"
                       ></el-progress>
                     </div>
@@ -84,6 +84,10 @@ export default {
     DvBorder,
   },
   props: {
+    type: {
+      type: String,
+      default: '',
+    },
     progressLabel: {
       type: String,
       default: '',
@@ -104,10 +108,6 @@ export default {
       type: Boolean,
       default: false,
     },
-    type: {
-      type: String,
-      default: '',
-    },
     /* 控制进度条宽度 */
     widthType: {
       type: String,
@@ -120,8 +120,19 @@ export default {
   },
   data() {
     return {
+      that: this,
       newRankData: [],
+      max: 100,
     };
+  },
+  filters: {
+    format(val, that) {
+      try {
+        return (parseFloat(val || 0) / that.max) * 100;
+      } catch (error) {
+        console.log('error:', error);
+      }
+    },
   },
   watch: {
     rankData: {
@@ -130,7 +141,6 @@ export default {
         this.newRankData = [];
         if (this.type === 'peopleRank') {
           this.formateCommon();
-          return;
         } else {
           this.formateData();
         }
@@ -153,6 +163,12 @@ export default {
       let rankArr = [];
       if (!(this.rankData instanceof Array)) return;
       try {
+        let key = Object.keys(this.rankData[0])[0];
+        if (!(this.rankData[0][key] instanceof Object)) return;
+      } catch (error) {
+        console.log('error:', error);
+      }
+      try {
         rankArr = (this.rankData || []).map((item) => {
           const key = Object.keys(item)[0];
           return { ...item[key] };
@@ -161,9 +177,22 @@ export default {
         console.log('error:', error);
       }
       this.newRankData = [...rankArr];
+      if (this.isRate) {
+        this.max = 100;
+        return;
+      }
+      const that = this;
+      that.max = rankArr.reduce((c, R) => c + R[that.progressLabel], 0);
     },
     /* 普通文档贡献量排行榜 */
     formateCommon() {
+      if (!(this.rankData instanceof Array)) return;
+      try {
+        let key = Object.keys(this.rankData[0])[0];
+        if (this.rankData[0][key] instanceof Object) return;
+      } catch (error) {
+        console.log('error:', error);
+      }
       try {
         let arr = this.rankData.map((i) => {
           let key = Object.keys(i)[0];
@@ -171,7 +200,14 @@ export default {
           item[this.progressLabel] = i[key];
           return item;
         });
+        console.log('arr:哈哈哈', arr);
         this.newRankData = arr;
+        if (this.isRate) {
+          this.max = 100;
+          return;
+        }
+        const that = this;
+        that.max = arr.reduce((c, R) => c + R[that.progressLabel], 0);
       } catch (error) {
         console.log('error:', error);
       }
@@ -215,10 +251,11 @@ export default {
   }
   .progressWrap {
     width: 100%;
-    height: 100%;
+    // height: 100%;
   }
   .progress {
     width: 84%;
+    // height: 100%;
     margin: 0 auto;
   }
   .name {

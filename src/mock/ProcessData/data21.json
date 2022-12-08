@@ -1,73 +1,63 @@
 {
   "区域二十一": [{
-      "workflowAddCount": 0,
-      "prjType": "集团项目",
-      "workflowFinishRate": "0%",
-      "workflowFinishCount": 0,
-      "ranking": ""
-    },
-    {
-      "workflowAddCount": 0,
-      "prjType": "公安武警项目",
-      "workflowFinishRate": "0%",
-      "workflowFinishCount": 0,
-      "ranking": ""
-    },
-    {
-      "workflowAddCount": 0,
-      "prjType": "基础科研类",
-      "workflowFinishRate": "0%",
-      "workflowFinishCount": 0,
-      "ranking": ""
-    },
-    {
-      "workflowAddCount": 0,
-      "prjType": "试验室基础项目",
-      "workflowFinishRate": "0",
-      "workflowFinishCount": 0,
-      "ranking": ""
-    },
-    {
-      "workflowAddCount": 0,
-      "prjType": "技术基础类",
-      "workflowFinishRate": "0",
-      "workflowFinishCount": 0,
-      "ranking": ""
-    },
-    {
-      "workflowAddCount": 0,
-      "prjType": "其他项目",
-      "workflowFinishRate": "0",
-      "workflowFinishCount": 0,
-      "ranking": ""
-    },
-    {
-      "workflowAddCount": 0,
-      "prjType": "军贸项目",
-      "workflowFinishRate": "00%",
-      "workflowFinishCount": 0,
-      "ranking": ""
-    },
-    {
-      "workflowAddCount": 0,
-      "prjType": "研究所项目",
-      "workflowFinishRate": "0%",
-      "workflowFinishCount": 0,
-      "ranking": ""
-    },
-    {
-      "workflowAddCount": 0,
-      "prjType": "型号项目",
-      "workflowFinishRate": "0%",
-      "workflowFinishCount": 0,
-      "ranking": ""
-    },
-    {
-      "workflowAddCount": 0,
-      "prjType": "预研项目",
-      "workflowFinishRate": "0%",
-      "workflowFinishCount": 0,
-      "ranking": ""
-    }
-  ]
+    "workflowAddCount": 200,
+    "prjType": "集团项目",
+    "workflowFinishRate": "0.00%",
+    "workflowFinishCount": 0,
+    "ranking": ""
+  }, {
+    "workflowAddCount": 1,
+    "prjType": "公安武警项目",
+    "workflowFinishRate": "0.00%",
+    "workflowFinishCount": 0,
+    "ranking": ""
+  }, {
+    "workflowAddCount": 10,
+    "prjType": "基础科研类",
+    "workflowFinishRate": "0.00%",
+    "workflowFinishCount": 0,
+    "ranking": ""
+  }, {
+    "workflowAddCount": 2,
+    "prjType": "试验室基础项目",
+    "workflowFinishRate": "0.00%",
+    "workflowFinishCount": 0,
+    "ranking": ""
+  }, {
+    "workflowAddCount": 3,
+    "prjType": "技术基础类",
+    "workflowFinishRate": "0.00%",
+    "workflowFinishCount": 0,
+    "ranking": ""
+  }, {
+    "workflowAddCount": 0,
+    "prjType": "其他项目",
+    "workflowFinishRate": "0.00%",
+    "workflowFinishCount": 0,
+    "ranking": ""
+  }, {
+    "workflowAddCount": 2,
+    "prjType": "军贸项目",
+    "workflowFinishRate": "0.00%",
+    "workflowFinishCount": 0,
+    "ranking": ""
+  }, {
+    "workflowAddCount": 0,
+    "prjType": "研究所项目",
+    "workflowFinishRate": "0.00%",
+    "workflowFinishCount": 0,
+    "ranking": ""
+  }, {
+    "workflowAddCount": 7,
+    "prjType": "型号项目",
+    "workflowFinishRate": "28.57%",
+    "workflowFinishCount": 2,
+    "ranking": ""
+  }, {
+    "workflowAddCount": 0,
+    "prjType": "预研项目",
+    "workflowFinishRate": "0.00%",
+    "workflowFinishCount": 0,
+    "ranking": ""
+  }]
 }

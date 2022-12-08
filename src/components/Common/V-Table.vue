@@ -40,7 +40,7 @@
         @current-change="handleCurrentChange"
         background
         :current-page="page"
-        :page-sizes="[5, 10, 20, 30, 40]"
+        :page-sizes="[5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]"
         :page-size="count"
         layout="total, prev, pager, next,sizes, slot, jumper"
         :total="total"

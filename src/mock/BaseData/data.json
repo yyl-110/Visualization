@@ -21,11 +21,11 @@
     "电源": 1
   },
   "区域十七": {
-    "AddComponentsParts": 1100,
-    "AddStandardParts": 800
+    "AddComponentsParts": 2,
+    "AddStandardParts": 1
   },
   "区域十六": {
-    "AddComponentsParts": 700,
-    "AddStandardParts": 5
+    "AddComponentsParts": 18,
+    "AddStandardParts": 12
   }
 }

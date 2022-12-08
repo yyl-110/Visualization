@@ -101,6 +101,24 @@ export const getMaxNumber = (number) => {
   if (Math.floor(number / 10) > 10000 && Math.floor(number / 10) <= 100000) return 1000000;
   if (Math.floor(number / 10) > 100000 && Math.floor(number / 10) <= 1000000) return 10000000;
   if (Math.floor(number / 10) > 1000000 && Math.floor(number / 10) <= 10000000) return 100000000;
+  if (Math.floor(number / 10) > 10000000 && Math.floor(number / 10) <= 100000000) return 1000000000;
+};
+/**
+ * 获取当前数字的最大位数 1 =》10 10=》100
+ * @return {*}
+ */
+export const getMaxNumber12 = (number) => {
+  const isNumber = /^[0-9]+.?[0-9]*$/.test(number);
+  if (!isNumber) return 120;
+  if (Math.floor(number / 12) <= 1) return 12;
+  if (Math.floor(number / 12) > 1 && Math.floor(number / 12) <= 10) return 120;
+  if (Math.floor(number / 12) > 10 && Math.floor(number / 12) <= 100) return 1200;
+  if (Math.floor(number / 12) > 100 && Math.floor(number / 12) <= 1000) return 12000;
+  if (Math.floor(number / 12) > 1000 && Math.floor(number / 12) <= 10000) return 120000;
+  if (Math.floor(number / 12) > 10000 && Math.floor(number / 12) <= 100000) return 1200000;
+  if (Math.floor(number / 12) > 100000 && Math.floor(number / 12) <= 1000000) return 12000000;
+  if (Math.floor(number / 12) > 1000000 && Math.floor(number / 12) <= 10000000) return 120000000;
+  if (Math.floor(number / 12) > 10000000 && Math.floor(number / 12) <= 100000000) return 1200000000;
 };
 
 /**
@@ -110,3 +128,20 @@ export const getMaxNumber = (number) => {
 export const chartResise = (chart) => {
   if (chart) chart.resize();
 };
+
+/**
+ * 深拷贝
+ * @return {*}
+ */
+export function copy(obj) {
+  let newObj = null;
+  if (typeof obj === 'object' && obj !== null) {
+    newObj = obj instanceof Array ? [] : {};
+    for (let i in obj) {
+      newObj[i] = typeof obj[i] === 'object' ? copy(obj[i]) : obj[i];
+    }
+  } else {
+    newObj = obj;
+  }
+  return newObj;
+}

@@ -13,7 +13,7 @@
         </div>
         <div class="percentContainer">
           <Percent
-            :maxData="1000"
+            :maxData="getNumber(max)"
             :value="[cardData.wfAddCount]"
             color="#23CEFD"
             bgColor="rgba(35, 206, 253, 0.1)"
@@ -82,6 +82,7 @@
 import countTo from 'vue-count-to';
 import Decoration from '../../../components/Common/Decoration.vue';
 import Percent from '../../../components/Common/Percent.vue';
+import { getMaxNumber } from '../../../utils/tool';
 export default {
   components: { Decoration, Percent, countTo },
   name: 'VisualizationProcessItem',
@@ -90,6 +91,10 @@ export default {
     cardData: {
       type: Object,
       default: () => {},
+    },
+    max: {
+      type: Number,
+      default: 100,
     },
   },
   watch: {
@@ -115,6 +120,9 @@ export default {
   mounted() {},
 
   methods: {
+    getNumber(val) {
+      return getMaxNumber(val);
+    },
     init() {
       try {
         const t1_key = Object.keys(this.cardData.wfConsumeShortest)[0];

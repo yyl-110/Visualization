@@ -9,7 +9,7 @@
         </div>
         <div class="percentContainer">
           <Percent
-            :maxData="1200"
+            :maxData="maxData"
             :value="[devicesData.AddStandardParts || 0]"
             :color="'#00DFFB'"
             :bgColor="'rgba(0, 223, 251, 0.3)'"
@@ -26,7 +26,7 @@
         </div>
         <div class="percentContainer">
           <Percent
-            :maxData="1200"
+            :maxData="maxData"
             :value="[devicesData.AddComponentsParts || 0]"
             :color="'#009AFF'"
             :bgColor="'rgba(0, 154, 255, 0.3)'"
@@ -44,7 +44,7 @@
             </el-col>
             <el-col :span="2" v-for="i in 11" :key="i">
               <div class="point">
-                <span>{{ i * 100 }}</span>
+                <span>{{ i * (maxData / 12) }}</span>
               </div>
             </el-col>
           </el-row>
@@ -58,6 +58,7 @@
 <script>
 import Percent from '@/components/Common/Percent.vue';
 import DvBorder from '../../../components/Common/DvBorder.vue';
+import { getMaxNumber12 } from '../../../utils/tool';
 export default {
   components: { Percent, DvBorder },
   name: 'DevicesBox',
@@ -65,6 +66,20 @@ export default {
     devicesData: {
       type: Object,
       default: () => {},
+    },
+  },
+  computed: {
+    maxData() {
+      let sum = 0;
+      try {
+        sum =
+          parseInt(this.devicesData.AddStandardParts) +
+          parseInt(this.devicesData.AddComponentsParts);
+      } catch (error) {
+        console.log('error:', error);
+      }
+      console.log('getMaxNumber12(sum):', getMaxNumber12(sum));
+      return getMaxNumber12(sum);
     },
   },
   data() {

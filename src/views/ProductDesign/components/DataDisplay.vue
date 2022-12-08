@@ -64,7 +64,7 @@
     ；
   </div>
   <div v-else class="dataDisplay">
-    {{ timeType }}总
+    系统总
     <img
       class="productIcon"
       src="../../../assets/imgs/icon_product@2x.png"
@@ -78,7 +78,7 @@
       separator=""
       class="countTo"
     ></countTo>
-    个，本月新增
+    个，{{ timeType }}新增
     <img
       class="productIcon"
       src="../../../assets/imgs/icon_product@2x.png"

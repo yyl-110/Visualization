@@ -13,7 +13,7 @@
 <script>
 import Title from '@/components/Common/Title';
 import elementResizeDetectorMaker from 'element-resize-detector';
-import { debounce } from '../../../utils/tool';
+import { copy, debounce } from '../../../utils/tool';
 import DvBorder from '../../../components/Common/DvBorder.vue';
 import { getProcessDataByCard } from '@/api';
 import { mapGetters } from 'vuex';
@@ -85,10 +85,9 @@ export default {
       const data2 = this.completionData.map((i) =>
         parseInt(i.workflowFinishRate),
       );
-      const max1 = data1.sort((a, b) => b - a)[0];
-      console.log('max1:', max1);
-      const max2 = data2.sort((a, b) => b - a)[0];
-      console.log('max2:', max2);
+      const _data1 = copy(data1);
+      const max1 = _data1.sort((a, b) => b - a)[0];
+      const max2 = 100;
       option = {
         animation: !this.$isIE,
         tooltip: {
@@ -158,9 +157,9 @@ export default {
           {
             min: 0,
             max: max2,
+            interval: max2 / 5,
             type: 'value',
             name: '流程完成率%',
-            interval: max2 / 5,
             axisLine: {
               show: false, //隐藏y轴
             },
@@ -190,6 +189,17 @@ export default {
             showBackground: true,
             backgroundStyle: {
               color: 'rgba(180, 180, 180, 0.2)',
+            },
+            label: {
+              // 柱图头部显示值
+              show: true,
+              color: '#FFFFFF',
+              position: 'top',
+              fontSize: this.$fontSize(14),
+              formatter: function (params) {
+                console.log('params:', params.data);
+                return params.data > 0 ? params.data : '';
+              },
             },
             itemStyle: {
               normal: {

@@ -38,7 +38,7 @@
           </div>
           <div class="percentContainer">
             <Percent
-              :maxData="getNumber(parseFloat(cardData.completeRate || 0))"
+              :maxData="100"
               :value="[parseFloat(cardData.completeRate)]"
               color="#009AFF"
               bgColor="rgba(0, 154, 255, .1)"
@@ -85,7 +85,7 @@
           <span class="name floatL">一类变更</span>
           <div class="percentContainer floatR clearfix">
             <Percent
-              :maxData="getNumber(parseInt(cardData['一类'] || 0))"
+              :maxData="maxNum"
               :value="[parseInt(cardData['一类'] || 0)]"
               color="#23CEFD"
               bgColor="rgba(35, 206, 253, 0.1)"
@@ -105,7 +105,7 @@
           <span class="name floatL">二类变更</span>
           <div class="percentContainer floatR clearfix">
             <Percent
-              :maxData="getNumber(parseInt(cardData['二类'] || 0))"
+              :maxData="maxNum"
               :value="[parseInt(cardData['二类'] || 0)]"
               color="#9FDB1D"
               bgColor="rgba(159, 219, 29, .1)"
@@ -125,7 +125,7 @@
           <span class="name floatL">三类变更</span>
           <div class="percentContainer floatR clearfix">
             <Percent
-              :maxData="getNumber(parseInt(cardData['三类'] || 0))"
+              :maxData="maxNum"
               :value="[parseInt(cardData['三类'] || 0)]"
               color="#9FDB1D"
               bgColor="rgba(159, 219, 29, .1)"
@@ -184,6 +184,19 @@ export default {
     ...mapGetters(['sidebar']),
     isCollapse() {
       return !this.sidebar.opened;
+    },
+    /* 三类获取最大 */
+    maxNum() {
+      const dataArr = [
+        parseInt(this.cardData['一类'] || 0),
+        parseInt(this.cardData['二类'] || 0),
+        parseInt(this.cardData['三类'] || 0),
+      ];
+      dataArr.sort((a, b) => {
+        return b - a;
+      });
+      console.log('dataArr:', dataArr);
+      return this.getNumber(dataArr[0]);
     },
   },
 

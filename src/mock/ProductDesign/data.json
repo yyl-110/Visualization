@@ -300,28 +300,28 @@
   },
   "区域九": [{
       "集团项目": {
-        "modelReleasedRate": "0%",
+        "modelReleasedRate": "10.1%",
         "releasedModelCount": 0,
         "releasedDrawingCount": 0,
         "addModelCount": 0,
         "releasedPartCount": 0,
         "prjType": "集团项目",
-        "partReleasedRate": "0%",
+        "partReleasedRate": "10.1%",
         "addPartCount": 0,
-        "drawingReleasedRate": "0%",
+        "drawingReleasedRate": "10.1%",
         "addDrawingCount": 0,
         "ranking": "1"
       }
     },
     {
       "公安武警项目": {
-        "modelReleasedRate": "0%",
+        "modelReleasedRate": "1%",
         "releasedModelCount": 0,
         "releasedDrawingCount": 0,
         "addModelCount": 0,
         "releasedPartCount": 0,
         "prjType": "公安武警项目",
-        "partReleasedRate": "0%",
+        "partReleasedRate": "50%",
         "addPartCount": 0,
         "drawingReleasedRate": "0%",
         "addDrawingCount": 0,
