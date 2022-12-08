@@ -28,6 +28,7 @@ export default {
       handler() {
         this.initOption();
         if (myChart) {
+          myChart.clear();
           myChart.setOption(option, true);
         } else {
           this.initCharts();
@@ -104,7 +105,7 @@ export default {
             // x轴name的样式调整
             color: '#fff',
             fontSize: this.$fontSize(14),
-            padding: [0, this.$fontSize(30), this.$fontSize(10), 0],
+            padding: [0, this.$fontSize(50), this.$fontSize(10), 0],
           },
           axisLine: {
             show: false, //隐藏y轴
@@ -223,7 +224,9 @@ export default {
     },
   },
   beforeDestroy() {
-    if (myChart) myChart.clear();
+    if (myChart) {
+      myChart.clear();
+    }
     erd.uninstall(this.$refs.CountChart);
   },
 };

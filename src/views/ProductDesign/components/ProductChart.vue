@@ -33,6 +33,7 @@ export default {
       handler() {
         this.initOption();
         if (myChart) {
+          myChart.clear()
           myChart.setOption(option, true);
         } else {
           this.$nextTick(() => {

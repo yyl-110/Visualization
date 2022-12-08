@@ -48,6 +48,7 @@ export default {
       handler() {
         this.initOption();
         if (myChart) {
+          myChart.clear()
           myChart.setOption(option, true);
         } else {
           this.initChart();
@@ -197,7 +198,6 @@ export default {
               position: 'top',
               fontSize: this.$fontSize(14),
               formatter: function (params) {
-                console.log('params:', params.data);
                 return params.data > 0 ? params.data : '';
               },
             },

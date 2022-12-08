@@ -163,12 +163,6 @@ export default {
       let rankArr = [];
       if (!(this.rankData instanceof Array)) return;
       try {
-        let key = Object.keys(this.rankData[0])[0];
-        if (!(this.rankData[0][key] instanceof Object)) return;
-      } catch (error) {
-        console.log('error:', error);
-      }
-      try {
         rankArr = (this.rankData || []).map((item) => {
           const key = Object.keys(item)[0];
           return { ...item[key] };
@@ -188,7 +182,7 @@ export default {
     formateCommon() {
       if (!(this.rankData instanceof Array)) return;
       try {
-        let key = Object.keys(this.rankData[0])[0];
+        let key = Object.keys(this.rankData[0] || {})[0];
         if (this.rankData[0][key] instanceof Object) return;
       } catch (error) {
         console.log('error:', error);
