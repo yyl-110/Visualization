@@ -64,7 +64,7 @@ export default {
       this.option = {
         animation: !this.$isIE,
         legend: {
-          top: '0',
+          top: this.$fontSize(10),
           right: 0,
           y: '0',
           itemWidth: this.$fontSize(10),

@@ -56,7 +56,7 @@ export default {
       });
       option = {
         legend: {
-          top: -this.$fontSize(6),
+          top: 0,
           right: 0,
           y: '0',
           itemWidth: this.$fontSize(10),
