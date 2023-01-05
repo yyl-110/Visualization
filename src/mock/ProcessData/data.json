@@ -1,0 +1,157 @@
+{
+  "区域二十二": [{
+      "试验室基础项目": {
+        "workflowAddCount": 8,
+        "prjType": "试验室基础项目",
+        "workflowFinishRate": "62.50%",
+        "workflowFinishCount": 5,
+        "ranking": "1"
+      }
+    },
+    {
+      "集团项目": {
+        "workflowAddCount": 3,
+        "prjType": "集团项目",
+        "workflowFinishRate": "0.00%",
+        "workflowFinishCount": 0,
+        "ranking": "2"
+      }
+    },
+    {
+      "公安武警项目": {
+        "workflowAddCount": 0,
+        "prjType": "公安武警项目",
+        "workflowFinishRate": "0%",
+        "workflowFinishCount": 0,
+        "ranking": "3"
+      }
+    },
+    {
+      "基础科研类": {
+        "workflowAddCount": 0,
+        "prjType": "基础科研类",
+        "workflowFinishRate": "0%",
+        "workflowFinishCount": 0,
+        "ranking": "4"
+      }
+    },
+    {
+      "技术基础类": {
+        "workflowAddCount": 0,
+        "prjType": "技术基础类",
+        "workflowFinishRate": "0%",
+        "workflowFinishCount": 0,
+        "ranking": "5"
+      }
+    },
+    {
+      "其他项目": {
+        "workflowAddCount": 0,
+        "prjType": "其他项目",
+        "workflowFinishRate": "0%",
+        "workflowFinishCount": 0,
+        "ranking": "6"
+      }
+    },
+    {
+      "军贸项目": {
+        "workflowAddCount": 3,
+        "prjType": "军贸项目",
+        "workflowFinishRate": "0.00%",
+        "workflowFinishCount": 0,
+        "ranking": "7"
+      }
+    },
+    {
+      "研究所项目": {
+        "workflowAddCount": 0,
+        "prjType": "研究所项目",
+        "workflowFinishRate": "0%",
+        "workflowFinishCount": 0,
+        "ranking": "8"
+      }
+    },
+    {
+      "型号项目": {
+        "workflowAddCount": 0,
+        "prjType": "型号项目",
+        "workflowFinishRate": "0%",
+        "workflowFinishCount": 0,
+        "ranking": "9"
+      }
+    },
+    {
+      "预研项目": {
+        "workflowAddCount": 0,
+        "prjType": "预研项目",
+        "workflowFinishRate": "0%",
+        "workflowFinishCount": 0,
+        "ranking": "10"
+      }
+    }
+  ],
+  "区域二十": [{
+      "tongBiAddRate": "0%",
+      "workflowAddCount": 0,
+      "workflowFinishRate": "0%",
+      "workflowType": "普通文档流程",
+      "huanBiAddRate": "0%"
+    },
+    {
+      "tongBiAddRate": "100%",
+      "workflowAddCount": 4,
+      "workflowFinishRate": "25.00%",
+      "workflowType": "试验任务申请单流程",
+      "huanBiAddRate": "0.00%"
+    },
+    {
+      "tongBiAddRate": "100%",
+      "workflowAddCount": 7,
+      "workflowFinishRate": "57.14%",
+      "workflowType": "加工任务申请单流程",
+      "huanBiAddRate": "0.00%"
+    },
+    {
+      "tongBiAddRate": "0%",
+      "workflowAddCount": 0,
+      "workflowFinishRate": "0%",
+      "workflowType": "协同发放流程",
+      "huanBiAddRate": "0%"
+    },
+    {
+      "tongBiAddRate": "0%",
+      "workflowAddCount": 0,
+      "workflowFinishRate": "0%",
+      "workflowType": "仿真发放流程",
+      "huanBiAddRate": "0%"
+    },
+    {
+      "tongBiAddRate": "0%",
+      "workflowAddCount": 0,
+      "workflowFinishRate": "0%",
+      "workflowType": "外形发放流程",
+      "huanBiAddRate": "0%"
+    },
+    {
+      "tongBiAddRate": "0%",
+      "workflowAddCount": 0,
+      "workflowFinishRate": "0%",
+      "workflowType": "工艺发放流程",
+      "huanBiAddRate": "0%"
+    },
+    {
+      "tongBiAddRate": "0%",
+      "workflowAddCount": 0,
+      "workflowFinishRate": "0%",
+      "workflowType": "正式发放流程",
+      "huanBiAddRate": "0%"
+    },
+    {
+      "tongBiAddRate": "0%",
+      "workflowAddCount": 0,
+      "workflowFinishRate": "0%",
+      "workflowType": "零部件流程",
+      "huanBiAddRate": "0%"
+    }
+  ]
+}

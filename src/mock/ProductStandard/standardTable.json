@@ -1,0 +1,147 @@
+{
+  "区域三十": [{
+      "borrowPartCount": 26,
+      "borrowRate": "0%",
+      "borrowStandardPartCount": 0,
+      "keshi": "科室一",
+      "productName": "测试产品库1",
+      "standardRate": "0%",
+      "totalPartCount": 0
+    },
+    {
+      "borrowPartCount": 4,
+      "borrowRate": "0%",
+      "borrowStandardPartCount": 0,
+      "keshi": "科室三",
+      "productName": "测试产品库2",
+      "standardRate": "0%",
+      "totalPartCount": 0
+    },
+    {
+      "borrowPartCount": 4,
+      "borrowRate": "0%",
+      "borrowStandardPartCount": 0,
+      "keshi": "科室三",
+      "productName": "测试产品库2",
+      "standardRate": "0%",
+      "totalPartCount": 0
+    },
+    {
+      "borrowPartCount": 4,
+      "borrowRate": "0%",
+      "borrowStandardPartCount": 0,
+      "keshi": "科室三",
+      "productName": "测试产品库2",
+      "standardRate": "0%",
+      "totalPartCount": 0
+    },
+    {
+      "borrowPartCount": 4,
+      "borrowRate": "0%",
+      "borrowStandardPartCount": 0,
+      "keshi": "科室三",
+      "productName": "测试产品库2",
+      "standardRate": "0%",
+      "totalPartCount": 0
+    },
+    {
+      "borrowPartCount": 4,
+      "borrowRate": "0%",
+      "borrowStandardPartCount": 0,
+      "keshi": "科室三",
+      "productName": "测试产品库2",
+      "standardRate": "0%",
+      "totalPartCount": 0
+    },
+    {
+      "borrowPartCount": 4,
+      "borrowRate": "0%",
+      "borrowStandardPartCount": 0,
+      "keshi": "科室三",
+      "productName": "测试产品库2",
+      "standardRate": "0%",
+      "totalPartCount": 0
+    },
+    {
+      "borrowPartCount": 4,
+      "borrowRate": "0%",
+      "borrowStandardPartCount": 0,
+      "keshi": "科室三",
+      "productName": "测试产品库2",
+      "standardRate": "0%",
+      "totalPartCount": 0
+    },
+    {
+      "borrowPartCount": 4,
+      "borrowRate": "0%",
+      "borrowStandardPartCount": 0,
+      "keshi": "科室三",
+      "productName": "测试产品库2",
+      "standardRate": "0%",
+      "totalPartCount": 0
+    },
+    {
+      "borrowPartCount": 4,
+      "borrowRate": "0%",
+      "borrowStandardPartCount": 0,
+      "keshi": "科室三",
+      "productName": "测试产品库2",
+      "standardRate": "0%",
+      "totalPartCount": 0
+    },
+    {
+      "borrowPartCount": 4,
+      "borrowRate": "0%",
+      "borrowStandardPartCount": 0,
+      "keshi": "科室三",
+      "productName": "测试产品库2",
+      "standardRate": "0%",
+      "totalPartCount": 0
+    },
+    {
+      "borrowPartCount": 4,
+      "borrowRate": "0%",
+      "borrowStandardPartCount": 0,
+      "keshi": "科室三",
+      "productName": "测试产品库2",
+      "standardRate": "0%",
+      "totalPartCount": 0
+    },
+    {
+      "borrowPartCount": 4,
+      "borrowRate": "0%",
+      "borrowStandardPartCount": 0,
+      "keshi": "科室三",
+      "productName": "测试产品库2",
+      "standardRate": "0%",
+      "totalPartCount": 0
+    },
+    {
+      "borrowPartCount": 0,
+      "borrowRate": "0%",
+      "borrowStandardPartCount": 0,
+      "keshi": "科室二",
+      "productName": "测试产品库3",
+      "standardRate": "0%",
+      "totalPartCount": 0
+    },
+    {
+      "borrowPartCount": 0,
+      "borrowRate": "0%",
+      "borrowStandardPartCount": 0,
+      "keshi": "科室三",
+      "productName": "测试产品库4",
+      "standardRate": "0%",
+      "totalPartCount": 0
+    },
+    {
+      "borrowPartCount": 0,
+      "borrowRate": "0.00%",
+      "borrowStandardPartCount": 0,
+      "keshi": "科室三",
+      "productName": "型号项目不按阶段产品",
+      "standardRate": "0.00%",
+      "totalPartCount": 36
+    }
+  ]
+}

@@ -1,0 +1,572 @@
+{
+  "区域十四": [{
+      "公安武警项目": {
+        "projectAccepted": 2,
+        "projectInResearch": 1,
+        "productCount": 4,
+        "projectInitiation": 0,
+        "prjType": "公安武警项目",
+        "projectUnderAcceptance": 1,
+        "ranking": "1"
+      }
+    },
+    {
+      "技术基础类": {
+        "projectAccepted": 1,
+        "projectInResearch": 1,
+        "productCount": 3,
+        "projectInitiation": 0,
+        "prjType": "技术基础类",
+        "projectUnderAcceptance": 1,
+        "ranking": "2"
+      }
+    },
+    {
+      "研究所项目": {
+        "projectAccepted": 1,
+        "projectInResearch": 0,
+        "productCount": 1,
+        "projectInitiation": 0,
+        "prjType": "研究所项目",
+        "projectUnderAcceptance": 0,
+        "ranking": "3"
+      }
+    },
+    {
+      "预研项目": {
+        "projectAccepted": 1,
+        "projectInResearch": 2,
+        "productCount": 3,
+        "projectInitiation": 0,
+        "prjType": "预研项目",
+        "projectUnderAcceptance": 0,
+        "ranking": "4"
+      }
+    },
+    {
+      "集团项目": {
+        "projectAccepted": 0,
+        "projectInResearch": 0,
+        "productCount": 5,
+        "projectInitiation": 4,
+        "prjType": "集团项目",
+        "projectUnderAcceptance": 1,
+        "ranking": "5"
+      }
+    },
+    {
+      "基础科研类": {
+        "projectAccepted": 0,
+        "projectInResearch": 0,
+        "productCount": 2,
+        "projectInitiation": 1,
+        "prjType": "基础科研类",
+        "projectUnderAcceptance": 0,
+        "ranking": "6"
+      }
+    },
+    {
+      "试验室基础项目": {
+        "projectAccepted": 0,
+        "projectInResearch": 0,
+        "productCount": 2,
+        "projectInitiation": 1,
+        "prjType": "试验室基础项目",
+        "projectUnderAcceptance": 0,
+        "ranking": "7"
+      }
+    },
+    {
+      "其他项目": {
+        "projectAccepted": 0,
+        "projectInResearch": 0,
+        "productCount": 2,
+        "projectInitiation": 1,
+        "prjType": "其他项目",
+        "projectUnderAcceptance": 0,
+        "ranking": "8"
+      }
+    },
+    {
+      "军贸项目": {
+        "projectAccepted": 0,
+        "projectInResearch": 1,
+        "productCount": 3,
+        "projectInitiation": 1,
+        "prjType": "军贸项目",
+        "projectUnderAcceptance": 0,
+        "ranking": "9"
+      }
+    },
+    {
+      "型号项目": {
+        "projectAccepted": 0,
+        "projectInResearch": 0,
+        "productCount": 2,
+        "projectInitiation": 0,
+        "prjType": "型号项目",
+        "projectUnderAcceptance": 2,
+        "ranking": "10"
+      }
+    }
+  ],
+  "区域十一": [{
+      "addCount": 0,
+      "prjType": "集团项目",
+      "ranking": ""
+    },
+    {
+      "addCount": 0,
+      "prjType": "公安武警项目",
+      "ranking": ""
+    },
+    {
+      "addCount": 0,
+      "prjType": "基础科研类",
+      "ranking": ""
+    },
+    {
+      "addCount": 0,
+      "prjType": "试验室基础项目",
+      "ranking": ""
+    },
+    {
+      "addCount": 0,
+      "prjType": "技术基础类",
+      "ranking": ""
+    },
+    {
+      "addCount": 0,
+      "prjType": "其他项目",
+      "ranking": ""
+    },
+    {
+      "addCount": 0,
+      "prjType": "军贸项目",
+      "ranking": ""
+    },
+    {
+      "addCount": 0,
+      "prjType": "研究所项目",
+      "ranking": ""
+    },
+    {
+      "addCount": 0,
+      "prjType": "型号项目",
+      "ranking": ""
+    },
+    {
+      "addCount": 0,
+      "prjType": "预研项目",
+      "ranking": ""
+    }
+  ],
+  "区域六": [{
+      "modelReleasedRate": "10%",
+      "releasedModelCount": 10,
+      "releasedDrawingCount": 10,
+      "addModelCount": 10,
+      "releasedPartCount": 10,
+      "prjType": "集团项目",
+      "partReleasedRate": "0%",
+      "addPartCount": 10,
+      "drawingReleasedRate": "0%",
+      "addDrawingCount": 10,
+      "ranking": "1"
+    },
+    {
+      "modelReleasedRate": "0%",
+      "releasedModelCount": 0,
+      "releasedDrawingCount": 0,
+      "addModelCount": 0,
+      "releasedPartCount": 0,
+      "prjType": "公安武警项目",
+      "partReleasedRate": "0%",
+      "addPartCount": 0,
+      "drawingReleasedRate": "0%",
+      "addDrawingCount": 0,
+      "ranking": "2"
+    },
+    {
+      "modelReleasedRate": "0%",
+      "releasedModelCount": 0,
+      "releasedDrawingCount": 0,
+      "addModelCount": 0,
+      "releasedPartCount": 0,
+      "prjType": "基础科研类",
+      "partReleasedRate": "0%",
+      "addPartCount": 0,
+      "drawingReleasedRate": "0%",
+      "addDrawingCount": 0,
+      "ranking": "3"
+    },
+    {
+      "modelReleasedRate": "0%",
+      "releasedModelCount": 0,
+      "releasedDrawingCount": 0,
+      "addModelCount": 0,
+      "releasedPartCount": 0,
+      "prjType": "试验室基础项目",
+      "partReleasedRate": "0%",
+      "addPartCount": 0,
+      "drawingReleasedRate": "0%",
+      "addDrawingCount": 0,
+      "ranking": "4"
+    },
+    {
+      "modelReleasedRate": "0%",
+      "releasedModelCount": 0,
+      "releasedDrawingCount": 0,
+      "addModelCount": 0,
+      "releasedPartCount": 0,
+      "prjType": "技术基础类",
+      "partReleasedRate": "0%",
+      "addPartCount": 0,
+      "drawingReleasedRate": "0%",
+      "addDrawingCount": 0,
+      "ranking": "5"
+    },
+    {
+      "modelReleasedRate": "0%",
+      "releasedModelCount": 0,
+      "releasedDrawingCount": 0,
+      "addModelCount": 0,
+      "releasedPartCount": 0,
+      "prjType": "其他项目",
+      "partReleasedRate": "0%",
+      "addPartCount": 0,
+      "drawingReleasedRate": "0%",
+      "addDrawingCount": 0,
+      "ranking": "6"
+    },
+    {
+      "modelReleasedRate": "0%",
+      "releasedModelCount": 0,
+      "releasedDrawingCount": 0,
+      "addModelCount": 0,
+      "releasedPartCount": 0,
+      "prjType": "军贸项目",
+      "partReleasedRate": "0%",
+      "addPartCount": 0,
+      "drawingReleasedRate": "0%",
+      "addDrawingCount": 0,
+      "ranking": ""
+    },
+    {
+      "modelReleasedRate": "0%",
+      "releasedModelCount": 0,
+      "releasedDrawingCount": 0,
+      "addModelCount": 0,
+      "releasedPartCount": 0,
+      "prjType": "研究所项目",
+      "partReleasedRate": "0%",
+      "addPartCount": 0,
+      "drawingReleasedRate": "0%",
+      "addDrawingCount": 0,
+      "ranking": ""
+    },
+    {
+      "modelReleasedRate": "0%",
+      "releasedModelCount": 0,
+      "releasedDrawingCount": 0,
+      "addModelCount": 0,
+      "releasedPartCount": 0,
+      "prjType": "型号项目",
+      "partReleasedRate": "0%",
+      "addPartCount": 0,
+      "drawingReleasedRate": "0%",
+      "addDrawingCount": 0,
+      "ranking": ""
+    },
+    {
+      "modelReleasedRate": "0%",
+      "releasedModelCount": 0,
+      "releasedDrawingCount": 0,
+      "addModelCount": 0,
+      "releasedPartCount": 0,
+      "prjType": "预研项目",
+      "partReleasedRate": "0%",
+      "addPartCount": 0,
+      "drawingReleasedRate": "0%",
+      "addDrawingCount": 0,
+      "ranking": ""
+    }
+  ],
+  "区域十": {
+    "allCount": 27,
+    "huanBiAdd": "100%",
+    "addCount": 0,
+    "tongBiAdd": "100%"
+  },
+  "区域九": [{
+      "集团项目": {
+        "modelReleasedRate": "10.1%",
+        "releasedModelCount": 0,
+        "releasedDrawingCount": 0,
+        "addModelCount": 0,
+        "releasedPartCount": 0,
+        "prjType": "集团项目",
+        "partReleasedRate": "10.1%",
+        "addPartCount": 0,
+        "drawingReleasedRate": "10.1%",
+        "addDrawingCount": 0,
+        "ranking": "1"
+      }
+    },
+    {
+      "公安武警项目": {
+        "modelReleasedRate": "1%",
+        "releasedModelCount": 0,
+        "releasedDrawingCount": 0,
+        "addModelCount": 0,
+        "releasedPartCount": 0,
+        "prjType": "公安武警项目",
+        "partReleasedRate": "50%",
+        "addPartCount": 0,
+        "drawingReleasedRate": "0%",
+        "addDrawingCount": 0,
+        "ranking": "2"
+      }
+    },
+    {
+      "基础科研类": {
+        "modelReleasedRate": "0%",
+        "releasedModelCount": 0,
+        "releasedDrawingCount": 0,
+        "addModelCount": 0,
+        "releasedPartCount": 0,
+        "prjType": "基础科研类",
+        "partReleasedRate": "0%",
+        "addPartCount": 0,
+        "drawingReleasedRate": "0%",
+        "addDrawingCount": 0,
+        "ranking": "3"
+      }
+    },
+    {
+      "试验室基础项目": {
+        "modelReleasedRate": "0%",
+        "releasedModelCount": 0,
+        "releasedDrawingCount": 0,
+        "addModelCount": 0,
+        "releasedPartCount": 0,
+        "prjType": "试验室基础项目",
+        "partReleasedRate": "0%",
+        "addPartCount": 0,
+        "drawingReleasedRate": "0%",
+        "addDrawingCount": 0,
+        "ranking": "4"
+      }
+    },
+    {
+      "技术基础类": {
+        "modelReleasedRate": "0%",
+        "releasedModelCount": 0,
+        "releasedDrawingCount": 0,
+        "addModelCount": 0,
+        "releasedPartCount": 0,
+        "prjType": "技术基础类",
+        "partReleasedRate": "0%",
+        "addPartCount": 0,
+        "drawingReleasedRate": "0%",
+        "addDrawingCount": 0,
+        "ranking": "5"
+      }
+    },
+    {
+      "其他项目": {
+        "modelReleasedRate": "0%",
+        "releasedModelCount": 0,
+        "releasedDrawingCount": 0,
+        "addModelCount": 0,
+        "releasedPartCount": 0,
+        "prjType": "其他项目",
+        "partReleasedRate": "0%",
+        "addPartCount": 0,
+        "drawingReleasedRate": "0%",
+        "addDrawingCount": 0,
+        "ranking": "6"
+      }
+    },
+    {
+      "军贸项目": {
+        "modelReleasedRate": "0%",
+        "releasedModelCount": 0,
+        "releasedDrawingCount": 0,
+        "addModelCount": 0,
+        "releasedPartCount": 0,
+        "prjType": "军贸项目",
+        "partReleasedRate": "0%",
+        "addPartCount": 0,
+        "drawingReleasedRate": "0%",
+        "addDrawingCount": 0,
+        "ranking": "7"
+      }
+    },
+    {
+      "研究所项目": {
+        "modelReleasedRate": "0%",
+        "releasedModelCount": 0,
+        "releasedDrawingCount": 0,
+        "addModelCount": 0,
+        "releasedPartCount": 0,
+        "prjType": "研究所项目",
+        "partReleasedRate": "0%",
+        "addPartCount": 0,
+        "drawingReleasedRate": "0%",
+        "addDrawingCount": 0,
+        "ranking": "8"
+      }
+    },
+    {
+      "型号项目": {
+        "modelReleasedRate": "0%",
+        "releasedModelCount": 0,
+        "releasedDrawingCount": 0,
+        "addModelCount": 0,
+        "releasedPartCount": 0,
+        "prjType": "型号项目",
+        "partReleasedRate": "0%",
+        "addPartCount": 0,
+        "drawingReleasedRate": "0%",
+        "addDrawingCount": 0,
+        "ranking": "9"
+      }
+    },
+    {
+      "预研项目": {
+        "modelReleasedRate": "0%",
+        "releasedModelCount": 0,
+        "releasedDrawingCount": 0,
+        "addModelCount": 0,
+        "releasedPartCount": 0,
+        "prjType": "预研项目",
+        "partReleasedRate": "0%",
+        "addPartCount": 0,
+        "drawingReleasedRate": "0%",
+        "addDrawingCount": 0,
+        "ranking": "10"
+      }
+    }
+  ],
+  "区域十三": [{
+      "集团项目": {
+        "projectAccepted": 0,
+        "projectInResearch": 0,
+        "productCount": 5,
+        "projectInitiation": 4,
+        "prjType": "集团项目",
+        "projectUnderAcceptance": 1,
+        "ranking": "1"
+      }
+    },
+    {
+      "公安武警项目": {
+        "projectAccepted": 2,
+        "projectInResearch": 1,
+        "productCount": 4,
+        "projectInitiation": 0,
+        "prjType": "公安武警项目",
+        "projectUnderAcceptance": 1,
+        "ranking": "2"
+      }
+    },
+    {
+      "技术基础类": {
+        "projectAccepted": 1,
+        "projectInResearch": 1,
+        "productCount": 3,
+        "projectInitiation": 0,
+        "prjType": "技术基础类",
+        "projectUnderAcceptance": 1,
+        "ranking": "3"
+      }
+    },
+    {
+      "军贸项目": {
+        "projectAccepted": 0,
+        "projectInResearch": 1,
+        "productCount": 3,
+        "projectInitiation": 1,
+        "prjType": "军贸项目",
+        "projectUnderAcceptance": 0,
+        "ranking": "4"
+      }
+    },
+    {
+      "预研项目": {
+        "projectAccepted": 1,
+        "projectInResearch": 2,
+        "productCount": 3,
+        "projectInitiation": 0,
+        "prjType": "预研项目",
+        "projectUnderAcceptance": 0,
+        "ranking": "5"
+      }
+    },
+    {
+      "基础科研类": {
+        "projectAccepted": 0,
+        "projectInResearch": 0,
+        "productCount": 2,
+        "projectInitiation": 1,
+        "prjType": "基础科研类",
+        "projectUnderAcceptance": 0,
+        "ranking": "6"
+      }
+    },
+    {
+      "试验室基础项目": {
+        "projectAccepted": 0,
+        "projectInResearch": 0,
+        "productCount": 2,
+        "projectInitiation": 1,
+        "prjType": "试验室基础项目",
+        "projectUnderAcceptance": 0,
+        "ranking": "7"
+      }
+    },
+    {
+      "其他项目": {
+        "projectAccepted": 0,
+        "projectInResearch": 0,
+        "productCount": 2,
+        "projectInitiation": 1,
+        "prjType": "其他项目",
+        "projectUnderAcceptance": 0,
+        "ranking": "8"
+      }
+    },
+    {
+      "型号项目": {
+        "projectAccepted": 0,
+        "projectInResearch": 0,
+        "productCount": 2,
+        "projectInitiation": 0,
+        "prjType": "型号项目",
+        "projectUnderAcceptance": 2,
+        "ranking": "9"
+      }
+    },
+    {
+      "研究所项目": {
+        "projectAccepted": 1,
+        "projectInResearch": 0,
+        "productCount": 1,
+        "projectInitiation": 0,
+        "prjType": "研究所项目",
+        "projectUnderAcceptance": 0,
+        "ranking": "10"
+      }
+    }
+  ],
+  "区域五": {
+    "modelReleasedRate": "0%",
+    "addModelCount": 0,
+    "partReleasedRate": "0%",
+    "addPartCount": 0,
+    "drawingReleasedRate": "0%",
+    "addDrawingCount": 0
+  }
+
+}

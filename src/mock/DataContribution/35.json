@@ -1,0 +1,63 @@
+{
+  "区域三十五": [{
+      "tongBiAddRate": "500.00%",
+      "objType": "普通文档",
+      "addCount": 6,
+      "huanBiAddRate": "0.00%"
+    },
+    {
+      "tongBiAddRate": "0.00%",
+      "objType": "试验任务申请单",
+      "addCount": 1,
+      "huanBiAddRate": "0.00%"
+    },
+    {
+      "tongBiAddRate": "100%",
+      "objType": "加工任务申请单",
+      "addCount": 2,
+      "huanBiAddRate": "0.00%"
+    },
+    {
+      "tongBiAddRate": "0%",
+      "objType": "协同发放",
+      "addCount": 0,
+      "huanBiAddRate": "0%"
+    },
+    {
+      "tongBiAddRate": "0.00%",
+      "objType": "仿真发放",
+      "addCount": 1,
+      "huanBiAddRate": "0.00%"
+    },
+    {
+      "tongBiAddRate": "0%",
+      "objType": "外形发放",
+      "addCount": 0,
+      "huanBiAddRate": "0%"
+    },
+    {
+      "tongBiAddRate": "100.00%",
+      "objType": "工艺发放",
+      "addCount": 2,
+      "huanBiAddRate": "0.00%"
+    },
+    {
+      "tongBiAddRate": "0%",
+      "objType": "正式发放",
+      "addCount": 0,
+      "huanBiAddRate": "0%"
+    },
+    {
+      "tongBiAddRate": "100%",
+      "objType": "三维模型",
+      "addCount": 40,
+      "huanBiAddRate": "0.00%"
+    },
+    {
+      "tongBiAddRate": "100%",
+      "objType": "二维图纸",
+      "addCount": 25,
+      "huanBiAddRate": "0.00%"
+    }
+  ]
+}
