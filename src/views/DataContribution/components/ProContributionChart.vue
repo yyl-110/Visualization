@@ -33,6 +33,7 @@ export default {
       handler() {
         this.initOption();
         if (this.myChart) {
+          this.myChart.clear();
           this.myChart.setOption(this.option, true);
         } else {
           this.initChart();

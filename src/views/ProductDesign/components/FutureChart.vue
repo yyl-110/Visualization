@@ -15,6 +15,7 @@ import Title from '@/components/Common/Title.vue';
 import elementResizeDetectorMaker from 'element-resize-detector';
 import { debounce } from '../../../utils/tool';
 import DvBorder from '../../../components/Common/DvBorder.vue';
+import { mapGetters } from 'vuex';
 /* 窗口变化监听 */
 let erd = elementResizeDetectorMaker();
 let myChart = null;
@@ -32,12 +33,37 @@ export default {
       default: () => [],
     },
   },
+  computed: {
+    ...mapGetters(['queryType']),
+    // 1 月度 2 季度 3 半年度 4 全年
+    getTip() {
+      let text = '';
+      switch (this.queryType) {
+        case 1:
+          text = '月份';
+          break;
+        case 2:
+          text = '季度';
+          break;
+        case 3:
+          text = '半年度';
+          break;
+        case 4:
+          text = '年份';
+          break;
+        default:
+          text = '月份';
+          break;
+      }
+      return text;
+    },
+  },
   watch: {
     chartData: {
       handler() {
         this.initOption();
         if (myChart) {
-          myChart.clear()
+          myChart.clear();
           myChart.setOption(option, true);
         } else {
           this.$nextTick(() => {
@@ -104,7 +130,7 @@ export default {
           },
         },
         xAxis: {
-          name: '月份',
+          name: this.getTip,
           data: xData,
           splitLine: {
             show: false,
