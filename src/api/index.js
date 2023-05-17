@@ -142,4 +142,10 @@ export const getProcessExecutionByExe = (params) => post('/Windchill/app/process
  */
 export const getProcessEfficiency = (params) => post('/Windchill/app/process-efficiency/efficiencyStatistics', params);
 
+/**
+ * 在线人数统计
+ * @return {*} prarams
+ */
+export const getPersonCount = (params) => post('/Windchill/app/process-execution/onlinePersonStatistics', params);
+
 export const test = (params) => get('http://123.56.163.203:7001/getlist', params);

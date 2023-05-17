@@ -141,6 +141,18 @@ const routes = [
     ],
   },
   {
+    path: '/live-people',
+    component: layout,
+    children: [
+      {
+        path: 'index',
+        name: 'PartsReuse',
+        component: () => import('@/views/LivePeople'),
+        meta: {title: '在线人数统计', icon: 'people.png', mainTitle: DATA_STATISTICE},
+      },
+    ],
+  },
+  {
     path: '/data-contribution',
     component: layout,
     children: [

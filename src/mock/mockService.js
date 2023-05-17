@@ -18,6 +18,7 @@ import processEfficiency from './ProcessEfficiency/data.json';
 import data29 from './ProductStandard/chartData.json';
 import table30 from './ProductStandard/standardTable.json';
 import data33 from './PartsReuse/data.json';
+import personData from './PersonData/data.json';
 
 /* product-design */
 Mock.mock('/Windchill/app/product-design/addStatistics', 'post', {success: true, ...productDesignData});
@@ -82,3 +83,5 @@ Mock.mock('/Windchill/app/process-execution/overdueWfList', 'post', {success: tr
 Mock.mock('/Windchill/app/process-execution/overdueWfListStatistics', 'post', {success: true, total: 1000, ...pdm});
 
 Mock.mock('/Windchill/app/process-efficiency/efficiencyStatistics', 'post', {success: true, ...processEfficiency});
+
+Mock.mock('/Windchill/app/process-execution/onlinePersonStatistics', 'post', {success: true, ...personData});
