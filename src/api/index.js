@@ -146,6 +146,6 @@ export const getProcessEfficiency = (params) => post('/Windchill/app/process-eff
  * 在线人数统计
  * @return {*} prarams
  */
-export const getPersonCount = (params) => post('/Windchill/app/process-execution/onlinePersonStatistics', params);
+export const getPersonCount = (params) => post('Windchill/app/user-count/onlineUser', params);
 
 export const test = (params) => get('http://123.56.163.203:7001/getlist', params);

@@ -84,4 +84,4 @@ Mock.mock('/Windchill/app/process-execution/overdueWfListStatistics', 'post', {s
 
 Mock.mock('/Windchill/app/process-efficiency/efficiencyStatistics', 'post', {success: true, ...processEfficiency});
 
-Mock.mock('/Windchill/app/process-execution/onlinePersonStatistics', 'post', {success: true, ...personData});
+Mock.mock('Windchill/app/user-count/onlineUser', 'post', {success: true, ...personData});

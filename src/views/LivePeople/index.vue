@@ -3,7 +3,7 @@
     <dv-border />
     <div class="partsWrap">
       <div class="titleWrap">
-        <Title text="PDM在线人数统计" class="title" />
+        <Title text="PDM上人数统计" class="title" />
       </div>
       <div class="chartWrap">
         <div class="chartsdom" id="LineChart" ref="LineChart"></div>
@@ -51,7 +51,7 @@ export default {
       myChart.resize();
     },
     initOption() {
-      const xLabel = this.list.map((i) => i.createtime);
+      const xLabel = this.list.map((i) => i.date);
       const data2 = this.list.map((i) => parseInt(i.personCount));
       option = {
         animation: !this.$isIE,
@@ -168,7 +168,7 @@ export default {
         .then((res) => {
           console.log('res111:', res);
           if (res.success) {
-            this.list = res['区域二十一'];
+            this.list = res['区域四十八'];
             this.initOption();
             this.initChart();
           }
